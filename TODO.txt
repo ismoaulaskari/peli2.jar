@@ -13,6 +13,7 @@ Peli.jar
     * lohkolkm-nappula /FIXED
     * versionumero /FIXED
     * Lisenssi /FIXED
+    * osx-juureen asennus /FIXED by java6
     * irc-botti
     * CSS-html
     * Oulunliigatyylinen viherpuna
@@ -36,7 +37,6 @@ Peli.jar
     * Muistintuhlaus
     * Pelaajatiedosto cancel->ohita
     * tiedostojen avaus eri hakemistoista
-    * osx-juureen asennus
     * uusi turnaus jyrää olemassaolevan
     * kaikkien pelajalistalaisten valinta kerralla
     * nollan-yhden pelaajan turnaus
@@ -46,4 +46,4 @@ Peli.jar
     * boldaus 1.5.09 /win
     * koko nimet? /EI
     * default-asetukset jos properties puuttuu
-    * sarjan kierrosmäärän kasvattaminen kesken kaiken? 
+    * sarjan kierrosmäärän kasvattaminen kesken kaiken-defaulttina isompi sarja kuin pelataan? 
