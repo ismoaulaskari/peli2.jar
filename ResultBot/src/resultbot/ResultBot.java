@@ -27,7 +27,7 @@ import org.jibble.pircbot.*;
 
 public class ResultBot extends PircBot {
     
-    String version = "0.08";
+    String version = "0.10";
     private boolean isFirstRun = true;
     private boolean stop = false;
     private boolean resultsFound = false;
@@ -121,7 +121,7 @@ public class ResultBot extends PircBot {
             String inputLine;
             
             while ((inputLine = is.readLine()) != null) {
-                inputLine = filterTnmtLine(inputLine);
+                inputLine = filterTnmtLine2(inputLine);
                 if(inputLine != null ) 
                     this.sendMessage0(channel, inputLine);                    
             }
@@ -241,24 +241,26 @@ public class ResultBot extends PircBot {
     public String filterTnmtLine2(String inputLine) {
         this.currentLine++;
         
-        if((this.currentLine >= this.lastPrintedLine) && (this.stop == false)) {
+        //only print new lines
+        if((this.currentLine > this.lastPrintedLine) && (this.stop == false)) {
             StringTokenizer st = new StringTokenizer(inputLine, ":");       
-              //System.out.println(st.countTokens());
-            if(st.countTokens() >= 4) {
+                          
+            //RESULT
+            if(st.countTokens() >= 4) {            
+                this.lastPrintedLine = this.currentLine;            
                 this.resultsFound = true;
-                //this.stop = true;
-            }
-            else {
-                if(this.resultsFound == true) {
+                                
+            }           
+            else { //end of round?
+                if(this.resultsFound) {            
                     this.stop = true;
-                    return null;
-                }
-                else {
-                    return null;
+                }            
+                else { //too far ahead (someone pressed save)?
+                    //if(st.countTokens() == 2 && st.nextToken().equalsIgnoreCase("ROUND")) { //empty result             {
+                      //  this.resultsFound = true;
+                    //}
                 }
             }
-            
-            this.lastPrintedLine++;
             
             return inputLine;
         }
