@@ -121,7 +121,7 @@ public class ResultBot extends PircBot {
             String inputLine;
             
             while ((inputLine = is.readLine()) != null) {
-                inputLine = filterTnmtLine(inputLine);
+                inputLine = filterTnmtLine2(inputLine);
                 if(inputLine != null ) 
                     this.sendMessage0(channel, inputLine);                    
             }
@@ -239,7 +239,46 @@ public class ResultBot extends PircBot {
         return inputLine;
     }
 
-    
+    /** choose tnmt lines to print or to ignore */
+    public String filterTnmtLine2(String inputLine) {
+        this.currentLine++;
+        String token = null;
+                
+        if((this.currentLine > this.lastPrintedLine) && this.stop == false) {
+            
+            StringTokenizer st = new StringTokenizer(inputLine, ":");            
+            if(st.countTokens() >= 4) {
+                this.resultsFound = true;
+                this.stop = true;
+            }
+            
+            token = st.nextToken();
+            if(this.isFirstRun) {
+                if(token.equalsIgnoreCase("rounds")) {
+                    this.stop = true;
+                    this.isFirstRun = false;
+                }
+            }
+            else {
+                if(st.countTokens() < 3 && 
+                        st.countTokens() > 0 && 
+                        ! token.equalsIgnoreCase("ROUND") && 
+                        ! token.equalsIgnoreCase("END-OF-ROUND")) {
+                    inputLine = "Odotamme tulosta " + inputLine;
+                    this.stop = true;
+                    return null;
+                }
+            }
+            
+            this.lastPrintedLine++;                               
+        } 
+        else {
+            return null;
+        }
+        
+        return inputLine;
+    }
+
     /** print wrapper for testing purposes */
     public void sendMessage0(String channel, String message) {
         //System.out.println(channel+ " " +message);
