@@ -27,7 +27,7 @@ import org.jibble.pircbot.*;
 
 public class ResultBot extends PircBot {
     
-    String version = "0.07";
+    String version = "0.08";
     private boolean isFirstRun = true;
     private boolean stop = false;
     private boolean resultsFound = false;
@@ -40,7 +40,7 @@ public class ResultBot extends PircBot {
     
     public ResultBot() {
         this.setName("Tulospalvelu");
-        this.setLogin("tunne");
+        this.setLogin("tnnne");
         this.setFinger("Tuloksia reaalisti!");
         this.setVersion(version);
     }

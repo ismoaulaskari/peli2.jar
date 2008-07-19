@@ -86,6 +86,7 @@ public class Main extends Thread {
         String server = props.getProperty("server");
         String channel = props.getProperty("channel");
         String headline = props.getProperty("headline");
+        String delay = props.getProperty("delay");
         
         // Now start our bot up.
         ResultBot bot = new ResultBot(name, login, finger);
@@ -94,7 +95,7 @@ public class Main extends Thread {
         bot.setVerbose(true);
         
         // try to talk slow and avoid being kicked
-        bot.setMessageDelay(500);
+        bot.setMessageDelay(Integer.parseInt(delay));
         
         // Connect to the IRC server.
         bot.connect(server);
