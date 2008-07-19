@@ -56,7 +56,7 @@ public class ResultBot extends PircBot {
     /** this will loop until file is modified */
     public void pollFile(String filename) throws IOException, InterruptedException {
         File f = new File(filename);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         if(f.exists() && f.canRead()) {
             Date d = new Date();
             Date d2 = new Date();
@@ -69,7 +69,7 @@ public class ResultBot extends PircBot {
                     this.resultsFound = false;
                     return;
                 }
-                Thread.sleep(1000);    
+                Thread.sleep(5000);    
             }
             
         } else {
@@ -251,14 +251,23 @@ public class ResultBot extends PircBot {
                 this.resultsFound = true;
                                 
             }           
-            else { //end of round?
-                if(this.resultsFound) {            
+            else { 
+                
+                //intro text?                
+                if(this.isFirstRun) {
+                    String token = st.nextToken();
+                    if(token.equalsIgnoreCase("ROUNDS")) {
+                        this.stop = true;
+                        this.isFirstRun = false;
+                    }
+                }                                
+                //end of round?
+                else if(this.resultsFound) {            
                     this.stop = true;
                 }            
                 else { //too far ahead (someone pressed save)?
-                    //if(st.countTokens() == 2 && st.nextToken().equalsIgnoreCase("ROUND")) { //empty result             {
-                      //  this.resultsFound = true;
-                    //}
+                    
+                    if(! this.isFirstRun) return null;
                 }
             }
             
@@ -270,7 +279,7 @@ public class ResultBot extends PircBot {
 
     /** print wrapper for testing purposes */
     public void sendMessage0(String channel, String message) {
-        System.out.println(channel+ " " +message);
-        //this.sendMessage(channel, message);
+        //System.out.println(channel+ " " +message);
+        this.sendMessage(channel, message);
     }
 }
