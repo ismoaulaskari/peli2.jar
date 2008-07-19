@@ -98,7 +98,7 @@ public class Main extends Thread {
         bot.setMessageDelay(Integer.parseInt(delay));
         
         // Connect to the IRC server.
-        bot.connect(server);
+        //bot.connect(server);
         
         if(args.length > 0) {            
             StringTokenizer st = new StringTokenizer(args[0], ".");

@@ -121,7 +121,7 @@ public class ResultBot extends PircBot {
             String inputLine;
             
             while ((inputLine = is.readLine()) != null) {
-                inputLine = filterTnmtLine2(inputLine);
+                inputLine = filterTnmtLine(inputLine);
                 if(inputLine != null ) 
                     this.sendMessage0(channel, inputLine);                    
             }
@@ -224,64 +224,51 @@ public class ResultBot extends PircBot {
                         st.countTokens() > 0 && 
                         ! token.equalsIgnoreCase("ROUND") && 
                         ! token.equalsIgnoreCase("END-OF-ROUND")) {
-                    inputLine = "Odotamme tulosta " + inputLine;
-                    this.stop = true;
+                    //inputLine = "Odotamme tulosta " + inputLine;
+                    //this.stop = true;
                     return null;
                 }
             }
             
             this.lastPrintedLine++;                               
-        } 
-        else {
-            return null;
-        }
+            return inputLine;
+        }         
         
-        return inputLine;
+        return null;
     }
 
     /** choose tnmt lines to print or to ignore */
     public String filterTnmtLine2(String inputLine) {
         this.currentLine++;
-        String token = null;
-                
-        if((this.currentLine > this.lastPrintedLine) && this.stop == false) {
-            
-            StringTokenizer st = new StringTokenizer(inputLine, ":");            
+        
+        if((this.currentLine >= this.lastPrintedLine) && (this.stop == false)) {
+            StringTokenizer st = new StringTokenizer(inputLine, ":");       
+              //System.out.println(st.countTokens());
             if(st.countTokens() >= 4) {
                 this.resultsFound = true;
-                this.stop = true;
-            }
-            
-            token = st.nextToken();
-            if(this.isFirstRun) {
-                if(token.equalsIgnoreCase("rounds")) {
-                    this.stop = true;
-                    this.isFirstRun = false;
-                }
+                //this.stop = true;
             }
             else {
-                if(st.countTokens() < 3 && 
-                        st.countTokens() > 0 && 
-                        ! token.equalsIgnoreCase("ROUND") && 
-                        ! token.equalsIgnoreCase("END-OF-ROUND")) {
-                    inputLine = "Odotamme tulosta " + inputLine;
+                if(this.resultsFound == true) {
                     this.stop = true;
+                    return null;
+                }
+                else {
                     return null;
                 }
             }
             
-            this.lastPrintedLine++;                               
-        } 
-        else {
-            return null;
+            this.lastPrintedLine++;
+            
+            return inputLine;
         }
         
-        return inputLine;
+        return null;
     }
 
     /** print wrapper for testing purposes */
     public void sendMessage0(String channel, String message) {
-        //System.out.println(channel+ " " +message);
-        this.sendMessage(channel, message);
+        System.out.println(channel+ " " +message);
+        //this.sendMessage(channel, message);
     }
 }
