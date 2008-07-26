@@ -14,7 +14,7 @@ Peli.jar
     * versionumero /FIXED
     * Lisenssi /FIXED
     * osx-juureen asennus /FIXED by java6
-    * irc-botti
+    * irc-botti /FIXED eka versio
     * CSS-html
     * Oulunliigatyylinen viherpuna
     * päivämäärä

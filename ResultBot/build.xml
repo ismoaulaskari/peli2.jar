@@ -5,6 +5,11 @@
 <project name="ResultBot" default="default" basedir=".">
     <description>Builds, tests, and runs the project ResultBot.</description>
     <import file="nbproject/build-impl.xml"/>
+
+   <target name="-post-jar">
+        <copy todir="dist" file="irc.properties" />
+   </target>
+
     <!--
 
     There exist several targets which are by default empty and which can be 

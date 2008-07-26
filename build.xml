@@ -15,6 +15,16 @@
         <copy todir="dist/conf">
             <fileset dir="conf" />
         </copy>
+        <copy todir="dist">
+            <fileset dir="ResultBot/dist" />
+        </copy>
+        <copy todir="dist">
+            <fileset dir="LauncherFD/dist" />
+        </copy>
+        <copy todir="dist" file="LICENCE.txt" />
+        <copy todir="dist" file="CHANGELOG.txt" />
+        <copy todir="dist" file="TODO.txt" />
+        <copy todir="dist" file="README.txt" />
     </target>
 
 

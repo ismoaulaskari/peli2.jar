@@ -5,6 +5,10 @@
 <project name="LauncherFD" default="default" basedir=".">
     <description>Builds, tests, and runs the project LauncherFD.</description>
     <import file="nbproject/build-impl.xml"/>
+
+   <target name="-post-jar">
+        <copy todir="dist" file="launcher.properties" />
+   </target>
     <!--
 
     There exist several targets which are by default empty and which can be 

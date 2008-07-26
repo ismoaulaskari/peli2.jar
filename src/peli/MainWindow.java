@@ -40,7 +40,7 @@ public class MainWindow extends JFrame
         JButton jbutton = createButton(messages.getString("newButton"), messages.getString("newToolTip"), ((Integer)keyCodes.getObject("newMnemonic")).intValue(), new ImageIcon(messages.getString("newIconGifFile")), new NewActionListener(this));
         JButton jbutton1 = createButton(messages.getString("oldButton"), messages.getString("oldToolTip"), ((Integer)keyCodes.getObject("oldMnemonic")).intValue(), new ImageIcon(messages.getString("oldIconGifFile")), new OldActionListener(this));
         JButton jbutton2 = createButton(messages.getString("quitButton"), messages.getString("quitToolTip"), ((Integer)keyCodes.getObject("quitMnemonic")).intValue(), new ImageIcon(messages.getString("quitIconGifFile")), new QuitActionListener());
-        JLabel version = new JLabel("v. 1.0.9");
+        JLabel version = new JLabel("v. 1.1.0");
         JPanel jpanel = new JPanel();
         jpanel.add(jbutton);
         jpanel.add(jbutton1);

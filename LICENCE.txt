@@ -40,3 +40,14 @@ Sopimusosapuolet:
 Mika Lindqvist SPJKL
 Hannu Pajunen ohjelmien tekijä
 
+
+
+
+
+26.7.2008
+ResultBot-ohjelma
+
+ResultBot jaetaan GPL-lisenssin alaisena koska se nojautuu 
+GPL-lisenssin alaisiin Pircbot-kirjastoihin.
+
+-Ismo Aulaskari
