@@ -1,0 +1,49 @@
+Peli.jar
+
+    * A-K bugi /FIXED
+    * Keskinäiset /FIXED
+    * starttiparametrit /FIXED
+    * uudelleenkäynnistys /FIXED
+    * ikkunansulkija /FIXED
+    * Lohkon koot /FIXED
+    * Keskinäisten näyttäminen /FIXED
+    * ym. propertyt /FIXED
+    * jatkolohkojen teko /FIXED
+    * 3 pisteen pelit /FIXED
+    * lohkolkm-nappula /FIXED
+    * versionumero /FIXED
+    * Lisenssi /FIXED
+    * osx-juureen asennus /FIXED by java6
+    * irc-botti /FIXED eka versio
+    * CSS-html
+    * Oulunliigatyylinen viherpuna
+    * päivämäärä
+    * template?
+          o output-uudistus
+          o -Tournament : date
+          o -Division : saveAll
+          o -Seriestable : print
+          o -nbsp 
+    * Lohkojen selkeät nimet "akti-122 / lohko A"
+    * Pelaajakohtaiset otteluohjelmat tulostettavaksi
+    * Otteluohjelma pienellä turnauksen html-sivulle
+    * Alkusarjan tulokset finaalisarjaan
+    * duplikaattinimet pois
+    * Playoff?
+    * hakemiston vaihto?
+    * luovutus?
+    * tuloskirjauksen pikanäppäimet?
+    * Englanninnos!
+    * Muistintuhlaus
+    * Pelaajatiedosto cancel->ohita
+    * tiedostojen avaus eri hakemistoista
+    * uusi turnaus jyrää olemassaolevan
+    * kaikkien pelajalistalaisten valinta kerralla
+    * nollan-yhden pelaajan turnaus
+    * nimetön turnaus
+    * vanhan tiedoston avaus-otsikko "uuden tiedoston nimi"
+    * J2ME
+    * boldaus 1.5.09 /win
+    * koko nimet? /EI
+    * default-asetukset jos properties puuttuu
+    * sarjan kierrosmäärän kasvattaminen kesken kaiken-defaulttina isompi sarja kuin pelataan? 

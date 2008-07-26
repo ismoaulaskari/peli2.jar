@@ -1,0 +1,54 @@
+Peli.jar 1.1.0 / 26.7.2008
+
+Perustuu Hannu Pajusen Peli.jar-ohjelmaan,
+jonka lisenssiehdot pätevät edelleen (katso LICENCE.txt).
+Testattu Java 1.6 
+Ei mitään takuuta! Tämä on ilmaiseksi levitettävä ohjelma jossa
+voi esiintyä yllättäviä ongelmia.
+Tekijä: Ismo Aulaskari
+
+Uutta v.1.1.0:
+
+-Paketointia, irc-bottiprojekti ja tulospalvelu-kontrollipaneeli 
+ liitetty mukaan sovellukseen. Viimeinen alkuperäiseltä Pajusen 
+ v.1.0.0 pohjalta tehty täysin taaksepäinyhteensopiva versio.
+
+-Java 1.6 korjaa vuosikausia MacOS-alustoilla havaitun ongelman 
+ joka pakoti käyttämään ohjelmaa käyttöjärjestelmän juuresta tms.
+
+-Projektidokumentaatiota parannettu UML-projektilla.
+
+
+Uutta v.1.0.9:
+
+-Järjestää tasapistetulokset järjestyksessä:
+	-keskinäisten otteluiden pisteet
+	-keskinäisten otteluiden maaliero
+	-keskinäisten tehdyt maalit
+	-koko sarjan maaliero
+	-koko sarjan tehdyt maalit
+	-aakkosjärjestys
+ 
+-Sallii nyt tavuviivalliset 2-osaiset sukunimet 
+ joissa kumpikin osa alkaa isolla tai pienellä kirjaimella.
+
+-Ohjelmassa oleva F-painike jota voi painaa sarjan lopussa. Tällöin
+ keskinäiset ottelut tulevat näkyviin ohjelmassa ja html-tulosteissa,
+ ilman että ohjelmaa tarvitsee käynnistää uudestaan. Sitä ei kannata
+ rämpätä, sillä toiminto vuotaa muistia.
+
+-Keskinäisten otteluiden välilehti ohjelmassa. Linux- ja OSX-alustoilla
+ tasapiste-laatikot värjätty.
+
+-Ohjelmaa ei voi helposti sulkea tallentamatta.
+
+-Lohkojen määrän voi säätää mukana tulevassa Rules.properties-tiedostossa.
+
+-Muita ominaisuuksia voi säätää samasta paikkaa.
+
+-Ohjelmassa oleva I-painike, joka kirjoittaa lohko(je)n lopputulosnimilistan,
+ jonka voi ajaa uudestaan ohjelmalle finaalisarjojen ja divisioonien 
+ muodostamista varten.
+
+-Muuten ohjelma toimii kuten ennenkin ja tulostaa alkuperäisen peli.jar:in
+ kanssa yhteensopivia tiedostoja.
