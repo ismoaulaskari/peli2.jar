@@ -14,7 +14,9 @@ import java.util.*;
  */
 class OpponentTable
 {
-
+    
+    private Hashtable opponentTable;
+    
     OpponentTable()
     {
         opponentTable = new Hashtable();
@@ -63,5 +65,5 @@ class OpponentTable
     }
 
 
-    private Hashtable opponentTable;
+
 }

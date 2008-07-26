@@ -12,6 +12,10 @@ class LineReader
     implements Iterator
 {
 
+    private BufferedReader in;
+    private String currentLine;
+    private boolean hasNext;
+
     LineReader(String s)
     {
         hasNext = false;
@@ -69,7 +73,4 @@ class LineReader
     {
     }
 
-    private BufferedReader in;
-    private String currentLine;
-    private boolean hasNext;
 }

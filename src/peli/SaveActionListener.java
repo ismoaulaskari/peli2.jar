@@ -19,6 +19,11 @@ public class SaveActionListener
     implements ActionListener
 {
 
+    private Tournament tournament;
+    private File file;
+    private int what;
+    private Component frame;
+
     SaveActionListener(File file1, Tournament tournament1, int i, Component component)
     {
         tournament = tournament1;
@@ -92,8 +97,4 @@ public class SaveActionListener
         JOptionPane.showMessageDialog(component, s, "Tiedosto luotu", 1, null);
     }
 
-    private Tournament tournament;
-    private File file;
-    private int what;
-    private Component frame;
 }

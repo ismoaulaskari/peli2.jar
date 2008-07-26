@@ -22,6 +22,13 @@ public class NewActionListener
     implements ActionListener
 {
 
+    private Locale locale;
+    private ResourceBundle messages;
+    private MainWindow s;
+    private Container contents;
+    private File saveFile;
+    private File playerNameFile;
+
     public void actionPerformed(ActionEvent actionevent)
     {
     	if(System.getProperty("TournamentFileArgs") != null) {
@@ -51,10 +58,4 @@ public class NewActionListener
         contents = s.getContentPane();
     }
 
-    private Locale locale;
-    private ResourceBundle messages;
-    private MainWindow s;
-    private Container contents;
-    private File saveFile;
-    private File playerNameFile;
 }

@@ -12,6 +12,9 @@ import javax.swing.filechooser.FileFilter;
 public class TournamentFileFilter extends FileFilter
 {
 
+    private Locale locale;
+    private ResourceBundle messages;
+
     public TournamentFileFilter()
     {
         /*locale = new Locale(new String("fi"), new String("FI"));
@@ -33,6 +36,4 @@ public class TournamentFileFilter extends FileFilter
         return messages.getString("tnmtFileDescription");
     }
 
-    private Locale locale;
-    private ResourceBundle messages;
 }

@@ -13,7 +13,9 @@ import java.util.*;
  */
 public class Mutual
 {
-
+    
+    private Hashtable players;
+    
     Mutual(TreeSet treeset)
     {
         players = new Hashtable();
@@ -51,5 +53,5 @@ public class Mutual
     	return players.size();
     }
     
-    private Hashtable players;
+
 }

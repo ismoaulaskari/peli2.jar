@@ -10,6 +10,9 @@ package peli;
 public class Player
 {
 
+    private int rank;
+    private String name;
+
     Player(int i, String s)
     {
         rank = 0;
@@ -48,6 +51,4 @@ public class Player
         return rank == playerjcheckbox.getRank();
     }
 
-    private int rank;
-    private String name;
 }

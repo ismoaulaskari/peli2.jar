@@ -10,7 +10,9 @@ import java.awt.event.ActionListener;
 public class RadioListener
     implements ActionListener
 {
-
+    
+    private int times;
+    
     public RadioListener()
     {
         times = 1;
@@ -26,5 +28,5 @@ public class RadioListener
         return times;
     }
 
-    private int times;
+
 }

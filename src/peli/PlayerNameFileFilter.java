@@ -12,6 +12,9 @@ import javax.swing.filechooser.FileFilter;
 public class PlayerNameFileFilter extends FileFilter
 {
 
+    private Locale locale;
+    private ResourceBundle messages;
+
     public PlayerNameFileFilter()
     {
         /*locale = new Locale(new String("fi"), new String("FI"));
@@ -30,6 +33,4 @@ public class PlayerNameFileFilter extends FileFilter
         return messages.getString("playerFileDescription");
     }
 
-    private Locale locale;
-    private ResourceBundle messages;
 }

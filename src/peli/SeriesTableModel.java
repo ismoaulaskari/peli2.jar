@@ -6,9 +6,17 @@ package peli;
 
 import javax.swing.table.AbstractTableModel;
 
-/** The seriestable in the Tournament GUI */
+/** The seriestable in the Tournament GUI 
+ *  Propertyfile?
+ */
 public class SeriesTableModel extends AbstractTableModel
 {
+    final String columnNames[] = {
+        "#", "Pelaaja", "O", "V", "T", "H", "tm", "", "pm", "me", 
+        "p"
+    };
+    private Division division;
+    private SeriesTable seriesTable;
 
     SeriesTableModel(Division division1)
     {
@@ -88,10 +96,4 @@ public class SeriesTableModel extends AbstractTableModel
         fireTableDataChanged();
     }
 
-    final String columnNames[] = {
-        "#", "Pelaaja", "O", "V", "T", "H", "tm", "", "pm", "me", 
-        "p"
-    };
-    private Division division;
-    private SeriesTable seriesTable;
 }

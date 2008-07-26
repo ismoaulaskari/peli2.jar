@@ -16,6 +16,9 @@ import java.util.*;
  */
 public class SeriesTable {
 
+        private SeriesTableEntry table[];
+	private Mutual mutual;
+
 	SeriesTable(Hashtable hashtable, Mutual mutual1)
     {
 		this.mutual = mutual1;
@@ -183,6 +186,4 @@ public class SeriesTable {
 
 	
 	
-	private SeriesTableEntry table[];
-	private Mutual mutual;
 }

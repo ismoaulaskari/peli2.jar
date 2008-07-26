@@ -13,7 +13,9 @@ import javax.swing.JCheckBox;
  */
 public class PlayerJCheckBox extends JCheckBox
 {
-
+    
+    private int rank;
+    
     PlayerJCheckBox(int i, String s)
     {
         super(s);
@@ -63,5 +65,5 @@ public class PlayerJCheckBox extends JCheckBox
 		return false;
     }
     
-    private int rank;
+
 }

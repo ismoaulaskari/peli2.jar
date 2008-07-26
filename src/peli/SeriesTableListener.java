@@ -11,6 +11,8 @@ public class SeriesTableListener
     implements ChangeListener
 {
 
+    private SeriesTableModel stm;
+    
     SeriesTableListener(SeriesTableModel seriestablemodel)
     {
         stm = seriestablemodel;
@@ -21,5 +23,4 @@ public class SeriesTableListener
         stm.update();
     }
 
-    private SeriesTableModel stm;
 }

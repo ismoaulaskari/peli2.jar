@@ -15,6 +15,12 @@ import java.io.PrintWriter;
 public class Match
 {
 
+    private String home;
+    private String visitor;
+    private int homeGoals;
+    private int visitorGoals;
+    private boolean isOver;
+
 	//for England..and mutual comparison
 	Match(String home, String visitor) 
 	{
@@ -143,9 +149,4 @@ public class Match
         return home.equals("X") || visitor.equals("X") || home.equals("") || visitor.equals("");
     }
 
-    private String home;
-    private String visitor;
-    private int homeGoals;
-    private int visitorGoals;
-    private boolean isOver;
 }

@@ -15,6 +15,16 @@ import java.util.*;
 public class Division
 {
 
+    private String title;
+    private TreeSet players;
+    private Mutual mutual;
+    private int numberOfPlayers;
+    private Hashtable seriesTableEntries;
+    private boolean hasDummyPlayer;
+    private String seats[];
+    private int times;
+    private Round rounds[];
+
     private void makeInitialSeating()
     {
         int i = 0;
@@ -295,13 +305,4 @@ public class Division
     	return standings;
     }
     
-    private String title;
-    private TreeSet players;
-    private Mutual mutual;
-    private int numberOfPlayers;
-    private Hashtable seriesTableEntries;
-    private boolean hasDummyPlayer;
-    private String seats[];
-    private int times;
-    private Round rounds[];
 }

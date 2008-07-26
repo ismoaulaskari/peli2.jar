@@ -6,7 +6,9 @@ package peli;
  *
  */
 public class MutualSeriesTableEntry extends SeriesTableEntry {
-
+	
+        private SeriesTableEntry overallresults = null;
+        
 	public MutualSeriesTableEntry(String s) {
 		super(s);		
 	}
@@ -20,5 +22,5 @@ public class MutualSeriesTableEntry extends SeriesTableEntry {
 		return this.overallresults;
 	}
 	
-	private SeriesTableEntry overallresults = null;
+
 }

@@ -16,6 +16,14 @@ import java.util.ResourceBundle;
 public class Round
 {
 
+    private Locale locale;
+    private ResourceBundle messages;
+    private Division mother;
+    private int number;
+    private String pausePlayer;
+    private Match matches[];
+    private int numberOfMatches;
+
     Round(Division division, int i, String as[])
     {
         /*locale = new Locale(new String("fi"), new String("FI"));
@@ -140,11 +148,4 @@ public class Round
         return mother;
     }
 
-    private Locale locale;
-    private ResourceBundle messages;
-    private Division mother;
-    private int number;
-    private String pausePlayer;
-    private Match matches[];
-    private int numberOfMatches;
 }

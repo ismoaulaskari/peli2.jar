@@ -22,6 +22,10 @@ public class OldActionListener
     implements ActionListener
 {
 
+    private MainWindow mainWindow;
+    private Container contents;
+    private File file;
+
     public void actionPerformed(ActionEvent actionevent)
     {
     	if(System.getProperty("TournamentFileArgs") != null) {
@@ -69,7 +73,4 @@ public class OldActionListener
         JOptionPane.showMessageDialog(component, s, s1, 0, null);
     }
 
-    private MainWindow mainWindow;
-    private Container contents;
-    private File file;
 }

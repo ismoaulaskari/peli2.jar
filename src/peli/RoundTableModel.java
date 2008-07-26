@@ -8,11 +8,16 @@ import javax.swing.table.AbstractTableModel;
 
 /** 
  * Gui table where you type in the results
+ * Put words in a propertyfile.
  * @author aulaskar
  *
  */
 public class RoundTableModel extends AbstractTableModel
 {
+    final String columnNames[] = {
+        "P\366yt\344", "Kotijoukkue", "Vierasjoukkue", "Tulos"
+    };
+    private Round round;
 
     RoundTableModel(Round round1)
     {
@@ -96,8 +101,4 @@ public class RoundTableModel extends AbstractTableModel
         fireTableCellUpdated(i, j);
     }
 
-    final String columnNames[] = {
-        "P\366yt\344", "Kotijoukkue", "Vierasjoukkue", "Tulos"
-    };
-    private Round round;
 }

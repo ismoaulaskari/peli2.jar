@@ -16,6 +16,12 @@ import javax.swing.JFrame;
 public class ReadyActionListener
     implements ActionListener
 {
+    private MainWindow mainWindow;
+    private Container contents;
+    private TreeSet players;
+    private TreeSet playerCheckBoxes;
+    private File saveFile;
+    private RadioListener radioListener;
 
     public void actionPerformed(ActionEvent actionevent)
     {
@@ -45,10 +51,4 @@ public class ReadyActionListener
         radioListener = radiolistener;
     }
 
-    private MainWindow mainWindow;
-    private Container contents;
-    private TreeSet players;
-    private TreeSet playerCheckBoxes;
-    private File saveFile;
-    private RadioListener radioListener;
 }

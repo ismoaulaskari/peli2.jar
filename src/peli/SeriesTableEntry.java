@@ -17,6 +17,16 @@ import java.io.PrintWriter;
 public class SeriesTableEntry extends Player
 {
 
+    private String playerName;
+    private int wins;
+    private int ties;
+    private int losses;
+    private int goalsScored;
+    private int goalsYielded;
+    private static int pointsPerWin = 0;
+    private static int pointsPerTie = 0;
+    private int isInMutualComparison = -1; //is tied at x points
+
     SeriesTableEntry(String s)
     {
     	super(0, s); //hacked to extend player for mutual comparison casting
@@ -260,13 +270,4 @@ public class SeriesTableEntry extends Player
         }
     }
 
-    private String playerName;
-    private int wins;
-    private int ties;
-    private int losses;
-    private int goalsScored;
-    private int goalsYielded;
-    private static int pointsPerWin = 0;
-    private static int pointsPerTie = 0;
-    private int isInMutualComparison = -1; //is tied at x points
 }

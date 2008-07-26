@@ -17,7 +17,14 @@ import java.util.*;
  */
 public class Tournament
 {
-
+    
+    private Locale locale;
+    private ResourceBundle messages;
+    private ResourceBundle rules; //hack
+    private Vector divisions;
+    private int numberOfDivisions;
+    private static final String date = "x.x.2000";
+    
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset)
     {
         for(int i = 0; i < atreeset.length; i++)
@@ -362,10 +369,5 @@ public class Tournament
         HtmlTools.outro(printwriter);
     }
 
-    private Locale locale;
-    private ResourceBundle messages;
-    private ResourceBundle rules; //hack
-    private Vector divisions;
-    private int numberOfDivisions;
-    private static final String date = "x.x.2000";
+    
 }
