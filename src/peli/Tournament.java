@@ -369,5 +369,8 @@ public class Tournament
         HtmlTools.outro(printwriter);
     }
 
+    public void finalize() {
+        this.divisions = null;        
+    }
     
 }

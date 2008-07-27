@@ -82,12 +82,14 @@ public class TournamentGUI extends JPanel
                 	//keyCodes = null;
                 	leftRenderer = null;
                 	try {
-                		this.finalize(); //huh
+                		super.finalize(); //huh                                
                 	}
                 	catch (Throwable e) {
-						// TODO: handle exception
-					}
-                		
+				e.printStackTrace();		// TODO: handle exception
+			}
+                	
+                        System.runFinalization();
+                        System.gc();
                 	String[] restartargs = new String[2];
                 	restartargs[0] = System.getProperty("TournamentFileName");
                 	restartargs[1] = "restart";

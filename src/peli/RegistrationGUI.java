@@ -21,6 +21,15 @@ import javax.swing.text.JTextComponent;
 public class RegistrationGUI extends JPanel
 {
 
+    private Locale locale;
+    private ResourceBundle messages;
+    private MainWindow mainWindow;
+    private Container mainWindowContents;
+    private static TreeSet names = new TreeSet(new PlayerCheckBoxComparator());
+    private int counter;
+    private int rank;
+
+
     private void popUpErrorMessage(String s)
     {
         JOptionPane.showMessageDialog(this, s, messages.getString("duplicateErrorMessageHeader"), 2, null);
@@ -182,15 +191,6 @@ public class RegistrationGUI extends JPanel
         add(jscrollpane, "Center");
         add(jpanel1, "South");
     }
-
-    private Locale locale;
-    private ResourceBundle messages;
-    private MainWindow mainWindow;
-    private Container mainWindowContents;
-    private static TreeSet names = new TreeSet(new PlayerCheckBoxComparator());
-    private int counter;
-    private int rank;
-
 
 
 

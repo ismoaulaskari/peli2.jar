@@ -12,7 +12,7 @@ import javax.swing.*;
 
 /** 
  * the startup screen with logo and buttons for new and old tournaments 
- * v1.1 disable accidental window closing
+ * v1.1 disables accidental window closing
  * add version number
  * */
 public class MainWindow extends JFrame

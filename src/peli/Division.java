@@ -305,4 +305,11 @@ public class Division
     	return standings;
     }
     
+    public void finalize() {
+        this.seats = null;
+        this.rounds = null;
+        this.seriesTableEntries = null;
+        this.players = null;
+        this.mutual = null;
+    }
 }
