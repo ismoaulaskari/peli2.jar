@@ -51,4 +51,7 @@ public class Player
         return rank == playerjcheckbox.getRank();
     }
 
+    public void finalize() {
+        this.name = null;        
+    }
 }
