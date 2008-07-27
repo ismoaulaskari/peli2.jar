@@ -96,4 +96,8 @@ public class SeriesTableModel extends AbstractTableModel
         fireTableDataChanged();
     }
 
+    public void finalize() {        
+        this.division = null;
+        this.seriesTable = null;
+    }
 }

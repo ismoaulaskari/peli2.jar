@@ -148,4 +148,8 @@ public class Round
         return mother;
     }
 
+    public void finalize() {
+        this.mother = null;
+        this.matches = null;        
+    }
 }

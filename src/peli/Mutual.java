@@ -54,4 +54,7 @@ public class Mutual
     }
     
 
+    public void finalize() {
+        this.players = null;
+    }
 }
