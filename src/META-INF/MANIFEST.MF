@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Main-Class: RunTournament
 Created-By: 1.3.0 (Sun Microsystems Inc.)
-Class-Path: conf/ images/
+Class-Path: . conf/ images/
 
 
 

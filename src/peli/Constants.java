@@ -25,9 +25,9 @@ public class Constants {
 	static {
 		constants = new Constants();
 		locale = new Locale(new String("fi"), new String("FI"));
-		messages = ResourceBundle.getBundle("Messages", locale);
+		messages = ResourceBundle.getBundle("conf.Messages", locale);
 		keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);
-		rules = ResourceBundle.getBundle("Rules");
+		rules = ResourceBundle.getBundle("conf.Rules");
 	}
 
 	private Constants() {
