@@ -87,9 +87,14 @@ public class Main extends Thread {
         String channel = props.getProperty("channel");
         String headline = props.getProperty("headline");
         String delay = props.getProperty("delay");
+        boolean nospeech = props.containsKey("nospeech");
         
         // Now start our bot up.
-        ResultBot bot = new ResultBot(name, login, finger);
+        ResultBot bot = null; 
+        if(nospeech)        
+            bot = new ResultBot(name, login, finger);
+        else 
+            bot = new SpeechResultBot(name, login, finger);
 
         // Enable debugging output.
         bot.setVerbose(true);

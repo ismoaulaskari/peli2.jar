@@ -19,7 +19,8 @@ public class SpeechResultBot extends ResultBot {
     private AudioPlayer voicePlayer;
 
     
-    public SpeechResultBot() {
+    public SpeechResultBot(String name, String login, String finger) {
+        super(name, login, finger);        
         String voiceName = "kevin16";
         VoiceManager voiceManager = VoiceManager.getInstance();
         voice = voiceManager.getVoice(voiceName);
@@ -35,6 +36,8 @@ public class SpeechResultBot extends ResultBot {
         voicePlayer.setAudioFormat(new AudioFormat(8000, 16, 1, false, true));
 
     }
+
+ 
     
        // This method is not called from anywhere yet.
     public void exit() {
