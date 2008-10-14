@@ -50,11 +50,14 @@ public class SpeechResultBot extends ResultBot {
     }    
     
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
+        /* don't play own messages */
+        if(this.getNick().equals(sender))
+            return;
+        
         message = message.trim();
-
-        String input = sender + " on " + channel + " says: " + message;
+        
+        String input = sender + ": " + message;
         speak(input, voicePlayer);
-
 
     }
 }
