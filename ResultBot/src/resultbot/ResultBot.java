@@ -27,7 +27,7 @@ import org.jibble.pircbot.*;
 
 public class ResultBot extends PircBot {
     
-    String version = "0.10";
+    String version = "0.11";
     private boolean isFirstRun = true;
     private boolean stop = false;
     private boolean resultsFound = false;
