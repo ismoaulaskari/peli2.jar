@@ -21,7 +21,7 @@ public class SpeechResultBot extends ResultBot {
     
     public SpeechResultBot(String name, String login, String finger) {
         super(name, login, finger);        
-        String voiceName = "kevin16";
+        String voiceName = "kevin";
         VoiceManager voiceManager = VoiceManager.getInstance();
         voice = voiceManager.getVoice(voiceName);
 
@@ -56,8 +56,8 @@ public class SpeechResultBot extends ResultBot {
         
         message = message.trim();
         
-        String input = sender + ": " + message;
-        speak(input, voicePlayer);
+        //String input = sender + ": " + message;
+        speak(message, voicePlayer);
 
     }
 }
