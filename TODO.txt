@@ -29,7 +29,7 @@ Peli.jar
     * Otteluohjelma pienellä turnauksen html-sivulle
     * Alkusarjan tulokset finaalisarjaan
     * duplikaattinimet pois
-    * Playoff?
+    * Playoff-tuki
     * hakemiston vaihto?
     * luovutus?
     * tuloskirjauksen pikanäppäimet?
