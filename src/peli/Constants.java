@@ -1,6 +1,8 @@
 package peli;
 
+import java.io.FileInputStream;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 // Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
@@ -25,9 +27,17 @@ public class Constants {
 	static {
 		constants = new Constants();
 		locale = new Locale(new String("fi"), new String("FI"));
-		messages = ResourceBundle.getBundle("conf.Messages", locale);
-		keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);
-		rules = ResourceBundle.getBundle("conf.Rules");
+                try {
+                    messages = ResourceBundle.getBundle("Messages", locale);
+                    rules = ResourceBundle.getBundle("Rules");
+                } 
+                catch (MissingResourceException e) {
+                    messages = ResourceBundle.getBundle("conf.Messages", locale, Constants.class.getClass().getClassLoader());
+                    rules = ResourceBundle.getBundle("conf.Rules", locale, Constants.class.getClass().getClassLoader());
+                }
+              
+                //this should always be found
+                keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);                
 	}
 
 	private Constants() {
