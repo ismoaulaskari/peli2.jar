@@ -186,11 +186,13 @@ public class Division
     //mutual matches table on a tournament html-page
     public void saveAll(PrintWriter printwriter)
     {
+        //print overall results table first
         SeriesTable seriestable = getSeriesTable();
         printwriter.println("<table align=center bgcolor=\"#c0c0c0\">");
         printwriter.println("<tr>\n<td>\n<pre>\n");
         seriestable.print(printwriter);
         printwriter.println("</pre>\n</td>\n</tr>\n</table>\n<p>");
+        //print mutual results next
         printwriter.println("<table width=\"100%\" border=1>");
         printwriter.println("<tr><th align=center>Keskin\344iset ottelut</th>");
         for(int i = 0; i < seriestable.size(); i++)
@@ -222,7 +224,7 @@ public class Division
         printwriter.println("</table>");
     }
 
-    //show html-results page in the program by aulaskar
+    //show html-results page in the program with internal browser, by aulaskar
     public String createMutualTable()
     {
     	StringBuffer printout = new StringBuffer();
