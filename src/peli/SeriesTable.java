@@ -45,7 +45,7 @@ public class SeriesTable {
     	boolean debug = false;
     	if(System.getProperty("debug") != null)
     		debug = true;
-        // mutual sort (messy v.0.1)
+        // mutual sort (messy but works v.1.0)
     	boolean last_player = false;
         int j = 0;
         int k = 0;
@@ -156,7 +156,7 @@ public class SeriesTable {
 	}
 
 	public void htmlSave(PrintWriter printwriter) {
-		sortMutually(this.mutual); //does this help for immediate updates
+		//sortMutually(this.mutual); //does this help for immediate updates
 		HtmlTools.tableIntro(printwriter, false, "100%");
 		for (int i = 0; i < size(); i++)
 			printwriter.println(elementAt(i).getHtmlTableRow());
@@ -165,7 +165,7 @@ public class SeriesTable {
 	}
 
 	public void print(PrintWriter printwriter) {
-		sortMutually(this.mutual); //does this help for immediate updates
+		//sortMutually(this.mutual); //does this help for immediate updates
 		for (int i = 0; i < size(); i++)
 			printwriter.println(Tools.format(i + 1, 4) + " "
 					+ elementAt(i).getRow() + "  ");
@@ -176,7 +176,7 @@ public class SeriesTable {
 	public String toString() {
 		StringBuffer seriestable = new StringBuffer();
 		
-		sortMutually(this.mutual); //does this help for immediate updates
+		//sortMutually(this.mutual); //does this help for immediate updates
 		for (int i = 0; i < size(); i++)
 			seriestable.append(Tools.format(i + 1, 4) + " "
 					+ elementAt(i).getRow() + "  \n");

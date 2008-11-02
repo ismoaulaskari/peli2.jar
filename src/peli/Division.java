@@ -169,6 +169,7 @@ public class Division
         return new SeriesTable(seriesTableEntries, mutual);
     }
 
+    //tnmt-file division writing
     public void save(PrintWriter printwriter)
     {
         printwriter.println("DIVISION:" + getTitle());
@@ -182,6 +183,7 @@ public class Division
         printwriter.println("END-OF-DIVISION");
     }
 
+    //mutual matches table on a tournament html-page
     public void saveAll(PrintWriter printwriter)
     {
         SeriesTable seriestable = getSeriesTable();
@@ -226,6 +228,7 @@ public class Division
     	StringBuffer printout = new StringBuffer();
         SeriesTable seriestable = getSeriesTable();
         printout.append("<html>");
+        printout.append("<body>");
         printout.append("<table align=center bgcolor=\"#c0c0c0\">");
         printout.append("<tr>\n<td>\n<pre>\n");
         printout.append(seriestable.toString());
@@ -263,6 +266,7 @@ public class Division
         }
 
         printout.append("</table></font>");
+        printout.append("</body>");
         printout.append("</html>");
         
         return printout.toString();
