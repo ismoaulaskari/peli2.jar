@@ -115,6 +115,7 @@ public class Tournament
     		System.setProperty(	"TournamentPointsPerTie", rules1.getString("pointsPerTie"));
     		System.setProperty(	"TournamentOrderByMutualMatch", rules1.getString("orderByMutualMatch"));
     		System.setProperty(	"TournamentShowMutualTableTab", rules1.getString("showMutualTableTab"));
+                System.setProperty(	"useVersion1.0HtmlOutput", rules1.getString("useVersion1.0HtmlOutput"));
     	}
     	catch (SecurityException se) {
     		System.err.println("Setting system properties not supported!");
@@ -167,7 +168,7 @@ public class Tournament
     	messages = Constants.getInstance().getMessages();
     	rules = Constants.getInstance().getRules();
         //rules = ResourceBundle.getBundle("Rules");added for changeable division sizes
-        this.loadRules(rules);
+        this.loadRules(rules); 
         divisions = new Vector();
         numberOfDivisions = 1;
         try
@@ -357,12 +358,25 @@ public class Tournament
 
     public void saveAll(PrintWriter printwriter)
     {
-        if(System.getProperty("useVersion1.0HtmlOutput").equalsIgnoreCase("true")) {
-            saveAll_legacy(printwriter);
-        }
-        else {
+        if(true != false) {//System.getProperties().containsKey("useVersion1.0HtmlOutput") && 
+                 //System.getProperty("useVersion1.0HtmlOutput").equalsIgnoreCase("false")) {
+            
+            //use template.txt            
+            HtmlTools.intro(printwriter, messages.getString("seriesTableAndMutualMatches"));
+            HtmlTools.insertDate(printwriter, date); //fixed
+            HtmlTools.hr(printwriter);
+            for(int i = 0; i < getNumberOfDivisions(); i++)
+            {
+                getDivision(i).saveAll(printwriter);
+                HtmlTools.hr(printwriter);
+            }                        
+            HtmlTools.outro(printwriter);
             
         }
+        else {
+            saveAll_legacy(printwriter);
+        }
+        
     }
     
     /** Tournament v. 1.0 html-output */

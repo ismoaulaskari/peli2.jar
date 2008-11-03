@@ -1,7 +1,7 @@
 package peli;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,7 +36,9 @@ public class Constants {
                     messages = ResourceBundle.getBundle("Messages", locale);
                     rules = ResourceBundle.getBundle("Rules");
                     //store html-template in memory:
-                    BufferedReader bufferedreader = new BufferedReader(new FileReader("template.txt"));
+                    BufferedReader bufferedreader = 
+                            new BufferedReader(
+                                new FileReader("conf" + File.separatorChar + "template.txt"));
                     String line = null;
                     while ((line = bufferedreader.readLine()) != null) {
                         getTemplate().append(line);
@@ -57,6 +59,7 @@ public class Constants {
                 
                 //this should always be found
                 keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);                
+                                
 	}
 
     public static StringBuilder getTemplate() {
