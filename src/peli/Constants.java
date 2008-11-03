@@ -1,6 +1,10 @@
 package peli;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -23,22 +27,41 @@ public class Constants {
 	private static ResourceBundle messages = null;
 	private static ResourceBundle keyCodes = null;
 	private static ResourceBundle rules = null;
-	
+	private static StringBuilder template = new StringBuilder(1000);
+        
 	static {
 		constants = new Constants();
 		locale = new Locale(new String("fi"), new String("FI"));
                 try {
                     messages = ResourceBundle.getBundle("Messages", locale);
                     rules = ResourceBundle.getBundle("Rules");
+                    //store html-template in memory:
+                    BufferedReader bufferedreader = new BufferedReader(new FileReader("template.txt"));
+                    String line = null;
+                    while ((line = bufferedreader.readLine()) != null) {
+                        getTemplate().append(line);
+                    }
                 } 
                 catch (MissingResourceException e) {
                     messages = ResourceBundle.getBundle("conf.Messages", locale, Constants.class.getClass().getClassLoader());
                     rules = ResourceBundle.getBundle("conf.Rules", locale, Constants.class.getClass().getClassLoader());
                 }
-              
+                catch (FileNotFoundException fe) {
+                    System.err.println(fe);
+                    System.setProperty("useVersion1.0HtmlOutput", "true");
+                }
+                catch (IOException ie) {
+                    System.err.println(ie);
+                    System.setProperty("useVersion1.0HtmlOutput", "true");
+                }
+                
                 //this should always be found
                 keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);                
 	}
+
+    public static StringBuilder getTemplate() {
+        return template;
+    }
 
 	private Constants() {
         

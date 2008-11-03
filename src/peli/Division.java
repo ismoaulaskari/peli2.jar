@@ -183,8 +183,58 @@ public class Division
         printwriter.println("END-OF-DIVISION");
     }
 
-    //mutual matches table on a tournament html-page
+    //mutual matches table on a template-based tournament html-page
     public void saveAll(PrintWriter printwriter)
+    {
+        String output = Constants.getTemplate().toString();
+        SeriesTable seriestable = getSeriesTable();
+        
+        output.replaceAll("<!-- TITLE -->", "testing");
+        
+        output.replaceAll("<!-- DATE -->", "date?");
+        
+        output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
+        
+        StringBuilder mutualtable = new StringBuilder();        
+        for(int i = 0; i < seriestable.size(); i++)
+        {
+            String s = seriestable.elementAt(i).getName();
+            mutualtable.append("\t<td align=center>" + Tools.makeInitials(s) + "</td>");
+        }
+        mutualtable.append("</tr>");
+        for(int j = 0; j < seriestable.size(); j++)
+        {
+            SeriesTableEntry seriestableentry = seriestable.elementAt(j);
+            String s1 = seriestableentry.getName();
+            mutualtable.append("<tr><td>" + s1 + "</td>");
+            for(int k = 0; k < seriestable.size(); k++)
+                if(j == k)
+                {
+                    mutualtable.append("<td>&nbsp;</td>");
+                } else
+                {
+                    SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
+                    String s2 = seriestableentry1.getName();
+                    //hack:
+                    if(seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints())
+                    	mutualtable.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
+                    else
+                    	mutualtable.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                }
+            mutualtable.append("</tr>");
+        }
+
+        output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
+        
+        output.replaceAll("<!-- PLAOFF -->", "playfoo");
+        
+        output.replaceAll("<!-- STANDINGS -->", "standings");
+        
+        printwriter.print(output.toString());
+    }
+    
+    //mutual matches table on a tournament v.1.0 html-page
+    public void saveAll_legacy(PrintWriter printwriter)
     {
         //print overall results table first
         SeriesTable seriestable = getSeriesTable();
@@ -227,7 +277,7 @@ public class Division
     //show html-results page in the program with internal browser, by aulaskar
     public String createMutualTable()
     {
-    	StringBuffer printout = new StringBuffer();
+    	StringBuilder printout = new StringBuilder();
         SeriesTable seriestable = getSeriesTable();
         printout.append("<html>");
         printout.append("<body>");

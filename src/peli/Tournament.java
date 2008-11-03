@@ -357,12 +357,23 @@ public class Tournament
 
     public void saveAll(PrintWriter printwriter)
     {
+        if(System.getProperty("useVersion1.0HtmlOutput").equalsIgnoreCase("true")) {
+            saveAll_legacy(printwriter);
+        }
+        else {
+            
+        }
+    }
+    
+    /** Tournament v. 1.0 html-output */
+    public void saveAll_legacy(PrintWriter printwriter)
+    {   
         HtmlTools.intro(printwriter, messages.getString("seriesTableAndMutualMatches"));
         HtmlTools.insertDate(printwriter, date); //fixed
         HtmlTools.hr(printwriter);
         for(int i = 0; i < getNumberOfDivisions(); i++)
         {
-            getDivision(i).saveAll(printwriter);
+            getDivision(i).saveAll_legacy(printwriter);
             HtmlTools.hr(printwriter);
         }
 
