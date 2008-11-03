@@ -50,11 +50,11 @@ public class Constants {
                 }
                 catch (FileNotFoundException fe) {
                     System.err.println(fe);
-                    System.setProperty("useVersion1.0HtmlOutput", "true");
+                    System.setProperty("TournamentUseVersion1HtmlOutput", "true");
                 }
                 catch (IOException ie) {
                     System.err.println(ie);
-                    System.setProperty("useVersion1.0HtmlOutput", "true");
+                    System.setProperty("TournamentUseVersion1HtmlOutput", "true");
                 }
                 
                 //this should always be found

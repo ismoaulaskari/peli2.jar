@@ -115,7 +115,7 @@ public class Tournament
     		System.setProperty(	"TournamentPointsPerTie", rules1.getString("pointsPerTie"));
     		System.setProperty(	"TournamentOrderByMutualMatch", rules1.getString("orderByMutualMatch"));
     		System.setProperty(	"TournamentShowMutualTableTab", rules1.getString("showMutualTableTab"));
-                System.setProperty(	"useVersion1.0HtmlOutput", rules1.getString("useVersion1.0HtmlOutput"));
+                System.setProperty(	"TournamentUseVersion1HtmlOutput", rules1.getString("useVersion1HtmlOutput"));
     	}
     	catch (SecurityException se) {
     		System.err.println("Setting system properties not supported!");
@@ -358,9 +358,8 @@ public class Tournament
 
     public void saveAll(PrintWriter printwriter)
     {
-        if(true != false) {//System.getProperties().containsKey("useVersion1.0HtmlOutput") && 
-                 //System.getProperty("useVersion1.0HtmlOutput").equalsIgnoreCase("false")) {
-            
+        //if(rules.getString("useVersion1HtmlOutput").equalsIgnoreCase("false")) {        
+        if(System.getProperty("TournamentUseVersion1HtmlOutput") == null) {
             //use template.txt            
             HtmlTools.intro(printwriter, messages.getString("seriesTableAndMutualMatches"));
             HtmlTools.insertDate(printwriter, date); //fixed
