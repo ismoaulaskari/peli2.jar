@@ -27,7 +27,9 @@ public class Constants {
 	private static ResourceBundle messages = null;
 	private static ResourceBundle keyCodes = null;
 	private static ResourceBundle rules = null;
-	private static StringBuilder template = new StringBuilder(1000);
+	private static StringBuilder header = new StringBuilder(500);
+        private static StringBuilder template = new StringBuilder(500);
+        private static StringBuilder footer = new StringBuilder(100);
         
 	static {
 		constants = new Constants();
@@ -38,11 +40,28 @@ public class Constants {
                     //store html-template in memory:
                     BufferedReader bufferedreader = 
                             new BufferedReader(
-                                new FileReader("conf" + File.separatorChar + "template.txt"));
+                                new FileReader("conf" + File.separatorChar + "header.txt"));
                     String line = null;
                     while ((line = bufferedreader.readLine()) != null) {
-                        getTemplate().append(line);
+                        header.append(line);
                     }
+
+                    bufferedreader = 
+                            new BufferedReader(
+                                new FileReader("conf" + File.separatorChar + "template.txt"));
+                    line = null;
+                    while ((line = bufferedreader.readLine()) != null) {
+                        template.append(line);
+                    }
+
+                    bufferedreader = 
+                            new BufferedReader(
+                                new FileReader("conf" + File.separatorChar + "footer.txt"));
+                    line = null;
+                    while ((line = bufferedreader.readLine()) != null) {
+                        footer.append(line);
+                    }
+
                 } 
                 catch (MissingResourceException e) {
                     messages = ResourceBundle.getBundle("conf.Messages", locale, Constants.class.getClass().getClassLoader());
@@ -62,10 +81,19 @@ public class Constants {
                                 
 	}
 
+    public static StringBuilder getHeader() {
+        return header;
+    }
+            
     public static StringBuilder getTemplate() {
         return template;
     }
 
+    public static StringBuilder getFooter() {
+        return footer;
+    }
+
+    
 	private Constants() {
         
 	}

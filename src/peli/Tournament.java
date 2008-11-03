@@ -358,18 +358,23 @@ public class Tournament
 
     public void saveAll(PrintWriter printwriter)
     {
+        //won't work
         //if(rules.getString("useVersion1HtmlOutput").equalsIgnoreCase("false")) {        
         if(System.getProperty("TournamentUseVersion1HtmlOutput") == null) {
-            //use template.txt            
-            HtmlTools.intro(printwriter, messages.getString("seriesTableAndMutualMatches"));
-            HtmlTools.insertDate(printwriter, date); //fixed
-            HtmlTools.hr(printwriter);
+            //use header.txt
+            String header = Constants.getHeader().toString();        
+            header.replaceAll("<!-- TITLE -->", "testing");
+            header.replaceAll("<!-- DATE -->", date);
+            header.replaceAll("<!-- HEADING -->", messages.getString("seriesTableAndMutualMatches"));
+            printwriter.print(header);
+            
+            //use template.txt                                                
             for(int i = 0; i < getNumberOfDivisions(); i++)
             {
                 getDivision(i).saveAll(printwriter);
-                HtmlTools.hr(printwriter);
+                //HtmlTools.hr(printwriter);
             }                        
-            HtmlTools.outro(printwriter);
+            printwriter.print(Constants.getFooter().toString());
             
         }
         else {

@@ -1,25 +1,3 @@
-<HTML>
-<HEAD>
-<STYLE TYPE="text/css">
-TD,TH {
-font-family : verdana, arial, helvetica, sans-serif;
-font-size : 10pt;
-}
-H1 {
-font-family : verdana, arial, helvetica, sans-serif;
-}
-PRE {
-font-family : courier;
-}
-</STYLE>
-<TITLE><!-- TITLE --></TITLE>
-</HEAD>
-<BODY  vlink="#551a8b" bgcolor="#ffffff"  alink="#ff0000" link="#0000ee" text="#000000">
-<P>
-<CENTER>
-<H1><!-- DATE --></H1>
-</CENTER>
-<HR>
 <table align=center bgcolor="#c0c0c0">
 <tr>
 <td>
@@ -42,7 +20,6 @@ font-family : courier;
 </p>
 <hr><h3>Lopulliset sijoitukset</h3>
 <!-- STANDINGS -->
-<HR>
+
 <!-- TNMT -->
-</BODY>
-</HTML>
+

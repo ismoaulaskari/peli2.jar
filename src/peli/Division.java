@@ -187,11 +187,7 @@ public class Division
     public void saveAll(PrintWriter printwriter)
     {
         String output = Constants.getTemplate().toString();
-        SeriesTable seriestable = getSeriesTable();
-        
-        output.replaceAll("<!-- TITLE -->", "testing");
-        
-        output.replaceAll("<!-- DATE -->", "date?");
+        SeriesTable seriestable = getSeriesTable();               
         
         output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
         
@@ -226,6 +222,7 @@ public class Division
 
         output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
         
+        //not always!! only when a playoff exists?
         output.replaceAll("<!-- PLAOFF -->", "playfoo");
         
         output.replaceAll("<!-- STANDINGS -->", "standings");
