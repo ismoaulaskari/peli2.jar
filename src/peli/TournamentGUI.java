@@ -26,6 +26,7 @@ public class TournamentGUI extends JPanel
     TournamentGUI(MainWindow mainwindow, Tournament tournament1, File file)
     {
         System.setProperty("TournamentFileName", file.getName()); //hack, throws e
+        //System.setProperty("TemplateTitle", file.getName()); 
         tournament = tournament1;
         themainwindow = mainwindow; //hack
         createThis(mainwindow, file);
@@ -36,6 +37,7 @@ public class TournamentGUI extends JPanel
     TournamentGUI(MainWindow mainwindow, int i, TreeSet treeset, File file)
     {
         System.setProperty("TournamentFileName", file.getName()); //hack, throws e
+        //System.setProperty("TemplateTitle", file.getName().substring(0, file.getName().indexOf('.'))); 
         SaveTracker.isSaved = false;
         tournament = new Tournament(i, treeset);
         themainwindow = mainwindow; //hack
