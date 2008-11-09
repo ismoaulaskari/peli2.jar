@@ -5,6 +5,8 @@ package peli;
 // Source File Name:   Tournament.java
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -23,7 +25,8 @@ public class Tournament
     private ResourceBundle rules; //hack
     private Vector divisions;
     private int numberOfDivisions;
-    private static final String date = "x.x.2000";
+    private static final String legacydate = "x.x.2000";
+    private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset)
     {
@@ -361,11 +364,12 @@ public class Tournament
         //won't work
         //if(rules.getString("useVersion1HtmlOutput").equalsIgnoreCase("false")) {        
         if(System.getProperty("TournamentUseVersion1HtmlOutput") == null) {
-            //use header.txt
+            
+            //use header.txt            
             String header = Constants.getHeader().toString();        
-            header.replaceAll("<!-- TITLE -->", "testing");
+            header.replaceAll("<!-- TITLE -->", messages.getString("templateTitle"));
             header.replaceAll("<!-- DATE -->", date);
-            header.replaceAll("<!-- HEADING -->", messages.getString("seriesTableAndMutualMatches"));
+            header.replaceAll("<!-- HEADING -->", messages.getString("templateHeading"));
             printwriter.print(header);
             
             //use template.txt                                                
@@ -373,7 +377,9 @@ public class Tournament
             {
                 getDivision(i).saveAll(printwriter);
                 //HtmlTools.hr(printwriter);
-            }                        
+            }                
+            
+            //use footer.txt
             printwriter.print(Constants.getFooter().toString());
             
         }
@@ -387,7 +393,7 @@ public class Tournament
     public void saveAll_legacy(PrintWriter printwriter)
     {   
         HtmlTools.intro(printwriter, messages.getString("seriesTableAndMutualMatches"));
-        HtmlTools.insertDate(printwriter, date); //fixed
+        HtmlTools.insertDate(printwriter, legacydate); //fixed
         HtmlTools.hr(printwriter);
         for(int i = 0; i < getNumberOfDivisions(); i++)
         {
