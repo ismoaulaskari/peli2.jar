@@ -27,6 +27,7 @@ public class Tournament
     private int numberOfDivisions;
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
+    private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset)
     {
@@ -208,52 +209,54 @@ public class Tournament
         return (Division)divisions.elementAt(i);
     }
 
+    
+    
     public String[] getDivisionTitles()
     {
         switch(numberOfDivisions)
         {
         case 1: // '\001'
             return (new String[] {
-                "Agdur"
+                displayName + "Agdur"
             });
 
         case 2: // '\002'
             return (new String[] {
-                "Agdur", "Bulldozer"
+                displayName + "Agdur", displayName + "Bulldozer"
             });
 
         case 3: // '\003'
             return (new String[] {
-                "A", "B", "C"
+                displayName + "A", displayName + "B", displayName + "C"
             });
 
         case 4: // '\004'
             return (new String[] {
-                "A", "B", "C", "D"
+                displayName + "A", displayName + "B", displayName + "C", displayName + "D"
             });
 
         case 5: // '\005'
             return (new String[] {
-                "A", "B", "C", "D", "E"
+                displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E"
             });
 
         case 6: // '\006'
             return (new String[] {
-                "A", "B", "C", "D", "E", "F"
+                displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E" + displayName + "F"                
             });
 
         case 7: // '\007'
             return (new String[] {
-                "A", "B", "C", "D", "E", "F", "G"
+                displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E" + displayName + "F" + displayName + "G"                
             });
 
         case 8: // '\b'
             return (new String[] {
-                "A", "B", "C", "D", "E", "F", "G", "H"
+                displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E" + displayName + "F" + displayName + "G" + displayName + "H"
             });
         }
         return (new String[] {
-            "Lohko A"
+            displayName + "Lohko A"
         });
     }
 
