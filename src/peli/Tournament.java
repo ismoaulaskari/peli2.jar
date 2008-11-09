@@ -368,7 +368,7 @@ public class Tournament
             //use header.txt            
             String header = Constants.getHeader().toString();        
             header = header.replaceAll("<!-- TITLE -->", System.getProperty("TournamentFileName"));
-            header =header.replaceAll("<!-- DATE -->", date);
+            header = header.replaceAll("<!-- DATE -->", date);
             header = header.replaceAll("<!-- HEADING -->", messages.getString("templateHeading"));
             printwriter.print(header);
             
