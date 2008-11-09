@@ -189,7 +189,7 @@ public class Division
         String output = Constants.getTemplate().toString();
         SeriesTable seriestable = getSeriesTable();               
         
-        output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
+        output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
         
         StringBuilder mutualtable = new StringBuilder();        
         for(int i = 0; i < seriestable.size(); i++)
@@ -220,12 +220,12 @@ public class Division
             mutualtable.append("</tr>");
         }
 
-        output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
+        output = output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
         
         //not always!! only when a playoff exists?
-        output.replaceAll("<!-- PLAOFF -->", "playfoo");
+        output = output.replaceAll("<!-- PLAOFF -->", "playfoo");
         
-        output.replaceAll("<!-- STANDINGS -->", "standings");
+        output = output.replaceAll("<!-- STANDINGS -->", "standings");
         
         printwriter.print(output.toString());
     }
