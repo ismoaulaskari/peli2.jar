@@ -43,7 +43,7 @@ public class Constants {
                                 new FileReader("conf" + File.separatorChar + "header.txt"));
                     String line = null;
                     while ((line = bufferedreader.readLine()) != null) {
-                        header.append(line).append(Character.LINE_SEPARATOR);
+                        header.append(line).append(System.getProperty("line.separator"));
                     }
 
                     bufferedreader = 
@@ -51,7 +51,7 @@ public class Constants {
                                 new FileReader("conf" + File.separatorChar + "template.txt"));
                     line = null;
                     while ((line = bufferedreader.readLine()) != null) {
-                        template.append(line).append(Character.LINE_SEPARATOR);
+                        template.append(line).append(System.getProperty("line.separator"));
                     }
 
                     bufferedreader = 
@@ -59,7 +59,7 @@ public class Constants {
                                 new FileReader("conf" + File.separatorChar + "footer.txt"));
                     line = null;
                     while ((line = bufferedreader.readLine()) != null) {
-                        footer.append(line).append(Character.LINE_SEPARATOR);
+                        footer.append(line).append(System.getProperty("line.separator"));
                     }
 
                 } 
