@@ -223,7 +223,7 @@ public class Division
         output = output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
         
         //not always!! only when a playoff exists?
-        output = output.replaceAll("<!-- PLAOFF -->", "playfoo");
+        output = output.replaceAll("<!-- PLAYOFF -->", "playfoo");
         
         output = output.replaceAll("<!-- STANDINGS -->", "standings");
         
