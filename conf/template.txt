@@ -14,12 +14,20 @@
 <!-- MUTUALTABLE -->
 </tbody></table>
 </p>
+
+<!--HIDE_PLAYOFF
 <h3>Playoff</h3>
 <p>
 <!-- PLAYOFF -->
 </p>
+HIDE_PLAYOFF-->
+
+<!--HIDE_STANDINGS
 <hr><h3>Lopulliset sijoitukset</h3>
+<p>
 <!-- STANDINGS -->
+</p>
+HIDE_STANDINGS-->
 
 <!-- TNMT -->
 

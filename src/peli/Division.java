@@ -3,7 +3,6 @@ package peli;
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: packimports(3) 
 // Source File Name:   Division.java
-
 import java.io.*;
 import java.util.*;
 
@@ -12,8 +11,7 @@ import java.util.*;
  * @author aulaskar
  *
  */
-public class Division
-{
+public class Division {
 
     private String title;
     private TreeSet players;
@@ -24,56 +22,49 @@ public class Division
     private String seats[];
     private int times;
     private Round rounds[];
+    private boolean playoff = false;
 
-    private void makeInitialSeating()
-    {
+    private void makeInitialSeating() {
         int i = 0;
-        for(Iterator iterator = players.iterator(); iterator.hasNext();)
-            seats[i++] = ((Player)iterator.next()).getName();
-
-        if(hasDummyPlayer)
-        {
+        for (Iterator iterator = players.iterator(); iterator.hasNext();) {
+            seats[i++] = ((Player) iterator.next()).getName();
+        }
+        if (hasDummyPlayer) {
             seats[i] = seats[1];
             seats[1] = "X";
         }
     }
 
-    private void makeNextSeating()
-    {
+    private void makeNextSeating() {
         String s = seats[seats.length - 1];
-        for(int i = seats.length - 1; i > 0; i--)
+        for (int i = seats.length - 1; i > 0; i--) {
             seats[i] = seats[i - 1];
-
+        }
         seats[0] = s;
     }
 
-    private void printSeating()
-    {
-        for(int i = 0; i < seats.length; i++)
+    private void printSeating() {
+        for (int i = 0; i < seats.length; i++) {
             System.out.println("Paikka " + i + ": " + seats[i]);
-
+        }
     }
 
-    private void buildAllRounds()
-    {
+    private void buildAllRounds() {
         makeInitialSeating();
-        for(int i = 0; i < rounds.length; i++)
-        {
+        for (int i = 0; i < rounds.length; i++) {
             rounds[i] = new Round(this, i + 1, seats);
             makeNextSeating();
         }
 
     }
 
-    private void printAllRounds()
-    {
-        for(int i = 0; i < seats.length; i++)
+    private void printAllRounds() {
+        for (int i = 0; i < seats.length; i++) {
             rounds[i].print();
-
+        }
     }
 
-    Division(String s, int i, TreeSet treeset)
-    {
+    Division(String s, int i, TreeSet treeset) {
         seriesTableEntries = new Hashtable();
         hasDummyPlayer = false;
         title = s;
@@ -90,149 +81,138 @@ public class Division
     }
 
     Division(BufferedReader bufferedreader)
-        throws FileFormatException, IOException
-    {
+            throws FileFormatException, IOException {
         seriesTableEntries = new Hashtable();
         hasDummyPlayer = false;
-        try
-        {
+        try {
             title = Tools.parseStringAfter("DIVISION:", bufferedreader.readLine());
             int i = Tools.parseIntAfter("PLAYERS:", bufferedreader.readLine());
             numberOfPlayers = i;
             players = new TreeSet(new PlayerComparator());
-            for(int j = 0; j < i; j++)
+            for (int j = 0; j < i; j++) {
                 players.add(new Player(j + 1, bufferedreader.readLine()));
-
-            if(!bufferedreader.readLine().equals("END-OF-PLAYERS"))
+            }
+            if (!bufferedreader.readLine().equals("END-OF-PLAYERS")) {
                 throw new FileFormatException();
+            }
             hasDummyPlayer = i % 2 == 0;
             mutual = new Mutual(players);
             buildSeriesTableEntries(players);
             int k = Tools.parseIntAfter("ROUNDS:", bufferedreader.readLine());
             rounds = new Round[k];
-            for(int l = 0; l < k; l++)
+            for (int l = 0; l < k; l++) {
                 rounds[l] = new Round(this, i / 2, bufferedreader);
-
-            if(!bufferedreader.readLine().equals("END-OF-DIVISION"))
+            }
+            if (!bufferedreader.readLine().equals("END-OF-DIVISION")) {
                 throw new FileFormatException();
-        }
-        catch(FileFormatException fileformatexception)
-        {
+            }
+        } catch (FileFormatException fileformatexception) {
             throw fileformatexception;
-        }
-        catch(IOException ioexception)
-        {
+        } catch (IOException ioexception) {
             throw ioexception;
         }
     }
 
-    private void buildSeriesTableEntries(TreeSet treeset)
-    {
+    private void buildSeriesTableEntries(TreeSet treeset) {
         String s;
-        for(Iterator iterator = treeset.iterator(); iterator.hasNext(); seriesTableEntries.put(s, new SeriesTableEntry(s)))
-            s = ((Player)iterator.next()).getName();
-
+        for (Iterator iterator = treeset.iterator(); iterator.hasNext(); seriesTableEntries.put(s, new SeriesTableEntry(s))) {
+            s = ((Player) iterator.next()).getName();
+        }
     }
 
-    public Mutual getMutual()
-    {
+    public Mutual getMutual() {
         return mutual;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
 
-    public int getNumberOfPlayers()
-    {
+    public int getNumberOfPlayers() {
         return players.size();
     }
 
-    public int getNumberOfRounds()
-    {
+    public int getNumberOfRounds() {
         return rounds.length;
     }
 
-    public Round getRound(int i)
-    {
+    public Round getRound(int i) {
         return rounds[i];
     }
 
-    public SeriesTableEntry getSeriesTableEntry(String s)
-    {
-        return (SeriesTableEntry)seriesTableEntries.get(s);
+    public SeriesTableEntry getSeriesTableEntry(String s) {
+        return (SeriesTableEntry) seriesTableEntries.get(s);
     }
 
-    public SeriesTable getSeriesTable()
-    {
+    public SeriesTable getSeriesTable() {
         return new SeriesTable(seriesTableEntries, mutual);
     }
 
     //tnmt-file division writing
-    public void save(PrintWriter printwriter)
-    {
+    public void save(PrintWriter printwriter) {
         printwriter.println("DIVISION:" + getTitle());
         printwriter.println("PLAYERS:" + numberOfPlayers);
-        for(Iterator iterator = players.iterator(); iterator.hasNext(); printwriter.println(((Player)iterator.next()).getName()));
+        for (Iterator iterator = players.iterator(); iterator.hasNext(); printwriter.println(((Player) iterator.next()).getName()));
         printwriter.println("END-OF-PLAYERS");
         printwriter.println("ROUNDS:" + getNumberOfRounds());
-        for(int i = 0; i < getNumberOfRounds(); i++)
+        for (int i = 0; i < getNumberOfRounds(); i++) {
             getRound(i).save(printwriter);
-
+        }
         printwriter.println("END-OF-DIVISION");
     }
 
     //mutual matches table on a template-based tournament html-page
-    public void saveAll(PrintWriter printwriter)
-    {
+    public void saveAll(PrintWriter printwriter) {
         String output = Constants.getTemplate().toString();
-        SeriesTable seriestable = getSeriesTable();               
-        
+        SeriesTable seriestable = getSeriesTable();
+
         output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
-        
-        StringBuilder mutualtable = new StringBuilder();        
-        for(int i = 0; i < seriestable.size(); i++)
-        {
+
+        StringBuilder mutualtable = new StringBuilder();
+        for (int i = 0; i < seriestable.size(); i++) {
             String s = seriestable.elementAt(i).getName();
             mutualtable.append("\t<td align=center>" + Tools.makeInitials(s) + "</td>");
         }
         mutualtable.append("</tr>");
-        for(int j = 0; j < seriestable.size(); j++)
-        {
+        for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
             mutualtable.append("<tr><td>" + s1 + "</td>");
-            for(int k = 0; k < seriestable.size(); k++)
-                if(j == k)
-                {
+            for (int k = 0; k < seriestable.size(); k++) {
+                if (j == k) {
                     mutualtable.append("<td>&nbsp;</td>");
-                } else
-                {
+                } else {
                     SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
                     String s2 = seriestableentry1.getName();
                     //hack:
-                    if(seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints())
-                    	mutualtable.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
-                    else
-                    	mutualtable.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                    if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
+                        mutualtable.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
+                    } else {
+                        mutualtable.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                    }
                 }
+            }
             mutualtable.append("</tr>");
         }
 
         output = output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
-        
+
         //not always!! only when a playoff exists?
-        output = output.replaceAll("<!-- PLAYOFF -->", "playfoo");
+        if (playoff) {
+            output = output.replaceAll("<!--HIDE_PLAYOFF", "");
+            output = output.replaceAll("HIDE_PLAYOFF-->", "");
+            output = output.replaceAll("<!--HIDE_STANDINGS", "");
+            output = output.replaceAll("HIDE_STANDINGS-->", "");
+        }
         
-        output = output.replaceAll("<!-- STANDINGS -->", "standings");
-        
+        output = output.replaceAll("<!-- PLAYOFF -->", "playoff here");
+        output = output.replaceAll("<!-- STANDINGS -->", "standings here");
+
+
         printwriter.print(output.toString());
     }
-    
     //mutual matches table on a tournament v.1.0 html-page
-    public void saveAll_legacy(PrintWriter printwriter)
-    {
+    public void saveAll_legacy(PrintWriter printwriter) {
         //print overall results table first
         SeriesTable seriestable = getSeriesTable();
         printwriter.println("<table align=center bgcolor=\"#c0c0c0\">");
@@ -242,29 +222,25 @@ public class Division
         //print mutual results next
         printwriter.println("<table width=\"100%\" border=1>");
         printwriter.println("<tr><th align=center>Keskin\344iset ottelut</th>");
-        for(int i = 0; i < seriestable.size(); i++)
-        {
+        for (int i = 0; i < seriestable.size(); i++) {
             String s = seriestable.elementAt(i).getName();
             printwriter.println("\t<td align=center>" + Tools.makeInitials(s) + "</td>");
         }
 
         printwriter.println("</tr>");
-        for(int j = 0; j < seriestable.size(); j++)
-        {
+        for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
             printwriter.println("<tr><td>" + s1 + "</td>");
-            for(int k = 0; k < seriestable.size(); k++)
-                if(j == k)
-                {
+            for (int k = 0; k < seriestable.size(); k++) {
+                if (j == k) {
                     printwriter.println("<td>&nbsp;</td>");
-                } else
-                {
+                } else {
                     SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
                     String s2 = seriestableentry1.getName();
                     printwriter.println("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
                 }
-
+            }
             printwriter.println("</tr>");
         }
 
@@ -272,9 +248,8 @@ public class Division
     }
 
     //show html-results page in the program with internal browser, by aulaskar
-    public String createMutualTable()
-    {
-    	StringBuilder printout = new StringBuilder();
+    public String createMutualTable() {
+        StringBuilder printout = new StringBuilder();
         SeriesTable seriestable = getSeriesTable();
         printout.append("<html>");
         printout.append("<body>");
@@ -284,54 +259,48 @@ public class Division
         printout.append("</pre>\n</td>\n</tr>\n</table>\n<p>");
         printout.append("<font size=\"2\"><table width=\"100%\" border=1>");
         printout.append("<tr><th align=center>Keskin\344iset ottelut</th>");
-        for(int i = 0; i < seriestable.size(); i++)
-        {
+        for (int i = 0; i < seriestable.size(); i++) {
             String s = seriestable.elementAt(i).getName();
             printout.append("\t<td align=center>" + Tools.makeInitials(s) + "</td>");
         }
 
         printout.append("</tr>");
-        for(int j = 0; j < seriestable.size(); j++)
-        {
+        for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
             printout.append("<tr><td>" + s1 + "</td>");
-            for(int k = 0; k < seriestable.size(); k++)
-                if(j == k)
-                {
+            for (int k = 0; k < seriestable.size(); k++) {
+                if (j == k) {
                     printout.append("<td>&nbsp;</td>");
-                } else
-                {
+                } else {
                     SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
                     String s2 = seriestableentry1.getName();
                     //hack:
-                    if(seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints())
-                    	printout.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
-                    else
-                    	printout.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                    if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
+                        printout.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
+                    } else {
+                        printout.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                    }
                 }
-
+            }
             printout.append("</tr>");
         }
 
         printout.append("</table></font>");
         printout.append("</body>");
         printout.append("</html>");
-        
+
         return printout.toString();
     }
 
-    public void saveTable(PrintWriter printwriter)
-    {
+    public void saveTable(PrintWriter printwriter) {
         HtmlTools.h1(printwriter, getTitle());
         getSeriesTable().htmlSave(printwriter);
     }
 
-    public void saveMatches(PrintWriter printwriter)
-    {
+    public void saveMatches(PrintWriter printwriter) {
         HtmlTools.tableIntro(printwriter, true, "100%");
-        for(int i = 0; i < getNumberOfRounds() - 1; i += 2)
-        {
+        for (int i = 0; i < getNumberOfRounds() - 1; i += 2) {
             printwriter.println("<TR><TD>");
             getRound(i).saveMatches(printwriter);
             printwriter.println("</TD>");
@@ -348,16 +317,16 @@ public class Division
 
     //used by tournament to get overall standings
     public ArrayList getStandings() {
-    	ArrayList standings = new ArrayList();
-    	SeriesTable series = getSeriesTable();
-    	
-    	for(int i = 0; i < series.size(); i++) {
-    		standings.add(series.elementAt(i));
-    	}
-    	
-    	return standings;
+        ArrayList standings = new ArrayList();
+        SeriesTable series = getSeriesTable();
+
+        for (int i = 0; i < series.size(); i++) {
+            standings.add(series.elementAt(i));
+        }
+
+        return standings;
     }
-    
+
     public void finalize() {
         this.seats = null;
         this.rounds = null;
