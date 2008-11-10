@@ -1,23 +1,23 @@
-<HTML>
-<HEAD>
-<STYLE TYPE="text/css">
-TD,TH {
+<html>
+<head>
+<style type="text/css">
+td,th {
 font-family : verdana, arial, helvetica, sans-serif;
 font-size : 10pt;
 }
-H1 {
+h1 {
 font-family : verdana, arial, helvetica, sans-serif;
 }
-PRE {
+pre {
 font-family : courier;
 }
-</STYLE>
-<TITLE><!-- TITLE --></TITLE>
-</HEAD>
-<BODY  vlink="#551a8b" bgcolor="#ffffff"  alink="#ff0000" link="#0000ee" text="#000000">
-<P>
-<CENTER>
-<H1><!-- DATE --></H1>
-</CENTER>
-<HR>
+</style>
+<title><!-- TITLE --></title>
+</head>
+<body  vlink="#551a8b" bgcolor="#ffffff"  alink="#ff0000" link="#0000ee" text="#000000">
+<p>
+<center>
+<h1><!-- DATE --></h1>
+</center>
+<hr>
 

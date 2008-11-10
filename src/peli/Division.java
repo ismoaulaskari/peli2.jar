@@ -171,31 +171,31 @@ public class Division {
         StringBuilder mutualtable = new StringBuilder();
         for (int i = 0; i < seriestable.size(); i++) {
             String s = seriestable.elementAt(i).getName();
-            mutualtable.append("\t<td align=center>" + Tools.makeInitials(s) + "</td>");
+            mutualtable.append("\t<td align=\"center\" class=\"mutualinitials\">" + Tools.makeInitials(s) + "</td>" + System.getProperty("line.separator"));
         }
-        mutualtable.append("</tr>");
+        mutualtable.append("</tr>" + System.getProperty("line.separator"));
         for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
-            mutualtable.append("<tr><td>" + s1 + "</td>");
+            mutualtable.append("<tr><td>" + s1 + "</td>" + System.getProperty("line.separator"));
             for (int k = 0; k < seriestable.size(); k++) {
                 if (j == k) {
-                    mutualtable.append("<td>&nbsp;</td>");
+                    mutualtable.append("<td>&nbsp;</td>" + System.getProperty("line.separator"));
                 } else {
                     SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
                     String s2 = seriestableentry1.getName();
                     //hack:
                     if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
-                        mutualtable.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
+                        mutualtable.append("\t<td align=\"center\" class=\"mutualresult\"><b> " + mutual.getResult(s1, s2) + "</b></td>" + System.getProperty("line.separator"));
                     } else {
-                        mutualtable.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                        mutualtable.append("\t<td align=\"center\"> " + mutual.getResult(s1, s2) + "</td>" + System.getProperty("line.separator"));
                     }
                 }
             }
-            mutualtable.append("</tr>");
+            mutualtable.append("</tr>" + System.getProperty("line.separator"));
         }
 
-        output = output.replaceAll("<!-- MUTUALTABLE -->", seriestable.toString());
+        output = output.replaceAll("<!-- MUTUALTABLE -->", mutualtable.toString());
 
         //not always!! only when a playoff exists?
         if (playoff) {
@@ -253,15 +253,15 @@ public class Division {
         SeriesTable seriestable = getSeriesTable();
         printout.append("<html>");
         printout.append("<body>");
-        printout.append("<table align=center bgcolor=\"#c0c0c0\">");
+        printout.append("<table align=\"center\" bgcolor=\"#c0c0c0\">");
         printout.append("<tr>\n<td>\n<pre>\n");
         printout.append(seriestable.toString());
         printout.append("</pre>\n</td>\n</tr>\n</table>\n<p>");
-        printout.append("<font size=\"2\"><table width=\"100%\" border=1>");
-        printout.append("<tr><th align=center>Keskin\344iset ottelut</th>");
+        printout.append("<font size=\"2\"><table width=\"100%\" border=\"1\">");
+        printout.append("<tr><th align=\"center\">Keskin\344iset ottelut</th>");
         for (int i = 0; i < seriestable.size(); i++) {
             String s = seriestable.elementAt(i).getName();
-            printout.append("\t<td align=center>" + Tools.makeInitials(s) + "</td>");
+            printout.append("\t<td align=\"center\">" + Tools.makeInitials(s) + "</td>");
         }
 
         printout.append("</tr>");
@@ -277,9 +277,9 @@ public class Division {
                     String s2 = seriestableentry1.getName();
                     //hack:
                     if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
-                        printout.append("\t<td align=center><b> " + mutual.getResult(s1, s2) + "</b></td>");
+                        printout.append("\t<td align=\"center\"><b> " + mutual.getResult(s1, s2) + "</b></td>");
                     } else {
-                        printout.append("\t<td align=center> " + mutual.getResult(s1, s2) + "</td>");
+                        printout.append("\t<td align=\"center\"> " + mutual.getResult(s1, s2) + "</td>");
                     }
                 }
             }
@@ -301,6 +301,23 @@ public class Division {
     public void saveMatches(PrintWriter printwriter) {
         HtmlTools.tableIntro(printwriter, true, "100%");
         for (int i = 0; i < getNumberOfRounds() - 1; i += 2) {
+            printwriter.println("<tr><td>");
+            getRound(i).saveMatches(printwriter);
+            printwriter.println("</td>");
+            printwriter.println("<td align=\"right\">");
+            getRound(i + 1).saveMatches(printwriter);
+            printwriter.println("</td></tr>");
+        }
+
+        printwriter.println("<tr><td>");
+        getRound(getNumberOfRounds() - 1).saveMatches(printwriter);
+        printwriter.println("</td></tr>");
+        HtmlTools.tableOutro(printwriter);
+    }
+
+        public void saveMatches_legacy(PrintWriter printwriter) {
+        HtmlTools_legacy.tableIntro(printwriter, true, "100%");
+        for (int i = 0; i < getNumberOfRounds() - 1; i += 2) {
             printwriter.println("<TR><TD>");
             getRound(i).saveMatches(printwriter);
             printwriter.println("</TD>");
@@ -314,7 +331,7 @@ public class Division {
         printwriter.println("</TD></TR>");
         HtmlTools.tableOutro(printwriter);
     }
-
+    
     //used by tournament to get overall standings
     public ArrayList getStandings() {
         ArrayList standings = new ArrayList();
