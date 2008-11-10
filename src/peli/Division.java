@@ -179,7 +179,7 @@ public class Division {
         for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
-            mutualtable.append("<tr><td class=\"mutualname\">" + s1 + "</td>" + System.getProperty("line.separator"));            
+            mutualtable.append("<tr><td class=\"mutualname\">" + s1 + "</td>" + System.getProperty("line.separator"));
             for (int k = 0; k < seriestable.size(); k++) {
                 if (j == k) {
                     mutualtable.append("<td class=\"mutualempty\">&nbsp;</td>" + System.getProperty("line.separator"));
@@ -189,18 +189,19 @@ public class Division {
                     //Choose style for result appearance:
                     //creates too many objects:
                     tmpResult = mutual.getResult(s1, s2);
-                    String[] tmpResults = tmpResult.split("-");
-                    int[] tmpScores = { Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1]) };
-                    if(tmpScores[0] > tmpScores[1]) {
-                        mutualResultClass = "win";
-                    } 
-                    else
-                    if(tmpScores[0] < tmpScores[1]) {
-                        mutualResultClass = "loss";
+                    if (tmpResult.matches(".*<BR>.*")) {
+                        mutualResultClass = "multiseries"; //can't handle n-times-series yet
+                    } else {
+                        String[] tmpResults = tmpResult.split("-");
+                        int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
+                        if (tmpScores[0] > tmpScores[1]) {
+                            mutualResultClass = "win";
+                        } else if (tmpScores[0] < tmpScores[1]) {
+                            mutualResultClass = "loss";
+                        } else {
+                            mutualResultClass = "tie";
+                        }
                     }
-                    else {                    
-                        mutualResultClass = "tie";
-                    }                    
                     //put out formatted mutual html-results:
                     if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
                         mutualtable.append("\t<td align=\"center\" class=\"" + mutualResultClass + "\"><b class=\"mutualcomparisonresult\"> " + tmpResult + "</b></td>" + System.getProperty("line.separator"));
@@ -221,7 +222,7 @@ public class Division {
             output = output.replaceAll("<!--HIDE_STANDINGS", "");
             output = output.replaceAll("HIDE_STANDINGS-->", "");
         }
-        
+
         output = output.replaceAll("<!-- PLAYOFF -->", "playoff here");
         output = output.replaceAll("<!-- STANDINGS -->", "standings here");
 
@@ -332,7 +333,7 @@ public class Division {
         HtmlTools.tableOutro(printwriter);
     }
 
-        public void saveMatches_legacy(PrintWriter printwriter) {
+    public void saveMatches_legacy(PrintWriter printwriter) {
         HtmlTools_legacy.tableIntro(printwriter, true, "100%");
         for (int i = 0; i < getNumberOfRounds() - 1; i += 2) {
             printwriter.println("<TR><TD>");
@@ -348,7 +349,6 @@ public class Division {
         printwriter.println("</TD></TR>");
         HtmlTools.tableOutro(printwriter);
     }
-    
     //used by tournament to get overall standings
     public ArrayList getStandings() {
         ArrayList standings = new ArrayList();
