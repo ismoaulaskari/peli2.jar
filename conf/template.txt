@@ -9,7 +9,7 @@
 </tr>
 </table>
 <p>
-<table border="1" width="100%">
+<table border="1">
 <tbody><tr><th align="center">KeskinÃ¤iset ottelut</th>
 <!-- MUTUALTABLE -->
 </tbody></table>

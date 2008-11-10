@@ -5,6 +5,15 @@ td,th {
 font-family : verdana, arial, helvetica, sans-serif;
 font-size : 10pt;
 }
+td.win {
+        background-color : #a0ffa0;
+}
+td.loss {
+        background-color : #ffa0a0;
+}
+td.tie {
+        background-color : #f0f0f0;
+}
 h1 {
 font-family : verdana, arial, helvetica, sans-serif;
 }

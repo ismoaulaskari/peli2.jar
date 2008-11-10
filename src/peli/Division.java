@@ -174,21 +174,38 @@ public class Division {
             mutualtable.append("\t<td align=\"center\" class=\"mutualinitials\">" + Tools.makeInitials(s) + "</td>" + System.getProperty("line.separator"));
         }
         mutualtable.append("</tr>" + System.getProperty("line.separator"));
+        String tmpResult = null;
+        String mutualResultClass = null;
         for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
-            mutualtable.append("<tr><td>" + s1 + "</td>" + System.getProperty("line.separator"));
+            mutualtable.append("<tr><td class=\"mutualname\">" + s1 + "</td>" + System.getProperty("line.separator"));            
             for (int k = 0; k < seriestable.size(); k++) {
                 if (j == k) {
-                    mutualtable.append("<td>&nbsp;</td>" + System.getProperty("line.separator"));
+                    mutualtable.append("<td class=\"mutualempty\">&nbsp;</td>" + System.getProperty("line.separator"));
                 } else {
                     SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
                     String s2 = seriestableentry1.getName();
-                    //hack:
+                    //Choose style for result appearance:
+                    //creates too many objects:
+                    tmpResult = mutual.getResult(s1, s2);
+                    String[] tmpResults = tmpResult.split("-");
+                    int[] tmpScores = { Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1]) };
+                    if(tmpScores[0] > tmpScores[1]) {
+                        mutualResultClass = "win";
+                    } 
+                    else
+                    if(tmpScores[0] < tmpScores[1]) {
+                        mutualResultClass = "loss";
+                    }
+                    else {                    
+                        mutualResultClass = "tie";
+                    }                    
+                    //put out formatted mutual html-results:
                     if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
-                        mutualtable.append("\t<td align=\"center\" class=\"mutualresult\"><b> " + mutual.getResult(s1, s2) + "</b></td>" + System.getProperty("line.separator"));
+                        mutualtable.append("\t<td align=\"center\" class=\"" + mutualResultClass + "\"><b class=\"mutualcomparisonresult\"> " + tmpResult + "</b></td>" + System.getProperty("line.separator"));
                     } else {
-                        mutualtable.append("\t<td align=\"center\"> " + mutual.getResult(s1, s2) + "</td>" + System.getProperty("line.separator"));
+                        mutualtable.append("\t<td align=\"center\" class=\"" + mutualResultClass + "\"> " + tmpResult + "</td>" + System.getProperty("line.separator"));
                     }
                 }
             }
