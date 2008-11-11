@@ -201,8 +201,8 @@ public class Division {
                                 scorediff++;
                             } else if (tmpScores[0] < tmpScores[1]) {
                                 scorediff--;
-                            } 
-                            goaldiff += (tmpScores[0] - tmpScores[1]);                            
+                            }
+                            goaldiff += (tmpScores[0] - tmpScores[1]);
                         }
                         if (scorediff > 0) {
                             mutualResultClass = "win";
@@ -211,11 +211,11 @@ public class Division {
                         } else {
                             if (goaldiff > 0) {
                                 mutualResultClass = "win";
-                        } else 
-                            if (goaldiff < 0) {
+                            } else if (goaldiff < 0) {
                                 mutualResultClass = "loss";
+                            } else {
+                                mutualResultClass = "tie";
                             }
-                            mutualResultClass = "tie";
                         }
                     } else { //simple comparison, not needed?
                         String[] tmpResults = tmpResult.split("-");
