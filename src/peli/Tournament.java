@@ -27,7 +27,7 @@ public class Tournament
     private int numberOfDivisions;
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
-    private static final String displayName = System.getProperty("TournamentFileName") + " / ";
+    //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset)
     {
@@ -213,6 +213,7 @@ public class Tournament
     
     public String[] getDivisionTitles()
     {
+        String displayName = System.getProperty("TournamentFileName") + " / ";
         switch(numberOfDivisions)
         {
         case 1: // '\001'
