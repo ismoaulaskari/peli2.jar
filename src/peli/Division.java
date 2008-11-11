@@ -190,8 +190,34 @@ public class Division {
                     //creates too many objects:
                     tmpResult = mutual.getResult(s1, s2);
                     if (tmpResult.matches(".*<BR>.*")) {
-                        mutualResultClass = "multiseries"; //can't handle n-times-series yet
-                    } else {
+                        //handle n-times-series
+                        String[] tmpRows = tmpResult.split("<BR>");
+                        int scorediff = 0;
+                        int goaldiff = 0;
+                        for (int i = 0; i < tmpRows.length; i++) {
+                            String[] tmpResults = tmpRows[i].split("-");
+                            int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
+                            if (tmpScores[0] > tmpScores[1]) {
+                                scorediff++;
+                            } else if (tmpScores[0] < tmpScores[1]) {
+                                scorediff--;
+                            } 
+                            goaldiff += (tmpScores[0] - tmpScores[1]);                            
+                        }
+                        if (scorediff > 0) {
+                            mutualResultClass = "win";
+                        } else if (scorediff < 0) {
+                            mutualResultClass = "loss";
+                        } else {
+                            if (goaldiff > 0) {
+                                mutualResultClass = "win";
+                        } else 
+                            if (goaldiff < 0) {
+                                mutualResultClass = "loss";
+                            }
+                            mutualResultClass = "tie";
+                        }
+                    } else { //simple comparison, not needed?
                         String[] tmpResults = tmpResult.split("-");
                         int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
                         if (tmpScores[0] > tmpScores[1]) {
