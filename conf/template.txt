@@ -28,6 +28,6 @@ HIDE_PLAYOFF-->
 <!-- STANDINGS -->
 </p>
 HIDE_STANDINGS-->
-
+<hr />
 <!-- TNMT -->
 
