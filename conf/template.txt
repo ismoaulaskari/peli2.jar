@@ -1,4 +1,4 @@
-<table align=center bgcolor="#c0c0c0">
+<table align="center" bgcolor="#c0c0c0">
 <tr>
 <td>
 <pre>
@@ -9,8 +9,8 @@
 </tr>
 </table>
 <p>
-<table border="1">
-<tbody><tr><th align="center">KeskinÃ¤iset ottelut</th>
+<table align="center" border="1">
+<tbody><tr><th align="center">Keskin&auml;iset ottelut</th>
 <!-- MUTUALTABLE -->
 </tbody></table>
 </p>
