@@ -15,6 +15,7 @@ import javax.swing.text.JTextComponent;
  * The screen where you pick the players for the tournament
  * This is the source of the Ala-kojola bug but it's fixed now:
  * v1.1 A last name can be Ala-kojola or Ala-Kojola
+ * needs choose all-button
  * @author aulaskar
  *
  */

@@ -8,6 +8,7 @@ import java.util.*;
 
 /** Creates, saves and prints a division
  * v1.1 internal html-results-tab
+ * v1.9 html-templates, mutual result coloring
  * @author aulaskar
  *
  */

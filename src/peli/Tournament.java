@@ -13,7 +13,9 @@ import java.util.*;
  * A main class that includes final variables set at the start of the program,
  * save routines and rules for division sizes
  * v.1.1 added division sizes as configurable properties
- * fix tournament date here!
+ * fix tournament date here! fixed now with v. 1.9
+ * so is clearer division names in the GUI
+ * and html-template support
  * @author aulaskar
  *
  */
