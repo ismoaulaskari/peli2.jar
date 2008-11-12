@@ -3,7 +3,6 @@ package peli;
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: packimports(3) 
 // Source File Name:   PlayerJCheckBox.java
-
 import javax.swing.JCheckBox;
 
 /**
@@ -11,59 +10,50 @@ import javax.swing.JCheckBox;
  * @author aulaskar
  *
  */
-public class PlayerJCheckBox extends JCheckBox
-{
-    
+public class PlayerJCheckBox extends JCheckBox {
+
     private int rank;
-    
-    PlayerJCheckBox(int i, String s)
-    {
+
+    PlayerJCheckBox(int i, String s) {
         super(s);
         rank = 0;
         rank = i;
     }
 
-    PlayerJCheckBox(int i, String s, boolean flag)
-    {
+    PlayerJCheckBox(int i, String s, boolean flag) {
         super(s, flag);
         rank = 0;
         rank = i;
     }
 
-    public int getRank()
-    {
+    public int getRank() {
         return rank;
     }
 
-    public boolean lt(PlayerJCheckBox playerjcheckbox)
-    {
+    public boolean lt(PlayerJCheckBox playerjcheckbox) {
         return rank < playerjcheckbox.getRank();
     }
 
-    public boolean gt(PlayerJCheckBox playerjcheckbox)
-    {
+    public boolean gt(PlayerJCheckBox playerjcheckbox) {
         return rank > playerjcheckbox.getRank();
     }
 
-    public boolean eq(PlayerJCheckBox playerjcheckbox)
-    {
+    public boolean eq(PlayerJCheckBox playerjcheckbox) {
         return rank == playerjcheckbox.getRank();
     }
 
     //added to get working Treeset.contains() for duplicate players 
     public boolean equals(Object o) {
-    	if(o == this)
-    		return true;
-    	
-    	if (!(o instanceof PlayerJCheckBox)) 
-			return false;
-			
-		PlayerJCheckBox other = (PlayerJCheckBox)o;
-		if(this.getText().equals(other.getText()))
-			return true;	
-   
-		return false;
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof PlayerJCheckBox)) {
+            return false;
+        }
+        PlayerJCheckBox other = (PlayerJCheckBox) o;
+        if (this.getText().equals(other.getText())) {
+            return true;
+        }
+        return false;
     }
-    
-
 }
