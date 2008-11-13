@@ -3,7 +3,6 @@ package peli;
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: packimports(3) 
 // Source File Name:   RegistrationGUI.java
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -19,8 +18,7 @@ import javax.swing.text.JTextComponent;
  * @author aulaskar
  *
  */
-public class RegistrationGUI extends JPanel
-{
+public class RegistrationGUI extends JPanel {
 
     private Locale locale;
     private ResourceBundle messages;
@@ -30,47 +28,41 @@ public class RegistrationGUI extends JPanel
     private int counter;
     private int rank;
 
-
-    private void popUpErrorMessage(String s)
-    {
+    private void popUpErrorMessage(String s) {
         JOptionPane.showMessageDialog(this, s, messages.getString("duplicateErrorMessageHeader"), 2, null);
     }
 
-    private static String fixName(String s)
-    {
+    private static String fixName(String s) {
         String s1 = s.trim();
         int i = s1.indexOf(' ');
-        if(i < 0)
-        {
+        if (i < 0) {
             return capitalize(s1.trim(), true);
-        } else
-        {
+        } else {
             String s2 = s1.substring(0, i).trim();
             String s3 = s1.substring(i + 1).trim();
             return capitalize(s2, true) + " " + capitalize(s3, false);
         }
     }
 
-    
     /*fixed A-K bug  */
-    private static String capitalize(String s, boolean strict)
-    {
-    	//StringBuffer stringbuffer = new StringBuffer(s.toLowerCase());
-    	StringBuffer stringbuffer = new StringBuffer(s);
+    private static String capitalize(String s, boolean strict) {
+        //StringBuffer stringbuffer = new StringBuffer(s.toLowerCase());
+        StringBuffer stringbuffer = new StringBuffer(s);
         stringbuffer.replace(0, 1, s.substring(0, 1).toUpperCase());
         int i = s.indexOf('-');
-        if(strict == true && i > 0) //strict by aulaskar
+        if (strict == true && i > 0) //strict by aulaskar
+        {
             stringbuffer = stringbuffer.replace(i + 1, i + 2, s.substring(i + 1, i + 2).toUpperCase());
+        }
         return stringbuffer.toString();
     }
 
-    RegistrationGUI(MainWindow mainwindow, File file, File file1)
-    {
+    RegistrationGUI(MainWindow mainwindow, File file, File file1) {
         super(new BorderLayout());
         /*locale = new Locale(new String("fi"), new String("FI"));
         messages = ResourceBundle.getBundle("Messages", locale);*/
-    	locale = Constants.getInstance().getLocale();
-    	messages = Constants.getInstance().getMessages();
+        locale = Constants.getInstance().getLocale();
+        messages = Constants.getInstance().getMessages();
         counter = 0;
         rank = 0;
         mainWindow = mainwindow;
@@ -80,26 +72,25 @@ public class RegistrationGUI extends JPanel
         final JLabel playersLabel = new JLabel(" " + messages.getString("players"));
         final ItemListener cbl = new ItemListener() {
 
-            public void itemStateChanged(ItemEvent itemevent)
-            {
-                if(itemevent.getStateChange() == 2)
+            public void itemStateChanged(ItemEvent itemevent) {
+                if (itemevent.getStateChange() == 2) {
                     --counter;
-                else
+                } else {
                     ++counter;
+                }
                 counterField.setText(counter + " ");
                 playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
             }
-
         };
-        for(LineReader linereader = new LineReader(file.getName()); linereader.hasNext();)
-        {
-            String s = fixName((String)linereader.next());
+        for (LineReader linereader = new LineReader(file.getName()); linereader.hasNext();) {
+            String s = fixName((String) linereader.next());
             PlayerJCheckBox playerjcheckbox = new PlayerJCheckBox(++rank, s);
             playerjcheckbox.addItemListener(cbl);
-            if(names.contains(playerjcheckbox))
+            if (names.contains(playerjcheckbox)) {
                 popUpErrorMessage(s + " " + messages.getString("moreThanOnce") + " " + file.getName() + ".");
-            else
+            } else {
                 names.add(playerjcheckbox);
+            }
         }
 
         JRadioButton jradiobutton = new JRadioButton("1");
@@ -142,26 +133,24 @@ public class RegistrationGUI extends JPanel
         javax.swing.border.Border border = BorderFactory.createEmptyBorder(15, 30, 15, 30);
         mainPanel.setBorder(border);
         mainPanel.setLayout(new GridLayout(0, 4, 10, 5));
-        for(Iterator iterator = names.iterator(); iterator.hasNext(); mainPanel.add((PlayerJCheckBox)iterator.next()));
+        for (Iterator iterator = names.iterator(); iterator.hasNext(); mainPanel.add((PlayerJCheckBox) iterator.next()));
         JScrollPane jscrollpane = new JScrollPane(mainPanel, 20, 31);
         jscrollpane.setPreferredSize(new Dimension(200, 350));
         final JTextField newPlayerName = new JTextField(30);
         newPlayerName.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent actionevent)
-            {
+            public void actionPerformed(ActionEvent actionevent) {
                 String s1 = RegistrationGUI.fixName(newPlayerName.getText());
                 newPlayerName.setText("");
-                if(s1.equals(""))
+                if (s1.equals("")) {
                     return;
+                }
                 PlayerJCheckBox playerjcheckbox1 = new PlayerJCheckBox(++rank, s1, true);
-                if(RegistrationGUI.names.contains((PlayerJCheckBox)playerjcheckbox1))
-                {
+                if (RegistrationGUI.names.contains((PlayerJCheckBox) playerjcheckbox1)) {
                     popUpErrorMessage(s1 + " " + messages.getString("duplicateEntry") + ".");
-                } else
-                {
+                } else {
                     playerjcheckbox1.addItemListener(cbl);
-                    RegistrationGUI.names.add((PlayerJCheckBox)playerjcheckbox1);
+                    RegistrationGUI.names.add((PlayerJCheckBox) playerjcheckbox1);
                     counterField.setText(++counter + " ");
                     playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
                     mainPanel.add(playerjcheckbox1);
@@ -169,8 +158,28 @@ public class RegistrationGUI extends JPanel
                     mainPanel.repaint();
                 }
             }
-
         });
+        JButton selectAllButton = new JButton(messages.getString("selectAllButton"));
+        selectAllButton.setToolTipText(messages.getString("selectAllToolTip"));
+        selectAllButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent actionevent) {
+                for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
+                    PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
+                    if (playerjcheckbox.isSelected()) {
+                        playerjcheckbox.setSelected(false);
+                        counterField.setText(--counter + " ");
+                    } else {
+                        playerjcheckbox.setSelected(true);
+                        counterField.setText(++counter + " ");
+                    }
+                }
+                playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
+                mainPanel.revalidate();
+                mainPanel.repaint();
+            }
+        });
+
         JButton jbutton = new JButton(messages.getString("readyButton"));
         jbutton.setToolTipText(messages.getString("readyToolTip"));
         jbutton.addActionListener(new ReadyActionListener(mainWindow, names, file1, radiolistener));
@@ -188,16 +197,9 @@ public class RegistrationGUI extends JPanel
         jpanel1.add(Box.createRigidArea(new Dimension(20, 0)));
         jpanel1.add(Box.createHorizontalGlue());
         jpanel1.add(jbutton);
+        jpanel1.add(selectAllButton);
         add(jpanel, "North");
         add(jscrollpane, "Center");
         add(jpanel1, "South");
     }
-
-
-
-
-
-
-
-
 }
