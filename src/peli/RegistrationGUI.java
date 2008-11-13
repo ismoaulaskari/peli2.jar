@@ -197,7 +197,7 @@ public class RegistrationGUI extends JPanel {
         jpanel1.add(Box.createRigidArea(new Dimension(20, 0)));
         jpanel1.add(Box.createHorizontalGlue());
         jpanel1.add(jbutton);
-        jpanel1.add(selectAllButton);
+        jpanel.add(selectAllButton);
         add(jpanel, "North");
         add(jscrollpane, "Center");
         add(jpanel1, "South");
