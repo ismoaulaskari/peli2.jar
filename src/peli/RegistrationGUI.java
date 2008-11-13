@@ -167,11 +167,9 @@ public class RegistrationGUI extends JPanel {
                 for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
                     PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
                     if (playerjcheckbox.isSelected()) {
-                        playerjcheckbox.setSelected(false);
-                        counterField.setText(--counter + " ");
+                        playerjcheckbox.setSelected(false);                        
                     } else {
-                        playerjcheckbox.setSelected(true);
-                        counterField.setText(++counter + " ");
+                        playerjcheckbox.setSelected(true);                        
                     }
                 }
                 playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
