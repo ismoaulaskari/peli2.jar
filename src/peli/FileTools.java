@@ -6,14 +6,22 @@ package peli;
 
 import java.awt.Container;
 import java.io.File;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 public class FileTools
 {
-
+    private static Locale locale;
+    private static ResourceBundle messages;
+    private static ResourceBundle keyCodes;
+    
     public FileTools()
     {
+        locale = Constants.getInstance().getLocale();
+        messages = Constants.getInstance().getMessages();
+        keyCodes = Constants.getInstance().getKeyCodes();
     }
 
     public static File askFileName(String s, Container container, FileFilter filefilter)
@@ -22,7 +30,7 @@ public class FileTools
         jfilechooser.setAcceptAllFileFilterUsed(false);
         jfilechooser.setDialogTitle(s);
         jfilechooser.addChoosableFileFilter(filefilter);
-        int i = jfilechooser.showDialog(container, "Avaa");
+        int i = jfilechooser.showDialog(container, messages.getString("openFile"));
         switch(i)
         {
         case 0: // '\0'
