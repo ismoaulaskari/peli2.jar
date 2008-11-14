@@ -293,6 +293,7 @@ public class Tournament
         }
     }
 
+    //tnmt-file
     public void save(PrintWriter printwriter)
     {
         printwriter.println("TOURNAMENT-SIZE:" + getNumberOfDivisions());
@@ -389,7 +390,7 @@ public class Tournament
             printwriter.print(Constants.getFooter().toString());
             
         }
-        else {
+        else {  //force version 1.0 compatible html output format
             saveAll_legacy(printwriter);
         }
         
