@@ -91,6 +91,10 @@ public class SaveActionListener
 
         case 3: // '\003'
             return messages.getString("tournamentWebPage");
+
+        case 4:
+            return messages.getString("tournamentStandings");
+   
         }
         return "";
     }
