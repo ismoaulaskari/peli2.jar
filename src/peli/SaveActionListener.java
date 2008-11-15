@@ -8,6 +8,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class SaveActionListener
     private File file;
     private int what;
     private Component frame;
+    private ResourceBundle messages;
 
     SaveActionListener(File file1, Tournament tournament1, int i, Component component)
     {
@@ -30,6 +32,7 @@ public class SaveActionListener
         file = file1;
         what = i;
         frame = component;
+        messages = Constants.getInstance().getMessages();
     }
 
     public void actionPerformed(ActionEvent actionevent)
@@ -38,11 +41,11 @@ public class SaveActionListener
         switch(what)
         {
         case 0: // '\0'
-            s = ".taulukko.html";
+            s = messages.getString("table.html");
             break;
 
         case 1: // '\001'
-            s = ".ottelut.html";
+            s = messages.getString("matches.html");
             break;
 
         case 2: // '\002'
@@ -50,11 +53,11 @@ public class SaveActionListener
             break;
 
         case 3: // '\003'
-            s = ".html";
+            s = messages.getString(".html");
             break;
 
         case 4: 
-            s = ".standings.txt";
+            s = messages.getString("standings.txt");
             break;    
             
         default:
@@ -66,7 +69,7 @@ public class SaveActionListener
             PrintWriter printwriter = new PrintWriter(new BufferedWriter(new FileWriter(file.getName() + s)));
             tournament.save(printwriter, what);
             printwriter.close();
-            popUpMessage(getTargetType(what) + " talletettu tiedostoon " + file.getName() + s, frame);
+            popUpMessage(getTargetType(what) + " " + messages.getString("wasSaved") + " " + file.getName() + s, frame);
             if(what == 2)
                 SaveTracker.isSaved = true;
         }
@@ -78,23 +81,23 @@ public class SaveActionListener
         switch(i)
         {
         case 0: // '\0'
-            return "Sarjataulukko";
+            return messages.getString("seriesTable");
 
         case 1: // '\001'
-            return "Otteluohjelma";
+            return messages.getString("programme");
 
         case 2: // '\002'
-            return "Turnauksen tilanne";
+            return messages.getString("tournamentStatus");
 
         case 3: // '\003'
-            return "Turnauksen www-sivu";
+            return messages.getString("tournamentWebPage");
         }
         return "";
     }
 
     private void popUpMessage(String s, Component component)
     {
-        JOptionPane.showMessageDialog(component, s, "Tiedosto luotu", 1, null);
+        JOptionPane.showMessageDialog(component, s, messages.getString("fileCreated"), 1, null);
     }
 
 }
