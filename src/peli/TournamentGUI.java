@@ -188,7 +188,7 @@ public class TournamentGUI extends JPanel
     private static JPanel createComboBoxPane(final JPanel cards)
     {
         JPanel jpanel = new JPanel();
-        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " Valitse lohko: "));
+        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("chooseGroup") + " "));
         JComboBox jcombobox = new JComboBox(tournament.getDivisionTitles());
         jcombobox.setEditable(false);
         jcombobox.addItemListener(new ItemListener() {
@@ -271,7 +271,7 @@ public class TournamentGUI extends JPanel
     private static JPanel createDivisionCards()
     {
         JPanel jpanel = new JPanel();
-        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " Valittu lohko "));
+        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("selectedGroup") + " "));
         jpanel.setLayout(new CardLayout());
         int i = tournament.size();
         JTabbedPane ajtabbedpane[] = new JTabbedPane[i];

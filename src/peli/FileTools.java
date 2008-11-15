@@ -6,26 +6,24 @@ package peli;
 
 import java.awt.Container;
 import java.io.File;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 public class FileTools
 {
-    private static Locale locale;
+    
     private static ResourceBundle messages;
-    private static ResourceBundle keyCodes;
+    
     
     public FileTools()
     {
-        locale = Constants.getInstance().getLocale();
-        messages = Constants.getInstance().getMessages();
-        keyCodes = Constants.getInstance().getKeyCodes();
+        
     }
 
     public static File askFileName(String s, Container container, FileFilter filefilter)
     {
+        messages = Constants.getInstance().getMessages();
         JFileChooser jfilechooser = new JFileChooser(new File("."));
         jfilechooser.setAcceptAllFileFilterUsed(false);
         jfilechooser.setDialogTitle(s);
