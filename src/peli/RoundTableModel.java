@@ -4,6 +4,7 @@ package peli;
 // Decompiler options: packimports(3) 
 // Source File Name:   RoundTableModel.java
 
+import java.util.ResourceBundle;
 import javax.swing.table.AbstractTableModel;
 
 /** 
@@ -14,8 +15,11 @@ import javax.swing.table.AbstractTableModel;
  */
 public class RoundTableModel extends AbstractTableModel
 {
-    final String columnNames[] = {
-        "P\366yt\344", "Kotijoukkue", "Vierasjoukkue", "Tulos"
+    private ResourceBundle messages = Constants.getInstance().getMessages();
+    
+    final String columnNames[] = {        
+        messages.getString("table"), messages.getString("homeTeam"),
+        messages.getString("awayTeam"), messages.getString("result")
     };
     private Round round;
 
