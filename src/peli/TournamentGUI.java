@@ -312,6 +312,18 @@ public class TournamentGUI extends JPanel
             	columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
             	ajtabbedpane[k].addTab(messages.getString("finalTables"), columnScrollPane);
             }
+            
+            //playoff inside a tab
+            if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
+            	JPanel jpanel2 = new JPanel();
+            	JLabel jarea = new JLabel(tournament.getStandings().toString()); 
+            	jarea.setFont(new Font("Times", 0, 10));
+            	jpanel2.setLayout(new BorderLayout());
+            	jpanel2.add(jarea,"Center");
+            	JScrollPane columnScrollPane = new JScrollPane(jpanel2);
+            	columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
+            	ajtabbedpane[k].addTab(messages.getString("finalTables"), columnScrollPane);
+            }
         }
 
         String as[] = tournament.getDivisionTitles();

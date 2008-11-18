@@ -303,7 +303,7 @@ public class Tournament
 
     //added by aulaskar to help organising final groups
     /** print combined standings of all divisions */
-    public void saveStandings(PrintWriter printwriter)
+    public ArrayList getStandings()
     {
     	ArrayList divisions = new ArrayList();
     	ArrayList overallstandings = new ArrayList();
@@ -330,6 +330,15 @@ public class Tournament
         	overallstandings.addAll(treeset);
         	treeset.clear();	
         }
+        
+        return overallstandings;
+    }
+    
+    //added by aulaskar to help organising final groups
+    /** print combined standings of all divisions */
+    public void saveStandings(PrintWriter printwriter)
+    {
+        ArrayList overallstandings = getStandings();
         
         //print to file
         for(Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
