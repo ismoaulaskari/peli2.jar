@@ -121,7 +121,8 @@ public class Tournament
     		System.setProperty(	"TournamentOrderByMutualMatch", rules1.getString("orderByMutualMatch"));
     		System.setProperty(	"TournamentShowMutualTableTab", rules1.getString("showMutualTableTab"));
                 System.setProperty(	"TournamentUseVersion1HtmlOutput", rules1.getString("useVersion1HtmlOutput"));
-    	}
+    		System.setProperty(	"TournamentShowPlayoffTab", rules1.getString("showPlayoffTab"));
+        }
     	catch (SecurityException se) {
     		System.err.println("Setting system properties not supported!");
     	}
