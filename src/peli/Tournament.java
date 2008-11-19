@@ -335,6 +335,17 @@ public class Tournament
         return overallstandings;
     }
     
+    public String getFormattedStandings() {
+        StringBuilder sb = new StringBuilder();
+        int placement = 1;
+        ArrayList overallstandings = getStandings();
+        for(Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
+            sb.append(placement++).append(".").append(((SeriesTableEntry)iterator.next()).getName()).append(System.getProperty("line.separator"));
+        }
+        
+        return sb.toString();
+    }
+    
     //added by aulaskar to help organising final groups
     /** print combined standings of all divisions */
     public void saveStandings(PrintWriter printwriter)

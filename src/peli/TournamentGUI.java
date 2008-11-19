@@ -317,7 +317,7 @@ public class TournamentGUI extends JPanel
             //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
             if(1==1) {
                 JPanel jpanel2 = new JPanel();
-            	JLabel jarea = new JLabel(tournament.getStandings().toString()); 
+            	JLabel jarea = new JLabel(tournament.getFormattedStandings()); 
             	jarea.setFont(new Font("Times", 0, 10));
             	jpanel2.setLayout(new BorderLayout());
             	jpanel2.add(jarea,"Center");
