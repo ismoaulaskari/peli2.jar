@@ -204,6 +204,17 @@ public class TournamentGUI extends JPanel
         return jpanel;
     }
 
+    private static JPanel createPlayoffTable() {
+        JPanel jpanel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        
+        jpanel.add(new JTextField("foo"), c);
+        jpanel.add(new JTextField("bar"), c);
+        jpanel.add(new JTextField("bal"), c);
+        
+        return jpanel;
+    }
+    
     private static JPanel createMatchListTable(int i)
     {
         JPanel jpanel = new JPanel();
@@ -316,11 +327,12 @@ public class TournamentGUI extends JPanel
             //playoff inside a tab
             //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
             if(1==1) {
-                JPanel jpanel2 = new JPanel();
-            	JLabel jarea = new JLabel(tournament.getFormattedStandings()); 
-            	jarea.setFont(new Font("Times", 0, 10));
-            	jpanel2.setLayout(new BorderLayout());
-            	jpanel2.add(jarea,"Center");
+                //JPanel jpanel2 = new JPanel();
+                JPanel jpanel2 = createPlayoffTable();
+            	//JLabel jarea = new JLabel(tournament.getFormattedStandings()); 
+            	//jarea.setFont(new Font("Times", 0, 10));
+            	//jpanel2.setLayout(new BorderLayout());
+            	//jpanel2.add(jarea,"Center");
             	JScrollPane columnScrollPane = new JScrollPane(jpanel2);
             	columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
             	ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
