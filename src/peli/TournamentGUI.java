@@ -205,12 +205,21 @@ public class TournamentGUI extends JPanel
     }
 
     private static JPanel createPlayoffTable() {
-        JPanel jpanel = new JPanel(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        JPanel jpanel = new JPanel();
+        //GridBagConstraints c = new GridBagConstraints();
+        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
+        jpanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//jpanel.add(Box.createHorizontalGlue());
+        jpanel.add(new JLabel("foo"));
+        jpanel.add(new JTextField("foo"));
+        jpanel.add(new JLabel("foo"));
+        jpanel.add(new JTextField("IA"));
+        jpanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        jpanel.add(new JLabel("foo"));
+        jpanel.add(new JTextField("bar"));
+        jpanel.add(new JLabel("foo"));
+        jpanel.add(new JTextField("TT"));
         
-        jpanel.add(new JTextField("foo"), c);
-        jpanel.add(new JTextField("bar"), c);
-        jpanel.add(new JTextField("bal"), c);
         
         return jpanel;
     }
