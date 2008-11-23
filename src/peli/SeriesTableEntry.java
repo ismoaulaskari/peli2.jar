@@ -4,7 +4,6 @@ package peli;
 // Decompiler options: packimports(3) 
 // Source File Name:   SeriesTableEntry.java
 
-import java.io.PrintStream;
 import java.io.PrintWriter;
 
 /**

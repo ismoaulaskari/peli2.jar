@@ -4,8 +4,6 @@ package peli;
 // Decompiler options: packimports(3) 
 // Source File Name:   RunTournament.java
 
-import java.awt.Component;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 
 /**

@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Iterator;
 import java.util.TreeSet;
-import javax.swing.AbstractButton;
-import javax.swing.JFrame;
 
 public class ReadyActionListener
     implements ActionListener

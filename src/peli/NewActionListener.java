@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javax.swing.JFrame;
 
 /**
  * Create a new tournament
