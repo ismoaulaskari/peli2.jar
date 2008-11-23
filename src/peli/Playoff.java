@@ -15,7 +15,9 @@ public class Playoff {
     
     private int size;
     private List players;
+    //rounds
     //matches
+    
     
     public Playoff() {
         
