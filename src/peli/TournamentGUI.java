@@ -205,56 +205,73 @@ public class TournamentGUI extends JPanel
     }
 
     private static JPanel createPlayoffTable() {
+        //holds everything
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+        //holds a pair of matches
         JPanel pairPanel = new JPanel();
         pairPanel.setLayout(new BoxLayout(pairPanel, BoxLayout.Y_AXIS));
         pairPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));        
         
+        //holds name1 and win count1
         JPanel namePanel = new JPanel();
         namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
         namePanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-                
+        
+        //holds name2 and win count2
         JPanel name2Panel = new JPanel();
         name2Panel.setLayout(new BoxLayout(name2Panel, BoxLayout.X_AXIS));
         name2Panel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
 
+        //holds scores
         JPanel scorePanel = new JPanel();
         scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.X_AXIS));
         scorePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         String name = "Tuomo Ala-Kojola";
         JTextField player = new JTextField(name);
-        player.setPreferredSize(player.getSize());
+        Dimension dz = player.getSize();
+        player.setPreferredSize(dz);
+//        player.setMaximumSize(dz);
+        player.setMinimumSize(dz);
         namePanel.add(player);                
                 
         String name2 = "Ismo Lahtinen";
         JTextField player2 = new JTextField(name2);
-        player2.setPreferredSize(player2.getSize());
+        player2.setPreferredSize(dz);
+//        player2.setMaximumSize(dz);
+        player2.setMinimumSize(dz);
         name2Panel.add(player2);                        
                 
         namePanel.add(new JLabel("4"));                        
         name2Panel.add(new JLabel("3"));
         
-        namePanel.setMaximumSize(new Dimension(250,40));
-        name2Panel.setMaximumSize(new Dimension(250,40));
+        namePanel.setMaximumSize(new Dimension(270,40));
+        name2Panel.setMaximumSize(new Dimension(270,40));
         
         //seven results
-        scorePanel.add(Box.createRigidArea(new Dimension(10, 10)));
+        scorePanel.add(Box.createRigidArea(new Dimension(5, 5)));
         for(int i=0; i<7; i++) {
-            scorePanel.add(new JTextField("     "));
+            JTextField jt = new JTextField("        ");
+            Dimension dj = jt.getSize();
+            jt.setPreferredSize(dj);
+//            jt.setMaximumSize(jt.getSize());
+            jt.setMinimumSize(dj);
+            scorePanel.add(jt).setBounds(jt.getBounds());
         }            
-        scorePanel.add(Box.createRigidArea(new Dimension(10, 10)));
-        scorePanel.setMaximumSize(new Dimension(500,50));
+        
+        //tyhjää väliin
+        scorePanel.add(Box.createRigidArea(new Dimension(5, 5)));
+        scorePanel.setMaximumSize(new Dimension(540,50));
         
         //namesPanel.add(Box.createHorizontalGlue());
         pairPanel.add(Box.createRigidArea(new Dimension(10, 10)));
         pairPanel.add(namePanel);
         pairPanel.add(name2Panel);
         pairPanel.add(Box.createRigidArea(new Dimension(10, 10)));
-        pairPanel.setMaximumSize(new Dimension(500, 100));
+        pairPanel.setMaximumSize(new Dimension(320, 100));
         bottomPanel.add(pairPanel);        
         bottomPanel.add(scorePanel);
                 
