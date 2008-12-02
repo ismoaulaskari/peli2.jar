@@ -205,15 +205,27 @@ public class TournamentGUI extends JPanel
     }
 
     private static JPanel createPlayoffTable() {
+    //holds a pair of matches
+        JPanel allPanel = new JPanel();
+        allPanel.setLayout(new BoxLayout(allPanel, BoxLayout.Y_AXIS));
+        allPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));        
+        for(int i=0; i<8; i++) {
+            allPanel.add(createPlayoffPair());
+        }
+        
+        return allPanel;
+    }
+        
+    private static JPanel createPlayoffPair() {
         //holds everything
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
-        bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        bottomPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         //holds a pair of matches
         JPanel pairPanel = new JPanel();
         pairPanel.setLayout(new BoxLayout(pairPanel, BoxLayout.Y_AXIS));
-        pairPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));        
+        pairPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));        
         
         //holds name1 and win count1
         JPanel namePanel = new JPanel();
