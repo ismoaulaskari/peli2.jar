@@ -5,6 +5,7 @@
 
 package peli;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,14 +17,44 @@ public class Playoff {
     private int size;
     private List players;
     //rounds
-    //matches
+    private HashMap matches;
     
     
-    public Playoff() {
-        
+    public Playoff(List players, int size) {
+        if(players == null || size == 0) {
+            throw new IllegalArgumentException("Empty playoffs attempted!");
+        }
+        this.players = players;
+        this.size = size;
+    }
+
+    public Playoff(List players) {
+        this(players, players.size());
     }
 
     
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public List getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List players) {
+        this.players = players;
+    }
+
+    public List getSurvivors() {
+        return players;
+    }
     
-    
+    public List getLosers() {
+        return players;
+    }
+        
 }
