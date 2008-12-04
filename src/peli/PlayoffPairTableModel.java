@@ -3,7 +3,6 @@ package peli;
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: packimports(3) 
 // Source File Name:   RoundTableModel.java
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javax.swing.table.AbstractTableModel;
 

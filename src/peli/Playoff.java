@@ -67,5 +67,9 @@ public class Playoff {
     public List getLosers() {
         return players; //?
     }
+
+    public PlayoffPair[] getPlayoffPairs() {
+        return playoffPairs;
+    }
         
 }
