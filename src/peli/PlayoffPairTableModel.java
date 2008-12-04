@@ -44,7 +44,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int i, int j) {
-        Match match = (Match) playoffpair.getMatches().get(i-2);
+        Match match = (Match) playoffpair.getMatches().get(i - 2);
         switch (i) {
             case 0:
                 if (j == 0) {
@@ -67,8 +67,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
                     } else {
                         return match.getResult();
                     }
-                }
-                else {
+                } else {
                     return "";
                 }
         }
@@ -80,34 +79,48 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public boolean isCellEditable(int i, int j) {
-        if (j < 3) {
+        if (j > 1) {
             return false;
         }
         return !isDummyMatch(i);
     }
 
     private boolean isDummyMatch(int i) {
-        Match match = (Match) playoffpair.getMatches().get(i-2);
+        Match match = (Match) playoffpair.getMatches().get(i - 2);
         String s = match.home();
         String s1 = match.visitor();
         return s.equals("X") || s1.equals("X");
     }
 
     public void setValueAt(Object obj, int i, int j) {
-        if (j != 3) {
+        if (j > 1 || i < 0) {
             return;
         }
         SaveTracker.isSaved = false;
-        Match match = (Match) playoffpair.getMatches().get(i-2);
-        SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
-        SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
-        if (match.isOver()) {
-            seriestableentry.cancelMatch(match);
-            seriestableentry1.cancelMatch(match);
+
+        if (i == 0) {
+            if (j == 0) {
+                this.playoffpair.setHomeTeam((String) obj);
+            } else if (j == 1) {
+                this.playoffpair.setAwayTeam((String) obj);
+            }
+        } else if (i == 1) {
+            return;
+        } else if (i > 1 && j == 0) {
+            Match match = (Match) playoffpair.getMatches().get(i - 2);
+            //SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
+            //SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
+            if (match.isOver()) {
+                //seriestableentry.cancelMatch(match);
+                //seriestableentry1.cancelMatch(match);
+            }
+            match.setResult((String) obj);
+            //survive on direct references?
+            //seriestableentry.updateWith(match);
+            //seriestableentry1.updateWith(match);
+            this.playoffpair.updateWins();
         }
-        match.setResult((String) obj);
-        seriestableentry.updateWith(match);
-        seriestableentry1.updateWith(match);
+
         fireTableCellUpdated(i, j);
     }
 
