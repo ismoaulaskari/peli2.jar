@@ -30,8 +30,8 @@ public class Tournament
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private Playoff playoff;
     
-    Playoff getPlayoff() {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public Playoff getPlayoff() {
+        return this.playoff;
     }
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     
