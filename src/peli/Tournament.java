@@ -168,7 +168,7 @@ public class Tournament
         for(int j = 0; j < numberOfDivisions; j++)
             divisions.add(new Division("Lohko " + (j + 1), i, atreeset[j]));
         
-        playoff = new Playoff(this, this.getStandings());
+        playoff = new Playoff(this, this.getStandingsNames());
 
     }
 
@@ -202,7 +202,7 @@ public class Tournament
             throw fileformatexception;
         }
         
-        playoff = new Playoff(this, this.getStandings());
+        playoff = new Playoff(this, this.getStandingsNames());
     }
 
     public int size()
@@ -354,7 +354,18 @@ public class Tournament
         
         return sb.toString();
     }
+
     
+    public ArrayList getStandingsNames() {
+        ArrayList justnames = new ArrayList();
+        ArrayList overallstandings = getStandings();
+        for(Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
+            justnames.add(((SeriesTableEntry)iterator.next()).getName());
+        }
+        
+        return justnames;
+    }
+
     //added by aulaskar to help organising final groups
     /** print combined standings of all divisions */
     public void saveStandings(PrintWriter printwriter)
