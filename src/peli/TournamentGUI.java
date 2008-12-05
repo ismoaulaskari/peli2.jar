@@ -305,7 +305,7 @@ public class TournamentGUI extends JPanel {
 
     private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
-        tablecolumn.setCellRenderer(centerRenderer);
+        tablecolumn.setCellRenderer(fooRenderer);
         tablecolumn.setPreferredWidth(270);
         tablecolumn.setMaxWidth(270);
         tablecolumn = tablecolumnmodel.getColumn(1);
