@@ -312,10 +312,10 @@ public class TournamentGUI extends JPanel {
         tablecolumn.setPreferredWidth(30);
         tablecolumn = tablecolumnmodel.getColumn(2);
         tablecolumn.setPreferredWidth(150);
-        tablecolumn = tablecolumnmodel.getColumn(3);
-        tablecolumn.setCellRenderer(centerRenderer);
-        tablecolumn.setPreferredWidth(40);
-        tablecolumn.setMaxWidth(50);
+        //tablecolumn = tablecolumnmodel.getColumn(3);
+        //tablecolumn.setCellRenderer(centerRenderer);
+        //tablecolumn.setPreferredWidth(40);
+        //tablecolumn.setMaxWidth(50);
     }
 
     private static void setRoundTableRenderers(TableColumnModel tablecolumnmodel, int i) {
