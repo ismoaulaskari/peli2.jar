@@ -26,7 +26,7 @@ public class PlayoffPair {
         this.awayTeam = awayTeam;
         this.mother = playoff;
         for(int i=0; i<7; i++) {
-            this.matches.add("");
+            this.matches.add(new Match(homeTeam, awayTeam));
         }
     }
 
