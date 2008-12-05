@@ -471,7 +471,15 @@ public class TournamentGUI extends JPanel {
         }
     };
     
+    private static DefaultTableCellRenderer fooRenderer = new DefaultTableCellRenderer() {
 
+        public void setValue(Object obj) {
+            setHorizontalAlignment(0);
+            //setText((String) obj);
+        }
+    };
+
+    
     static {
 //        locale = new Locale(new String("fi"), new String("FI"));
 //        messages = ResourceBundle.getBundle("Messages", locale);
