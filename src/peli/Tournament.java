@@ -28,6 +28,11 @@ public class Tournament
     private int numberOfDivisions;
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
+    private Playoff playoff;
+    
+    Playoff getPlayoff() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset)
@@ -162,6 +167,8 @@ public class Tournament
         distributePlayers(atreeset, treeset);
         for(int j = 0; j < numberOfDivisions; j++)
             divisions.add(new Division("Lohko " + (j + 1), i, atreeset[j]));
+        
+        playoff = new Playoff(this, this.getStandings());
 
     }
 
@@ -194,6 +201,8 @@ public class Tournament
         {
             throw fileformatexception;
         }
+        
+        playoff = new Playoff(this, this.getStandings());
     }
 
     public int size()

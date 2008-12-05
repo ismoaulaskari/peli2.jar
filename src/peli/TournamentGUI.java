@@ -303,6 +303,21 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
+    private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {
+        TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
+        tablecolumn.setCellRenderer(centerRenderer);
+        tablecolumn.setPreferredWidth(270);
+        tablecolumn.setMaxWidth(270);
+        tablecolumn = tablecolumnmodel.getColumn(1);
+        tablecolumn.setPreferredWidth(30);
+        tablecolumn = tablecolumnmodel.getColumn(2);
+        tablecolumn.setPreferredWidth(150);
+        tablecolumn = tablecolumnmodel.getColumn(3);
+        tablecolumn.setCellRenderer(centerRenderer);
+        tablecolumn.setPreferredWidth(40);
+        tablecolumn.setMaxWidth(50);
+    }
+
     private static void setRoundTableRenderers(TableColumnModel tablecolumnmodel, int i) {
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
         tablecolumn.setCellRenderer(centerRenderer);
