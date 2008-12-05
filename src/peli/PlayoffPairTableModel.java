@@ -43,7 +43,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int i, int j) {
-        Match match = (Match) playoffpair.getMatches().get(i - 2);
+        Match match = (Match) playoffpair.getMatches().get(i);
         switch (i) {
             case 0:
                 if (j == 0) {
@@ -85,7 +85,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     private boolean isDummyMatch(int i) {
-        Match match = (Match) playoffpair.getMatches().get(i - 2);
+        Match match = (Match) playoffpair.getMatches().get(i);
         String s = match.home();
         String s1 = match.visitor();
         return s.equals("X") || s1.equals("X");
@@ -106,7 +106,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         } else if (i == 1) {
             return;
         } else if (i > 1 && j == 0) {
-            Match match = (Match) playoffpair.getMatches().get(i - 2);
+            Match match = (Match) playoffpair.getMatches().get(i);
             //SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
             //SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
             if (match.isOver()) {
