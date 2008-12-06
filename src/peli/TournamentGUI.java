@@ -190,6 +190,7 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
+    /*
     private static JPanel createPlayoffTable() {
         //holds a pair of matches
         JPanel allPanel = new JPanel();
@@ -202,6 +203,7 @@ public class TournamentGUI extends JPanel {
         return allPanel;
     }
 
+    
     private static JPanel createPlayoffPair() {
         //holds everything
         JPanel bottomPanel = new JPanel();
@@ -274,7 +276,7 @@ public class TournamentGUI extends JPanel {
         bottomPanel.add(scorePanel);
 
         return bottomPanel;
-    }
+    }*/
 
     private static JPanel createMatchListTable(int i) {
         JPanel jpanel = new JPanel();
@@ -306,12 +308,17 @@ public class TournamentGUI extends JPanel {
     private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
         tablecolumn.setCellRenderer(fooRenderer);
-        tablecolumn.setPreferredWidth(270);
-        tablecolumn.setMaxWidth(270);
+        //names
+        tablecolumn.setPreferredWidth(150);
+        tablecolumn.setMaxWidth(150);
+        //wins
         tablecolumn = tablecolumnmodel.getColumn(1);
         tablecolumn.setPreferredWidth(30);
-        tablecolumn = tablecolumnmodel.getColumn(2);
-        tablecolumn.setPreferredWidth(150);
+        //games
+        for(int xx=0; xx<1; xx++) {
+            tablecolumn = tablecolumnmodel.getColumn(xx+2);
+            tablecolumn.setPreferredWidth(50);
+        }
         //tablecolumn = tablecolumnmodel.getColumn(3);
         //tablecolumn.setCellRenderer(centerRenderer);
         //tablecolumn.setPreferredWidth(40);

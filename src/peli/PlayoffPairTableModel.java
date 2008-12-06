@@ -17,7 +17,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     private ResourceBundle messages = Constants.getInstance().getMessages();
     final String columnNames[] = {
         messages.getString("playerName"), messages.getString("playoffWins"),
-        messages.getString("playoffResults")
+        "", messages.getString("playoffResults"), "", "", "", "", ""
     };
     private PlayoffPair playoffpair;
     //private String homeTeam;
@@ -58,19 +58,17 @@ public class PlayoffPairTableModel extends AbstractTableModel {
                 } else {
                     return playoffpair.getAwayWins();
                 }
-
-            case 2:
-                if (j == 0) {
-                    if (isDummyMatch(i)) {
-                        return "xxx";
-                    } else {
-                        return match.getResult();
-                    }
-                } else {
-                    return "";
-                }
         }
-        return "";
+
+        if (j == 0) {
+            if (isDummyMatch(i)) {
+                return "xxx";
+            } else {
+                return match.getResult();
+            }
+        } else {
+            return "";
+        }
     }
 
     public Class getColumnClass(int i) {
