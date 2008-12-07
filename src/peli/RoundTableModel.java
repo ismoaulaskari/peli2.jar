@@ -81,7 +81,7 @@ public class RoundTableModel extends AbstractTableModel {
         if (j != 3) {
             return;
         }
-        SaveTracker.isSaved = false;
+        SaveTracker.setIsSaved(false);
         Match match = round.getMatch(i);
         SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
         SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());

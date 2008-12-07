@@ -34,7 +34,7 @@ public class TournamentGUI extends JPanel {
     TournamentGUI(MainWindow mainwindow, int i, TreeSet treeset, File file) {
         System.setProperty("TournamentFileName", file.getName()); //hack, throws e
         //System.setProperty("TemplateTitle", file.getName().substring(0, file.getName().indexOf('.'))); 
-        SaveTracker.isSaved = false;
+        SaveTracker.setIsSaved(false);
         tournament = new Tournament(i, treeset);
         themainwindow = mainwindow; //hack
         createThis(mainwindow, file);
@@ -68,7 +68,7 @@ public class TournamentGUI extends JPanel {
         restartbutton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent actionevent) {
-                if (SaveTracker.isSaved) {
+                if (SaveTracker.isSaved()) {
                     //cleanup and restart                	                	
                     themainwindow.dispose();
                     tournament = null;
@@ -138,7 +138,8 @@ public class TournamentGUI extends JPanel {
         jbutton.addActionListener(new SaveActionListener(file, tournament1, 3, frame));
         jtoolbar.add(jbutton);
         imageicon = new ImageIcon(messages.getString("saveAllIconGifFile"));
-        jbutton = new JButton(messages.getString("saveButton"), imageicon);
+        jbutton = new JButton(SaveTracker.getIsSavedLogo() + messages.getString("saveButton"), imageicon);
+        SaveTracker.setRegisteredSaveButton(jbutton);
         jbutton.setMnemonic(((Integer) keyCodes.getObject("saveMnemonic")).intValue());
         jbutton.setToolTipText(messages.getString("saveToolTip"));
         jbutton.addActionListener(new SaveActionListener(file, tournament1, 2, frame));
@@ -153,7 +154,7 @@ public class TournamentGUI extends JPanel {
         jbutton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent actionevent) {
-                if (SaveTracker.isSaved) {
+                if (SaveTracker.isSaved()) {
                     System.exit(0);
                 }
                 Object aobj[] = {
@@ -459,7 +460,7 @@ public class TournamentGUI extends JPanel {
             jpanel.add(ajtabbedpane[l], as[l]);
         }
         return jpanel;
-    }
+    }    
     private static Locale locale;
     private static ResourceBundle messages;
     private static ResourceBundle keyCodes;
@@ -526,6 +527,6 @@ public class TournamentGUI extends JPanel {
 //        keyCodes = ResourceBundle.getBundle("KeyCodeBundle", locale);
         locale = Constants.getInstance().getLocale();
         messages = Constants.getInstance().getMessages();
-        keyCodes = Constants.getInstance().getKeyCodes();
+        keyCodes = Constants.getInstance().getKeyCodes();        
     }
 }

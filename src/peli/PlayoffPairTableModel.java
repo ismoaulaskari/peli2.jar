@@ -95,7 +95,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         if (i > 1 || j < 0) {
             return;
         }
-        SaveTracker.isSaved = false;
+        SaveTracker.setIsSaved(false);
 
         if (j == 0) {
             if (i == 0) {

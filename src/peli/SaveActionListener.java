@@ -25,6 +25,7 @@ public class SaveActionListener
     private int what;
     private Component frame;
     private ResourceBundle messages;
+    
 
     SaveActionListener(File file1, Tournament tournament1, int i, Component component)
     {
@@ -32,7 +33,7 @@ public class SaveActionListener
         file = file1;
         what = i;
         frame = component;
-        messages = Constants.getInstance().getMessages();
+        messages = Constants.getInstance().getMessages();    
     }
 
     public void actionPerformed(ActionEvent actionevent)
@@ -70,8 +71,9 @@ public class SaveActionListener
             tournament.save(printwriter, what);
             printwriter.close();
             popUpMessage(getTargetType(what) + " " + messages.getString("wasSaved") + " " + file.getName() + s, frame);
-            if(what == 2)
-                SaveTracker.isSaved = true;
+            if(what == 2) {
+                SaveTracker.setIsSaved(true);                
+            }
         }
         catch(IOException ioexception) { }
     }
