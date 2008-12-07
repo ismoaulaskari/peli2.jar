@@ -20,14 +20,9 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         "", messages.getString("playoffResults"), "", "", "", "", ""
     };
     private PlayoffPair playoffpair;
-    //private String homeTeam;
-    //private String awayTeam;
-    //private ArrayList matches;
+    
     PlayoffPairTableModel(PlayoffPair playoffpair) {
         this.playoffpair = playoffpair;
-//        this.homeTeam = playoffpair.getHomeTeam();
-//        this.awayTeam = playoffpair.getAwayTeam();
-//        this.matches = playoffpair.getMatches();
     }
 
     public int getColumnCount() {

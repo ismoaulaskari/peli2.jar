@@ -32,9 +32,9 @@ public class PlayoffPair {
 
     public int getWins(String player) {
         if (player.equals(getHomeTeam())) {
-            return this.getHomeWins();
+            return this.homeWins;
         } else if (player.equals(getAwayTeam())) {
-            return this.getAwayWins();
+            return this.awayWins;
         }
 
         return 0;
@@ -56,15 +56,15 @@ public class PlayoffPair {
     }
 
     public String getWinner() {
-        if(this.getHomeWins() > this.getAwayWins()) return this.getHomeTeam();
-        else if(this.getHomeWins() < this.getAwayWins()) return this.getAwayTeam();
+        if(this.homeWins > this.awayWins) return this.getHomeTeam();
+        else if(this.homeWins < this.awayWins) return this.getAwayTeam();
         
         return null;
     }
 
     public String getLoser() {
-        if(this.getHomeWins() < this.getAwayWins()) return this.getHomeTeam();
-        else if(this.getHomeWins() > this.getAwayWins()) return this.getAwayTeam();
+        if(this.homeWins < this.awayWins) return this.getHomeTeam();
+        else if(this.homeWins > this.awayWins) return this.getAwayTeam();
 
         return null;
     }
@@ -93,13 +93,16 @@ public class PlayoffPair {
         this.matches = matches;
     }
 
-    public int getHomeWins() {
-        return homeWins;
+    public String getHomeWins() {
+        return String.valueOf(homeWins);
     }
 
-    public int getAwayWins() {
-        return awayWins;
+    public String getAwayWins() {
+        return String.valueOf(awayWins);
     }
     
-    
+
+    public String toString() {        
+        return homeTeam + "-" + awayTeam + ":" + matches;        
+    }
 }

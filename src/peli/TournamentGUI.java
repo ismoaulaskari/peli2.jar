@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.*;
+import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -304,18 +305,21 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
-    private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {
-        TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
-        tablecolumn.setCellRenderer(fooRenderer);
+    private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {                
         //names
+        TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
         tablecolumn.setPreferredWidth(150);
         tablecolumn.setMaxWidth(150);
+        tablecolumn.setCellRenderer(fooRenderer);
         //wins
-        tablecolumn = tablecolumnmodel.getColumn(1);
+        tablecolumn = tablecolumnmodel.getColumn(1);        
+        tablecolumn.setCellRenderer(fooRenderer);
         tablecolumn.setPreferredWidth(30);
+        
         //games
         for (int xx = 0; xx < 7; xx++) {
-            tablecolumn = tablecolumnmodel.getColumn(xx + 2);
+            tablecolumn = tablecolumnmodel.getColumn(xx + 2);            
+            tablecolumn.setCellRenderer(fooRenderer);
             tablecolumn.setPreferredWidth(50);
         }
     //tablecolumn = tablecolumnmodel.getColumn(3);
@@ -430,7 +434,7 @@ public class TournamentGUI extends JPanel {
                 Playoff playoff = tournament.getPlayoff();
                 PlayoffPair[] pairs = playoff.getPlayoffPairs();
                 for (int x = 0; x < pairs.length; x++) {
-                    PlayoffPair pair = pairs[x];
+                    PlayoffPair pair = pairs[x];                    
                     PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                     JTable jtable2 = new JTable(pairmodel);
                     setPlayoffTableRenderers(jtable2.getColumnModel());
