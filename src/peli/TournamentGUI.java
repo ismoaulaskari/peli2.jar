@@ -420,7 +420,7 @@ public class TournamentGUI extends JPanel {
 
             //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
             if (1 == 1) {
-                JPanel jpanel2 = new JPanel();                
+                JPanel jpanel2 = new JPanel();
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 Playoff playoff = tournament.getPlayoff();
@@ -437,18 +437,18 @@ public class TournamentGUI extends JPanel {
                     JTableHeader playofftableheader = jtable2.getTableHeader();
                     //jtable2.setForeground(jpanel2.getForeground());
                     jtable2.setBackground(jpanel2.getBackground());
-                    playofftableheader.setReorderingAllowed(false);                    
+                    playofftableheader.setReorderingAllowed(false);
                     if (x == 0) {
                         jpanel2.add(playofftableheader);
                     }
                     jpanel2.add(Box.createRigidArea(new Dimension(5, 5)));
                     jpanel2.add(jtable2);
-                    
+
                 }
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-            jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));
+                jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));
             //ajtabbedpane[k].addTab(messages.getString("seriesTable"), jpanel2);
             //ajtabbedpane[k].addChangeListener(new SeriesTableListener(seriestablemodel)); //?
             }
@@ -479,9 +479,8 @@ public class TournamentGUI extends JPanel {
             setText((String) obj);
         }
     };
-
     static playoffRenderer playoffRenderer = new playoffRenderer();
-    
+
     static class playoffRenderer extends DefaultTableCellRenderer {
 
         private int row,  col;
@@ -513,8 +512,8 @@ public class TournamentGUI extends JPanel {
                 //setForeground (Color.white);
                 setBackground(Color.white);
             } else {
-                setBackground(UIManager.getColor ("Panel.background"));
-                //setBackground(Color.LIGHT_GRAY);
+                setBackground(UIManager.getColor("Panel.background"));
+            //setBackground(Color.LIGHT_GRAY);
             }
             setText((String) obj);
         }
