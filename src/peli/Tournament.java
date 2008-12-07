@@ -166,7 +166,7 @@ public class Tournament
         TreeSet atreeset[] = new TreeSet[numberOfDivisions];
         distributePlayers(atreeset, treeset);
         for(int j = 0; j < numberOfDivisions; j++)
-            divisions.add(new Division("Lohko " + (j + 1), i, atreeset[j]));
+            divisions.add(new Division(messages.getString("group") + " " + (j + 1), i, atreeset[j]));
         
         playoff = new Playoff(this, this.getStandingsNames());
 
@@ -268,7 +268,7 @@ public class Tournament
             });
         }
         return (new String[] {
-            displayName + "Lohko A"
+            displayName + " A"
         });
     }
 
