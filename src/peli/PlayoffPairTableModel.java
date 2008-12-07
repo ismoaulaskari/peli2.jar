@@ -42,28 +42,32 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         return columnNames[i];
     }
 
-    public Object getValueAt(int i, int j) {
-        Match match = (Match) playoffpair.getMatches().get(i);
-        switch (i) {
+    public Object getValueAtx(int i, int j) {
+        return i +"+"+ j;
+    }
+    
+    public Object getValueAt(int i, int j) {        
+        switch (j) {
             case 0:
-                if (j == 0) {
+                if (i == 0) {
                     return playoffpair.getHomeTeam();
                 } else {
                     return playoffpair.getAwayTeam();
                 }
 
             case 1:
-                if (j == 0) {
+                if (i == 0) {
                     return playoffpair.getHomeWins();
                 } else {
                     return playoffpair.getAwayWins();
                 }
         }
 
-        if (j == 0) {
-            if (isDummyMatch(i)) {
+        if (i == 0 && j > 1) {
+            if (isDummyMatch(j)) {
                 return "xxx";
             } else {
+                Match match = (Match) playoffpair.getMatches().get(j);
                 return match.getResult();
             }
         } else {
@@ -76,10 +80,13 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public boolean isCellEditable(int i, int j) {
-        if (j > 1) {
-            return false;
+        if(i == 0 && j > 1) return true;
+        
+        if (j == 0 && i < 2) {
+            return true;
         }
-        return !isDummyMatch(i);
+        
+        return false;        
     }
 
     private boolean isDummyMatch(int i) {
@@ -90,21 +97,21 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public void setValueAt(Object obj, int i, int j) {
-        if (j > 1 || i < 0) {
+        if (i > 1 || j < 0) {
             return;
         }
         SaveTracker.isSaved = false;
 
-        if (i == 0) {
-            if (j == 0) {
+        if (j == 0) {
+            if (i == 0) {
                 this.playoffpair.setHomeTeam((String) obj);
-            } else if (j == 1) {
+            } else if (i == 1) {
                 this.playoffpair.setAwayTeam((String) obj);
             }
-        } else if (i == 1) {
+        } else if (j == 1) {
             return;
-        } else if (i > 1 && j == 0) {
-            Match match = (Match) playoffpair.getMatches().get(i);
+        } else if (j > 1 && i == 0) {
+            Match match = (Match) playoffpair.getMatches().get(j);
             //SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
             //SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
             if (match.isOver()) {
