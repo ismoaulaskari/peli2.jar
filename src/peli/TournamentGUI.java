@@ -305,22 +305,22 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
-    private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {                
-        //names
+    private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {
+        //names                        
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
         tablecolumn.setPreferredWidth(150);
         tablecolumn.setMaxWidth(150);
         tablecolumn.setCellRenderer(playoffRenderer);
         //wins
-        tablecolumn = tablecolumnmodel.getColumn(1);        
+        tablecolumn = tablecolumnmodel.getColumn(1);
         tablecolumn.setCellRenderer(playoffRenderer);
         tablecolumn.setPreferredWidth(30);
-        
+
         //games
         for (int xx = 0; xx < 7; xx++) {
-            tablecolumn = tablecolumnmodel.getColumn(xx + 2);            
+            tablecolumn = tablecolumnmodel.getColumn(xx + 2);
             tablecolumn.setCellRenderer(playoffRenderer);
-            tablecolumn.setPreferredWidth(50);            
+            tablecolumn.setPreferredWidth(50);
         }
     //tablecolumn = tablecolumnmodel.getColumn(3);
     //tablecolumn.setCellRenderer(centerRenderer);
@@ -428,13 +428,13 @@ public class TournamentGUI extends JPanel {
                 //jpanel2.setLayout(new BorderLayout());
                 //jpanel2.add(jarea,"Center");
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
-                jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));               
+                jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 Playoff playoff = tournament.getPlayoff();
                 PlayoffPair[] pairs = playoff.getPlayoffPairs();
                 for (int x = 0; x < pairs.length; x++) {
-                    PlayoffPair pair = pairs[x];                    
+                    PlayoffPair pair = pairs[x];
                     PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
-                    JTable jtable2 = new JTable(pairmodel);                    
+                    JTable jtable2 = new JTable(pairmodel);
                     setPlayoffTableRenderers(jtable2.getColumnModel());
                     jtable2.setShowVerticalLines(true);
                     jtable2.setShowHorizontalLines(false);
@@ -442,20 +442,19 @@ public class TournamentGUI extends JPanel {
                     jtable2.setColumnSelectionAllowed(false);
                     JTableHeader playofftableheader = jtable2.getTableHeader();
                     //jtable2.setForeground(jpanel2.getForeground());
-                    jtable2.setBackground(jpanel2.getBackground());                    
-                    playofftableheader.setReorderingAllowed(false);                    
+                    jtable2.setBackground(jpanel2.getBackground());
+                    playofftableheader.setReorderingAllowed(false);
                     //color editable cells
                     /*for(int ix=0; ix<pairmodel.getColumnCount(); ix++) {
-                        for(int iy=0; iy<pairmodel.getRowCount(); iy++) {
-                            if(pairmodel.isCellEditable(ix, iy)) {
-                                
-                            }
-                        }
-                    } */                   
+                    for(int iy=0; iy<pairmodel.getRowCount(); iy++) {
+                    if(pairmodel.isCellEditable(ix, iy)) {                                
+                    }
+                    }
+                    } */
                     if (x == 0) {
                         jpanel2.add(playofftableheader);
                     }
-                    jpanel2.add(jtable2);                    
+                    jpanel2.add(jtable2);
                     jpanel2.add(Box.createRigidArea(new Dimension(5, 5)));
                 }
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
@@ -492,23 +491,46 @@ public class TournamentGUI extends JPanel {
             setText((String) obj);
         }
     };
-    private static DefaultTableCellRenderer playoffRenderer = new DefaultTableCellRenderer() {
 
-        public void setValue(Object obj) {
+    static playoffRenderer playoffRenderer = new playoffRenderer();
+    
+    static class playoffRenderer extends DefaultTableCellRenderer {
+
+        private int row,  col;
+
+        public Component getTableCellRendererComponent(JTable table,
+                Object value,
+                boolean isSelected,
+                boolean hasFocus,
+                int row,
+                int column) {
+            // Save row and column information for use in setValue().
+            this.row = row;
+            this.col = column;
+
+            // Allow superclass to return rendering component.
+            return super.getTableCellRendererComponent(table, value,
+                    isSelected, hasFocus,
+                    row, column);
+        }
+
+        protected void setValue(Object obj) {
+            // Allow superclass to set the value.
+            super.setValue(obj);
+
             setHorizontalAlignment(SwingConstants.CENTER);
             setVerticalAlignment(SwingConstants.TOP);
-            if(! this.getText().isEmpty()) {                
-                System.out.println(this.getClass().getName() + " " +this.getText());
+            if ((this.col == 0 && this.row < 2) || (this.row == 0 && this.col > 1)) {
+                //System.out.println(this.getClass().getName() + " " + this.getText());
                 //setForeground (Color.white);
-                setBackground (Color.white);
-            } 
-            else {
+                setBackground(Color.white);
+            } else {
                 //setBackground(UIManager.getColor ("Table.background"));
                 setBackground(Color.LIGHT_GRAY);
             }
             setText((String) obj);
         }
-    };
+    }
     
 
     static {
