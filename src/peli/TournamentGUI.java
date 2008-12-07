@@ -310,17 +310,17 @@ public class TournamentGUI extends JPanel {
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
         tablecolumn.setPreferredWidth(150);
         tablecolumn.setMaxWidth(150);
-        tablecolumn.setCellRenderer(fooRenderer);
+        tablecolumn.setCellRenderer(playoffRenderer);
         //wins
         tablecolumn = tablecolumnmodel.getColumn(1);        
-        tablecolumn.setCellRenderer(fooRenderer);
+        tablecolumn.setCellRenderer(playoffRenderer);
         tablecolumn.setPreferredWidth(30);
         
         //games
         for (int xx = 0; xx < 7; xx++) {
             tablecolumn = tablecolumnmodel.getColumn(xx + 2);            
-            tablecolumn.setCellRenderer(fooRenderer);
-            tablecolumn.setPreferredWidth(50);
+            tablecolumn.setCellRenderer(playoffRenderer);
+            tablecolumn.setPreferredWidth(50);            
         }
     //tablecolumn = tablecolumnmodel.getColumn(3);
     //tablecolumn.setCellRenderer(centerRenderer);
@@ -437,11 +437,21 @@ public class TournamentGUI extends JPanel {
                     JTable jtable2 = new JTable(pairmodel);                    
                     setPlayoffTableRenderers(jtable2.getColumnModel());
                     jtable2.setShowVerticalLines(true);
-                    jtable2.setShowHorizontalLines(true);
+                    jtable2.setShowHorizontalLines(false);
                     jtable2.setRowSelectionAllowed(false);
                     jtable2.setColumnSelectionAllowed(false);
                     JTableHeader playofftableheader = jtable2.getTableHeader();
-                    playofftableheader.setReorderingAllowed(false);
+                    //jtable2.setForeground(jpanel2.getForeground());
+                    jtable2.setBackground(jpanel2.getBackground());                    
+                    playofftableheader.setReorderingAllowed(false);                    
+                    //color editable cells
+                    /*for(int ix=0; ix<pairmodel.getColumnCount(); ix++) {
+                        for(int iy=0; iy<pairmodel.getRowCount(); iy++) {
+                            if(pairmodel.isCellEditable(ix, iy)) {
+                                
+                            }
+                        }
+                    } */                   
                     if (x == 0) {
                         jpanel2.add(playofftableheader);
                     }
@@ -482,11 +492,20 @@ public class TournamentGUI extends JPanel {
             setText((String) obj);
         }
     };
-    private static DefaultTableCellRenderer fooRenderer = new DefaultTableCellRenderer() {
+    private static DefaultTableCellRenderer playoffRenderer = new DefaultTableCellRenderer() {
 
         public void setValue(Object obj) {
             setHorizontalAlignment(SwingConstants.CENTER);
             setVerticalAlignment(SwingConstants.TOP);
+            if(! this.getText().isEmpty()) {                
+                System.out.println(this.getClass().getName() + " " +this.getText());
+                //setForeground (Color.white);
+                setBackground (Color.white);
+            } 
+            else {
+                //setBackground(UIManager.getColor ("Table.background"));
+                setBackground(Color.LIGHT_GRAY);
+            }
             setText((String) obj);
         }
     };
