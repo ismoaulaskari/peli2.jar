@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.*;
-import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import javax.swing.table.*;
 
