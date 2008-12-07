@@ -427,16 +427,14 @@ public class TournamentGUI extends JPanel {
                 //jarea.setFont(new Font("Times", 0, 10));
                 //jpanel2.setLayout(new BorderLayout());
                 //jpanel2.add(jarea,"Center");
-
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
-                jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                jpanel2.setLayout(new BorderLayout());
+                jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));               
                 Playoff playoff = tournament.getPlayoff();
                 PlayoffPair[] pairs = playoff.getPlayoffPairs();
                 for (int x = 0; x < pairs.length; x++) {
                     PlayoffPair pair = pairs[x];                    
                     PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
-                    JTable jtable2 = new JTable(pairmodel);
+                    JTable jtable2 = new JTable(pairmodel);                    
                     setPlayoffTableRenderers(jtable2.getColumnModel());
                     jtable2.setShowVerticalLines(true);
                     jtable2.setShowHorizontalLines(true);
@@ -447,16 +445,15 @@ public class TournamentGUI extends JPanel {
                     if (x == 0) {
                         jpanel2.add(playofftableheader);
                     }
-                    jpanel2.add(jtable2);
+                    jpanel2.add(jtable2);                    
+                    jpanel2.add(Box.createRigidArea(new Dimension(5, 5)));
                 }
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-
             //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("playoff")));
             //ajtabbedpane[k].addTab(messages.getString("seriesTable"), jpanel2);
             //ajtabbedpane[k].addChangeListener(new SeriesTableListener(seriestablemodel)); //?
-
             }
         }
 
