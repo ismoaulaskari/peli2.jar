@@ -315,7 +315,7 @@ public class TournamentGUI extends JPanel {
         tablecolumn = tablecolumnmodel.getColumn(1);
         tablecolumn.setPreferredWidth(30);
         //games
-        for(int xx=0; xx<1; xx++) {
+        for(int xx=0; xx<7; xx++) {
             tablecolumn = tablecolumnmodel.getColumn(xx+2);
             tablecolumn.setPreferredWidth(50);
         }
@@ -427,7 +427,10 @@ public class TournamentGUI extends JPanel {
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-
+                
+        jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
+        jpanel2.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+                jpanel2.setLayout(new BorderLayout());
                 Playoff playoff = tournament.getPlayoff();
                 PlayoffPair[] pairs = playoff.getPlayoffPairs();
                 for (int x = 0; x < pairs.length; x++) {
@@ -435,17 +438,17 @@ public class TournamentGUI extends JPanel {
                     PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                     JTable jtable2 = new JTable(pairmodel);
                     setPlayoffTableRenderers(jtable2.getColumnModel());
-                    jtable2.setShowVerticalLines(false);
-                    jtable2.setShowHorizontalLines(false);
+                    jtable2.setShowVerticalLines(true);
+                    jtable2.setShowHorizontalLines(true);
                     jtable2.setRowSelectionAllowed(false);
                     jtable2.setColumnSelectionAllowed(false);
                     JTableHeader playofftableheader = jtable2.getTableHeader();
                     playofftableheader.setReorderingAllowed(false);
-                    jpanel2.setLayout(new BorderLayout());
-                    jpanel2.add(playofftableheader, "North");
-                    jpanel2.add(jtable2, "Center");
+                    
+                    jpanel2.add(playofftableheader);
+                    jpanel2.add(jtable2);
                 }
-                jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("playoff")));
+                //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("playoff")));
             //ajtabbedpane[k].addTab(messages.getString("seriesTable"), jpanel2);
             //ajtabbedpane[k].addChangeListener(new SeriesTableListener(seriestablemodel)); //?
 
@@ -482,7 +485,7 @@ public class TournamentGUI extends JPanel {
 
         public void setValue(Object obj) {
             setHorizontalAlignment(0);
-            //setText((String) obj);
+            setText((String) obj);
         }
     };
 

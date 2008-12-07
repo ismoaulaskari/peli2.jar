@@ -37,6 +37,7 @@ public class Playoff {
     private PlayoffPair[] createPairs(List players, int size) {
         PlayoffPair[] pairs = new PlayoffPair[size/2];
         for(int i=0; i<size/2; i++) {
+            //pairs[i] = new PlayoffPair(this, "foo", "bar");        
             pairs[i] = new PlayoffPair(this, (String)players.remove(0), (String)players.remove(0));        
         }
                 
