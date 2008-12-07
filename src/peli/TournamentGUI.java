@@ -192,92 +192,91 @@ public class TournamentGUI extends JPanel {
 
     /*
     private static JPanel createPlayoffTable() {
-        //holds a pair of matches
-        JPanel allPanel = new JPanel();
-        allPanel.setLayout(new BoxLayout(allPanel, BoxLayout.Y_AXIS));
-        allPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        for (int i = 0; i < 8; i++) {
-            allPanel.add(createPlayoffPair());
-        }
-
-        return allPanel;
+    //holds a pair of matches
+    JPanel allPanel = new JPanel();
+    allPanel.setLayout(new BoxLayout(allPanel, BoxLayout.Y_AXIS));
+    allPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    for (int i = 0; i < 8; i++) {
+    allPanel.add(createPlayoffPair());
     }
-
+    
+    return allPanel;
+    }
+    
     
     private static JPanel createPlayoffPair() {
-        //holds everything
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
-        bottomPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        //holds a pair of matches
-        JPanel pairPanel = new JPanel();
-        pairPanel.setLayout(new BoxLayout(pairPanel, BoxLayout.Y_AXIS));
-        pairPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        //holds name1 and win count1
-        JPanel namePanel = new JPanel();
-        namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
-        namePanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-
-        //holds name2 and win count2
-        JPanel name2Panel = new JPanel();
-        name2Panel.setLayout(new BoxLayout(name2Panel, BoxLayout.X_AXIS));
-        name2Panel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-
-        //holds scores
-        JPanel scorePanel = new JPanel();
-        scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.X_AXIS));
-        scorePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        String name = "Tuomo Ala-Kojola";
-        JTextField player = new JTextField(name);
-        Dimension dz = player.getSize();
-        player.setPreferredSize(dz);
-//        player.setMaximumSize(dz);
-        player.setMinimumSize(dz);
-        namePanel.add(player);
-
-        String name2 = "Ismo Lahtinen";
-        JTextField player2 = new JTextField(name2);
-        player2.setPreferredSize(dz);
-//        player2.setMaximumSize(dz);
-        player2.setMinimumSize(dz);
-        name2Panel.add(player2);
-
-        namePanel.add(new JLabel("4"));
-        name2Panel.add(new JLabel("3"));
-
-        namePanel.setMaximumSize(new Dimension(270, 40));
-        name2Panel.setMaximumSize(new Dimension(270, 40));
-
-        //seven results
-        scorePanel.add(Box.createRigidArea(new Dimension(5, 5)));
-        for (int i = 0; i < 7; i++) {
-            JTextField jt = new JTextField("        ");
-            Dimension dj = jt.getSize();
-            jt.setPreferredSize(dj);
-//            jt.setMaximumSize(jt.getSize());
-            jt.setMinimumSize(dj);
-            scorePanel.add(jt).setBounds(jt.getBounds());
-        }
-
-        //tyhjää väliin
-        scorePanel.add(Box.createRigidArea(new Dimension(5, 5)));
-        scorePanel.setMaximumSize(new Dimension(540, 50));
-
-        //namesPanel.add(Box.createHorizontalGlue());
-        pairPanel.add(Box.createRigidArea(new Dimension(10, 10)));
-        pairPanel.add(namePanel);
-        pairPanel.add(name2Panel);
-        pairPanel.add(Box.createRigidArea(new Dimension(10, 10)));
-        pairPanel.setMaximumSize(new Dimension(320, 100));
-        bottomPanel.add(pairPanel);
-        bottomPanel.add(scorePanel);
-
-        return bottomPanel;
+    //holds everything
+    JPanel bottomPanel = new JPanel();
+    bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
+    bottomPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    
+    //holds a pair of matches
+    JPanel pairPanel = new JPanel();
+    pairPanel.setLayout(new BoxLayout(pairPanel, BoxLayout.Y_AXIS));
+    pairPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    
+    //holds name1 and win count1
+    JPanel namePanel = new JPanel();
+    namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
+    namePanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+    
+    //holds name2 and win count2
+    JPanel name2Panel = new JPanel();
+    name2Panel.setLayout(new BoxLayout(name2Panel, BoxLayout.X_AXIS));
+    name2Panel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+    
+    //holds scores
+    JPanel scorePanel = new JPanel();
+    scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.X_AXIS));
+    scorePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    
+    String name = "Tuomo Ala-Kojola";
+    JTextField player = new JTextField(name);
+    Dimension dz = player.getSize();
+    player.setPreferredSize(dz);
+    //        player.setMaximumSize(dz);
+    player.setMinimumSize(dz);
+    namePanel.add(player);
+    
+    String name2 = "Ismo Lahtinen";
+    JTextField player2 = new JTextField(name2);
+    player2.setPreferredSize(dz);
+    //        player2.setMaximumSize(dz);
+    player2.setMinimumSize(dz);
+    name2Panel.add(player2);
+    
+    namePanel.add(new JLabel("4"));
+    name2Panel.add(new JLabel("3"));
+    
+    namePanel.setMaximumSize(new Dimension(270, 40));
+    name2Panel.setMaximumSize(new Dimension(270, 40));
+    
+    //seven results
+    scorePanel.add(Box.createRigidArea(new Dimension(5, 5)));
+    for (int i = 0; i < 7; i++) {
+    JTextField jt = new JTextField("        ");
+    Dimension dj = jt.getSize();
+    jt.setPreferredSize(dj);
+    //            jt.setMaximumSize(jt.getSize());
+    jt.setMinimumSize(dj);
+    scorePanel.add(jt).setBounds(jt.getBounds());
+    }
+    
+    //tyhjää väliin
+    scorePanel.add(Box.createRigidArea(new Dimension(5, 5)));
+    scorePanel.setMaximumSize(new Dimension(540, 50));
+    
+    //namesPanel.add(Box.createHorizontalGlue());
+    pairPanel.add(Box.createRigidArea(new Dimension(10, 10)));
+    pairPanel.add(namePanel);
+    pairPanel.add(name2Panel);
+    pairPanel.add(Box.createRigidArea(new Dimension(10, 10)));
+    pairPanel.setMaximumSize(new Dimension(320, 100));
+    bottomPanel.add(pairPanel);
+    bottomPanel.add(scorePanel);
+    
+    return bottomPanel;
     }*/
-
     private static JPanel createMatchListTable(int i) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, 1));
@@ -315,14 +314,14 @@ public class TournamentGUI extends JPanel {
         tablecolumn = tablecolumnmodel.getColumn(1);
         tablecolumn.setPreferredWidth(30);
         //games
-        for(int xx=0; xx<7; xx++) {
-            tablecolumn = tablecolumnmodel.getColumn(xx+2);
+        for (int xx = 0; xx < 7; xx++) {
+            tablecolumn = tablecolumnmodel.getColumn(xx + 2);
             tablecolumn.setPreferredWidth(50);
         }
-        //tablecolumn = tablecolumnmodel.getColumn(3);
-        //tablecolumn.setCellRenderer(centerRenderer);
-        //tablecolumn.setPreferredWidth(40);
-        //tablecolumn.setMaxWidth(50);
+    //tablecolumn = tablecolumnmodel.getColumn(3);
+    //tablecolumn.setCellRenderer(centerRenderer);
+    //tablecolumn.setPreferredWidth(40);
+    //tablecolumn.setMaxWidth(50);
     }
 
     private static void setRoundTableRenderers(TableColumnModel tablecolumnmodel, int i) {
@@ -424,17 +423,14 @@ public class TournamentGUI extends JPanel {
                 //jarea.setFont(new Font("Times", 0, 10));
                 //jpanel2.setLayout(new BorderLayout());
                 //jpanel2.add(jarea,"Center");
-                JScrollPane columnScrollPane = new JScrollPane(jpanel2);
-                columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
-                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-                
-        jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
-        jpanel2.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+                jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
+                jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 jpanel2.setLayout(new BorderLayout());
                 Playoff playoff = tournament.getPlayoff();
                 PlayoffPair[] pairs = playoff.getPlayoffPairs();
                 for (int x = 0; x < pairs.length; x++) {
-                    PlayoffPair pair = pairs[i];
+                    PlayoffPair pair = pairs[x];
                     PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                     JTable jtable2 = new JTable(pairmodel);
                     setPlayoffTableRenderers(jtable2.getColumnModel());
@@ -444,11 +440,16 @@ public class TournamentGUI extends JPanel {
                     jtable2.setColumnSelectionAllowed(false);
                     JTableHeader playofftableheader = jtable2.getTableHeader();
                     playofftableheader.setReorderingAllowed(false);
-                    
-                    jpanel2.add(playofftableheader);
+                    if (x == 0) {
+                        jpanel2.add(playofftableheader);
+                    }
                     jpanel2.add(jtable2);
                 }
-                //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("playoff")));
+                JScrollPane columnScrollPane = new JScrollPane(jpanel2);
+                columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
+                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
+
+            //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("playoff")));
             //ajtabbedpane[k].addTab(messages.getString("seriesTable"), jpanel2);
             //ajtabbedpane[k].addChangeListener(new SeriesTableListener(seriestablemodel)); //?
 
@@ -480,7 +481,6 @@ public class TournamentGUI extends JPanel {
             setText((String) obj);
         }
     };
-    
     private static DefaultTableCellRenderer fooRenderer = new DefaultTableCellRenderer() {
 
         public void setValue(Object obj) {
@@ -489,8 +489,8 @@ public class TournamentGUI extends JPanel {
             setText((String) obj);
         }
     };
-
     
+
     static {
 //        locale = new Locale(new String("fi"), new String("FI"));
 //        messages = ResourceBundle.getBundle("Messages", locale);
