@@ -484,7 +484,8 @@ public class TournamentGUI extends JPanel {
     private static DefaultTableCellRenderer fooRenderer = new DefaultTableCellRenderer() {
 
         public void setValue(Object obj) {
-            setHorizontalAlignment(0);
+            setHorizontalAlignment(SwingConstants.CENTER);
+            setVerticalAlignment(SwingConstants.TOP);
             setText((String) obj);
         }
     };
