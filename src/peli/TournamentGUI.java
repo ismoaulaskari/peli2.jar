@@ -420,12 +420,7 @@ public class TournamentGUI extends JPanel {
 
             //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
             if (1 == 1) {
-                JPanel jpanel2 = new JPanel();
-                //JPanel jpanel2 = createPlayoffTable();
-                //JLabel jarea = new JLabel(tournament.getFormattedStandings()); 
-                //jarea.setFont(new Font("Times", 0, 10));
-                //jpanel2.setLayout(new BorderLayout());
-                //jpanel2.add(jarea,"Center");
+                JPanel jpanel2 = new JPanel();                
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 Playoff playoff = tournament.getPlayoff();
@@ -435,26 +430,20 @@ public class TournamentGUI extends JPanel {
                     PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                     JTable jtable2 = new JTable(pairmodel);
                     setPlayoffTableRenderers(jtable2.getColumnModel());
-                    jtable2.setShowVerticalLines(true);
+                    jtable2.setShowVerticalLines(false);
                     jtable2.setShowHorizontalLines(false);
                     jtable2.setRowSelectionAllowed(false);
                     jtable2.setColumnSelectionAllowed(false);
                     JTableHeader playofftableheader = jtable2.getTableHeader();
                     //jtable2.setForeground(jpanel2.getForeground());
                     jtable2.setBackground(jpanel2.getBackground());
-                    playofftableheader.setReorderingAllowed(false);
-                    //color editable cells
-                    /*for(int ix=0; ix<pairmodel.getColumnCount(); ix++) {
-                    for(int iy=0; iy<pairmodel.getRowCount(); iy++) {
-                    if(pairmodel.isCellEditable(ix, iy)) {                                
-                    }
-                    }
-                    } */
+                    playofftableheader.setReorderingAllowed(false);                    
                     if (x == 0) {
                         jpanel2.add(playofftableheader);
                     }
-                    jpanel2.add(jtable2);
                     jpanel2.add(Box.createRigidArea(new Dimension(5, 5)));
+                    jpanel2.add(jtable2);
+                    
                 }
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
@@ -524,8 +513,8 @@ public class TournamentGUI extends JPanel {
                 //setForeground (Color.white);
                 setBackground(Color.white);
             } else {
-                //setBackground(UIManager.getColor ("Table.background"));
-                setBackground(Color.LIGHT_GRAY);
+                setBackground(UIManager.getColor ("Panel.background"));
+                //setBackground(Color.LIGHT_GRAY);
             }
             setText((String) obj);
         }
