@@ -86,7 +86,7 @@ public class PlayoffPair {
     }
 
     public ArrayList getMatches() {
-        return matches;
+        return this.matches;
     }
 
     public void setMatches(ArrayList matches) {

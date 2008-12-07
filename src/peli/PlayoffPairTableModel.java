@@ -64,12 +64,12 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         }
 
         if (i == 0 && j > 1) {
-            if (isDummyMatch(j)) {
-                return "xxx";
-            } else {
-                Match match = (Match) playoffpair.getMatches().get(j);
+            //if (isDummyMatch(j)) {
+            //    return "xxx";
+            //} else {
+                Match match = (Match) playoffpair.getMatches().get(j-2);
                 return match.getResult();
-            }
+            //}
         } else {
             return "";
         }
@@ -90,7 +90,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     private boolean isDummyMatch(int i) {
-        Match match = (Match) playoffpair.getMatches().get(i);
+        Match match = (Match) playoffpair.getMatches().get(i-2);
         String s = match.home();
         String s1 = match.visitor();
         return s.equals("X") || s1.equals("X");
@@ -111,7 +111,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         } else if (j == 1) {
             return;
         } else if (j > 1 && i == 0) {
-            Match match = (Match) playoffpair.getMatches().get(j);
+            Match match = (Match) playoffpair.getMatches().get(j-2);
             //SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
             //SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
             if (match.isOver()) {
