@@ -344,6 +344,7 @@ public class Division {
         SeriesTable seriestable = getSeriesTable();
         printout.append("<html>");
         printout.append("<body>");
+        printout.append("<center>");
         printout.append("<table align=\"center\" bgcolor=\"#c0c0c0\">");
         printout.append("<tr>\n<td>\n<pre>\n");
         printout.append(seriestable.toString());
@@ -378,6 +379,7 @@ public class Division {
         }
 
         printout.append("</table></font>");
+        printout.append("</center>");
         printout.append("</body>");
         printout.append("</html>");
 
