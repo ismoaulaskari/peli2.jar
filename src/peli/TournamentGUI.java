@@ -360,6 +360,35 @@ public class TournamentGUI extends JPanel {
         tablecolumn1.setMaxWidth(10);
     }
 
+    private static JPanel createPlayoffTable(int size) {
+        JPanel jpanel = new JPanel();
+        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
+        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        Playoff playoff = tournament.getPlayoff(size);
+        PlayoffPair[] pairs = playoff.getPlayoffPairs();
+        for (int x = 0; x < pairs.length; x++) {
+            PlayoffPair pair = pairs[x];
+            PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
+            JTable jtable2 = new JTable(pairmodel);
+            setPlayoffTableRenderers(jtable2.getColumnModel());
+            jtable2.setShowVerticalLines(false);
+            jtable2.setShowHorizontalLines(false);
+            jtable2.setRowSelectionAllowed(false);
+            jtable2.setColumnSelectionAllowed(false);
+            //jtable2.setForeground(jpanel.getForeground());
+            jtable2.setBackground(jpanel.getBackground());
+            JTableHeader playofftableheader = jtable2.getTableHeader();
+            playofftableheader.setReorderingAllowed(false);
+            if (x == 0) {
+                jpanel.add(playofftableheader);
+            }
+            jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
+            jpanel.add(jtable2);
+        }
+
+        return jpanel;
+    }
+
     private static JPanel createDivisionCards() {
         JPanel jpanel = new JPanel();
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("selectedGroup") + " "));
@@ -424,28 +453,11 @@ public class TournamentGUI extends JPanel {
                 JPanel jpanel2 = new JPanel();
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                Playoff playoff = tournament.getPlayoff();
-                PlayoffPair[] pairs = playoff.getPlayoffPairs();
-                for (int x = 0; x < pairs.length; x++) {
-                    PlayoffPair pair = pairs[x];
-                    PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
-                    JTable jtable2 = new JTable(pairmodel);
-                    setPlayoffTableRenderers(jtable2.getColumnModel());
-                    jtable2.setShowVerticalLines(false);
-                    jtable2.setShowHorizontalLines(false);
-                    jtable2.setRowSelectionAllowed(false);
-                    jtable2.setColumnSelectionAllowed(false);
-                    JTableHeader playofftableheader = jtable2.getTableHeader();
-                    //jtable2.setForeground(jpanel2.getForeground());
-                    jtable2.setBackground(jpanel2.getBackground());
-                    playofftableheader.setReorderingAllowed(false);
-                    if (x == 0) {
-                        jpanel2.add(playofftableheader);
-                    }
-                    jpanel2.add(Box.createRigidArea(new Dimension(5, 5)));
-                    jpanel2.add(jtable2);
-
-                }
+                JTabbedPane playoffpane = new JTabbedPane();                                
+                playoffpane.addTab("Play8", createPlayoffTable(8));
+                playoffpane.addTab("Play4", createPlayoffTable(4));
+                playoffpane.addTab("Play2", createPlayoffTable(2));                
+                jpanel2.add(playoffpane);
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
@@ -460,7 +472,7 @@ public class TournamentGUI extends JPanel {
             jpanel.add(ajtabbedpane[l], as[l]);
         }
         return jpanel;
-    }    
+    }
     private static Locale locale;
     private static ResourceBundle messages;
     private static ResourceBundle keyCodes;
@@ -527,6 +539,6 @@ public class TournamentGUI extends JPanel {
 //        keyCodes = ResourceBundle.getBundle("KeyCodeBundle", locale);
         locale = Constants.getInstance().getLocale();
         messages = Constants.getInstance().getMessages();
-        keyCodes = Constants.getInstance().getKeyCodes();        
+        keyCodes = Constants.getInstance().getKeyCodes();
     }
 }
