@@ -360,12 +360,19 @@ public class TournamentGUI extends JPanel {
         tablecolumn1.setMaxWidth(10);
     }
 
-    private static JPanel createPlayoffCreatePanel() {
-        JPanel jpanel = new JPanel();
+    private static JPanel createPlayoffSizeButtons(int maxPlayers) {        
         ButtonGroup playoffSize = new ButtonGroup();
-        JRadioButtonMenuItem option = new JRadioButtonMenuItem("test");
-        playoffSize.add(option);
-        jpanel.add();
+        JPanel jpanel = new JPanel();
+        for(int i=1; maxPlayers/i > 1; i*=2) {
+            JRadioButton option = new JRadioButton(maxPlayers/i + " players");
+            if(maxPlayers/i == 8) {
+                option.setSelected(true);
+            }
+            playoffSize.add(option);        
+            jpanel.add(option);
+        }
+                
+        //add action listeners
         
         return jpanel;
     }
@@ -464,7 +471,7 @@ public class TournamentGUI extends JPanel {
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 JTabbedPane playoffpane = new JTabbedPane();                                
-                playoffpane.addTab("New playoff", createPlayoffCreatePanel());
+                playoffpane.addTab("New playoff", createPlayoffSizeButtons(128));
                 playoffpane.addTab("Play8", createPlayoffPanel(8));
                 //playoffpane.addTab("Play4", createPlayoffTable(4));
                 //playoffpane.addTab("Play2", createPlayoffTable(2));                
