@@ -362,7 +362,7 @@ public class TournamentGUI extends JPanel {
 
     private static JPanel createPlayoffSizeButtons(int maxPlayers) {
         ButtonGroup playoffSize = new ButtonGroup();
-        ActionListener createlistener = new CreatePlayoffListener(playoffpane);
+        ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         int tmp;

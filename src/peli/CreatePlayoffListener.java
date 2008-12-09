@@ -17,17 +17,18 @@ public class CreatePlayoffListener implements ActionListener {
     private JTabbedPane playoffpane;
                 
     public CreatePlayoffListener(JTabbedPane playoffpane) {
+        this.playoffpane = playoffpane;
     }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("CREATE")) {             
-            if (playoffpane != null) {
+            if (this.playoffpane != null) {
                 String size = source;
-                if (source == null) {
+                if (this.source == null) {
                     size = "2"; //default
                 }
                 System.out.println(size);
-                playoffpane.addTab("Play" + size, TournamentGUI.createPlayoffPanel(Integer.parseInt(size)));
+                this.playoffpane.addTab("Play" + size, TournamentGUI.createPlayoffPanel(Integer.parseInt(size)));
             }
         } else {
             this.source = ae.getActionCommand(); //size?
