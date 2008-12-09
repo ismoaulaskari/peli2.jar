@@ -363,6 +363,7 @@ public class TournamentGUI extends JPanel {
     private static JPanel createPlayoffSizeButtons(int maxPlayers) {        
         ButtonGroup playoffSize = new ButtonGroup();
         JPanel jpanel = new JPanel();
+        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         for(int i=1; maxPlayers/i > 1; i*=2) {
             JRadioButton option = new JRadioButton(maxPlayers/i + " players");
             if(maxPlayers/i == 8) {
