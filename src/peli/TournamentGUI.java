@@ -360,7 +360,17 @@ public class TournamentGUI extends JPanel {
         tablecolumn1.setMaxWidth(10);
     }
 
-    private static JPanel createPlayoffTable(int size) {
+    private static JPanel createPlayoffCreatePanel() {
+        JPanel jpanel = new JPanel();
+        ButtonGroup playoffSize = new ButtonGroup();
+        JRadioButtonMenuItem option = new JRadioButtonMenuItem("test");
+        playoffSize.add(option);
+        jpanel.add();
+        
+        return jpanel;
+    }
+    
+    private static JPanel createPlayoffPanel(int size) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -454,9 +464,10 @@ public class TournamentGUI extends JPanel {
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 JTabbedPane playoffpane = new JTabbedPane();                                
-                playoffpane.addTab("Play8", createPlayoffTable(8));
-                playoffpane.addTab("Play4", createPlayoffTable(4));
-                playoffpane.addTab("Play2", createPlayoffTable(2));                
+                playoffpane.addTab("New playoff", createPlayoffCreatePanel());
+                playoffpane.addTab("Play8", createPlayoffPanel(8));
+                //playoffpane.addTab("Play4", createPlayoffTable(4));
+                //playoffpane.addTab("Play2", createPlayoffTable(2));                
                 jpanel2.add(playoffpane);
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));

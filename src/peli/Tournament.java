@@ -171,8 +171,8 @@ public class Tournament
         for(int j = 0; j < numberOfDivisions; j++)
             divisions.add(new Division(messages.getString("group") + " " + (j + 1), i, atreeset[j]));
         
-        playoffs.put(2, new Playoff(this, this.getStandingsNames(), 2));        
-        playoffs.put(4, new Playoff(this, this.getStandingsNames(), 4));        
+  //      playoffs.put(2, new Playoff(this, this.getStandingsNames(), 2));        
+  //      playoffs.put(4, new Playoff(this, this.getStandingsNames(), 4));        
         playoffs.put(8, new Playoff(this, this.getStandingsNames(), 8));        
     }
 
@@ -206,8 +206,8 @@ public class Tournament
             throw fileformatexception;
         }
         
-        playoffs.put(2, new Playoff(this, this.getStandingsNames(), 2));
-        playoffs.put(4, new Playoff(this, this.getStandingsNames(), 4));        
+//        playoffs.put(2, new Playoff(this, this.getStandingsNames(), 2));
+//        playoffs.put(4, new Playoff(this, this.getStandingsNames(), 4));        
         playoffs.put(8, new Playoff(this, this.getStandingsNames(), 8));        
 
     }
