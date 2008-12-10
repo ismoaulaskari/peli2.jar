@@ -5,6 +5,7 @@
 
 package peli;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,11 +62,21 @@ public class Playoff {
     }
 
     public List getSurvivors() {
-        return players; //?
+        ArrayList survivors = new ArrayList();
+        for(int i=0; i<playoffPairs.length; i++) {
+            survivors.add(playoffPairs[i].getWinner());
+        }
+        
+        return survivors;
     }
     
     public List getLosers() {
-        return players; //?
+        ArrayList losers = new ArrayList();
+        for(int i=0; i<playoffPairs.length; i++) {
+            losers.add(playoffPairs[i].getWinner());
+        }
+        
+        return losers;
     }
 
     public PlayoffPair[] getPlayoffPairs() {

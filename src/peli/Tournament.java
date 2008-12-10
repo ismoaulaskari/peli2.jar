@@ -29,10 +29,24 @@ public class Tournament
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
+    private ArrayList playoffSurvivors = new ArrayList();
     
     
     public Playoff getPlayoff(int size) {
-        return (Playoff) this.playoffs.get(size);        
+        Playoff playoff = null;
+        if(this.playoffs.containsKey(size)) {
+            playoff = (Playoff) this.playoffs.get(size);        
+        }
+        else {
+            if(playoffSurvivors == null || playoffSurvivors.isEmpty()) {
+                this.playoffs.put(size, new Playoff(this, this.getStandingsNames(), size));        
+            }
+            else {
+                this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));        
+            }
+        }
+        
+        return playoff;
     }
 
     
