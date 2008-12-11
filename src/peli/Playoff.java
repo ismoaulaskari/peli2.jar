@@ -35,7 +35,11 @@ public class Playoff {
         this(tournament, players, players.size());
     }
     
+    //won't support empty players
     private PlayoffPair[] createPairs(List players, int size) {
+        if(size > players.size()) {
+            size = players.size();
+        }
         PlayoffPair[] pairs = new PlayoffPair[size/2];
         for(int i=0; i<size/2; i++) {
             //pairs[i] = new PlayoffPair(this, "foo"+i, "bar"+i);        
