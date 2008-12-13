@@ -33,18 +33,21 @@ public class Tournament {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
             if (playoffSurvivors == null || playoffSurvivors.isEmpty()) {
-                this.playoffs.put(size, new Playoff(this, this.getStandingsNames(), size));
+                if (this.playoffs.containsKey(size * 2)) {
+                    this.playoffs.put(size, new Playoff(this, ((Playoff)this.playoffs.get(size * 2)).getSurvivors(), size));
+                } else {
+                    this.playoffs.put(size, new Playoff(this, getStandingsNames(), size));
+                }
             } else {
-                this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));
+               // this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));
             }
         }
         playoff = (Playoff) this.playoffs.get(size);
-        System.out.println("playoffs.get " + size);
+    //    System.out.println("playoffs.get " + size);
 
         return playoff;
     }
-    
-    
+
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
