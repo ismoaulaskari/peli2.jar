@@ -274,14 +274,24 @@ public class TournamentGUI extends JPanel {
         tablecolumn1.setMaxWidth(10);
     }
 
+    private static JButton createNextRoundButton(int maxPlayers) {
+        ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
+        JButton nextButton = new JButton("Create next playoff round");
+        ((CreatePlayoffListener) createlistener).setSource(String.valueOf(maxPlayers));
+        nextButton.setActionCommand("CREATE");
+        nextButton.addActionListener(createlistener);
+
+        return nextButton;
+    }
+
     private static JPanel createPlayoffSizeButtons(int maxPlayers) {
         ButtonGroup playoffSize = new ButtonGroup();
         ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
-        int tmp;
+
         for (int i = 1; maxPlayers / i > 1; i *= 2) {
-            tmp = maxPlayers / i;
+            int tmp = maxPlayers / i;
             JRadioButton option = new JRadioButton(tmp + " players");
             if (tmp == 8) {
                 option.setSelected(true);
@@ -330,7 +340,10 @@ public class TournamentGUI extends JPanel {
             jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
             jpanel.add(jtable2);
         }
-
+        if (size > 2) {
+            jpanel.add(createNextRoundButton(size / 2));
+        }
+        
         return jpanel;
     }
 
@@ -406,7 +419,7 @@ public class TournamentGUI extends JPanel {
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-                //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));
+            //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));
             //ajtabbedpane[k].addTab(messages.getString("seriesTable"), jpanel2);
             //ajtabbedpane[k].addChangeListener(new SeriesTableListener(seriestablemodel)); //?
             }
@@ -424,6 +437,7 @@ public class TournamentGUI extends JPanel {
     private static Tournament tournament;
     private static MainWindow themainwindow; //hack
     private static JTabbedPane playoffpane;
+   
     private static DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer() {
 
         public void setValue(Object obj) {

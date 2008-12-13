@@ -34,6 +34,10 @@ public class CreatePlayoffListener implements ActionListener {
             this.source = ae.getActionCommand(); //size?
         }
     }
+    
+    public void setSource(String command) {
+        this.source = command;
+    }
 }
 
 
