@@ -26,12 +26,12 @@ public class CreatePlayoffListener implements ActionListener {
             if (this.playoffpane != null) {
                 String size = source;
                 if (this.source == null) {
-                    size = "2"; //default
+                    size = "8"; //default
                 }
                 if (ae.getActionCommand().equals("CREATE")) {
                     if(! TournamentGUI.warnCreatePlayoff()) return; //confirm overwrite of playoffs
                     
-                    this.playoffpane.removeAll();
+                    TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
                 this.playoffpane.addTab("Play" + size, TournamentGUI.createPlayoffPanel(Integer.parseInt(size)));
             }

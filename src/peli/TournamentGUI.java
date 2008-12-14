@@ -287,9 +287,9 @@ public class TournamentGUI extends JPanel {
     public static boolean warnCreatePlayoff() {
         boolean ok = false;
         Object aobj[] = {
-            TournamentGUI.messages.getString("doNotQuit"), TournamentGUI.messages.getString("doQuit")
+            TournamentGUI.messages.getString("doNotReplacePlayoff"), TournamentGUI.messages.getString("doReplacePlayoff")
         };
-        int i = JOptionPane.showOptionDialog(null, TournamentGUI.messages.getString("areYouSure") + "\n" + TournamentGUI.messages.getString("youDidNotSave"), TournamentGUI.messages.getString("reallyQuit"), 0, 3, null, aobj, aobj[0]);
+        int i = JOptionPane.showOptionDialog(null, TournamentGUI.messages.getString("reallyReplacePlayoff") + "\n" + TournamentGUI.messages.getString("playoffsExist"), TournamentGUI.messages.getString("replacePlayoffs"), 0, 3, null, aobj, aobj[0]);
         switch (i) {
             case 0: // '\0'
                 ok = false;
@@ -299,11 +299,11 @@ public class TournamentGUI extends JPanel {
                 tournament.clearPlayoffs();
                 break;
         }
-        
+
         return ok;
     }
 
-    private static JPanel createPlayoffSizeButtons(int maxPlayers) {
+    public static JPanel createPlayoffSizeButtons(int maxPlayers) {
         ButtonGroup playoffSize = new ButtonGroup();
         ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
         JPanel jpanel = new JPanel();
@@ -332,6 +332,12 @@ public class TournamentGUI extends JPanel {
     public static JTabbedPane getPlayoffpane() {
 
         return playoffpane;
+    }
+
+    public static void newPlayoffpane(JTabbedPane playoffpane) {
+        playoffpane.removeAll();
+        playoffpane.addTab("New playoff", TournamentGUI.createPlayoffSizeButtons(128));
+        
     }
 
     public static JPanel createPlayoffPanel(int size) {
@@ -365,7 +371,7 @@ public class TournamentGUI extends JPanel {
         }
 
         SaveTracker.setIsSaved(false);
-        
+
         return jpanel;
     }
 
@@ -434,7 +440,7 @@ public class TournamentGUI extends JPanel {
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 playoffpane = new JTabbedPane();
-                playoffpane.addTab("New playoff", createPlayoffSizeButtons(128));                
+                newPlayoffpane(playoffpane);
                 jpanel2.add(playoffpane);
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
@@ -473,7 +479,7 @@ public class TournamentGUI extends JPanel {
 
     static class playoffRenderer extends DefaultTableCellRenderer {
 
-        private int row,  col;
+        private  int row,    col;
 
         public Component getTableCellRendererComponent(JTable table,
                 Object value,
