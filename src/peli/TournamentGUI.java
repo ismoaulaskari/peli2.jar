@@ -236,10 +236,7 @@ public class TournamentGUI extends JPanel {
             tablecolumn.setCellRenderer(playoffRenderer);
             tablecolumn.setPreferredWidth(50);
         }
-    //tablecolumn = tablecolumnmodel.getColumn(3);
-    //tablecolumn.setCellRenderer(centerRenderer);
-    //tablecolumn.setPreferredWidth(40);
-    //tablecolumn.setMaxWidth(50);
+    
     }
 
     private static void setRoundTableRenderers(TableColumnModel tablecolumnmodel, int i) {
@@ -274,9 +271,8 @@ public class TournamentGUI extends JPanel {
         tablecolumn1.setMaxWidth(10);
     }
 
-    private static JButton createNextRoundButton(int maxPlayers) {
-        //ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
-        JButton nextButton = new JButton("Create next playoff round");
+    private static JButton createNextRoundButton(int maxPlayers) {        
+        JButton nextButton = new JButton(messages.getString("nextPlayoffRound"));
         ((CreatePlayoffListener) createlistener).setSource(String.valueOf(maxPlayers));
         nextButton.setActionCommand("CREATENEXT");
         nextButton.addActionListener(createlistener);
@@ -304,14 +300,13 @@ public class TournamentGUI extends JPanel {
     }
 
     public static JPanel createPlayoffSizeButtons(int maxPlayers) {
-        ButtonGroup playoffSize = new ButtonGroup();
-        //ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
+        ButtonGroup playoffSize = new ButtonGroup();        
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
 
         for (int i = 1; maxPlayers / i > 1; i *= 2) {
             int tmp = maxPlayers / i;
-            JRadioButton option = new JRadioButton(tmp + " players");
+            JRadioButton option = new JRadioButton(tmp + " " + messages.getString("players"));
             if (tmp == 8) {
                 option.setSelected(true);
             }
@@ -321,7 +316,7 @@ public class TournamentGUI extends JPanel {
             jpanel.add(option);
         }
 
-        JButton createButton = new JButton("Create playoff");
+        JButton createButton = new JButton(messages.getString("createPlayoffs"));
         createButton.setActionCommand("CREATE");
         createButton.addActionListener(createlistener);
         jpanel.add(createButton);
@@ -336,7 +331,7 @@ public class TournamentGUI extends JPanel {
 
     public static void newPlayoffpane(JTabbedPane playoffpane) {
         playoffpane.removeAll();
-        playoffpane.addTab("New playoff", TournamentGUI.createPlayoffSizeButtons(128));
+        playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlayoffSizeButtons(128));
         
     }
 

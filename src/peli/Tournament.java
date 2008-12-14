@@ -27,20 +27,20 @@ public class Tournament {
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
-    private ArrayList playoffSurvivors = new ArrayList();
+   // private ArrayList playoffSurvivors = new ArrayList();
 
     public Playoff getPlayoff(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
-            if (playoffSurvivors == null || playoffSurvivors.isEmpty()) {
+            //if (playoffSurvivors == null || playoffSurvivors.isEmpty()) {
                 if (this.playoffs.containsKey(size * 2)) {
                     this.playoffs.put(size, new Playoff(this, ((Playoff)this.playoffs.get(size * 2)).getSurvivors(), size));
                 } else {
                     this.playoffs.put(size, new Playoff(this, getStandingsNames(), size));
                 }
-            } else {
+            //} else {
                // this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));
-            }
+            //}
         }
         playoff = (Playoff) this.playoffs.get(size);
     //    System.out.println("playoffs.get " + size);
@@ -229,6 +229,11 @@ public class Tournament {
         return numberOfDivisions;
     }
 
+    public int getNumberOfPlayoffs() {
+        return this.playoffs.size();
+    }
+
+    
     public Division getDivision(int i) {
         return (Division) divisions.elementAt(i);
     }
@@ -314,6 +319,12 @@ public class Tournament {
         printwriter.println("TOURNAMENT-SIZE:" + getNumberOfDivisions());
         for (int i = 0; i < getNumberOfDivisions(); i++) {
             getDivision(i).save(printwriter);
+        }
+        //if playoff, save playoff
+        Set rounds = playoffs.keySet();
+        printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
+        for(Iterator i = rounds.iterator(); i.hasNext();) {
+            ((Playoff) playoffs.get(i.next())).save(printwriter);            
         }
     }
 

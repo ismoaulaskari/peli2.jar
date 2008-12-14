@@ -4,6 +4,7 @@
  */
 package peli;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -101,7 +102,12 @@ public class PlayoffPair {
         return String.valueOf(awayWins);
     }
     
-
+    public void save(PrintWriter printwriter) {        
+        for(int i=0; i<this.matches.size(); i++) {
+            ((Match) this.matches.get(i)).save(printwriter);
+        }
+    }
+    
     public String toString() {        
         return homeTeam + "-" + awayTeam + ":" + matches;        
     }

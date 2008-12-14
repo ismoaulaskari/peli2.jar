@@ -4,6 +4,7 @@
  */
 package peli;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Playoff {
     private PlayoffPair[] playoffPairs;
 
     public Playoff(Tournament tournament, List players, int size) {
-        if (players == null || size == 0) {
+        //if (players == null || size == 0) {
+        if (size == 0) {            
             throw new IllegalArgumentException("Empty playoffs attempted!");
         }
         this.players = players;
@@ -34,9 +36,9 @@ public class Playoff {
     }
     //won't support empty players
     private PlayoffPair[] createPairs(List players, int size) {
-        if (size > players.size()) {
-            size = players.size();
-        }
+//        if (size > players.size()) {
+//            size = players.size();
+//        }
         PlayoffPair[] pairs = new PlayoffPair[size / 2];
         for (int i = 0; i < size / 2; i++) {            
             String player1, player2;
@@ -95,4 +97,16 @@ public class Playoff {
     public PlayoffPair[] getPlayoffPairs() {
         return playoffPairs;
     }
+    
+        //tnmt-file division writing
+    public void save(PrintWriter printwriter) {
+        printwriter.println("PLAYOFF-SIZE:" + this.size);            
+        for(int i=0; i<this.playoffPairs.length; i++) {
+            printwriter.println("PLAYOFFPAIR");
+            this.playoffPairs[i].save(printwriter);
+            printwriter.println("END-OF-PLAYOFFPAIR");
+        }
+        printwriter.println("END-OF-PLAYOFF");
+    }
+
 }
