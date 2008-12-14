@@ -275,7 +275,7 @@ public class TournamentGUI extends JPanel {
     }
 
     private static JButton createNextRoundButton(int maxPlayers) {
-        ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
+        //ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
         JButton nextButton = new JButton("Create next playoff round");
         ((CreatePlayoffListener) createlistener).setSource(String.valueOf(maxPlayers));
         nextButton.setActionCommand("CREATENEXT");
@@ -305,7 +305,7 @@ public class TournamentGUI extends JPanel {
 
     public static JPanel createPlayoffSizeButtons(int maxPlayers) {
         ButtonGroup playoffSize = new ButtonGroup();
-        ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
+        //ActionListener createlistener = new CreatePlayoffListener(getPlayoffpane());
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
 
@@ -440,11 +440,12 @@ public class TournamentGUI extends JPanel {
                 jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
                 jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 playoffpane = new JTabbedPane();
+                createlistener = new CreatePlayoffListener(playoffpane);
                 newPlayoffpane(playoffpane);
                 jpanel2.add(playoffpane);
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
-                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
+                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);             
             //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
             }
         }
@@ -461,6 +462,7 @@ public class TournamentGUI extends JPanel {
     private static Tournament tournament;
     private static MainWindow themainwindow; //hack
     private static JTabbedPane playoffpane;
+    private static ActionListener createlistener;
     private static DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer() {
 
         public void setValue(Object obj) {

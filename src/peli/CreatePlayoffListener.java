@@ -14,11 +14,13 @@ import javax.swing.JTabbedPane;
  */
 public class CreatePlayoffListener implements ActionListener {
 
+    private boolean firstRun;
     private String source;
     private JTabbedPane playoffpane;
 
     public CreatePlayoffListener(JTabbedPane playoffpane) {
         this.playoffpane = playoffpane;
+        this.firstRun = true;
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -29,10 +31,11 @@ public class CreatePlayoffListener implements ActionListener {
                     size = "8"; //default
                 }
                 if (ae.getActionCommand().equals("CREATE")) {
-                    if(! TournamentGUI.warnCreatePlayoff()) return; //confirm overwrite of playoffs
+                    if((! firstRun) && (! TournamentGUI.warnCreatePlayoff())) return; //confirm overwrite of playoffs
                     
                     TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
+                this.firstRun = false;
                 this.playoffpane.addTab("Play" + size, TournamentGUI.createPlayoffPanel(Integer.parseInt(size)));
             }
         } else {
