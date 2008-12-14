@@ -20,7 +20,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         "", messages.getString("playoffResults"), "", "", "", "", ""
     };
     private PlayoffPair playoffpair;
-    
+
     PlayoffPairTableModel(PlayoffPair playoffpair) {
         this.playoffpair = playoffpair;
     }
@@ -38,10 +38,10 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public Object getValueAtx(int i, int j) {
-        return i +"+"+ j;
+        return i + "+" + j;
     }
-    
-    public Object getValueAt(int i, int j) {        
+
+    public Object getValueAt(int i, int j) {
         switch (j) {
             case 0:
                 if (i == 0) {
@@ -62,30 +62,36 @@ public class PlayoffPairTableModel extends AbstractTableModel {
             //if (isDummyMatch(j)) {
             //    return "xxx";
             //} else {
-                Match match = (Match) playoffpair.getMatches().get(j-2);
-                return match.getResult();
-            //}
+            Match match = (Match) playoffpair.getMatches().get(j - 2);
+            return match.getResult();
+        //}
         } else {
             return "";
         }
     }
 
     public Class getColumnClass(int i) {
-        return getValueAt(0, i).getClass();
+        Object something = getValueAt(0, i);
+        if (something == null) {
+            return null;
+        } else {
+            return something.getClass();
+        }
     }
 
     public boolean isCellEditable(int i, int j) {
-        if(i == 0 && j > 1) return true;
-        
+        if (i == 0 && j > 1) {
+            return true;
+        }
         if (j == 0 && i < 2) {
             return true;
         }
-        
-        return false;        
+
+        return false;
     }
 
     private boolean isDummyMatch(int i) {
-        Match match = (Match) playoffpair.getMatches().get(i-2);
+        Match match = (Match) playoffpair.getMatches().get(i - 2);
         String s = match.home();
         String s1 = match.visitor();
         return s.equals("X") || s1.equals("X");
@@ -106,7 +112,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         } else if (j == 1) {
             return;
         } else if (j > 1 && i == 0) {
-            Match match = (Match) playoffpair.getMatches().get(j-2);
+            Match match = (Match) playoffpair.getMatches().get(j - 2);
             //SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
             //SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
             if (match.isOver()) {

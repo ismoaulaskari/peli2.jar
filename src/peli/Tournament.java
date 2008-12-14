@@ -48,6 +48,10 @@ public class Tournament {
         return playoff;
     }
 
+    public void clearPlayoffs() {
+        this.playoffs.clear();
+    }
+    
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
