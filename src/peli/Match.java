@@ -31,6 +31,7 @@ public class Match {
     Match(String s)
             throws FileFormatException {
         isOver = false;
+        postFix = "";
         int i = s.indexOf(':');
         if (i > 0) {
             home = s.substring(0, i);
@@ -56,6 +57,7 @@ public class Match {
         i = s.indexOf(':');
         if (i > 0) {
             postFix = s;
+            if(postFix == null) postFix = "";
         }
     }
 
@@ -66,12 +68,13 @@ public class Match {
     }
 
     public void print() {
-        System.out.println(home + " - " + visitor);
+        System.out.println(home + " - " + visitor + postFix);
     }
 
     public void save(PrintWriter printwriter) {
+        String special = ((postFix.length() > 0) ? ":" + postFix : "");
         printwriter.print(home + ":" + visitor);
-        printwriter.println(isOver ? ":" + homeGoals + ":" + visitorGoals : "" + (postFix.length() > 0 ? ":" + postFix : ""));
+        printwriter.println(isOver ? ":" + homeGoals + ":" + visitorGoals + special : "");
     //printwriter.println(isOver ? ":" + homeGoals + ":" + visitorGoals : "");
     }
 
@@ -79,7 +82,7 @@ public class Match {
         if (!isOver) {
             return "";
         } else {
-            return homeGoals + "-" + visitorGoals;
+            return homeGoals + "-" + visitorGoals + postFix;
         }
     }
 
@@ -87,7 +90,7 @@ public class Match {
         if (!isOver) {
             return "";
         } else {
-            return visitorGoals + "-" + homeGoals;
+            return visitorGoals + "-" + homeGoals + postFix;
         }
     }
 
@@ -103,19 +106,11 @@ public class Match {
                 homeGoals = Integer.parseInt(s.substring(0, i));
                 //visitorGoals = Integer.parseInt(s.substring(i + 1));
                 s = s.substring(i + 1);
-                String[] endOfLine = s.split(":", 2);
-                if (endOfLine.length > 0) {
-                    visitorGoals = Integer.parseInt(endOfLine[0]);
-                    isOver = true;
-                } else {
-                    isOver = false;
-                }
-                if (endOfLine.length > 1) {
-                    postFix = endOfLine[1];
-                }
+                visitorGoals = Integer.parseInt(s.replaceFirst("\\D+", ""));
+                isOver = true;
+                postFix = (s.replaceAll("\\d+", ""));
+                if(postFix == null) postFix = "";
             } catch (NumberFormatException numberformatexception) {
-                isOver = false;
-            } catch (ArrayIndexOutOfBoundsException arrayException) {
                 isOver = false;
             }
         } else {
