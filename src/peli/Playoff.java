@@ -39,7 +39,10 @@ public class Playoff {
     public Playoff(BufferedReader bufferedreader) throws FileFormatException, IOException {        
         try {
             this.size = Tools.parseIntAfter("PLAYOFF-SIZE:", bufferedreader.readLine());
-            wot then? match-size?
+            this.playoffPairs = new PlayoffPair[this.size];
+            for(int i=0; i<this.size; i++) {
+                this.playoffPairs[i] = new PlayoffPair(bufferedreader);
+            }            
         } catch (FileFormatException fileformatexception) {
             throw fileformatexception;
         } catch (IOException ioexception) {
