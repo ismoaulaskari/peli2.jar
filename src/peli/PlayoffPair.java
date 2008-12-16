@@ -43,8 +43,7 @@ public class PlayoffPair {
                 this.matches.add(new Match(bufferedreader.readLine()));
             }
             this.homeTeam = ((Match) this.matches.get(0)).home();
-            this.awayTeam = ((Match) this.matches.get(0)).visitor();
-            System.out.println("foo");
+            this.awayTeam = ((Match) this.matches.get(0)).visitor();            
             if (!bufferedreader.readLine().equals("END-OF-PLAYOFFPAIR")) {
                 throw new FileFormatException();
             }

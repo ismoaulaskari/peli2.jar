@@ -28,8 +28,7 @@ public class Match {
 
     }
 
-    Match(String s)
-            throws FileFormatException {
+    Match(String s) throws FileFormatException {
         isOver = false;
         postFix = "";
         int i = s.indexOf(':');
