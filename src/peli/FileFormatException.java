@@ -10,5 +10,6 @@ public class FileFormatException extends Exception
 
     public FileFormatException()
     {
+        this.printStackTrace();
     }
 }

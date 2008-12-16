@@ -36,13 +36,16 @@ public class Playoff {
 //    public Playoff(Tournament tournament, List players) {
 //        this(tournament, players, players.size());
 //    }
-    public Playoff(BufferedReader bufferedreader) throws FileFormatException, IOException {        
+    public Playoff(BufferedReader bufferedreader) throws FileFormatException, IOException {
         try {
             this.size = Tools.parseIntAfter("PLAYOFF-SIZE:", bufferedreader.readLine());
             this.playoffPairs = new PlayoffPair[this.size];
-            for(int i=0; i<this.size; i++) {
+            for (int i = 0; i < this.size; i++) {
                 this.playoffPairs[i] = new PlayoffPair(bufferedreader);
-            }            
+            }
+            if (!bufferedreader.readLine().equals("END-OF-PLAYOFF")) {
+                throw new FileFormatException();
+            }
         } catch (FileFormatException fileformatexception) {
             throw fileformatexception;
         } catch (IOException ioexception) {
@@ -50,7 +53,6 @@ public class Playoff {
         }
 
     }
-    
     //won't support empty players
     private PlayoffPair[] createPairs(List players, int size) {
 //        if (size > players.size()) {

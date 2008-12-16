@@ -35,15 +35,16 @@ public class PlayoffPair {
     }
 
     PlayoffPair(BufferedReader bufferedreader) throws FileFormatException, IOException {
-        try {
-            if (!bufferedreader.readLine().equals("PLAYOFFPAIR")) {
+        try {            
+            if (!bufferedreader.readLine().equals("PLAYOFFPAIR")) {                
                 throw new FileFormatException();
             }
-            for (int i = 0; i < MAXMATCHES; i++) {
+            for (int i = 0; i < MAXMATCHES; i++) {                
                 this.matches.add(new Match(bufferedreader.readLine()));
             }
             this.homeTeam = ((Match) this.matches.get(0)).home();
             this.awayTeam = ((Match) this.matches.get(0)).visitor();
+            System.out.println("foo");
             if (!bufferedreader.readLine().equals("END-OF-PLAYOFFPAIR")) {
                 throw new FileFormatException();
             }

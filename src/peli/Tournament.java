@@ -206,14 +206,8 @@ public class Tournament {
             for (int i = 0; i < numberOfDivisions; i++) {
                 divisions.add(new Division(bufferedreader));
             }
-            //bufferedreader.mark(64);
-            //try {
-            //    String isTherePlayoffs = bufferedreader.readLine();
-            //}    
-            //catch (EOFException eof) {
-            //    
-            //} 
-            if (bufferedreader.ready()) {
+
+            if (bufferedreader.ready()) { //there's a playoff too
                 int playoffsSize = Tools.parseIntAfter("PLAYOFFS-SIZE:", bufferedreader.readLine());
                 for (int i = 0; i < playoffsSize; i++) {
                     Playoff playoff = new Playoff(bufferedreader);
