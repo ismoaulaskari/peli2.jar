@@ -27,23 +27,22 @@ public class Tournament {
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
-   // private ArrayList playoffSurvivors = new ArrayList();
-
+    // private ArrayList playoffSurvivors = new ArrayList();
     public Playoff getPlayoff(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
             //if (playoffSurvivors == null || playoffSurvivors.isEmpty()) {
-                if (this.playoffs.containsKey(size * 2)) {
-                    this.playoffs.put(size, new Playoff(((Playoff)this.playoffs.get(size * 2)).getSurvivors(), size));
-                } else {
-                    this.playoffs.put(size, new Playoff(getStandingsNames(), size));
-                }
-            //} else {
-               // this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));
-            //}
+            if (this.playoffs.containsKey(size * 2)) {
+                this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
+            } else {
+                this.playoffs.put(size, new Playoff(getStandingsNames(), size));
+            }
+        //} else {
+        // this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));
+        //}
         }
         playoff = (Playoff) this.playoffs.get(size);
-    //    System.out.println("playoffs.get " + size);
+        //    System.out.println("playoffs.get " + size);
 
         return playoff;
     }
@@ -51,7 +50,6 @@ public class Tournament {
     public void clearPlayoffs() {
         this.playoffs.clear();
     }
-    
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
@@ -188,7 +186,7 @@ public class Tournament {
             divisions.add(new Division(messages.getString("group") + " " + (j + 1), i, atreeset[j]));        //      playoffs.put(2, new Playoff(this, this.getStandingsNames(), 2));        
         //      playoffs.put(4, new Playoff(this, this.getStandingsNames(), 4));        
         }
-        //playoffs.put(8, new Playoff(this.getStandingsNames(), 8));
+    //playoffs.put(8, new Playoff(this.getStandingsNames(), 8));
     }
 
     Tournament(File file)
@@ -207,11 +205,20 @@ public class Tournament {
             numberOfDivisions = Tools.parseIntAfter("TOURNAMENT-SIZE:", bufferedreader.readLine());
             for (int i = 0; i < numberOfDivisions; i++) {
                 divisions.add(new Division(bufferedreader));
-            }            
-            int playoffsSize = Tools.parseIntAfter("PLAYOFFS-SIZE:", bufferedreader.readLine());
-            for (int i = 0; i < playoffsSize; i++) {
-                Playoff playoff = new Playoff(bufferedreader);
-                playoffs.put(playoff.getSize(), playoff);
+            }
+            //bufferedreader.mark(64);
+            //try {
+            //    String isTherePlayoffs = bufferedreader.readLine();
+            //}    
+            //catch (EOFException eof) {
+            //    
+            //} 
+            if (bufferedreader.ready()) {
+                int playoffsSize = Tools.parseIntAfter("PLAYOFFS-SIZE:", bufferedreader.readLine());
+                for (int i = 0; i < playoffsSize; i++) {
+                    Playoff playoff = new Playoff(bufferedreader);
+                    playoffs.put(playoff.getSize(), playoff);
+                }
             }
             bufferedreader.close();
         } catch (IOException ioexception) {
@@ -222,7 +229,7 @@ public class Tournament {
 
 //        playoffs.put(2, new Playoff(this, this.getStandingsNames(), 2));
 //        playoffs.put(4, new Playoff(this, this.getStandingsNames(), 4));        
-        //playoffs.put(8, new Playoff(this.getStandingsNames(), 8));
+    //playoffs.put(8, new Playoff(this.getStandingsNames(), 8));
 
     }
 
@@ -238,7 +245,6 @@ public class Tournament {
         return this.playoffs.size();
     }
 
-    
     public Division getDivision(int i) {
         return (Division) divisions.elementAt(i);
     }
@@ -328,8 +334,8 @@ public class Tournament {
         //if playoff, save playoff
         Set rounds = playoffs.keySet();
         printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
-        for(Iterator i = rounds.iterator(); i.hasNext();) {
-            ((Playoff) playoffs.get(i.next())).save(printwriter);            
+        for (Iterator i = rounds.iterator(); i.hasNext();) {
+            ((Playoff) playoffs.get(i.next())).save(printwriter);
         }
     }
 
