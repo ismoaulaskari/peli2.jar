@@ -50,6 +50,7 @@ public class Playoff {
         }
 
     }
+    
     //won't support empty players
     private PlayoffPair[] createPairs(List players, int size) {
 //        if (size > players.size()) {
