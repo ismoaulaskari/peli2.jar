@@ -52,21 +52,19 @@ public class Match {
             homeGoals = Integer.parseInt(s.substring(0, i));
             j = s.indexOf(":", i + 1);
             if (j > 0) {
-                visitorGoals = Integer.parseInt(s.substring(i + 1, j - 1));
+                visitorGoals = Integer.parseInt(s.substring(i + 1, j));
                 s = s.substring(j + 1);
+                postFix = s;
+                if (postFix == null) {
+                    postFix = "";
+                }
             } else {
                 visitorGoals = Integer.parseInt(s.substring(i + 1));
                 s = s.substring(i + 1);
             }
             isOver = true;
         }
-        i = s.indexOf(':');
-        if (i > 0) {
-            postFix = s;
-            if (postFix == null) {
-                postFix = "";
-            }
-        }
+        
     }
 
     public String getHtmlTableRow(int i) {
