@@ -53,6 +53,7 @@ public class PlayoffPair {
             throw ioexception;
         }
 
+        this.updateWins();
     }
 
     public int getWins(String player) {

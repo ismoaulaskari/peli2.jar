@@ -100,8 +100,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     public void setValueAt(Object obj, int i, int j) {
         if (i > 1 || j < 0) {
             return;
-        }
-        SaveTracker.setIsSaved(false);
+        }        
 
         if (j == 0) {
             if (i == 0) {
@@ -126,6 +125,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
             this.playoffpair.updateWins();
         }
 
+        SaveTracker.setIsSaved(false);
         fireTableCellUpdated(i, j);
     }
 

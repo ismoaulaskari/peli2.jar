@@ -359,6 +359,7 @@ public class TournamentGUI extends JPanel {
             }
             jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
             jpanel.add(jtable2);
+            pairmodel.fireTableDataChanged();
         }
         if (size > 2) {
             jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
