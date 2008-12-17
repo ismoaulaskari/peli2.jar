@@ -32,6 +32,7 @@ public class Match {
         isOver = false;
         postFix = "";
         int i = s.indexOf(':');
+        int j;
         if (i > 0) {
             home = s.substring(0, i);
             s = s.substring(i + 1);
@@ -49,14 +50,22 @@ public class Match {
         i = s.indexOf(':');
         if (i > 0) {
             homeGoals = Integer.parseInt(s.substring(0, i));
-            visitorGoals = Integer.parseInt(s.substring(i + 1));
+            j = s.indexOf(":", i + 1);
+            if (j > 0) {
+                visitorGoals = Integer.parseInt(s.substring(i + 1, j - 1));
+                s = s.substring(j + 1);
+            } else {
+                visitorGoals = Integer.parseInt(s.substring(i + 1));
+                s = s.substring(i + 1);
+            }
             isOver = true;
-            s = s.substring(i + 1);
         }
         i = s.indexOf(':');
         if (i > 0) {
             postFix = s;
-            if(postFix == null) postFix = "";
+            if (postFix == null) {
+                postFix = "";
+            }
         }
     }
 
@@ -108,7 +117,9 @@ public class Match {
                 visitorGoals = Integer.parseInt(s.replaceFirst("\\D+", ""));
                 isOver = true;
                 postFix = (s.replaceAll("\\d+", ""));
-                if(postFix == null) postFix = "";
+                if (postFix == null) {
+                    postFix = "";
+                }
             } catch (NumberFormatException numberformatexception) {
                 isOver = false;
             }

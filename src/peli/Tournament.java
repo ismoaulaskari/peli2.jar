@@ -28,6 +28,11 @@ public class Tournament {
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
     // private ArrayList playoffSurvivors = new ArrayList();
+
+    public HashMap getPlayoffs() {
+        return this.playoffs;
+    }
+        
     public Playoff getPlayoff(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {

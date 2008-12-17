@@ -440,7 +440,11 @@ public class TournamentGUI extends JPanel {
                 jpanel2.add(playoffpane);
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
-                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);             
+                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);    
+                
+                for(Object playoffnumber : tournament.getPlayoffs().keySet()) {                    
+                    playoffpane.addTab("Play" + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
+                }
             //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
             }
         }
