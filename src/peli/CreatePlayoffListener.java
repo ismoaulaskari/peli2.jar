@@ -6,6 +6,7 @@ package peli;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
@@ -35,8 +36,14 @@ public class CreatePlayoffListener implements ActionListener {
                     
                     TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
+                
+                JPanel jpanel = TournamentGUI.createPlayoffPanel(Integer.parseInt(size));
+                if(jpanel == null) {
+                    return;
+                }
+                
                 this.firstRun = false;
-                this.playoffpane.addTab("Play" + size, TournamentGUI.createPlayoffPanel(Integer.parseInt(size)));
+                this.playoffpane.addTab("Play" + size, jpanel);
             }
         } else {
             this.source = ae.getActionCommand(); //size?

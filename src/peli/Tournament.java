@@ -47,7 +47,13 @@ public class Tournament {
 
         }
         playoff = (Playoff) this.playoffs.get(size);
-
+        
+        //don't advance to next round with empty results:
+        if(playoff.isEmptyPlayoffs()) {
+            this.playoffs.remove(size);
+            playoff = null;
+        }
+        
         return playoff;
     }
 

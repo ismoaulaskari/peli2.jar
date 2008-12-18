@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class Playoff {
 
+    private boolean emptyPlayoffs = false;
     private int size;
     private List players;
     //rounds
@@ -30,7 +31,9 @@ public class Playoff {
         this.players = players;
         this.size = size;
         //this.mother = tournament;
+        this.emptyPlayoffs = true;
         this.playoffPairs = createPairs(players, size);
+        
     }
 
 //    public Playoff(Tournament tournament, List players) {
@@ -54,31 +57,35 @@ public class Playoff {
 
     }
     //won't support empty players
-    private PlayoffPair[] createPairs(List players, int size) {
-//        if (size > players.size()) {
-//            size = players.size();
-//        }
+    private PlayoffPair[] createPairs(List players, int size) {        
+        
         PlayoffPair[] pairs = new PlayoffPair[size / 2];
         for (int i = 0; i < size / 2; i++) {
             String player1, player2;
 
             if (!players.isEmpty()) {
                 player1 = (String) players.remove(0);
+                this.emptyPlayoffs = false;
             } else {
                 player1 = "X";
             }
             if (!players.isEmpty()) {
                 player2 = (String) players.remove(0);
+                this.emptyPlayoffs = false;
             } else {
                 player2 = "X";
             }
 
             pairs[i] = new PlayoffPair(this, player1, player2);
-        }
-
+        }        
+        
         return pairs;
     }
 
+    public boolean isEmptyPlayoffs() {
+        return this.emptyPlayoffs;
+    }
+    
     public int getSize() {
         return size;
     }

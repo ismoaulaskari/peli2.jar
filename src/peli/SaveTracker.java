@@ -17,7 +17,7 @@ public class SaveTracker {
 
     public static void setIsSaved(boolean isSaved) {
         if(getRegisteredSaveButton() == null) {
-            SaveTracker.isSaved = isSaved;
+            //SaveTracker.isSaved = isSaved;
             return;
         }
         
