@@ -95,7 +95,7 @@ public class Playoff {
         this.players = players;
     }
 
-    public List getSurvivors() {
+    public ArrayList getSurvivors() {
         ArrayList survivors = new ArrayList();
         for (int i = 0; i < playoffPairs.length; i++) {
             survivors.add(playoffPairs[i].getWinner());

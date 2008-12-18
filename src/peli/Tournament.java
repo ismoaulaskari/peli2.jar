@@ -6,6 +6,7 @@ package peli;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.ArrayList;
 
 /**
  * A main class that includes final variables set at the start of the program,
@@ -28,32 +29,51 @@ public class Tournament {
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
     // private ArrayList playoffSurvivors = new ArrayList();
-
     public HashMap getPlayoffs() {
         return this.playoffs;
     }
-        
+
     public Playoff getPlayoff(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
-            //if (playoffSurvivors == null || playoffSurvivors.isEmpty()) {
+
             if (this.playoffs.containsKey(size * 2)) {
-                this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
+                this.playoffs.put(size, new Playoff(
+                        seedPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size),
+                        size));
             } else {
-                this.playoffs.put(size, new Playoff(getStandingsNames(), size));
+                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
             }
-        //} else {
-        // this.playoffs.put(size, new Playoff(this, this.playoffSurvivors, size));
-        //}
+
         }
         playoff = (Playoff) this.playoffs.get(size);
-        //    System.out.println("playoffs.get " + size);
 
         return playoff;
     }
 
     public void clearPlayoffs() {
         this.playoffs.clear();
+    }
+
+    /**
+     * Need to return an ordered list of playoff pairs
+     * 
+     * @param playerStandings
+     * @return
+     */
+    public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
+        int min = 1;
+        //playerStandings = new ArrayList(playerStandings.subList(0, size - 1));
+        ArrayList newPairs = new ArrayList(size);
+        int max = playerStandings.size();
+        Object tmp;
+        for (int i = 1; i < max - 1; i += 2) {
+            tmp = playerStandings.get(i);
+            playerStandings.set(i, playerStandings.get(max - i));
+            playerStandings.set(max - i, tmp);
+        }
+
+        return newPairs;
     }
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
@@ -188,9 +208,9 @@ public class Tournament {
         TreeSet atreeset[] = new TreeSet[numberOfDivisions];
         distributePlayers(atreeset, treeset);
         for (int j = 0; j < numberOfDivisions; j++) {
-            divisions.add(new Division(messages.getString("group") + " " + (j + 1), i, atreeset[j]));              
+            divisions.add(new Division(messages.getString("group") + " " + (j + 1), i, atreeset[j]));
         }
-    
+
     }
 
     Tournament(File file)
