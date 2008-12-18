@@ -61,11 +61,8 @@ public class Tournament {
      * @param playerStandings
      * @return
      */
-    public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
-        
-        //playerStandings = new ArrayList(playerStandings.subList(0, size - 1));
-        ArrayList newPairs = new ArrayList(size);
-                
+    public ArrayList seedPlayoff(ArrayList playerStandings, int size) {                
+        ArrayList newPairs = new ArrayList(size);                
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playerStandings.get(0 + i));
             newPairs.add(playerStandings.get(size - (i + 1)));            
@@ -73,6 +70,7 @@ public class Tournament {
 
         return newPairs;
     }
+    
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
