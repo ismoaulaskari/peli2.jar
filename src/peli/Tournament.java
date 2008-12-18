@@ -62,15 +62,13 @@ public class Tournament {
      * @return
      */
     public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
-        int min = 1;
+        
         //playerStandings = new ArrayList(playerStandings.subList(0, size - 1));
         ArrayList newPairs = new ArrayList(size);
-        int max = playerStandings.size();
-        Object tmp;
-        for (int i = 1; i < max - 1; i += 2) {
-            tmp = playerStandings.get(i);
-            playerStandings.set(i, playerStandings.get(max - i));
-            playerStandings.set(max - i, tmp);
+                
+        for (int i = 0; i < size - 1; i++) {
+            newPairs.add(playerStandings.get(0 + i));
+            newPairs.add(playerStandings.get(size - (i + 1)));            
         }
 
         return newPairs;
