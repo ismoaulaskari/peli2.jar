@@ -16,6 +16,11 @@ public class SaveTracker {
     }
 
     public static void setIsSaved(boolean isSaved) {
+        if(getRegisteredSaveButton() == null) {
+            SaveTracker.isSaved = isSaved;
+            return;
+        }
+        
         String text = getRegisteredSaveButton().getText();
 
         if (SaveTracker.isSaved) {
