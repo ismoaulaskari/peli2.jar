@@ -35,15 +35,15 @@ public class PlayoffPair {
     }
 
     PlayoffPair(BufferedReader bufferedreader) throws FileFormatException, IOException {
-        try {            
-            if (!bufferedreader.readLine().equals("PLAYOFFPAIR")) {                
+        try {
+            if (!bufferedreader.readLine().equals("PLAYOFFPAIR")) {
                 throw new FileFormatException();
             }
-            for (int i = 0; i < MAXMATCHES; i++) {                
+            for (int i = 0; i < MAXMATCHES; i++) {
                 this.matches.add(new Match(bufferedreader.readLine()));
             }
             this.homeTeam = ((Match) this.matches.get(0)).home();
-            this.awayTeam = ((Match) this.matches.get(0)).visitor();            
+            this.awayTeam = ((Match) this.matches.get(0)).visitor();
             if (!bufferedreader.readLine().equals("END-OF-PLAYOFFPAIR")) {
                 throw new FileFormatException();
             }
@@ -105,6 +105,9 @@ public class PlayoffPair {
 
     public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
+        for (Object m : getMatches()) {
+            ((Match) m).setHome(homeTeam);
+        }
     }
 
     public String getAwayTeam() {
@@ -113,6 +116,9 @@ public class PlayoffPair {
 
     public void setAwayTeam(String awayTeam) {
         this.awayTeam = awayTeam;
+        for (Object m : getMatches()) {
+            ((Match) m).setVisitor(awayTeam);
+        }
     }
 
     public ArrayList getMatches() {

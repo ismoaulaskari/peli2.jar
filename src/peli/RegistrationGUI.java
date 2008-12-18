@@ -32,30 +32,6 @@ public class RegistrationGUI extends JPanel {
         JOptionPane.showMessageDialog(this, s, messages.getString("duplicateErrorMessageHeader"), 2, null);
     }
 
-    private static String fixName(String s) {
-        String s1 = s.trim();
-        int i = s1.indexOf(' ');
-        if (i < 0) {
-            return capitalize(s1.trim(), true);
-        } else {
-            String s2 = s1.substring(0, i).trim();
-            String s3 = s1.substring(i + 1).trim();
-            return capitalize(s2, true) + " " + capitalize(s3, false);
-        }
-    }
-
-    /*fixed A-K bug  */
-    private static String capitalize(String s, boolean strict) {
-        //StringBuffer stringbuffer = new StringBuffer(s.toLowerCase());
-        StringBuffer stringbuffer = new StringBuffer(s);
-        stringbuffer.replace(0, 1, s.substring(0, 1).toUpperCase());
-        int i = s.indexOf('-');
-        if (strict == true && i > 0) //strict by aulaskar
-        {
-            stringbuffer = stringbuffer.replace(i + 1, i + 2, s.substring(i + 1, i + 2).toUpperCase());
-        }
-        return stringbuffer.toString();
-    }
 
     RegistrationGUI(MainWindow mainwindow, File file, File file1) {
         super(new BorderLayout());
@@ -83,7 +59,7 @@ public class RegistrationGUI extends JPanel {
             }
         };
         for (LineReader linereader = new LineReader(file.getName()); linereader.hasNext();) {
-            String s = fixName((String) linereader.next());
+            String s = Tools.fixName((String) linereader.next());
             PlayerJCheckBox playerjcheckbox = new PlayerJCheckBox(++rank, s);
             playerjcheckbox.addItemListener(cbl);
             if (names.contains(playerjcheckbox)) {
@@ -140,7 +116,7 @@ public class RegistrationGUI extends JPanel {
         newPlayerName.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent actionevent) {
-                String s1 = RegistrationGUI.fixName(newPlayerName.getText());
+                String s1 = Tools.fixName(newPlayerName.getText());
                 newPlayerName.setText("");
                 if (s1.equals("")) {
                     return;

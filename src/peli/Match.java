@@ -149,4 +149,12 @@ public class Match {
     public boolean isDummy() {
         return home.equals("X") || visitor.equals("X") || home.equals("") || visitor.equals("");
     }
+
+    public void setHome(String home) {
+        this.home = Tools.fixName(home);
+    }
+
+    public void setVisitor(String visitor) {
+        this.visitor = Tools.fixName(visitor);
+    }
 }

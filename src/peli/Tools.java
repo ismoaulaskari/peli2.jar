@@ -106,4 +106,30 @@ public class Tools
             s1 = s1 + s.substring(i + 1, i + 2) + ".";
         return s1;
     }
+
+    public static String fixName(String s) {
+        String s1 = s.trim();
+        int i = s1.indexOf(' ');
+        if (i < 0) {
+            return capitalize(s1.trim(), true);
+        } else {
+            String s2 = s1.substring(0, i).trim();
+            String s3 = s1.substring(i + 1).trim();
+            return capitalize(s2, true) + " " + capitalize(s3, false);
+        }
+    }
+
+    /*fixed A-K bug  */
+    public static String capitalize(String s, boolean strict) {
+        //StringBuffer stringbuffer = new StringBuffer(s.toLowerCase());
+        StringBuffer stringbuffer = new StringBuffer(s);
+        stringbuffer.replace(0, 1, s.substring(0, 1).toUpperCase());
+        int i = s.indexOf('-');
+        if (strict == true && i > 0) //strict by aulaskar
+        {
+            stringbuffer = stringbuffer.replace(i + 1, i + 2, s.substring(i + 1, i + 2).toUpperCase());
+        }
+        return stringbuffer.toString();
+    }
+
 }
