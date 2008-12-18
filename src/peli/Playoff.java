@@ -33,7 +33,7 @@ public class Playoff {
         //this.mother = tournament;
         this.emptyPlayoffs = true;
         this.playoffPairs = createPairs(players, size);
-        
+
     }
 
 //    public Playoff(Tournament tournament, List players) {
@@ -42,8 +42,8 @@ public class Playoff {
     public Playoff(BufferedReader bufferedreader) throws FileFormatException, IOException {
         try {
             this.size = Tools.parseIntAfter("PLAYOFF-SIZE:", bufferedreader.readLine());
-            this.playoffPairs = new PlayoffPair[this.size/2];
-            for (int i = 0; i < this.size/2; i++) {
+            this.playoffPairs = new PlayoffPair[this.size / 2];
+            for (int i = 0; i < this.size / 2; i++) {
                 this.playoffPairs[i] = new PlayoffPair(bufferedreader);
             }
             if (!bufferedreader.readLine().equals("END-OF-PLAYOFF")) {
@@ -57,35 +57,40 @@ public class Playoff {
 
     }
     //won't support empty players
-    private PlayoffPair[] createPairs(List players, int size) {        
-        
+    private PlayoffPair[] createPairs(List players, int size) {
+
         PlayoffPair[] pairs = new PlayoffPair[size / 2];
         for (int i = 0; i < size / 2; i++) {
-            String player1, player2;
+            String player1 = null; String player2 = null;
 
             if (!players.isEmpty()) {
                 player1 = (String) players.remove(0);
-                this.emptyPlayoffs = false;
-            } else {
-                player1 = "X";
+                if (player1 == null) {
+                    player1 = "X";
+                } else {
+                    this.emptyPlayoffs = false;                    
+                }
             }
+            
             if (!players.isEmpty()) {
                 player2 = (String) players.remove(0);
-                this.emptyPlayoffs = false;
-            } else {
-                player2 = "X";
+                if (player2 == null) {
+                    player2 = "X";
+                } else {
+                    this.emptyPlayoffs = false;                    
+                }
             }
-
+            
             pairs[i] = new PlayoffPair(this, player1, player2);
-        }        
-        
+        }
+
         return pairs;
     }
 
     public boolean isEmptyPlayoffs() {
         return this.emptyPlayoffs;
     }
-    
+
     public int getSize() {
         return size;
     }
