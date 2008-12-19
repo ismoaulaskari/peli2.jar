@@ -240,7 +240,8 @@ public class TournamentGUI extends JPanel {
             vector.add(divTitles[i]);
         }
         vector.add(messages.getString("playoff"));
-
+        vector.add(messages.getString("placementMatches"));
+        
         JComboBox jcombobox = new JComboBox(vector);
         jcombobox.setEditable(false);
 //        jcombobox.setPreferredSize(jcombobox.getMinimumSize());
@@ -465,6 +466,49 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
+    
+    public static JPanel createPlacementMatchPanel(int playoffSize) {
+        JPanel jpanel = new JPanel();
+        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
+        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        Playoff playoff = tournament.getPlacementMatches(playoffSize);
+        if (playoff == null) {
+            //jpanel.add(new JLabel(messages.getString("areYouSure")));
+            return null;
+        }
+        PlayoffPair[] pairs = playoff.getPlayoffPairs();
+        for (int x = 0; x < pairs.length; x++) {
+            PlayoffPair pair = pairs[x];
+            PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
+            JTable jtable2 = new JTable(pairmodel);
+            setPlayoffTableRenderers(jtable2.getColumnModel());
+            jtable2.setShowVerticalLines(false);
+            jtable2.setShowHorizontalLines(false);
+            jtable2.setRowSelectionAllowed(false);
+            jtable2.setColumnSelectionAllowed(false);
+            //jtable2.setForeground(jpanel.getForeground());
+            jtable2.setBackground(jpanel.getBackground());
+            JTableHeader playofftableheader = jtable2.getTableHeader();
+            playofftableheader.setReorderingAllowed(false);
+            if (x == 0) {
+                jpanel.add(playofftableheader);
+            }
+            jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
+            jpanel.add(jtable2);
+            pairmodel.fireTableDataChanged();
+        }
+
+        //if (size > 2) {
+        //    jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
+        //    jpanel.add(createNextRoundButton(size / 2));
+        //}
+
+        SaveTracker.setIsSaved(false);
+
+        return jpanel;
+    }
+
+    
     private static JPanel createDivisionCards() {
         JPanel jpanel = new JPanel();
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("selectedGroup") + " "));
@@ -510,20 +554,21 @@ public class TournamentGUI extends JPanel {
 
         }
 
+        //add each division
         String as[] = tournament.getDivisionTitles();
         for (int l = 0; l < i; l++) {
             jpanel.add(ajtabbedpane[l], as[l]);
         }
 
+        //And playoffs too
         //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
         if (1 == 1) {
             jpanel.add(createPlayoff(), messages.getString("playoff"));
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
-
         //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
         if (1 == 1) {
-            jpanel.add(createPlayoff(), messages.getString("placementMatches"));
+            jpanel.add(createPlacementMatchPanel(tournament.size()), messages.getString("placementMatches"));
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
         

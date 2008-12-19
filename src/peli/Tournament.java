@@ -34,15 +34,16 @@ public class Tournament {
         return this.playoffs;
     }
 
-    public Playoff getPlacementMatches(int playoffSize) {
+    public Playoff getPlacementMatches(int size) {
         if (this.placementMatches == null) { //new
             ArrayList orderedPlayers = this.getStandingsNames();
-            int firstLoser = playoffSize;
-            ArrayList placementPlayers = new ArrayList();            
-            for(int i = firstLoser; i < this.getStandings().size(); i++) {
-                placementPlayers.add(orderedPlayers.get(i));
-            }
-            this.placementMatches = new Playoff(placementPlayers, this.getStandings().size() - playoffSize);
+            //int firstLoser = size;
+            ArrayList placementPlayers = orderedPlayers;
+            //for(int i = firstLoser; i < this.getStandings().size(); i++) {
+            //    placementPlayers.add(orderedPlayers.get(i));
+            //}
+            //this.placementMatches = new Playoff(placementPlayers, this.getStandings().size() - playoffSize);
+            this.placementMatches = new Playoff(placementPlayers, size);
         }
         
         return this.placementMatches;
