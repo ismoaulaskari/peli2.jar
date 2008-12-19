@@ -9,6 +9,8 @@ import java.io.File;
 import java.util.*;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.*;
 
 /** 
@@ -177,16 +179,72 @@ public class TournamentGUI extends JPanel {
         return jtoolbar;
     }
 
+    private static JPanel createJListPane(final JPanel cards) {
+        JPanel jpanel = new JPanel();
+
+        String[] divTitles = tournament.getDivisionTitles();
+        Vector vector = new Vector(divTitles.length + 1);
+        for (int i = 0; i < divTitles.length; i++) {
+            vector.add(divTitles[i]);
+        }
+        vector.add("Playoff");
+
+        JList jlist = new JList(vector);
+        jlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jlist.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        jlist.setVisibleRowCount(3);
+        JScrollPane listScroller = new JScrollPane(jlist);
+
+        jlist.addListSelectionListener(new ListSelectionListener() {
+
+            public void valueChanged(ListSelectionEvent e) {
+                ListSelectionModel lsm = (ListSelectionModel) e.getSource();
+
+                int firstIndex = e.getFirstIndex();
+                int lastIndex = e.getLastIndex();
+                boolean isAdjusting = e.getValueIsAdjusting();
+//                output.append("Event for indexes " + firstIndex + " - " + lastIndex + "; isAdjusting is " + isAdjusting + "; selected indexes:");
+
+                if (lsm.isSelectionEmpty()) {
+                    //output.append(" <none>");
+                } else {
+                    // Find out which indexes are selected.
+                  //lsm.
+                    int minIndex = lsm.getMinSelectionIndex();
+                    int maxIndex = lsm.getMaxSelectionIndex();
+                    for (int i = minIndex; i <= maxIndex; i++) {
+                        if (lsm.isSelectedIndex(i)) {
+                      //      output.append(" " + i);
+                        }
+                    }
+                }
+                //output.append(newline);
+            }
+
+            public void itemStateChanged(ItemEvent itemevent) {
+                CardLayout cardlayout = (CardLayout) cards.getLayout();
+                cardlayout.show(cards, (String) itemevent.getItem());
+            }
+        });
+        jpanel.add(jlist);
+        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("chooseGroup") + " "));
+        return jpanel;
+    }
+
     private static JPanel createComboBoxPane(final JPanel cards) {
         JPanel jpanel = new JPanel();
-        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("chooseGroup") + " "));
+
         String[] divTitles = tournament.getDivisionTitles();
-        ArrayList lt = (ArrayList) Arrays.asList(divTitles);
-        lt.add("playofftitle");
-        
-        
-        JComboBox jcombobox = new JComboBox(lt.toArray());        
+        Vector vector = new Vector(divTitles.length + 1);
+        for (int i = 0; i < divTitles.length; i++) {
+            vector.add(divTitles[i]);
+        }
+        vector.add("Playoff");
+
+        JComboBox jcombobox = new JComboBox(vector);
         jcombobox.setEditable(false);
+//        jcombobox.setPreferredSize(jcombobox.getMinimumSize());
+//        jcombobox.setMaximumRowCount(3);
         jcombobox.addItemListener(new ItemListener() {
 
             public void itemStateChanged(ItemEvent itemevent) {
@@ -195,6 +253,7 @@ public class TournamentGUI extends JPanel {
             }
         });
         jpanel.add(jcombobox);
+        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("chooseGroup") + " "));
         return jpanel;
     }
 
@@ -341,6 +400,30 @@ public class TournamentGUI extends JPanel {
 
     }
 
+    public static JPanel createPlayoff() {
+        JPanel jpanel2 = new JPanel();
+        jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
+        jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        playoffpane = new JTabbedPane();
+        createlistener = new CreatePlayoffListener(playoffpane);
+        newPlayoffpane(playoffpane);
+        jpanel2.add(playoffpane);
+        JScrollPane columnScrollPane = new JScrollPane(jpanel2);
+        columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
+        //ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
+
+        Set set = tournament.getPlayoffs().keySet(); //hmm? iterator?
+        ArrayList list = new ArrayList();
+        list.addAll(set);
+        Collections.reverse(list);
+        for (Object playoffnumber : list) {
+            playoffpane.addTab("Play" + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
+        }
+        playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
+
+        return jpanel2;
+    }
+
     public static JPanel createPlayoffPanel(int size) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
@@ -371,6 +454,7 @@ public class TournamentGUI extends JPanel {
             jpanel.add(jtable2);
             pairmodel.fireTableDataChanged();
         }
+
         if (size > 2) {
             jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
             jpanel.add(createNextRoundButton(size / 2));
@@ -386,7 +470,7 @@ public class TournamentGUI extends JPanel {
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("selectedGroup") + " "));
         jpanel.setLayout(new CardLayout());
         int i = tournament.size();
-        JTabbedPane ajtabbedpane[] = new JTabbedPane[i];
+        JTabbedPane ajtabbedpane[] = new JTabbedPane[i + 1];
         for (int j = 0; j < i; j++) {
             ajtabbedpane[j] = new JTabbedPane();
         }
@@ -424,37 +508,19 @@ public class TournamentGUI extends JPanel {
                 ajtabbedpane[k].addTab(messages.getString("finalTables"), columnScrollPane);
             }
 
-            //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
-            if (1 == 1) {
-                JPanel jpanel2 = new JPanel();
-                jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
-                jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                playoffpane = new JTabbedPane();
-                createlistener = new CreatePlayoffListener(playoffpane);
-                newPlayoffpane(playoffpane);
-                //jpanel2.add(playoffpane);
-                JScrollPane columnScrollPane = new JScrollPane(jpanel2);
-                columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
-                ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-
-                Set set = tournament.getPlayoffs().keySet(); //hmm? iterator?
-                ArrayList list = new ArrayList();
-                list.addAll(set);
-                Collections.reverse(list);
-                for (Object playoffnumber : list) {
-                    playoffpane.addTab("Play" + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
-                }
-                playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
-            //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
-            }
         }
 
         String as[] = tournament.getDivisionTitles();
         for (int l = 0; l < i; l++) {
             jpanel.add(ajtabbedpane[l], as[l]);
         }
-        jpanel.add(playoffpane, "playofffoo");
-        
+
+        //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
+        if (1 == 1) {
+            jpanel.add(createPlayoff(), "Playoff");
+        //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
+        }
+
         return jpanel;
     }
     private static Locale locale;
@@ -482,7 +548,7 @@ public class TournamentGUI extends JPanel {
 
     static class playoffRenderer extends DefaultTableCellRenderer {
 
-        private  int row,    col;
+        private int row,  col;
 
         public Component getTableCellRendererComponent(JTable table,
                 Object value,
