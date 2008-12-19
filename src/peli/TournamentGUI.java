@@ -446,7 +446,7 @@ public class TournamentGUI extends JPanel {
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-                
+
                 Set set = tournament.getPlayoffs().keySet(); //hmm? iterator?
                 ArrayList list = new ArrayList();
                 list.addAll(set);
@@ -454,6 +454,7 @@ public class TournamentGUI extends JPanel {
                 for (Object playoffnumber : list) {
                     playoffpane.addTab("Play" + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
                 }
+                playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
             //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
             }
         }
@@ -489,7 +490,7 @@ public class TournamentGUI extends JPanel {
 
     static class playoffRenderer extends DefaultTableCellRenderer {
 
-        private int row,  col;
+        private  int row,    col;
 
         public Component getTableCellRendererComponent(JTable table,
                 Object value,

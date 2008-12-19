@@ -44,6 +44,7 @@ public class CreatePlayoffListener implements ActionListener {
                 
                 this.firstRun = false;
                 this.playoffpane.addTab("Play" + size, jpanel);
+                this.playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
             }
         } else {
             this.source = ae.getActionCommand(); //size?
