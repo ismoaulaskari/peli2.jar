@@ -178,7 +178,7 @@ public class TournamentGUI extends JPanel {
         jtoolbar.add(jbutton);
         return jtoolbar;
     }
-
+/*
     private static JPanel createJListPane(final JPanel cards) {
         JPanel jpanel = new JPanel();
 
@@ -230,7 +230,7 @@ public class TournamentGUI extends JPanel {
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("chooseGroup") + " "));
         return jpanel;
     }
-
+*/
     private static JPanel createComboBoxPane(final JPanel cards) {
         JPanel jpanel = new JPanel();
 

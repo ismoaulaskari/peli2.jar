@@ -28,9 +28,24 @@ public class Tournament {
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
+    private Playoff placementMatches;
     // private ArrayList playoffSurvivors = new ArrayList();
     public HashMap getPlayoffs() {
         return this.playoffs;
+    }
+
+    public Playoff getPlacementMatches(int playoffSize) {
+        if (this.placementMatches == null) { //new
+            ArrayList orderedPlayers = this.getStandingsNames();
+            int firstLoser = playoffSize;
+            ArrayList placementPlayers = new ArrayList();            
+            for(int i = firstLoser; i < this.getStandings().size(); i++) {
+                placementPlayers.add(orderedPlayers.get(i));
+            }
+            this.placementMatches = new Playoff(placementPlayers, this.getStandings().size() - playoffSize);
+        }
+        
+        return this.placementMatches;
     }
 
     public Playoff getPlayoff(int size) {
@@ -40,20 +55,20 @@ public class Tournament {
             if (this.playoffs.containsKey(size * 2)) {
                 //this.playoffs.put(size, new Playoff(seedPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
                 this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
-                
+
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
             }
 
         }
         playoff = (Playoff) this.playoffs.get(size);
-        
+
         //don't advance to next round with empty results:
-        if(playoff.isEmptyPlayoffs()) {
+        if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
             playoff = null;
         }
-        
+
         return playoff;
     }
 
@@ -67,16 +82,15 @@ public class Tournament {
      * @param playerStandings
      * @return
      */
-    public ArrayList seedPlayoff(ArrayList playerStandings, int size) {                
-        ArrayList newPairs = new ArrayList(size);                
+    public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
+        ArrayList newPairs = new ArrayList(size);
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playerStandings.get(0 + i));
-            newPairs.add(playerStandings.get(size - (i + 1)));            
+            newPairs.add(playerStandings.get(size - (i + 1)));
         }
 
         return newPairs;
     }
-    
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
