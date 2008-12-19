@@ -187,7 +187,7 @@ public class TournamentGUI extends JPanel {
         for (int i = 0; i < divTitles.length; i++) {
             vector.add(divTitles[i]);
         }
-        vector.add("Playoff");
+        vector.add(messages.getString("playoff"));
 
         JList jlist = new JList(vector);
         jlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -239,7 +239,7 @@ public class TournamentGUI extends JPanel {
         for (int i = 0; i < divTitles.length; i++) {
             vector.add(divTitles[i]);
         }
-        vector.add("Playoff");
+        vector.add(messages.getString("playoff"));
 
         JComboBox jcombobox = new JComboBox(vector);
         jcombobox.setEditable(false);
@@ -417,7 +417,7 @@ public class TournamentGUI extends JPanel {
         list.addAll(set);
         Collections.reverse(list);
         for (Object playoffnumber : list) {
-            playoffpane.addTab("Play" + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
+            playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
         }
         playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
 
@@ -517,10 +517,16 @@ public class TournamentGUI extends JPanel {
 
         //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
         if (1 == 1) {
-            jpanel.add(createPlayoff(), "Playoff");
+            jpanel.add(createPlayoff(), messages.getString("playoff"));
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
 
+        //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
+        if (1 == 1) {
+            jpanel.add(createPlayoff(), messages.getString("placementMatches"));
+        //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
+        }
+        
         return jpanel;
     }
     private static Locale locale;

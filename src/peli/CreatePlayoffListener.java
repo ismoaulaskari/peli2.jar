@@ -43,7 +43,7 @@ public class CreatePlayoffListener implements ActionListener {
                 }
                 
                 this.firstRun = false;
-                this.playoffpane.addTab("Play" + size, jpanel);
+                this.playoffpane.addTab(Constants.getMessages().getString("bestOf") + " " + size, jpanel);
                 this.playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
             }
         } else {
