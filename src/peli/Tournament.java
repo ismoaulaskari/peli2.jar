@@ -38,9 +38,9 @@ public class Tournament {
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) {
-                this.playoffs.put(size, new Playoff(
-                        seedPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size),
-                        size));
+                //this.playoffs.put(size, new Playoff(seedPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
+                this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
+                
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
             }
