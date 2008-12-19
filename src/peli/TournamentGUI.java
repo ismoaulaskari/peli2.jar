@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -179,7 +180,12 @@ public class TournamentGUI extends JPanel {
     private static JPanel createComboBoxPane(final JPanel cards) {
         JPanel jpanel = new JPanel();
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("chooseGroup") + " "));
-        JComboBox jcombobox = new JComboBox(tournament.getDivisionTitles());
+        String[] divTitles = tournament.getDivisionTitles();
+        ArrayList lt = (ArrayList) Arrays.asList(divTitles);
+        lt.add("playofftitle");
+        
+        
+        JComboBox jcombobox = new JComboBox(lt.toArray());        
         jcombobox.setEditable(false);
         jcombobox.addItemListener(new ItemListener() {
 
@@ -418,22 +424,6 @@ public class TournamentGUI extends JPanel {
                 ajtabbedpane[k].addTab(messages.getString("finalTables"), columnScrollPane);
             }
 
-            //playoff inside a tab
-            /*
-            //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
-            if(1==1) {
-            //JPanel jpanel2 = new JPanel();
-            JPanel jpanel2 = createPlayoffTable();
-            //JLabel jarea = new JLabel(tournament.getFormattedStandings()); 
-            //jarea.setFont(new Font("Times", 0, 10));
-            //jpanel2.setLayout(new BorderLayout());
-            //jpanel2.add(jarea,"Center");
-            JScrollPane columnScrollPane = new JScrollPane(jpanel2);
-            columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
-            ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
-            }
-             */
-
             //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
             if (1 == 1) {
                 JPanel jpanel2 = new JPanel();
@@ -442,7 +432,7 @@ public class TournamentGUI extends JPanel {
                 playoffpane = new JTabbedPane();
                 createlistener = new CreatePlayoffListener(playoffpane);
                 newPlayoffpane(playoffpane);
-                jpanel2.add(playoffpane);
+                //jpanel2.add(playoffpane);
                 JScrollPane columnScrollPane = new JScrollPane(jpanel2);
                 columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
                 ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
@@ -463,6 +453,8 @@ public class TournamentGUI extends JPanel {
         for (int l = 0; l < i; l++) {
             jpanel.add(ajtabbedpane[l], as[l]);
         }
+        jpanel.add(playoffpane, "playofffoo");
+        
         return jpanel;
     }
     private static Locale locale;
