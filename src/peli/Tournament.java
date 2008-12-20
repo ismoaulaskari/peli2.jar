@@ -75,7 +75,6 @@ public class Tournament {
                 for (int i = 0; i < survivorIndexes.size(); i++) {
                     newSurvivors.add(groupStandings.get((Integer) (survivorIndexes.get(i))));
                 }
-
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
 
             } else {
@@ -472,31 +471,36 @@ public class Tournament {
         return overallstandings;
     }
 
-    public ArrayList getStandingsAfterPlayoffs() {
+    public ArrayList addPlayoffsToStandings() {
         ArrayList overallstandings = new ArrayList();
         ArrayList groupstandings = getStandings();
         Set rounds = playoffs.keySet();
         Boolean isFirst = true;
         for (Iterator i = rounds.iterator(); i.hasNext();) {
-            Object o = i.next();
+            Integer size = (Integer) i.next();
             if (isFirst) {
                 isFirst = false;
-                if (((Playoff) playoffs.get(o)).getSize() == 2) { //final
-                    overallstandings.addAll(((Playoff) playoffs.get(o)).getSurvivors());
+                if (size == 2) { //final
+                    overallstandings.addAll(((Playoff) playoffs.get(size)).getSurvivors());
+                } else { //playoff not finished
+                    return groupstandings;
                 }
             }
-            overallstandings.addAll(((Playoff) playoffs.get(o)).getLosers()); //X ?
+            overallstandings.addAll(((Playoff) playoffs.get(size)).getLosers()); //X ?
         }
-
         //playoffs combined with basic groups
-        overallstandings.addAll(groupstandings.subList(largestPlayoff, groupstandings.size()));
+        //overallstandings.addAll(groupstandings.subList(largestPlayoff, groupstandings.size()));
 
+        return overallstandings;
+    }
+
+    public ArrayList addPlacementMatchesToStandings(ArrayList overallstandings) {
         //modify based on placementmatches
         if (this.placementMatches != null) {
             for (Object o : this.placementMatches.getPlayoffPairs()) {
-                String winner = ((PlayoffPair) o).getWinner();
+                Object winner = ((PlayoffPair) o).getWinner();
                 if (winner != null) {
-                    String loser = ((PlayoffPair) o).getLoser();
+                    Object loser = ((PlayoffPair) o).getLoser();
                     int winnerplace = overallstandings.indexOf(winner);
                     int loserplace = overallstandings.indexOf(loser);
                     if (winnerplace >= 0 && loserplace >= 0) { //swap?
@@ -504,9 +508,13 @@ public class Tournament {
                             overallstandings.set(loserplace, winner);
                             overallstandings.set(winnerplace, loser);
                         }
+                    } else {
+                        System.err.println("placementmatches no find " + winnerplace + " or " + loserplace);
                     }
-                }
+                } 
             }
+        } else {
+            System.err.println("placementmatches null");
         }
 
         return overallstandings;
@@ -536,7 +544,7 @@ public class Tournament {
     //added by aulaskar to help organising final groups
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
-        ArrayList overallstandings = getStandingsAfterPlayoffs();
+        ArrayList overallstandings = addPlacementMatchesToStandings(getStandings());
 
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
