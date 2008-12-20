@@ -509,6 +509,7 @@ public class TournamentGUI extends JPanel {
             JTable jtable2 = new JTable(pairmodel);            
             setPlacementMatchTableRenderers(jtable2.getColumnModel());
             jtable2.setShowGrid(true);
+            jtable2.setGridColor(Color.RED);
             jtable2.setShowVerticalLines(true);
             jtable2.setShowHorizontalLines(false);
             jtable2.setRowSelectionAllowed(false);
@@ -520,7 +521,7 @@ public class TournamentGUI extends JPanel {
             if (x == 0) {
                 jpanel.add(playofftableheader);
             }
-            if (x == tournament.getLargestPlayoff()) {            
+            if (x == tournament.getLargestPlayoff() / 2) {            
                 jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
             }
             jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
