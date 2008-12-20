@@ -508,9 +508,9 @@ public class TournamentGUI extends JPanel {
             PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
             JTable jtable2 = new JTable(pairmodel);            
             setPlacementMatchTableRenderers(jtable2.getColumnModel());
-            jtable2.setShowGrid(true);
-            jtable2.setGridColor(Color.RED);
-            jtable2.setShowVerticalLines(true);
+            //jtable2.setShowGrid(true);
+            //jtable2.setGridColor(Color.RED);
+            jtable2.setShowVerticalLines(false);
             jtable2.setShowHorizontalLines(false);
             jtable2.setRowSelectionAllowed(false);
             jtable2.setColumnSelectionAllowed(false);
