@@ -17,7 +17,8 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     private ResourceBundle messages = Constants.getInstance().getMessages();
     final String columnNames[] = {
         messages.getString("playerName"), messages.getString("playoffWins"),
-        "", messages.getString("playoffResults"), "", "", "", "", ""
+        "", messages.getString("playoffResults1"), messages.getString("playoffResults2"), 
+        "", "", "", ""
     };
     private PlayoffPair playoffpair;
 
