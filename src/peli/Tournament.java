@@ -36,6 +36,7 @@ public class Tournament {
     }
 
     public Playoff getPlacementMatches(int size) {
+        ArrayList groupStandings = this.getStandingsNames();
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames();
             //int firstLoser = size;
@@ -46,7 +47,8 @@ public class Tournament {
             //this.placementMatches = new Playoff(placementPlayers, this.getStandings().size() - playoffSize);
             this.placementMatches = new Playoff(placementPlayers, size);
         }
-
+        this.placementMatches.markRankings(groupStandings);
+        
         return this.placementMatches;
     }
 
@@ -57,12 +59,12 @@ public class Tournament {
      */
     public Playoff getPlayoffWithReseed(int size) {
         Playoff playoff = null;
+        ArrayList groupStandings = this.getStandingsNames();
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) {
 
-                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
-                ArrayList groupStandings = this.getStandingsNames();
+                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();                
                 ArrayList survivorIndexes = new ArrayList();
                 for (Object survivor : survivors) {
                     survivorIndexes.add(groupStandings.indexOf(survivor));
@@ -81,7 +83,7 @@ public class Tournament {
 
         }
         playoff = (Playoff) this.playoffs.get(size);
-
+        playoff.markRankings(groupStandings);
         //don't advance to next round with empty results:
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);

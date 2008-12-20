@@ -56,6 +56,17 @@ public class Playoff {
         }
 
     }
+
+    /**
+     * how expensive is this..
+     * @param groupStandings
+     */
+    void markRankings(ArrayList groupStandings) {
+        for(int i = 0; i < this.playoffPairs.length; i++) {
+            this.playoffPairs[i].setHomePlacement(groupStandings.indexOf(this.playoffPairs[i].getHomeTeam()) + 1);
+            this.playoffPairs[i].setAwayPlacement(groupStandings.indexOf(this.playoffPairs[i].getAwayTeam()) + 1);
+        }
+    }
     
     //won't support empty players
     private PlayoffPair[] createPairs(List players, int size) {

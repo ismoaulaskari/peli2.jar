@@ -156,6 +156,14 @@ public class PlayoffPair {
         return String.valueOf(homePlacement) + ".";
     }
 
+    public void setAwayPlacement(int ranking) {
+        this.awayPlacement = ranking;
+    }
+
+    public void setHomePlacement(int ranking) {
+        this.homePlacement = ranking;
+    }
+
     public void setAwayPlacement(String string) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
