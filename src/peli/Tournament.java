@@ -46,7 +46,7 @@ public class Tournament {
             //this.placementMatches = new Playoff(placementPlayers, this.getStandings().size() - playoffSize);
             this.placementMatches = new Playoff(placementPlayers, size);
         }
-        
+
         return this.placementMatches;
     }
 
@@ -55,24 +55,24 @@ public class Tournament {
      * @param size
      * @return
      */
-   public Playoff getPlayoffWithReseed(int size) {
+    public Playoff getPlayoffWithReseed(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) {
-                
+
                 ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
                 ArrayList groupStandings = this.getStandingsNames();
                 ArrayList survivorIndexes = new ArrayList();
-                for(Object survivor : survivors) {
+                for (Object survivor : survivors) {
                     survivorIndexes.add(groupStandings.indexOf(survivor));
                 }
                 Collections.sort(survivorIndexes);
                 ArrayList newSurvivors = new ArrayList();
-                for(int i = 0; i < survivorIndexes.size(); i++) {
-                  newSurvivors.add(groupStandings.get(i));  
+                for (int i = 0; i < survivorIndexes.size(); i++) {
+                    newSurvivors.add(groupStandings.get(i));
                 }
-                
+
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
 
             } else {
@@ -86,9 +86,8 @@ public class Tournament {
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
             playoff = null;
-        }
-        else {
-            if(size > this.getLargestPlayoff()) {
+        } else {
+            if (size > this.getLargestPlayoff()) {
                 this.largestPlayoff = size;
             }
         }
@@ -96,11 +95,11 @@ public class Tournament {
         return playoff;
     }
 
-   /**
-    * Do not reseed after first playoff round(need to get multiple final groups unordered) 
-    * @param size
-    * @return
-    */
+    /**
+     * Do not reseed after first playoff round(need to get multiple final groups unordered) 
+     * @param size
+     * @return
+     */
     public Playoff getPlayoffNoReseed(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
@@ -120,9 +119,8 @@ public class Tournament {
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
             playoff = null;
-        }
-        else {
-            if(size > this.getLargestPlayoff()) {
+        } else {
+            if (size > this.getLargestPlayoff()) {
                 this.largestPlayoff = size;
             }
         }
@@ -312,6 +310,17 @@ public class Tournament {
                     playoffs.put(playoff.getSize(), playoff);
                 }
             }
+
+            if (bufferedreader.ready()) { //there's placementmatches too
+                int playoffsSize = Tools.parseIntAfter("PLACEMENTMATCHES:", bufferedreader.readLine());
+                for (int i = 0; i < playoffsSize; i++) {
+                    this.placementMatches = new Playoff(bufferedreader);
+                }
+                if (!bufferedreader.readLine().equals("END-OF-PLACEMENTMATCHES")) {
+                    throw new FileFormatException();
+                }            
+            }
+
             bufferedreader.close();
         } catch (IOException ioexception) {
             throw ioexception;
@@ -425,6 +434,9 @@ public class Tournament {
         for (Iterator i = rounds.iterator(); i.hasNext();) {
             ((Playoff) playoffs.get(i.next())).save(printwriter);
         }
+        printwriter.println("PLACEMENTMATCHES:" + 1);
+        this.placementMatches.save(printwriter);
+        printwriter.println("END-OF-PLACEMENTMATCHES");
     }
 
     //added by aulaskar to help organising final groups
