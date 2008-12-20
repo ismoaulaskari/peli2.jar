@@ -64,16 +64,22 @@ public class Tournament {
 
             if (this.playoffs.containsKey(size * 2)) {
                 //who are left?
-                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
+                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();                    
                 ArrayList survivorIndexes = new ArrayList();
                 for (Object survivor : survivors) {
-                    survivorIndexes.add((Integer) groupStandings.indexOf(survivor));
+                    survivorIndexes.add((int) groupStandings.indexOf(survivor));                    
                 }
                 //order survivors based on group standings
                 Collections.sort(survivorIndexes);
                 ArrayList newSurvivors = new ArrayList();
                 for (int i = 0; i < survivorIndexes.size(); i++) {
-                    newSurvivors.add(groupStandings.get((Integer) (survivorIndexes.get(i))));
+                    try {
+                        newSurvivors.add(groupStandings.get((Integer) survivorIndexes.get(i)));
+                    }
+                    catch(IndexOutOfBoundsException ie) {
+                     //   System.err.println("Problem with survivor " + survivorIndexes.get(i));
+                        newSurvivors.add("X");
+                    }
                 }
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
 
@@ -81,7 +87,7 @@ public class Tournament {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
             }
 
-        }
+        }        
         playoff = (Playoff) this.playoffs.get(size);
         playoff.markRankings(groupStandings);
         //don't advance to next round with empty results:
