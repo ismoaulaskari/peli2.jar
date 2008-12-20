@@ -16,7 +16,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
 
     private ResourceBundle messages = Constants.getInstance().getMessages();
     final String columnNames[] = {
-        messages.getString("placement"), messages.getString("playerName"), 
+        "", messages.getString("playerName"), 
         messages.getString("playoffWins"), "", 
         messages.getString("playoffResults1"), messages.getString("playoffResults2"),
         "", "", "", ""
@@ -100,7 +100,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     private boolean isDummyMatch(int i) {
-        Match match = (Match) playoffpair.getMatches().get(i - 2);
+        Match match = (Match) playoffpair.getMatches().get(i - 3);
         String s = match.home();
         String s1 = match.visitor();
         return s.equals("X") || s1.equals("X");

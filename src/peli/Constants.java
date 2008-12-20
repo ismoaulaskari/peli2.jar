@@ -33,8 +33,8 @@ public class Constants {
         
 	static {
 		constants = new Constants();
-		//locale = new Locale(new String("fi"), new String("FI"));
-                locale = new Locale(new String("en"), new String("US"));
+		locale = new Locale(new String("fi"), new String("FI"));
+                //locale = new Locale(new String("en"), new String("US"));
                 System.setProperty("Peli.jarVersion", "v. 1.10.0");
                 try {
                     messages = ResourceBundle.getBundle("Messages", locale);

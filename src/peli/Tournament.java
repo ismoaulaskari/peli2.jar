@@ -50,7 +50,58 @@ public class Tournament {
         return this.placementMatches;
     }
 
-    public Playoff getPlayoff(int size) {
+    /**
+     * Reseed each new playoff round
+     * @param size
+     * @return
+     */
+   public Playoff getPlayoffWithReseed(int size) {
+        Playoff playoff = null;
+        if (!this.playoffs.containsKey(size)) {
+
+            if (this.playoffs.containsKey(size * 2)) {
+                
+                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
+                ArrayList groupStandings = this.getStandingsNames();
+                ArrayList survivorIndexes = new ArrayList();
+                for(Object survivor : survivors) {
+                    survivorIndexes.add(groupStandings.indexOf(survivor));
+                }
+                Collections.sort(survivorIndexes);
+                ArrayList newSurvivors = new ArrayList();
+                for(int i = 0; i < survivorIndexes.size(); i++) {
+                  newSurvivors.add(groupStandings.get(i));  
+                }
+                
+                this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
+
+            } else {
+                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
+            }
+
+        }
+        playoff = (Playoff) this.playoffs.get(size);
+
+        //don't advance to next round with empty results:
+        if (playoff.isEmptyPlayoffs()) {
+            this.playoffs.remove(size);
+            playoff = null;
+        }
+        else {
+            if(size > this.getLargestPlayoff()) {
+                this.largestPlayoff = size;
+            }
+        }
+
+        return playoff;
+    }
+
+   /**
+    * Do not reseed after first playoff round(need to get multiple final groups unordered) 
+    * @param size
+    * @return
+    */
+    public Playoff getPlayoffNoReseed(int size) {
         Playoff playoff = null;
         if (!this.playoffs.containsKey(size)) {
 
