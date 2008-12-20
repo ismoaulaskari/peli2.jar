@@ -20,7 +20,7 @@ public class PlayoffPair {
     private int homePlacement,  awayPlacement;
     //    private Playoff mother;
     private ArrayList matches = new ArrayList();
-    private final int MAXMATCHES = 7;
+    private final int MAXMATCHES = Constants.getMAXMATCHES();
 
     public PlayoffPair(Playoff playoff, String homeTeam, String awayTeam) {
         if (playoff == null) {

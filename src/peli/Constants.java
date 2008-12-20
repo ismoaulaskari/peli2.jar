@@ -30,6 +30,7 @@ public class Constants {
 	private static StringBuilder header = new StringBuilder(500);
         private static StringBuilder template = new StringBuilder(500);
         private static StringBuilder footer = new StringBuilder(100);
+        private static int MAXMATCHES;
         
 	static {
 		constants = new Constants();
@@ -80,7 +81,14 @@ public class Constants {
                 
                 //this should always be found
                 keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);                
-                                
+                  
+                //too big gui dependencies
+                //if(rules.containsKey("maxPlayoffMatches")) {
+                 //   MAXMATCHES = Integer.parseInt(rules.getString("maxPlayoffMatches"));
+                //}
+                //else {
+                    MAXMATCHES = 7;
+                //}
 	}
 
     public static StringBuilder getHeader() {
@@ -93,6 +101,10 @@ public class Constants {
 
     public static StringBuilder getFooter() {
         return footer;
+    }
+
+    public static int getMAXMATCHES() {
+        return MAXMATCHES;
     }
 
     
