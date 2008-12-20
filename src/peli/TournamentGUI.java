@@ -303,7 +303,7 @@ public class TournamentGUI extends JPanel {
 
         //games
         for (int xx = 0; xx < 7; xx++) {
-            tablecolumn = tablecolumnmodel.getColumn(xx + 2);
+            tablecolumn = tablecolumnmodel.getColumn(xx + 3);
             tablecolumn.setCellRenderer(playoffRenderer);
             tablecolumn.setPreferredWidth(50);
         }
@@ -327,7 +327,7 @@ public class TournamentGUI extends JPanel {
 
         //games
         for (int xx = 0; xx < 7; xx++) {
-            tablecolumn = tablecolumnmodel.getColumn(xx + 2);
+            tablecolumn = tablecolumnmodel.getColumn(xx + 3);
             tablecolumn.setCellRenderer(playoffRenderer);
             tablecolumn.setPreferredWidth(50);
         }
