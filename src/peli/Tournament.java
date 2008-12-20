@@ -471,26 +471,26 @@ public class Tournament {
         return overallstandings;
     }
 
-    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {                
+    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
         Set rounds = playoffs.keySet();
         Boolean isFirst = true;
-        int x=0;
+        int x = 0;
         for (Iterator i = rounds.iterator(); i.hasNext();) {
             Integer size = (Integer) i.next();
             if (isFirst) {
                 isFirst = false;
                 if (size == 2) { //final, get the winner
-                    overallstandings.set(x++, ((Playoff) playoffs.get(size)).getSurvivors().get(0));                            
+                    overallstandings.set(x++, ((Playoff) playoffs.get(size)).getSurvivors().get(0));
                 } else { //playoff not finished
                     return overallstandings;
                 }
             }
             //the rest are all losers
-            for(Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
+            for (Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
                 overallstandings.set(x++, loser);
-            }                                            
+            }
         }
-        
+
         return overallstandings;
     }
 
@@ -499,8 +499,8 @@ public class Tournament {
         if (this.placementMatches != null) {
             for (Object o : this.placementMatches.getPlayoffPairs()) {
                 Object winner = ((PlayoffPair) o).getWinner();
-                if (winner != null) {                  
-                    Object loser = ((PlayoffPair) o).getLoser();                  
+                if (winner != null) {
+                    Object loser = ((PlayoffPair) o).getLoser();
                     int winnerplace = overallstandings.indexOf(winner);
                     int loserplace = overallstandings.indexOf(loser);
                     if (winnerplace >= 0 && loserplace >= 0) { //swap?
@@ -511,7 +511,7 @@ public class Tournament {
                     } else {
                         System.err.println("placementmatches can't find " + winner + " or " + loser);
                     }
-                } 
+                }
             }
         } else {
             System.err.println("placementmatches null");
@@ -602,14 +602,27 @@ public class Tournament {
             header = header.replaceAll("<!-- HEADING -->", messages.getString("templateHeading"));
             printwriter.print(header);
 
+            String output = Constants.getTemplate().toString();
             //use template.txt                                                
             for (int i = 0; i < getNumberOfDivisions(); i++) {
-                getDivision(i).saveAll(printwriter);
+                output += getDivision(i).saveAll();
             //HtmlTools.hr(printwriter);
             }
 
+            output += Constants.getFooter().toString();
+            if (playoffs.size() > 0) {
+                output = output.replaceAll("<!--HIDE_PLAYOFF", "");
+                output = output.replaceAll("HIDE_PLAYOFF-->", "");
+                output = output.replaceAll("<!-- PLAYOFF -->", "playoff here");
+            }
+            if (placementMatches != null) {
+                output = output.replaceAll("<!--HIDE_STANDINGS", "");
+                output = output.replaceAll("HIDE_STANDINGS-->", "");
+                output = output.replaceAll("<!-- STANDINGS -->", "standings here");
+            }
+
             //use footer.txt
-            printwriter.print(Constants.getFooter().toString());
+            printwriter.print(output);
 
         } else {  //force version 1.0 compatible html output format
             saveAll_legacy(printwriter);

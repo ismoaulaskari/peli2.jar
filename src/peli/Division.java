@@ -241,7 +241,7 @@ public class Division {
     }
 
     //mutual matches table on a template-based tournament html-page
-    public void saveAll(PrintWriter printwriter) {
+    public String saveAll() {
         String output = Constants.getTemplate().toString();
         SeriesTable seriestable = getSeriesTable();
 
@@ -288,19 +288,8 @@ public class Division {
 
         output = output.replaceAll("<!-- MUTUALTABLE -->", mutualtable.toString());
 
-        //not always!! only when a playoff exists?
-        if (playoff) {
-            output = output.replaceAll("<!--HIDE_PLAYOFF", "");
-            output = output.replaceAll("HIDE_PLAYOFF-->", "");
-            output = output.replaceAll("<!--HIDE_STANDINGS", "");
-            output = output.replaceAll("HIDE_STANDINGS-->", "");
-        }
-
-        output = output.replaceAll("<!-- PLAYOFF -->", "playoff here");
-        output = output.replaceAll("<!-- STANDINGS -->", "standings here");
-
-
-        printwriter.print(output.toString());
+        //printwriter.print(output.toString());
+        return output.toString();
     }
     //mutual matches table on a tournament v.1.0 html-page
     public void saveAll_legacy(PrintWriter printwriter) {
