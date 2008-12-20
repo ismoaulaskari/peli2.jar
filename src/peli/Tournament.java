@@ -48,7 +48,7 @@ public class Tournament {
             this.placementMatches = new Playoff(placementPlayers, size);
         }
         this.placementMatches.markRankings(groupStandings);
-        
+
         return this.placementMatches;
     }
 
@@ -63,16 +63,17 @@ public class Tournament {
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) {
-
-                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();                
+                //who are left?
+                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
                 ArrayList survivorIndexes = new ArrayList();
                 for (Object survivor : survivors) {
-                    survivorIndexes.add(groupStandings.indexOf(survivor));
+                    survivorIndexes.add((Integer) groupStandings.indexOf(survivor));
                 }
+                //order survivors based on group standings
                 Collections.sort(survivorIndexes);
                 ArrayList newSurvivors = new ArrayList();
                 for (int i = 0; i < survivorIndexes.size(); i++) {
-                    newSurvivors.add(groupStandings.get(i));
+                    newSurvivors.add(groupStandings.get((Integer) (survivorIndexes.get(i))));
                 }
 
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
@@ -320,7 +321,7 @@ public class Tournament {
                 }
                 if (!bufferedreader.readLine().equals("END-OF-PLACEMENTMATCHES")) {
                     throw new FileFormatException();
-                }            
+                }
             }
 
             bufferedreader.close();
@@ -415,7 +416,7 @@ public class Tournament {
                 break;
 
             case 4:
-                saveStandings(printwriter);
+                saveStandingsWithPlayoffs(printwriter);
                 break;
 
             default:
@@ -471,6 +472,46 @@ public class Tournament {
         return overallstandings;
     }
 
+    public ArrayList getStandingsAfterPlayoffs() {
+        ArrayList overallstandings = new ArrayList();
+        ArrayList groupstandings = getStandings();
+        Set rounds = playoffs.keySet();
+        Boolean isFirst = true;
+        for (Iterator i = rounds.iterator(); i.hasNext();) {
+            Object o = i.next();
+            if (isFirst) {
+                isFirst = false;
+                if (((Playoff) playoffs.get(o)).getSize() == 2) { //final
+                    overallstandings.addAll(((Playoff) playoffs.get(o)).getSurvivors());
+                }
+            }
+            overallstandings.addAll(((Playoff) playoffs.get(o)).getLosers()); //X ?
+        }
+
+        //playoffs combined with basic groups
+        overallstandings.addAll(groupstandings.subList(largestPlayoff, groupstandings.size()));
+
+        //modify based on placementmatches
+        if (this.placementMatches != null) {
+            for (Object o : this.placementMatches.getPlayoffPairs()) {
+                String winner = ((PlayoffPair) o).getWinner();
+                if (winner != null) {
+                    String loser = ((PlayoffPair) o).getLoser();
+                    int winnerplace = overallstandings.indexOf(winner);
+                    int loserplace = overallstandings.indexOf(loser);
+                    if (winnerplace >= 0 && loserplace >= 0) { //swap?
+                        if (loserplace < winnerplace) {
+                            overallstandings.set(loserplace, winner);
+                            overallstandings.set(winnerplace, loser);
+                        }
+                    }
+                }
+            }
+        }
+
+        return overallstandings;
+    }
+
     public String getFormattedStandings() {
         StringBuilder sb = new StringBuilder();
         int placement = 1;
@@ -490,6 +531,18 @@ public class Tournament {
         }
 
         return justnames;
+    }
+
+    //added by aulaskar to help organising final groups
+    /** print combined standings of all divisions */
+    public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
+        ArrayList overallstandings = getStandingsAfterPlayoffs();
+
+        //print to file
+        for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
+            printwriter.println(iterator.next());
+        }
+
     }
 
     //added by aulaskar to help organising final groups

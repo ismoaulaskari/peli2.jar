@@ -128,10 +128,10 @@ public class Playoff {
         return survivors;
     }
 
-    public List getLosers() {
+    public ArrayList getLosers() {
         ArrayList losers = new ArrayList();
         for (int i = 0; i < playoffPairs.length; i++) {
-            losers.add(playoffPairs[i].getWinner());
+            losers.add(playoffPairs[i].getLoser());
         }
 
         return losers;
