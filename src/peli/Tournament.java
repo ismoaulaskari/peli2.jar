@@ -29,6 +29,7 @@ public class Tournament {
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
     private Playoff placementMatches;
+    private int largestPlayoff = 0;
     // private ArrayList playoffSurvivors = new ArrayList();
     public HashMap getPlayoffs() {
         return this.playoffs;
@@ -36,9 +37,9 @@ public class Tournament {
 
     public Playoff getPlacementMatches(int size) {
         if (this.placementMatches == null) { //new
-            ArrayList orderedPlayers = this.getStandingsNames();
+            ArrayList placementPlayers = this.getStandingsNames();
             //int firstLoser = size;
-            ArrayList placementPlayers = orderedPlayers;
+            //ArrayList placementPlayers = new ArrayList();
             //for(int i = firstLoser; i < this.getStandings().size(); i++) {
             //    placementPlayers.add(orderedPlayers.get(i));
             //}
@@ -68,6 +69,11 @@ public class Tournament {
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
             playoff = null;
+        }
+        else {
+            if(size > this.getLargestPlayoff()) {
+                this.largestPlayoff = size;
+            }
         }
 
         return playoff;
@@ -500,5 +506,9 @@ public class Tournament {
 
     public void finalize() {
         this.divisions = null;
+    }
+
+    public int getLargestPlayoff() {
+        return largestPlayoff;
     }
 }
