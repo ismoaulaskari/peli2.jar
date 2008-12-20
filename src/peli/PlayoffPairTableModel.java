@@ -16,8 +16,9 @@ public class PlayoffPairTableModel extends AbstractTableModel {
 
     private ResourceBundle messages = Constants.getInstance().getMessages();
     final String columnNames[] = {
-        messages.getString("playerName"), messages.getString("playoffWins"),
-        "", messages.getString("playoffResults1"), messages.getString("playoffResults2"), 
+        messages.getString("placement"), messages.getString("playerName"), 
+        messages.getString("playoffWins"), "", 
+        messages.getString("playoffResults1"), messages.getString("playoffResults2"),
         "", "", "", ""
     };
     private PlayoffPair playoffpair;
@@ -46,12 +47,19 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         switch (j) {
             case 0:
                 if (i == 0) {
+                    return playoffpair.getHomePlacement();
+                } else {
+                    return playoffpair.getAwayPlacement();
+                }
+                
+            case 1:
+                if (i == 0) {
                     return playoffpair.getHomeTeam();
                 } else {
                     return playoffpair.getAwayTeam();
                 }
 
-            case 1:
+            case 2:
                 if (i == 0) {
                     return playoffpair.getHomeWins();
                 } else {
@@ -59,11 +67,11 @@ public class PlayoffPairTableModel extends AbstractTableModel {
                 }
         }
 
-        if (i == 0 && j > 1) {
+        if (i == 0 && j > 2) {
             //if (isDummyMatch(j)) {
             //    return "xxx";
             //} else {
-            Match match = (Match) playoffpair.getMatches().get(j - 2);
+            Match match = (Match) playoffpair.getMatches().get(j - 3);
             return match.getResult();
         //}
         } else {
@@ -81,10 +89,10 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     }
 
     public boolean isCellEditable(int i, int j) {
-        if (i == 0 && j > 1) {
+        if (i == 0 && j > 2) {
             return true;
         }
-        if (j == 0 && i < 2) {
+        if (j == 1 && i < 2) {
             return true;
         }
 
@@ -101,18 +109,25 @@ public class PlayoffPairTableModel extends AbstractTableModel {
     public void setValueAt(Object obj, int i, int j) {
         if (i > 1 || j < 0) {
             return;
-        }        
+        }
 
         if (j == 0) {
+            if (i == 0) {
+                this.playoffpair.setHomePlacement((String) obj);
+            } else if (i == 1) {
+                this.playoffpair.setAwayPlacement((String) obj);
+            }
+        }
+        if (j == 1) {
             if (i == 0) {
                 this.playoffpair.setHomeTeam((String) obj);
             } else if (i == 1) {
                 this.playoffpair.setAwayTeam((String) obj);
             }
-        } else if (j == 1) {
+        } else if (j == 2) {
             return;
-        } else if (j > 1 && i == 0) {
-            Match match = (Match) playoffpair.getMatches().get(j - 2);
+        } else if (j > 2 && i == 0) {
+            Match match = (Match) playoffpair.getMatches().get(j - 3);
             //SeriesTableEntry seriestableentry = round.getDivision().getSeriesTableEntry(match.home());
             //SeriesTableEntry seriestableentry1 = round.getDivision().getSeriesTableEntry(match.visitor());
             if (match.isOver()) {

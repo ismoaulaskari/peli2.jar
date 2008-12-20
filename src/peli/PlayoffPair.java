@@ -17,7 +17,8 @@ public class PlayoffPair {
     //rounds
     private String homeTeam,  awayTeam;
     private int homeWins,  awayWins;
-//    private Playoff mother;
+    private int homePlacement,  awayPlacement;
+    //    private Playoff mother;
     private ArrayList matches = new ArrayList();
     private final int MAXMATCHES = 7;
 
@@ -145,5 +146,21 @@ public class PlayoffPair {
 
     public String toString() {
         return homeTeam + "-" + awayTeam + ":" + matches;
+    }
+
+    public String getAwayPlacement() {
+        return String.valueOf(awayPlacement) + ".";
+    }
+
+    public String getHomePlacement() {
+        return String.valueOf(homePlacement) + ".";
+    }
+
+    public void setAwayPlacement(String string) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public void setHomePlacement(String string) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

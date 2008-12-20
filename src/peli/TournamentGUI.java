@@ -287,13 +287,17 @@ public class TournamentGUI extends JPanel {
     }
 
     private static void setPlayoffTableRenderers(TableColumnModel tablecolumnmodel) {
-        //names                        
+        //placement
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
+        tablecolumn.setCellRenderer(playoffRenderer);
+        tablecolumn.setPreferredWidth(50);
+        //names                        
+        tablecolumn = tablecolumnmodel.getColumn(1);
         tablecolumn.setPreferredWidth(150);
         tablecolumn.setMaxWidth(150);
         tablecolumn.setCellRenderer(playoffRenderer);
         //wins
-        tablecolumn = tablecolumnmodel.getColumn(1);
+        tablecolumn = tablecolumnmodel.getColumn(2);
         tablecolumn.setCellRenderer(playoffRenderer);
         tablecolumn.setPreferredWidth(30);
 
@@ -307,13 +311,17 @@ public class TournamentGUI extends JPanel {
     }
 
     private static void setPlacementMatchTableRenderers(TableColumnModel tablecolumnmodel) {
-        //names                        
+        //placement
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
+        tablecolumn.setCellRenderer(playoffRenderer);
+        tablecolumn.setPreferredWidth(50);
+        //names                        
+        tablecolumn = tablecolumnmodel.getColumn(1);
         tablecolumn.setPreferredWidth(150);
         tablecolumn.setMaxWidth(150);
         tablecolumn.setCellRenderer(playoffRenderer);
         //wins
-        tablecolumn = tablecolumnmodel.getColumn(1);
+        tablecolumn = tablecolumnmodel.getColumn(2);
         tablecolumn.setCellRenderer(playoffRenderer);
         tablecolumn.setPreferredWidth(30);
 
@@ -653,7 +661,7 @@ public class TournamentGUI extends JPanel {
 
             setHorizontalAlignment(SwingConstants.CENTER);
             setVerticalAlignment(SwingConstants.TOP);
-            if ((this.col == 0 && this.row < 2) || (this.row == 0 && this.col > 1)) {
+            if ((this.col == 1 && this.row < 2) || (this.row == 0 && this.col > 2)) {
                 //System.out.println(this.getClass().getName() + " " + this.getText());
                 //setForeground (Color.white);
                 setBackground(Color.white);
