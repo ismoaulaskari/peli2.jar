@@ -471,26 +471,26 @@ public class Tournament {
         return overallstandings;
     }
 
-    public ArrayList addPlayoffsToStandings() {
-        ArrayList overallstandings = new ArrayList();
-        ArrayList groupstandings = getStandings();
+    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {                
         Set rounds = playoffs.keySet();
         Boolean isFirst = true;
+        int x=0;
         for (Iterator i = rounds.iterator(); i.hasNext();) {
             Integer size = (Integer) i.next();
             if (isFirst) {
                 isFirst = false;
-                if (size == 2) { //final
-                    overallstandings.addAll(((Playoff) playoffs.get(size)).getSurvivors());
+                if (size == 2) { //final, get the winner
+                    overallstandings.set(x++, ((Playoff) playoffs.get(size)).getSurvivors().get(0));                            
                 } else { //playoff not finished
-                    return groupstandings;
+                    return overallstandings;
                 }
             }
-            overallstandings.addAll(((Playoff) playoffs.get(size)).getLosers()); //X ?
+            //the rest are all losers
+            for(Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
+                overallstandings.set(x++, loser);
+            }                                            
         }
-        //playoffs combined with basic groups
-        //overallstandings.addAll(groupstandings.subList(largestPlayoff, groupstandings.size()));
-
+        
         return overallstandings;
     }
 
@@ -544,7 +544,7 @@ public class Tournament {
     //added by aulaskar to help organising final groups
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
-        ArrayList overallstandings = addPlacementMatchesToStandings(getStandingsNames());
+        ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames()));
 
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
