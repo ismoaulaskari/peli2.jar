@@ -14,6 +14,7 @@ import javax.swing.*;
  * the startup screen with logo and buttons for new and old tournaments 
  * v1.1 disables accidental window closing
  * add version number
+ * @TODO choose language
  * */
 public class MainWindow extends JFrame
 {

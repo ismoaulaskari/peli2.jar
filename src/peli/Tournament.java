@@ -15,6 +15,11 @@ import java.util.ArrayList;
  * fix tournament date here! fixed now with v. 1.9
  * so is clearer division names in the GUI
  * and html-template support
+ * @TODO playoff and placementmatch into html
+ * @TODO combine html and tnmt-save
+ * @TODO disqualified players
+ * @TODO support for extending a series(make default series bigger but hidden)
+ * @TODO fix final standings and placement matches
  * @author aulaskar
  *
  */

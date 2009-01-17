@@ -1,49 +1,87 @@
 Peli.jar
 
+ruotsalainen playoff-kaavio
+loppusijoitusten muodostaminen
+loppusijoitusten html
+sijoitusottelu-ohje(tÃ¤mÃ¤ on pronssiottelu)
+sijoitusotteluiden dynaamisempi muodostuminen
+nÃ¤ppÃ¤inoikotiet?
+muistijÃ¤lki?
+
+Peli.jar
+
     * A-K bugi /FIXED
-    * KeskinÃ¤iset /FIXED
+    * Keskinäiset /FIXED
     * starttiparametrit /FIXED
-    * uudelleenkÃ¤ynnistys /FIXED
+    * uudelleenkäynnistys /FIXED
     * ikkunansulkija /FIXED
     * Lohkon koot /FIXED
-    * KeskinÃ¤isten nÃ¤yttÃ¤minen /FIXED
+    * Keskinäisten näyttäminen /FIXED
     * ym. propertyt /FIXED
     * jatkolohkojen teko /FIXED
     * 3 pisteen pelit /FIXED
     * lohkolkm-nappula /FIXED
     * versionumero /FIXED
     * Lisenssi /FIXED
-    * osx-juureen asennus /FIXED by java6
-    * irc-botti /FIXED eka versio
-    * CSS-html
-    * Oulunliigatyylinen viherpuna
-    * pÃ¤ivÃ¤mÃ¤Ã¤rÃ¤
-    * template?
-          o output-uudistus
-          o -Tournament : date
-          o -Division : saveAll
-          o -Seriestable : print
-          o -nbsp 
-    * Lohkojen selkeÃ¤t nimet "akti-122 / lohko A"
+    * osx-juureen asennus /FIXED by java 1.6
+    * irc-botti /FIXED for 1.1
+    * uusi logo /FIXED 1.9
+    * valitse kaikki pelaajat-nappi rekisteröintiin /FIXED 1.9.2
+    * talleta-notifikaatio /FIXED 1.9.4
+    * output-uudistus /FIXED 1.9
+          o -Tournament : date /FIXED 1.9
+          o -Division : saveAll /FIXED 1.9
+          o -Seriestable : print /FIXED 1.9
+          o -nbsp /FIXED 1.9
+          o Lohkojen selkeät nimet "akti-122 / lohko A" /FIXED 1.9
+          o myös vanhaa turnausta avattaessa /FIXED 1.9.1
+          o -xhtml-yhteensopivuus (lowercasea) /FIXED 1.9
+          o -CSS-html /FIXED 1.9
+          o Oulunliigatyylinen viherpuna /FIXED 1.9
+          o myös n-kertaisille sarjoille /FIXED 1.9.1
+          o n-kertaisissa ottelukohtainen väri? /FIXED 1.9.1
+          o päivämäärä /FIXED 1.9
+          o template? /FIXED 1.9
+          o Englanninnos! /FIXED 1.9.3
+          o super-tnmt
+          o tuki Platka-ohjelman xml:n tulostamiseen
+          o Otteluohjelma pienellä turnauksen html-sivulle? 
+    * Markku:
+    * botti: robustiutta /FIXED 0.4.0
+    * botti: fb-status /FIXED 0.5.3
+    * markku: logbot /FIXED 0.4.1
+    * markku: casesensitiivisyys /FIXED 0.5.7
+    * markku: tulokset privaan eikä kanavalle
+    * markku: nimpparit
+    * markku: lotto
+    * markku: set markku-fbstatus privana
+    * botti: markku-raportit
+    * markku: lokin merkistöt
+    * markku: aivon lataaminen taustalle
+    *
+    * Playoff
     * Pelaajakohtaiset otteluohjelmat tulostettavaksi
-    * Otteluohjelma pienellÃ¤ turnauksen html-sivulle
+    * ilmoittautumislistoille joku idioottihelppo tuki
     * Alkusarjan tulokset finaalisarjaan
     * duplikaattinimet pois
-    * Playoff-tuki
-    * hakemiston vaihto?
-    * luovutus?
-    * tuloskirjauksen pikanÃ¤ppÃ¤imet?
-    * Englanninnos!
-    * Muistintuhlaus
-    * Pelaajatiedosto cancel->ohita
-    * tiedostojen avaus eri hakemistoista
-    * uusi turnaus jyrÃ¤Ã¤ olemassaolevan
-    * kaikkien pelajalistalaisten valinta kerralla
+    * irc-botti uudelle formaatille
     * nollan-yhden pelaajan turnaus
-    * nimetÃ¶n turnaus
+    * nimetön turnaus
     * vanhan tiedoston avaus-otsikko "uuden tiedoston nimi"
-    * J2ME
+    * sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
+    * OHJE spjkl:n sivuille
+    * luovutus?
+    * Tulosbot:
+    * botti: sarjataulukko
+    * botti: huuda!
+    * botti: älä pysähdy X:ään
+    * hakemiston vaihto?
+    * tuloskirjauksen pikanäppäimet?
+    * Muistintuhlaus?
+    * Pelaajatiedosto cancel->ohita
+    * tiedostojen avaus eri hakemistoista?
+    * uusi turnaus jyrää olemassaolevan
+    * J2ME?
     * boldaus 1.5.09 /win
     * koko nimet? /EI
-    * default-asetukset jos properties puuttuu
-    * sarjan kierrosmÃ¤Ã¤rÃ¤n kasvattaminen kesken kaiken-defaulttina isompi sarja kuin pelataan? 
+    * default-asetukset jos properties puuttuu 
