@@ -8,14 +8,13 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 
 /**
  * The screen where you pick the players for the tournament
  * This is the source of the Ala-kojola bug but it's fixed now:
  * v1.1 A last name can be Ala-kojola or Ala-Kojola
  * v1.9 choose all-button
- * @TODO filtteröi pelaajalistaa tyyliin turnausilmoN.pl
+ * @TODO filtteröi pelaajalistaa tyyliin turnausilmoN.pl vapaavalintaisella suffixilla
  * @author aulaskar
  *
  */

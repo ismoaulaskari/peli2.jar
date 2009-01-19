@@ -17,9 +17,13 @@ import java.util.ArrayList;
  * and html-template support
  * @TODO playoff and placementmatch into html
  * @TODO combine html and tnmt-save
+ * @TODO super-tnmt
  * @TODO disqualified players
  * @TODO support for extending a series(make default series bigger but hidden)
  * @TODO fix final standings and placement matches
+ * @TODO match schedule printout for players?
+ * @TODO xml-output
+ * @TODO a way to get basic group results to final group
  * @author aulaskar
  *
  */
