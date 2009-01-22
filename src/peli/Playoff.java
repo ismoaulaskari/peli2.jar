@@ -131,7 +131,8 @@ public class Playoff {
     public ArrayList getLosers() {
         ArrayList losers = new ArrayList();
         for (int i = 0; i < playoffPairs.length; i++) {
-            losers.add(playoffPairs[i].getLoser());
+            //must be ordered like basic group            
+            losers.add(playoffPairs[i].getLoserPlacement(), playoffPairs[i].getLoser());
         }
 
         return losers;
@@ -140,6 +141,7 @@ public class Playoff {
     public PlayoffPair[] getPlayoffPairs() {
         return playoffPairs;
     }
+    
     //tnmt-file division writing
     public void save(PrintWriter printwriter) {
         printwriter.println("PLAYOFF-SIZE:" + this.size);

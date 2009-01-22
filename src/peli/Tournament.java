@@ -486,11 +486,12 @@ public class Tournament {
         return overallstandings;
     }
 
+    //by aulaskar
     public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
         Set rounds = playoffs.keySet();
         Boolean isFirst = true;
         int x = 0;
-        for (Iterator i = rounds.iterator(); i.hasNext();) {
+        for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs
             Integer size = (Integer) i.next();
             if (isFirst) {
                 isFirst = false;
@@ -500,7 +501,7 @@ public class Tournament {
                     return overallstandings;
                 }
             }
-            //the rest are all losers
+            //the rest are all losers (but they should  be ordered based on the group)
             for (Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
                 overallstandings.set(x++, loser);
             }
@@ -509,6 +510,7 @@ public class Tournament {
         return overallstandings;
     }
 
+    //by aulaskar
     public ArrayList addPlacementMatchesToStandings(ArrayList overallstandings) {
         //modify based on placementmatches
         if (this.placementMatches != null) {
@@ -556,7 +558,7 @@ public class Tournament {
         return justnames;
     }
 
-    //added by aulaskar to help organising final groups
+    //added by aulaskar
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
         ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames()));

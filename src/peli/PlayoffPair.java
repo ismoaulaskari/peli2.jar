@@ -156,6 +156,18 @@ public class PlayoffPair {
         return String.valueOf(homePlacement) + ".";
     }
 
+    public int getLoserPlacement() {
+        int placement = 0;
+        if(getLoser().equals(awayTeam)) {
+            placement = awayPlacement;
+        }
+        else {
+            placement = homePlacement;
+        }
+
+        return placement;
+    }
+
     public void setAwayPlacement(int ranking) {
         this.awayPlacement = ranking;
     }
