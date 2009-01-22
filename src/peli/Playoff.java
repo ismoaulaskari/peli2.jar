@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -129,10 +130,15 @@ public class Playoff {
     }
 
     public ArrayList getLosers() {
+        ArrayList pairs = new ArrayList();
         ArrayList losers = new ArrayList();
-        for (int i = 0; i < playoffPairs.length; i++) {
-            //must be ordered like basic group            
-            losers.add(playoffPairs[i].getLoserPlacement(), playoffPairs[i].getLoser());
+        for (int i = 0; i < playoffPairs.length; i++) {        
+            pairs.add(playoffPairs[i]);
+        }
+        //must be ordered like basic group
+        Collections.sort(pairs, new PlayoffPlacementSort());
+        for (Object object : pairs) {
+            losers.add(((PlayoffPair) object).getLoser());
         }
 
         return losers;
