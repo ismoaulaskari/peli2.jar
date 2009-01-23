@@ -332,7 +332,6 @@ public class TournamentGUI extends JPanel {
 
     }
 
-    
     private static void setRoundTableRenderers(TableColumnModel tablecolumnmodel, int i) {
         TableColumn tablecolumn = tablecolumnmodel.getColumn(0);
         tablecolumn.setCellRenderer(centerRenderer);
@@ -499,40 +498,44 @@ public class TournamentGUI extends JPanel {
      * @param size
      * @return
      */
-    public static JPanel createPlacementMatchPanel(int size, int skipFirst) {
+    public static JPanel createPlacementMatchPanel(int size, int playoffSize) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = tournament.getPlacementMatches(size);
+        Playoff playoff = tournament.getPlacementMatches(size); //get a full playoffround of size players
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
             return null;
         }
         PlayoffPair[] pairs = playoff.getPlayoffPairs();
         for (int x = 0; x < pairs.length; x++) {
-            PlayoffPair pair = pairs[x];
-            PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
-            JTable jtable2 = new JTable(pairmodel);            
-            setPlacementMatchTableRenderers(jtable2.getColumnModel());
-            //jtable2.setShowGrid(true);
-            //jtable2.setGridColor(Color.RED);
-            jtable2.setShowVerticalLines(false);
-            jtable2.setShowHorizontalLines(false);
-            jtable2.setRowSelectionAllowed(false);
-            jtable2.setColumnSelectionAllowed(false);
-            //jtable2.setForeground(jpanel.getForeground());
-            jtable2.setBackground(jpanel.getBackground());
-            JTableHeader playofftableheader = jtable2.getTableHeader();
-            playofftableheader.setReorderingAllowed(false);
-            if (x == 0) {
-                jpanel.add(playofftableheader);
+            if (x >= (playoffSize / 2)) { //show the ones below the playoff-line
+                PlayoffPair pair = pairs[x];
+                PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
+                JTable jtable2 = new JTable(pairmodel);
+                setPlacementMatchTableRenderers(jtable2.getColumnModel());
+                //jtable2.setShowGrid(true);
+                //jtable2.setGridColor(Color.RED);
+                jtable2.setShowVerticalLines(false);
+                jtable2.setShowHorizontalLines(false);
+                jtable2.setRowSelectionAllowed(false);
+                jtable2.setColumnSelectionAllowed(false);
+                //jtable2.setForeground(jpanel.getForeground());
+                jtable2.setBackground(jpanel.getBackground());
+                JTableHeader playofftableheader = jtable2.getTableHeader();
+                playofftableheader.setReorderingAllowed(false);
+                if (x == 0) {
+                    jpanel.add(playofftableheader);
+                }
+                if (x == tournament.getLargestPlayoff() / 2) {
+                    jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
+                }
+                jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
+
+                jpanel.add(jtable2);
+
+                pairmodel.fireTableDataChanged();
             }
-            if (x == tournament.getLargestPlayoff() / 2) {            
-                jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
-            }
-            jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
-            jpanel.add(jtable2);
-            pairmodel.fireTableDataChanged();
         }
 
         //if (size > 2) {
@@ -603,8 +606,9 @@ public class TournamentGUI extends JPanel {
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
         //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
+        //initial placementmatchpanel for all players?
         if (1 == 1) {
-            jpanel.add(createPlacementMatchPanel(tournament.getStandingsNames().size(), 8), messages.getString("placementMatches"));
+            jpanel.add(createPlacementMatchPanel(tournament.getStandingsNames().size(), 0), messages.getString("placementMatches"));
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
 
@@ -635,7 +639,7 @@ public class TournamentGUI extends JPanel {
 
     static class playoffRenderer extends DefaultTableCellRenderer {
 
-        private  int row,    col;
+        private int row,  col;
 
         public Component getTableCellRendererComponent(JTable table,
                 Object value,
@@ -670,7 +674,7 @@ public class TournamentGUI extends JPanel {
             setText((String) obj);
         }
     }
-    
+
 
     static {
 //        locale = new Locale(new String("fi"), new String("FI"));
