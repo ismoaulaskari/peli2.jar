@@ -499,7 +499,7 @@ public class TournamentGUI extends JPanel {
      * @param size
      * @return
      */
-    public static JPanel createPlacementMatchPanel(int size) {
+    public static JPanel createPlacementMatchPanel(int size, int skipFirst) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -604,7 +604,7 @@ public class TournamentGUI extends JPanel {
         }
         //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
         if (1 == 1) {
-            jpanel.add(createPlacementMatchPanel(tournament.getStandingsNames().size()), messages.getString("placementMatches"));
+            jpanel.add(createPlacementMatchPanel(tournament.getStandingsNames().size(), 8), messages.getString("placementMatches"));
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
 
