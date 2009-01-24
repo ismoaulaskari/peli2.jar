@@ -38,6 +38,7 @@ public class Tournament {
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
     private Playoff placementMatches;
+    private Playoff bronzeMatch;
     private int largestPlayoff = 0;
     // private ArrayList playoffSurvivors = new ArrayList();
     public HashMap getPlayoffs() {
@@ -59,6 +60,26 @@ public class Tournament {
         this.placementMatches.markRankings(groupStandings);
 
         return this.placementMatches;
+    }
+
+    /**
+     * Try to get current bronzematch-pair
+     * @return
+     */
+    public Playoff getBronzeMatch()  {
+        Playoff playoff = null;
+        if (this.playoffs.containsKey(4)) {
+            ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
+            if(losers.size() == 2) {
+                playoff = new Playoff(losers, 2);
+                this.bronzeMatch = playoff;
+            }
+        }
+        else {
+            playoff = this.bronzeMatch;
+        }
+
+        return playoff;
     }
 
     /**

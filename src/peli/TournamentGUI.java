@@ -573,39 +573,39 @@ public class TournamentGUI extends JPanel {
     public static JPanel createBronzeMatchPanel() {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
-        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = tournament.getPlacementMatches(size); //get a full playoffround of size players
+        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));        
+        Playoff playoff = tournament.getBronzeMatch(); //losers fight for bronze
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
             return null;
         }
         PlayoffPair[] pairs = playoff.getPlayoffPairs();
         for (int x = 0; x < pairs.length; x++) {
-            if (x >= (playoffSize / 2)) { //show the ones below the playoff-line
-                PlayoffPair pair = pairs[x];
-                PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
-                JTable jtable2 = new JTable(pairmodel);
-                setPlacementMatchTableRenderers(jtable2.getColumnModel());
-                //jtable2.setShowGrid(true);
-                //jtable2.setGridColor(Color.RED);
-                jtable2.setShowVerticalLines(false);
-                jtable2.setShowHorizontalLines(false);
-                jtable2.setRowSelectionAllowed(false);
-                jtable2.setColumnSelectionAllowed(false);
-                //jtable2.setForeground(jpanel.getForeground());
-                jtable2.setBackground(jpanel.getBackground());
-                JTableHeader playofftableheader = jtable2.getTableHeader();
-                playofftableheader.setReorderingAllowed(false);
-                if (x == 0) {
-                    jpanel.add(playofftableheader);
-                }
-                if (x == tournament.getLargestPlayoff() / 2) {
-                    jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
-                }
-                jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
-                jpanel.add(jtable2);
-                pairmodel.fireTableDataChanged();
+            PlayoffPair pair = pairs[x];
+            PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
+            JTable jtable2 = new JTable(pairmodel);
+            setPlacementMatchTableRenderers(jtable2.getColumnModel());
+            //jtable2.setShowGrid(true);
+            //jtable2.setGridColor(Color.RED);
+            jtable2.setShowVerticalLines(false);
+            jtable2.setShowHorizontalLines(false);
+            jtable2.setRowSelectionAllowed(false);
+            jtable2.setColumnSelectionAllowed(false);
+            //jtable2.setForeground(jpanel.getForeground());
+            jtable2.setBackground(jpanel.getBackground());
+            JTableHeader playofftableheader = jtable2.getTableHeader();
+            playofftableheader.setReorderingAllowed(false);
+            if (x == 0) {
+                jpanel.add(playofftableheader);
             }
+            /*
+            if (x == tournament.getLargestPlayoff() / 2) {
+                jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
+            }
+             */
+            jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
+            jpanel.add(jtable2);
+            pairmodel.fireTableDataChanged();
         }
         //if (size > 2) {
         //    jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
@@ -615,7 +615,6 @@ public class TournamentGUI extends JPanel {
 
         return jpanel;
     }
-
 
     /**
      * each division, playoff and placementmatches has their own content
