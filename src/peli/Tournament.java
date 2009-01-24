@@ -153,6 +153,7 @@ public class Tournament {
      * Need to return an ordered list of playoff pairs
      * 
      * @param playerStandings
+     * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
      */
     public ArrayList seedPlayoff(ArrayList playerStandings, int size) {

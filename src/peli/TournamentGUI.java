@@ -18,6 +18,7 @@ import javax.swing.table.*;
  * added a full tournament results tab,
  * and a button for saving final standings of the tournament
  * v.1.9 playoff-tab, placement matches tab, unsaved-notification
+ * @TODO show bronze game and support creating placement matches
  * @author aulaskar
  *
  */
@@ -364,6 +365,11 @@ public class TournamentGUI extends JPanel {
         tablecolumn1.setMaxWidth(10);
     }
 
+    /**
+     * should be added to playoff-tabs
+     * @param maxPlayers
+     * @return
+     */
     private static JButton createNextRoundButton(int maxPlayers) {
         JButton nextButton = new JButton(messages.getString("nextPlayoffRound"));
         ((CreatePlayoffListener) createlistener).setSource(String.valueOf(maxPlayers));
@@ -373,6 +379,10 @@ public class TournamentGUI extends JPanel {
         return nextButton;
     }
 
+    /**
+     * warn about replacing playoffs with new ones
+     * @return
+     */
     public static boolean warnCreatePlayoff() {
         boolean ok = false;
         Object aobj[] = {
@@ -392,6 +402,9 @@ public class TournamentGUI extends JPanel {
         return ok;
     }
 
+    /**
+     *  List for choosing playoff-size
+     */
     public static JPanel createPlayoffSizeButtons(int maxPlayers) {
         ButtonGroup playoffSize = new ButtonGroup();
         JPanel jpanel = new JPanel();
@@ -422,12 +435,20 @@ public class TournamentGUI extends JPanel {
         return playoffpane;
     }
 
+    /**
+     * new playoffs, empty existing playoffpane
+     * @param playoffpane
+     */
     public static void newPlayoffpane(JTabbedPane playoffpane) {
         playoffpane.removeAll();
         playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlayoffSizeButtons(128));
 
     }
 
+    /**
+     * playoff-tabs
+     * @return
+     */
     public static JPanel createPlayoff() {
         JPanel jpanel2 = new JPanel();
         jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
@@ -452,6 +473,11 @@ public class TournamentGUI extends JPanel {
         return jpanel2;
     }
 
+    /**
+     * a playoff round
+     * @param size
+     * @return
+     */
     public static JPanel createPlayoffPanel(int size) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
@@ -548,6 +574,10 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
+    /**
+     * each division, playoff and placementmatches has their own content
+     * @return
+     */
     private static JPanel createDivisionCards() {
         JPanel jpanel = new JPanel();
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("selectedGroup") + " "));
