@@ -29,31 +29,33 @@ public class CreatePlacementMatchListener implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("CREATEPLACEMENT") || ae.getActionCommand().equals("CREATEBRONZE")) {
             if (this.playoffpane != null) {
-                JPanel jpanel = null;
-                String message = null;
+                //JPanel jpanel = null;
+                //String message = null;
                 if (ae.getActionCommand().equals("CREATEPLACEMENT")) {
                     if ((!plFirstRun) && (!TournamentGUI.warnCreatePlayoff())) {
                         return; //confirm overwrite of playoffs
                     }                    //@TODO when loading saved tournament, firstrun should be off
-                    TournamentGUI.newPlacementMatchPane(this.playoffpane);
-                    jpanel = TournamentGUI.createPlacementMatchPanel();
-                    message = Constants.getMessages().getString("placementMatches");
+                    //TournamentGUI.newPlacementMatchPane(this.playoffpane);
+                    //jpanel = TournamentGUI.createPlacementMatchPanel();
+                  //  message = Constants.getMessages().getString("placementMatches");
+                    this.playoffpane = TournamentGUI.newPlacementMatches(this.playoffpane);
                     this.plFirstRun = false;
                 } else if (ae.getActionCommand().equals("CREATEBRONZE")) {
                     if ((!brFirstRun) && (!TournamentGUI.warnCreatePlayoff())) {
                         return; //confirm overwrite of playoffs
                     }                    //@TODO when loading saved tournament, firstrun should be off
-                    TournamentGUI.newPlacementMatchPane(this.playoffpane);
-                    jpanel = TournamentGUI.createBronzeMatchPanel();
-                    message = Constants.getMessages().getString("bronzeMatch");
+                    //TournamentGUI.newPlacementMatchPane(this.playoffpane);
+                    //jpanel = TournamentGUI.createBronzeMatchPanel();
+                    //message = Constants.getMessages().getString("bronzeMatch");
+                    this.playoffpane = TournamentGUI.newBronzeMatch(this.playoffpane);
                     this.brFirstRun = false;
                 }
 
-                if (jpanel == null) {
-                    return;
-                }
+                //if (jpanel == null) {
+                //    return;
+                //}
 
-                this.playoffpane.addTab(message, jpanel);
+                //this.playoffpane.addTab(message, jpanel);
                 this.playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
             }
         } else {

@@ -410,7 +410,7 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
+
         for (int i = 1; maxPlayers / i > 1; i *= 2) {
             int tmp = maxPlayers / i;
             JRadioButton option = new JRadioButton(tmp + " " + messages.getString("players"));
@@ -522,13 +522,36 @@ public class TournamentGUI extends JPanel {
         JScrollPane columnScrollPane = new JScrollPane(jpanel2);
         columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
         if (tournament.isPlacementMatches()) {
-            placementmatchpane.addTab(messages.getString("placementMatches"), createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff()));
+            placementmatchpane = newPlacementMatches(placementmatchpane);
         }
+
         if (tournament.isBronzeMatch()) {
-            placementmatchpane.addTab(messages.getString("bronzeMatch"), createBronzeMatchPanel());
+            placementmatchpane = newBronzeMatch(placementmatchpane);
         }
 
         return jpanel2;
+    }
+
+    public static JTabbedPane newPlacementMatches(JTabbedPane pane) {
+        if (mutualmatchestab != null) {
+            pane.remove(mutualmatchestab);
+            mutualmatchestab = null;
+        }
+        mutualmatchestab = createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
+        pane.addTab(messages.getString("placementMatches"), mutualmatchestab);
+
+        return pane;
+    }
+
+    public static JTabbedPane newBronzeMatch(JTabbedPane pane) {
+        if (bronzematchtab != null) {
+            pane.remove(bronzematchtab);
+            bronzematchtab = null;
+        }
+        bronzematchtab = createBronzeMatchPanel();
+        pane.addTab(messages.getString("bronzeMatch"), bronzematchtab);
+
+        return pane;
     }
 
     /**
@@ -576,7 +599,6 @@ public class TournamentGUI extends JPanel {
 
         return jpanel;
     }
-
 
     public static JPanel createPlacementMatchPanel() {
         return createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
@@ -756,6 +778,8 @@ public class TournamentGUI extends JPanel {
     private static MainWindow themainwindow; //hack
     private static JTabbedPane playoffpane;
     private static JTabbedPane placementmatchpane;
+    private static Component bronzematchtab;
+    private static Component mutualmatchestab;
     private static ActionListener createlistener;
     private static ActionListener createplacementmatchlistener;
     private static DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer() {

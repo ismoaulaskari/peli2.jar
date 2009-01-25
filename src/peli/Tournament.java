@@ -82,11 +82,13 @@ public class Tournament {
      */
     public Playoff getBronzeMatch()  {
         Playoff playoff = null;
+        ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
         if (this.playoffs.containsKey(4)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
             if(losers.size() == 2) {
                 playoff = new Playoff(losers, 2);
                 this.bronzeMatch = playoff;
+                this.bronzeMatch.markRankings(groupStandings);
             }
         }
         else {
