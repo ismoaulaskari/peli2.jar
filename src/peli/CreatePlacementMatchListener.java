@@ -36,7 +36,7 @@ public class CreatePlacementMatchListener implements ActionListener {
                         return; //confirm overwrite of playoffs
                     }                    //@TODO when loading saved tournament, firstrun should be off
                     TournamentGUI.newPlacementMatchPane(this.playoffpane);
-                    jpanel = TournamentGUI.createPlacementMatchPanel(size, playoffSize);
+                    jpanel = TournamentGUI.createPlacementMatchPanel();
                     message = Constants.getMessages().getString("placementMatches");
                     this.plFirstRun = false;
                 } else if (ae.getActionCommand().equals("CREATEBRONZE")) {

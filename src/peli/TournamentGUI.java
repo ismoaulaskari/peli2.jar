@@ -577,6 +577,11 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
+
+    public static JPanel createPlacementMatchPanel() {
+        return createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
+    }
+
     /**
      * Placement matches possible for all players
      * @param size
