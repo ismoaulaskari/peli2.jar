@@ -41,6 +41,7 @@ public class Tournament {
     private Playoff bronzeMatch = null;
     private int largestPlayoff = 0;
     // private ArrayList playoffSurvivors = new ArrayList();
+
     public HashMap getPlayoffs() {
         return this.playoffs;
     }
@@ -80,18 +81,17 @@ public class Tournament {
      * Try to get current bronzematch-pair
      * @return
      */
-    public Playoff getBronzeMatch()  {
+    public Playoff getBronzeMatch() {
         Playoff playoff = null;
         ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
         if (this.playoffs.containsKey(4)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
-            if(losers.size() == 2) {
+            if (losers.size() == 2) {
                 playoff = new Playoff(losers, 2);
                 this.bronzeMatch = playoff;
                 this.bronzeMatch.markRankings(groupStandings);
             }
-        }
-        else {
+        } else {
             playoff = this.bronzeMatch;
         }
 
@@ -110,10 +110,10 @@ public class Tournament {
 
             if (this.playoffs.containsKey(size * 2)) {
                 //who are left?
-                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();                    
+                ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
                 ArrayList survivorIndexes = new ArrayList();
                 for (Object survivor : survivors) {
-                    survivorIndexes.add((int) groupStandings.indexOf(survivor));                    
+                    survivorIndexes.add((int) groupStandings.indexOf(survivor));
                 }
                 //order survivors based on group standings
                 Collections.sort(survivorIndexes);
@@ -121,9 +121,8 @@ public class Tournament {
                 for (int i = 0; i < survivorIndexes.size(); i++) {
                     try {
                         newSurvivors.add(groupStandings.get((Integer) survivorIndexes.get(i)));
-                    }
-                    catch(IndexOutOfBoundsException ie) {
-                     //   System.err.println("Problem with survivor " + survivorIndexes.get(i));
+                    } catch (IndexOutOfBoundsException ie) {
+                        //   System.err.println("Problem with survivor " + survivorIndexes.get(i));
                         newSurvivors.add("X");
                     }
                 }
@@ -133,7 +132,7 @@ public class Tournament {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
             }
 
-        }        
+        }
         playoff = (Playoff) this.playoffs.get(size);
         playoff.markRankings(groupStandings);
         //don't advance to next round with empty results:
@@ -203,6 +202,7 @@ public class Tournament {
         return newPairs;
     }
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
+
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
             atreeset[i] = new TreeSet(new PlayerComparator());
@@ -376,6 +376,17 @@ public class Tournament {
                 }
             }
 
+            if (bufferedreader.ready()) { //there's a bronze match too
+                int playoffsSize = Tools.parseIntAfter("BRONZEMATCH:", bufferedreader.readLine());
+                for (int i = 0; i < playoffsSize; i++) {
+                    this.bronzeMatch = new Playoff(bufferedreader);
+                }
+                if (!bufferedreader.readLine().equals("END-OF-BRONZEMATCH")) {
+                    throw new FileFormatException();
+                }
+            }
+
+
             bufferedreader.close();
         } catch (IOException ioexception) {
             throw ioexception;
@@ -492,6 +503,10 @@ public class Tournament {
         printwriter.println("PLACEMENTMATCHES:" + 1);
         this.placementMatches.save(printwriter);
         printwriter.println("END-OF-PLACEMENTMATCHES");
+        printwriter.println("BRONZEMATCH:" + 1);
+        this.bronzeMatch.save(printwriter);
+        printwriter.println("END-OF-BRONZEMATCH");
+
     }
 
     //added by aulaskar to help organising final groups
