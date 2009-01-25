@@ -600,6 +600,34 @@ public class Tournament {
         return overallstandings;
     }
 
+        //by aulaskar
+    public ArrayList addBronzeMatchToStandings(ArrayList overallstandings) {
+        //modify based on placementmatches
+        if (this.bronzeMatch != null) {
+            for (Object o : this.bronzeMatch.getPlayoffPairs()) {
+                Object winner = ((PlayoffPair) o).getWinner();
+                if (winner != null) {
+                    Object loser = ((PlayoffPair) o).getLoser();
+                    int winnerplace = overallstandings.indexOf(winner);
+                    int loserplace = overallstandings.indexOf(loser);
+                    if (winnerplace >= 0 && loserplace >= 0) { //swap?
+                        if (loserplace < winnerplace) {
+                            overallstandings.set(loserplace, winner);
+                            overallstandings.set(winnerplace, loser);
+                        }
+                    } else {
+                        System.err.println("bronzematches can't find " + winner + " or " + loser);
+                    }
+                }
+            }
+        } else {
+            //System.err.println("bronzematches null");
+        }
+
+        return overallstandings;
+    }
+
+
     public String getFormattedStandings() {
         StringBuilder sb = new StringBuilder();
         int placement = 1;
@@ -625,7 +653,7 @@ public class Tournament {
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
         ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames()));
-
+        overallstandings = addBronzeMatchToStandings(overallstandings);
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
             printwriter.println(iterator.next());
