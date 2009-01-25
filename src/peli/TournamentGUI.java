@@ -409,7 +409,8 @@ public class TournamentGUI extends JPanel {
         ButtonGroup playoffSize = new ButtonGroup();
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
-
+        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        
         for (int i = 1; maxPlayers / i > 1; i *= 2) {
             int tmp = maxPlayers / i;
             JRadioButton option = new JRadioButton(tmp + " " + messages.getString("players"));
@@ -437,13 +438,14 @@ public class TournamentGUI extends JPanel {
         ButtonGroup placementmatchlaunchers = new ButtonGroup();
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
+        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         JButton bronzeButton = new JButton(messages.getString("createBronzeMatch"));
         bronzeButton.setActionCommand("CREATEBRONZE");
         bronzeButton.addActionListener(createlistener);
         placementmatchlaunchers.add(bronzeButton);
         jpanel.add(bronzeButton);
-
+        jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
         JButton createButton = new JButton(messages.getString("createPlacementMatches"));
         createButton.setActionCommand("CREATEPLACEMENT");
         createButton.addActionListener(createlistener);
