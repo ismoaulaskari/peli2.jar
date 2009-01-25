@@ -47,11 +47,11 @@ public class Tournament {
     }
 
     public boolean isPlacementMatches() {
-        return (this.placementMatches == null);
+        return (this.placementMatches != null);
     }
 
     public boolean isBronzeMatch() {
-        return (this.bronzeMatch == null);
+        return (this.bronzeMatch != null);
     }
 
     /**
@@ -540,6 +540,7 @@ public class Tournament {
     }
 
     //by aulaskar
+    //@TODO what about bronze game result
     public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
         Set rounds = playoffs.keySet();
         Boolean isFirst = true;
