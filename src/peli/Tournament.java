@@ -84,15 +84,18 @@ public class Tournament {
     public Playoff getBronzeMatch() {
         Playoff playoff = null;
         ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
-        if (this.playoffs.containsKey(4)) {
+        if (this.bronzeMatch == null && this.playoffs.containsKey(4)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
             if (losers.size() == 2) {
                 playoff = new Playoff(losers, 2);
                 this.bronzeMatch = playoff;
-                this.bronzeMatch.markRankings(groupStandings);
             }
         } else {
             playoff = this.bronzeMatch;
+        }
+
+        if (this.bronzeMatch != null) {
+            this.bronzeMatch.markRankings(groupStandings);
         }
 
         return playoff;
@@ -496,16 +499,22 @@ public class Tournament {
         }
         //if playoff, save playoff
         Set rounds = playoffs.keySet();
-        printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
-        for (Iterator i = rounds.iterator(); i.hasNext();) {
-            ((Playoff) playoffs.get(i.next())).save(printwriter);
+        if (!rounds.isEmpty()) {
+            printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
+            for (Iterator i = rounds.iterator(); i.hasNext();) {
+                ((Playoff) playoffs.get(i.next())).save(printwriter);
+            }
         }
-        printwriter.println("PLACEMENTMATCHES:" + 1);
-        this.placementMatches.save(printwriter);
-        printwriter.println("END-OF-PLACEMENTMATCHES");
-        printwriter.println("BRONZEMATCH:" + 1);
-        this.bronzeMatch.save(printwriter);
-        printwriter.println("END-OF-BRONZEMATCH");
+        if (this.placementMatches != null) {
+            printwriter.println("PLACEMENTMATCHES:" + 1);
+            this.placementMatches.save(printwriter);
+            printwriter.println("END-OF-PLACEMENTMATCHES");
+        }
+        if (this.bronzeMatch != null) {
+            printwriter.println("BRONZEMATCH:" + 1);
+            this.bronzeMatch.save(printwriter);
+            printwriter.println("END-OF-BRONZEMATCH");
+        }
 
     }
 
