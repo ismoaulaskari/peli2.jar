@@ -430,6 +430,29 @@ public class TournamentGUI extends JPanel {
         return jpanel;
     }
 
+    /**
+     *  Buttons for initializing placementmatches, after the basic group is ready
+     */
+    public static JPanel createPlacementMatchButtons() {
+        ButtonGroup placementmatchlaunchers = new ButtonGroup();
+        JPanel jpanel = new JPanel();
+        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));        
+                
+        JButton bronzeButton = new JButton(messages.getString("createBronzeMatch"));
+        bronzeButton.setActionCommand("CREATEBRONZE");
+        bronzeButton.addActionListener(createlistener);
+        placementmatchlaunchers.add(bronzeButton);
+        jpanel.add(bronzeButton);
+        
+        JButton createButton = new JButton(messages.getString("createPlacementMatches"));
+        createButton.setActionCommand("CREATEPLACEMENT");
+        createButton.addActionListener(createlistener);
+        jpanel.add(createButton);
+
+        return jpanel;
+    }
+
+
     public static JTabbedPane getPlayoffpane() {
 
         return playoffpane;
@@ -444,6 +467,17 @@ public class TournamentGUI extends JPanel {
         playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlayoffSizeButtons(128));
 
     }
+
+    /**
+     * new placementmatches, empty existing
+     * @param playoffpane
+     */
+    public static void newPlacementMatchPane(JTabbedPane playoffpane) {
+        playoffpane.removeAll();
+        playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlayoffSizeButtons(128));
+
+    }
+
 
     /**
      * playoff-tabs
