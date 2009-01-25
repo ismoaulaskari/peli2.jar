@@ -37,8 +37,8 @@ public class Tournament {
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
     private HashMap playoffs = new HashMap();
-    private Playoff placementMatches;
-    private Playoff bronzeMatch;
+    private Playoff placementMatches = null;
+    private Playoff bronzeMatch = null;
     private int largestPlayoff = 0;
     // private ArrayList playoffSurvivors = new ArrayList();
     public HashMap getPlayoffs() {
