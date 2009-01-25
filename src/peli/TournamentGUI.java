@@ -442,13 +442,13 @@ public class TournamentGUI extends JPanel {
 
         JButton bronzeButton = new JButton(messages.getString("createBronzeMatch"));
         bronzeButton.setActionCommand("CREATEBRONZE");
-        bronzeButton.addActionListener(createlistener);
+        bronzeButton.addActionListener(createplacementmatchlistener);
         placementmatchlaunchers.add(bronzeButton);
         jpanel.add(bronzeButton);
         jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
         JButton createButton = new JButton(messages.getString("createPlacementMatches"));
         createButton.setActionCommand("CREATEPLACEMENT");
-        createButton.addActionListener(createlistener);
+        createButton.addActionListener(createplacementmatchlistener);
         jpanel.add(createButton);
 
         return jpanel;
@@ -516,7 +516,7 @@ public class TournamentGUI extends JPanel {
         jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
         jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         placementmatchpane = new JTabbedPane();
-        //createlistener = new CreatePlayoffListener(playoffpane);
+        createplacementmatchlistener = new CreatePlacementMatchListener(placementmatchpane);
         newPlacementMatchPane(placementmatchpane);
         jpanel2.add(placementmatchpane);
         JScrollPane columnScrollPane = new JScrollPane(jpanel2);
@@ -752,6 +752,7 @@ public class TournamentGUI extends JPanel {
     private static JTabbedPane playoffpane;
     private static JTabbedPane placementmatchpane;
     private static ActionListener createlistener;
+    private static ActionListener createplacementmatchlistener;
     private static DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer() {
 
         public void setValue(Object obj) {

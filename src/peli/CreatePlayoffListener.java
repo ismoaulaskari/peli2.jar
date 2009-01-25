@@ -33,7 +33,7 @@ public class CreatePlayoffListener implements ActionListener {
                 }
                 if (ae.getActionCommand().equals("CREATE")) {
                     if((! firstRun) && (! TournamentGUI.warnCreatePlayoff())) return; //confirm overwrite of playoffs
-                    
+                    //@TODO when loading saved tournament, firstrun should be off
                     TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
                 
