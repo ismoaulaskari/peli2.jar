@@ -45,6 +45,20 @@ public class Tournament {
         return this.playoffs;
     }
 
+    public boolean isPlacementMatches() {
+        return (this.placementMatches == null);
+    }
+
+    public boolean isBronzeMatch() {
+        return (this.bronzeMatch == null);
+    }
+
+    /**
+     * Size should probably be the size of the tournament
+     * The GUI must choose to show only the appropriate pairs of the playoff
+     * @param size
+     * @return
+     */
     public Playoff getPlacementMatches(int size) {
         ArrayList groupStandings = this.getStandingsNames();
         if (this.placementMatches == null) { //new

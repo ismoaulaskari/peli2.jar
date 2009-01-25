@@ -436,14 +436,14 @@ public class TournamentGUI extends JPanel {
     public static JPanel createPlacementMatchButtons() {
         ButtonGroup placementmatchlaunchers = new ButtonGroup();
         JPanel jpanel = new JPanel();
-        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));        
-                
+        jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
+
         JButton bronzeButton = new JButton(messages.getString("createBronzeMatch"));
         bronzeButton.setActionCommand("CREATEBRONZE");
         bronzeButton.addActionListener(createlistener);
         placementmatchlaunchers.add(bronzeButton);
         jpanel.add(bronzeButton);
-        
+
         JButton createButton = new JButton(messages.getString("createPlacementMatches"));
         createButton.setActionCommand("CREATEPLACEMENT");
         createButton.addActionListener(createlistener);
@@ -451,7 +451,6 @@ public class TournamentGUI extends JPanel {
 
         return jpanel;
     }
-
 
     public static JTabbedPane getPlayoffpane() {
 
@@ -474,10 +473,9 @@ public class TournamentGUI extends JPanel {
      */
     public static void newPlacementMatchPane(JTabbedPane playoffpane) {
         playoffpane.removeAll();
-        playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlayoffSizeButtons(128));
+        playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlacementMatchButtons());
 
     }
-
 
     /**
      * playoff-tabs
@@ -503,6 +501,30 @@ public class TournamentGUI extends JPanel {
             playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
         }
         playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
+
+        return jpanel2;
+    }
+
+    /**
+     * placementmatch-tabs
+     * @return
+     */
+    public static JPanel createPlacementMatches() {
+        JPanel jpanel2 = new JPanel();
+        jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
+        jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        placementmatchpane = new JTabbedPane();
+        //createlistener = new CreatePlayoffListener(playoffpane);
+        newPlacementMatchPane(placementmatchpane);
+        jpanel2.add(placementmatchpane);
+        JScrollPane columnScrollPane = new JScrollPane(jpanel2);
+        columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
+        if (tournament.isPlacementMatches()) {
+            placementmatchpane.addTab(messages.getString("placementMatches"), createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff()));
+        }
+        if (tournament.isBronzeMatch()) {
+            placementmatchpane.addTab(messages.getString("bronzeMatch"), createBronzeMatchPanel());
+        }
 
         return jpanel2;
     }
@@ -607,7 +629,7 @@ public class TournamentGUI extends JPanel {
     public static JPanel createBronzeMatchPanel() {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
-        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));        
+        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         Playoff playoff = tournament.getBronzeMatch(); //losers fight for bronze
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
@@ -634,7 +656,7 @@ public class TournamentGUI extends JPanel {
             }
             /*
             if (x == tournament.getLargestPlayoff() / 2) {
-                jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
+            jpanel.add(Box.createRigidArea(new Dimension(15, 15)));
             }
              */
             jpanel.add(Box.createRigidArea(new Dimension(5, 5)));
@@ -714,7 +736,7 @@ public class TournamentGUI extends JPanel {
         //if(System.getProperty("TournamentShowPlayoffTab").equalsIgnoreCase("true")) {
         //initial placementmatchpanel for all players?
         if (1 == 1) {
-            jpanel.add(createPlacementMatchPanel(tournament.getStandingsNames().size(), 0), messages.getString("placementMatches"));
+            jpanel.add(createPlacementMatches(), messages.getString("placementMatches"));
         //jpanel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + "n. kierros"));            
         }
 
@@ -726,6 +748,7 @@ public class TournamentGUI extends JPanel {
     private static Tournament tournament;
     private static MainWindow themainwindow; //hack
     private static JTabbedPane playoffpane;
+    private static JTabbedPane placementmatchpane;
     private static ActionListener createlistener;
     private static DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer() {
 
