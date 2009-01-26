@@ -402,6 +402,52 @@ public class TournamentGUI extends JPanel {
         return ok;
     }
 
+        /**
+     * warn about replacing playoffs with new ones
+     * @return
+     */
+    public static boolean warnCreatePlacementMatches() {
+        boolean ok = false;
+        Object aobj[] = {
+            TournamentGUI.messages.getString("doNotReplace"), TournamentGUI.messages.getString("doReplace")
+        };
+        int i = JOptionPane.showOptionDialog(null, TournamentGUI.messages.getString("reallyReplacePlacementMatches") + "\n" + TournamentGUI.messages.getString("playoffsExist"), TournamentGUI.messages.getString("replacePlayoffs"), 0, 3, null, aobj, aobj[0]);
+        switch (i) {
+            case 0: // '\0'
+                ok = false;
+                break;
+            case 1: // '\001'
+                ok = true;
+                tournament.clearPlacementMatches();
+                break;
+        }
+
+        return ok;
+    }
+
+        /**
+     * warn about replacing playoffs with new ones
+     * @return
+     */
+    public static boolean warnCreateBronzeMatch() {
+        boolean ok = false;
+        Object aobj[] = {
+            TournamentGUI.messages.getString("doNotReplace"), TournamentGUI.messages.getString("doReplace")
+        };
+        int i = JOptionPane.showOptionDialog(null, TournamentGUI.messages.getString("reallyReplaceBronzeMatch") + "\n" + TournamentGUI.messages.getString("playoffsExist"), TournamentGUI.messages.getString("replacePlayoffs"), 0, 3, null, aobj, aobj[0]);
+        switch (i) {
+            case 0: // '\0'
+                ok = false;
+                break;
+            case 1: // '\001'
+                ok = true;
+                tournament.clearBronzeMatch();
+                break;
+        }
+
+        return ok;
+    }
+
     /**
      *  List for choosing playoff-size
      */
@@ -521,6 +567,7 @@ public class TournamentGUI extends JPanel {
         jpanel2.add(placementmatchpane);
         JScrollPane columnScrollPane = new JScrollPane(jpanel2);
         columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
+
         if (tournament.isPlacementMatches()) {
             placementmatchpane = newPlacementMatches(placementmatchpane);
         }
@@ -533,23 +580,27 @@ public class TournamentGUI extends JPanel {
     }
 
     public static JTabbedPane newPlacementMatches(JTabbedPane pane) {
-        if (mutualmatchestab != null) {
-            pane.remove(mutualmatchestab);
-            mutualmatchestab = null;
+        if (tournament.isPlacementMatches() || tournament.getNumberOfPlayoffs() > 0) {
+            if (mutualmatchestab != null) {
+                pane.remove(mutualmatchestab);
+                mutualmatchestab = null;
+            }
+            mutualmatchestab = createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
+            pane.addTab(messages.getString("placementMatches"), mutualmatchestab);
         }
-        mutualmatchestab = createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
-        pane.addTab(messages.getString("placementMatches"), mutualmatchestab);
 
         return pane;
     }
 
     public static JTabbedPane newBronzeMatch(JTabbedPane pane) {
-        if (bronzematchtab != null) {
-            pane.remove(bronzematchtab);
-            bronzematchtab = null;
+        if (tournament.isBronzeMatch() || tournament.getNumberOfPlayoffs() > 0) {
+            if (bronzematchtab != null) {
+                pane.remove(bronzematchtab);
+                bronzematchtab = null;
+            }
+            bronzematchtab = createBronzeMatchPanel();
+            pane.addTab(messages.getString("bronzeMatch"), bronzematchtab);
         }
-        bronzematchtab = createBronzeMatchPanel();
-        pane.addTab(messages.getString("bronzeMatch"), bronzematchtab);
 
         return pane;
     }

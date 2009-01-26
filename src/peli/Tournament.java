@@ -20,7 +20,6 @@ import java.util.ArrayList;
  * @TODO super-tnmt
  * @TODO disqualified players
  * @TODO support for extending a series(make default series bigger but hidden)
- * @TODO fix placement matches order
  * @TODO match schedule printout for players?
  * @TODO xml-output
  * @TODO a way to get basic group results to final group
@@ -81,24 +80,20 @@ public class Tournament {
      * Try to get current bronzematch-pair
      * @return
      */
-    public Playoff getBronzeMatch() {
-        Playoff playoff = null;
+    public Playoff getBronzeMatch() {        
         ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
         if (this.bronzeMatch == null && this.playoffs.containsKey(4)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
-            if (losers.size() == 2) {
-                playoff = new Playoff(losers, 2);
-                this.bronzeMatch = playoff;
+            if (losers.size() == 2) {                
+                this.bronzeMatch = new Playoff(losers, 2);
             }
-        } else {
-            playoff = this.bronzeMatch;
-        }
+        } 
 
         if (this.bronzeMatch != null) {
             this.bronzeMatch.markRankings(groupStandings);
         }
 
-        return playoff;
+        return this.bronzeMatch;
     }
 
     /**
@@ -188,6 +183,13 @@ public class Tournament {
         this.playoffs.clear();
     }
 
+    public void clearPlacementMatches() {
+        this.placementMatches = null;
+    }
+
+    public void clearBronzeMatch() {
+        this.bronzeMatch = null;
+    }
     /**
      * Need to return an ordered list of playoff pairs
      * 

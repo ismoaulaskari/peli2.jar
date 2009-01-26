@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
  * v1.1 lets make this a global class with settings 
  * as a Singleton
  * To find properties outside jar-file I put them in folder conf
+ * @TODO choose language on startup
  * and set it as Class-path in the MANIFEST.MF
  */
 public class Constants {
@@ -36,7 +37,7 @@ public class Constants {
 		constants = new Constants();
 		locale = new Locale(new String("fi"), new String("FI"));
                 //locale = new Locale(new String("en"), new String("US"));
-                System.setProperty("Peli.jarVersion", "v. 1.11.2");
+                System.setProperty("Peli.jarVersion", "v. 1.11.3");
                 try {
                     messages = ResourceBundle.getBundle("Messages", locale);
                     rules = ResourceBundle.getBundle("Rules");

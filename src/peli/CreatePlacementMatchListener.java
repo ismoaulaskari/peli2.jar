@@ -32,7 +32,7 @@ public class CreatePlacementMatchListener implements ActionListener {
                 //JPanel jpanel = null;
                 //String message = null;
                 if (ae.getActionCommand().equals("CREATEPLACEMENT")) {
-                    if ((!plFirstRun) && (!TournamentGUI.warnCreatePlayoff())) {
+                    if ((!plFirstRun) && (!TournamentGUI.warnCreatePlacementMatches())) {
                         return; //confirm overwrite of playoffs
                     }                    //@TODO when loading saved tournament, firstrun should be off
                     //TournamentGUI.newPlacementMatchPane(this.playoffpane);
@@ -41,7 +41,7 @@ public class CreatePlacementMatchListener implements ActionListener {
                     this.playoffpane = TournamentGUI.newPlacementMatches(this.playoffpane);
                     this.plFirstRun = false;
                 } else if (ae.getActionCommand().equals("CREATEBRONZE")) {
-                    if ((!brFirstRun) && (!TournamentGUI.warnCreatePlayoff())) {
+                    if ((!brFirstRun) && (!TournamentGUI.warnCreateBronzeMatch())) {
                         return; //confirm overwrite of playoffs
                     }                    //@TODO when loading saved tournament, firstrun should be off
                     //TournamentGUI.newPlacementMatchPane(this.playoffpane);
