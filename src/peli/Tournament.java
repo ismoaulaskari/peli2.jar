@@ -651,11 +651,18 @@ public class Tournament {
         return justnames;
     }
 
+    public ArrayList getOverAllStandings() {
+        ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames()));
+        overallstandings = addBronzeMatchToStandings(overallstandings);
+
+        return overallstandings;
+    }
+
     //added by aulaskar
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
-        ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames()));
-        overallstandings = addBronzeMatchToStandings(overallstandings);
+        ArrayList overallstandings = getOverAllStandings();
+        
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
             printwriter.println(iterator.next());
@@ -719,16 +726,27 @@ public class Tournament {
             //HtmlTools.hr(printwriter);
             }
 
+            //@TODO järkevät tulosteet
             output += Constants.getFooter().toString();
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
                 output = output.replaceAll("<!-- PLAYOFF -->", "playoff here");
             }
+            if (bronzeMatch != null) {
+                output = output.replaceAll("<!--HIDE_BRONZEMATCH", "");
+                output = output.replaceAll("HIDE_BRONZEMATCH-->", "");
+                output = output.replaceAll("<!-- BRONZEMATCH -->", "bronze here");
+            }
             if (placementMatches != null) {
+                output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
+                output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
+                output = output.replaceAll("<!-- PLACEMENTMATCHES -->", "placements here");
+            }
+            if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_STANDINGS", "");
                 output = output.replaceAll("HIDE_STANDINGS-->", "");
-                output = output.replaceAll("<!-- STANDINGS -->", "standings here");
+                output = output.replaceAll("<!-- STANDINGS -->", getOverAllStandings().toString());
             }
 
             //use footer.txt
