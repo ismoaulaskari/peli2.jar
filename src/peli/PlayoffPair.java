@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class PlayoffPair {
     //rounds
+
     private String homeTeam,  awayTeam;
     private int homeWins,  awayWins;
     private int homePlacement,  awayPlacement;
@@ -148,13 +149,37 @@ public class PlayoffPair {
     //html
     public String saveAll() {
         StringBuilder output = new StringBuilder();
-        for (int i = 0; i < this.matches.size(); i++) {
-            output.append(((Match) this.matches.get(i)).saveAll()).append("<br class=\"playoff\"/><br class=\"playoff\"/>");
+        if (this.getHomeTeam().equals(this.getWinner())) {
+            output.append("<ul class=\"playoff\">");
+            output.append(this.getHomeTeam());
+            output.append("</ul>");
+            output.append("-");
+            output.append(this.getAwayTeam());
+        } else {
+            if (this.getAwayTeam().equals(this.getWinner())) {
+                output.append(this.getHomeTeam());
+                output.append("-");
+                output.append("<ul class=\"playoff\">");
+                output.append(this.getAwayTeam());
+                output.append("</ul>");
+            } else {
+                output.append(this.getHomeTeam());
+                output.append("-");
+                output.append(this.getAwayTeam());
+            }
         }
+        output.append(" ; (");
+        for (int i = 0; i < this.matches.size(); i++) {
+            Match match = (Match) this.matches.get(i);
+            output.append(match.saveAll());
+            if (i < (this.matches.size() - 1)) {
+                output.append(", ");
+            }
+        }
+        output.append(")<br class=\"playoff\"/><br class=\"playoff\"/>");
 
         return output.toString();
     }
-
 
     public String toString() {
         return homeTeam + "-" + awayTeam + ":" + matches;
@@ -170,10 +195,9 @@ public class PlayoffPair {
 
     public int getLoserPlacement() {
         int placement = 0;
-        if(getLoser().equals(awayTeam)) {
+        if (getLoser().equals(awayTeam)) {
             placement = awayPlacement;
-        }
-        else {
+        } else {
             placement = homePlacement;
         }
 
