@@ -80,14 +80,14 @@ public class Tournament {
      * Try to get current bronzematch-pair
      * @return
      */
-    public Playoff getBronzeMatch() {        
+    public Playoff getBronzeMatch() {
         ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
         if (this.bronzeMatch == null && this.playoffs.containsKey(4)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
-            if (losers.size() == 2) {                
+            if (losers.size() == 2) {
                 this.bronzeMatch = new Playoff(losers, 2);
             }
-        } 
+        }
 
         if (this.bronzeMatch != null) {
             this.bronzeMatch.markRankings(groupStandings);
@@ -190,6 +190,7 @@ public class Tournament {
     public void clearBronzeMatch() {
         this.bronzeMatch = null;
     }
+
     /**
      * Need to return an ordered list of playoff pairs
      * 
@@ -602,7 +603,7 @@ public class Tournament {
         return overallstandings;
     }
 
-        //by aulaskar
+    //by aulaskar
     public ArrayList addBronzeMatchToStandings(ArrayList overallstandings) {
         //modify based on placementmatches
         if (this.bronzeMatch != null) {
@@ -628,7 +629,6 @@ public class Tournament {
 
         return overallstandings;
     }
-
 
     public String getFormattedStandings() {
         StringBuilder sb = new StringBuilder();
@@ -662,7 +662,7 @@ public class Tournament {
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
         ArrayList overallstandings = getOverAllStandings();
-        
+
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
             printwriter.println(iterator.next());
@@ -728,7 +728,7 @@ public class Tournament {
 
             //@TODO järkevät tulosteet
             output += Constants.getFooter().toString();
-            
+
             if (placementMatches != null) {
                 output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
                 output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
@@ -737,12 +737,20 @@ public class Tournament {
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
-                output = output.replaceAll("<!-- PLAYOFF -->", "playoff here");
+                //if playoff, save playoff
+                StringBuilder playoffoutput = new StringBuilder();
+                Set rounds = playoffs.keySet();
+                if (!rounds.isEmpty()) {                    
+                    for (Iterator i = rounds.iterator(); i.hasNext();) {
+                        playoffoutput.append(((Playoff) playoffs.get(i.next())).saveAll());
+                    }
+                }
+                output = output.replaceAll("<!-- PLAYOFF -->", playoffoutput.toString());
             }
             if (bronzeMatch != null) {
                 output = output.replaceAll("<!--HIDE_BRONZEMATCH", "");
                 output = output.replaceAll("HIDE_BRONZEMATCH-->", "");
-                output = output.replaceAll("<!-- BRONZEMATCH -->", "bronze here");
+                output = output.replaceAll("<!-- BRONZEMATCH -->", bronzeMatch.saveAll());
             }
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_STANDINGS", "");
@@ -751,7 +759,7 @@ public class Tournament {
             }
 
             /*hidden tnmt-output*/
-            
+
 
             //use footer.txt
             printwriter.print(output);
