@@ -728,6 +728,12 @@ public class Tournament {
 
             //@TODO järkevät tulosteet
             output += Constants.getFooter().toString();
+            
+            if (placementMatches != null) {
+                output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
+                output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
+                output = output.replaceAll("<!-- PLACEMENTMATCHES -->", "placements here");
+            }
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
@@ -738,16 +744,14 @@ public class Tournament {
                 output = output.replaceAll("HIDE_BRONZEMATCH-->", "");
                 output = output.replaceAll("<!-- BRONZEMATCH -->", "bronze here");
             }
-            if (placementMatches != null) {
-                output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
-                output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
-                output = output.replaceAll("<!-- PLACEMENTMATCHES -->", "placements here");
-            }
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_STANDINGS", "");
                 output = output.replaceAll("HIDE_STANDINGS-->", "");
                 output = output.replaceAll("<!-- STANDINGS -->", getOverAllStandings().toString());
             }
+
+            /*hidden tnmt-output*/
+            
 
             //use footer.txt
             printwriter.print(output);

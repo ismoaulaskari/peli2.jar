@@ -15,6 +15,13 @@
 </tbody></table>
 </p>
 
+<!--HIDE_PLACEMENTMATCHES
+<h3>Sijoitusottelut</h3>
+<p>
+<!-- PLACEMENTMATCHES -->
+</p>
+HIDE_PLACEMENTMATCHES-->
+
 <!--HIDE_PLAYOFF
 <h3>Playoff</h3>
 <p>
