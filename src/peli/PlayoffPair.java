@@ -138,11 +138,23 @@ public class PlayoffPair {
         return String.valueOf(awayWins);
     }
 
+    //tnmt
     public void save(PrintWriter printwriter) {
         for (int i = 0; i < this.matches.size(); i++) {
             ((Match) this.matches.get(i)).save(printwriter);
         }
     }
+
+    //html
+    public String saveAll() {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < this.matches.size(); i++) {
+            output.append(((Match) this.matches.get(i)).saveAll()).append("<br class=\"playoff\"/><br class=\"playoff\"/>");
+        }
+
+        return output.toString();
+    }
+
 
     public String toString() {
         return homeTeam + "-" + awayTeam + ":" + matches;

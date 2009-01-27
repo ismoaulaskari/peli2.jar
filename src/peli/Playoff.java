@@ -148,7 +148,7 @@ public class Playoff {
         return playoffPairs;
     }
     
-    //tnmt-file division writing
+    //tnmt-file writing
     public void save(PrintWriter printwriter) {
         printwriter.println("PLAYOFF-SIZE:" + this.size);
         for (int i = 0; i < this.playoffPairs.length; i++) {
@@ -158,4 +158,21 @@ public class Playoff {
         }
         printwriter.println("END-OF-PLAYOFF");
     }
+
+        //html-file content
+    public String saveAll() {
+        StringBuilder output = new StringBuilder();
+        output.append("<p class=\"playoff\">").append(System.getProperty("line.separator"));
+        //printwriter.println("PLAYOFF-SIZE:" + this.size);
+        for (int i = 0; i < this.playoffPairs.length; i++) {
+            //printwriter.println("PLAYOFFPAIR");
+            output.append(this.playoffPairs[i].saveAll());
+            //printwriter.println("END-OF-PLAYOFFPAIR");
+        }
+        //printwriter.println("END-OF-PLAYOFF");
+        output.append("</p>").append(System.getProperty("line.separator"));
+
+        return output.toString();
+    }
+
 }

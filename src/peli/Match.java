@@ -77,11 +77,21 @@ public class Match {
         System.out.println(home + " - " + visitor + postFix);
     }
 
+    //tnmt
     public void save(PrintWriter printwriter) {
         String special = ((postFix.length() > 0) ? ":" + postFix : "");
         printwriter.print(home + ":" + visitor);
         printwriter.println(isOver ? ":" + homeGoals + ":" + visitorGoals + special : "");
     //printwriter.println(isOver ? ":" + homeGoals + ":" + visitorGoals : "");
+    }
+
+    //html
+    public String saveAll() {
+        StringBuilder output = new StringBuilder();
+        String special = ((postFix.length() > 0) ? ":" + postFix : "");
+        output.append(isOver ? homeGoals + "-" + visitorGoals + special : "");
+
+        return output.toString();
     }
 
     public String getResult() {
