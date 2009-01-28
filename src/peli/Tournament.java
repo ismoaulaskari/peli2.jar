@@ -732,7 +732,7 @@ public class Tournament {
             if (placementMatches != null) {
                 output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
                 output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
-                output = output.replaceAll("<!-- PLACEMENTMATCHES -->", "placements here");
+                output = output.replaceAll("<!-- PLACEMENTMATCHES -->", placementMatches.saveAll());
             }
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
