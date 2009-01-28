@@ -753,9 +753,15 @@ public class Tournament {
                 output = output.replaceAll("<!-- BRONZEMATCH -->", bronzeMatch.saveAll());
             }
             if (playoffs.size() > 0) {
+                StringBuilder standingsoutput = new StringBuilder();
+                standingsoutput.append("<ol class=\"playoff\">").append(System.getProperty("line.separator"));
+                for(Object ob : getOverAllStandings()) {
+                    standingsoutput.append("<li class=\"standings\">").append((String)ob).append("</li>").append(System.getProperty("line.separator"));
+                }
+                standingsoutput.append("</ol>").append(System.getProperty("line.separator"));
                 output = output.replaceAll("<!--HIDE_STANDINGS", "");
                 output = output.replaceAll("HIDE_STANDINGS-->", "");
-                output = output.replaceAll("<!-- STANDINGS -->", getOverAllStandings().toString());
+                output = output.replaceAll("<!-- STANDINGS -->", standingsoutput.toString());
             }
 
             /*hidden tnmt-output*/
