@@ -29,7 +29,7 @@ public class CreatePlacementMatchListener implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("CREATEPLACEMENT") || ae.getActionCommand().equals("CREATEBRONZE")) {
             if (this.playoffpane != null) {
-                //JPanel jpanel = null;
+                JTabbedPane jpane = null;
                 //String message = null;
                 if (ae.getActionCommand().equals("CREATEPLACEMENT")) {
                     if ((!plFirstRun) && (!TournamentGUI.warnCreatePlacementMatches())) {
@@ -38,7 +38,7 @@ public class CreatePlacementMatchListener implements ActionListener {
                     //TournamentGUI.newPlacementMatchPane(this.playoffpane);
                     //jpanel = TournamentGUI.createPlacementMatchPanel();
                   //  message = Constants.getMessages().getString("placementMatches");
-                    this.playoffpane = TournamentGUI.newPlacementMatches(this.playoffpane);
+                    jpane = TournamentGUI.newPlacementMatches(this.playoffpane);
                     this.plFirstRun = false;
                 } else if (ae.getActionCommand().equals("CREATEBRONZE")) {
                     if ((!brFirstRun) && (!TournamentGUI.warnCreateBronzeMatch())) {
@@ -47,14 +47,15 @@ public class CreatePlacementMatchListener implements ActionListener {
                     //TournamentGUI.newPlacementMatchPane(this.playoffpane);
                     //jpanel = TournamentGUI.createBronzeMatchPanel();
                     //message = Constants.getMessages().getString("bronzeMatch");
-                    this.playoffpane = TournamentGUI.newBronzeMatch(this.playoffpane);
+                    jpane = TournamentGUI.newBronzeMatch(this.playoffpane);
                     this.brFirstRun = false;
                 }
 
-                //if (jpanel == null) {
-                //    return;
-                //}
+                if (jpane == null) {
+                    return;
+                }
 
+                this.playoffpane = jpane;
                 //this.playoffpane.addTab(message, jpanel);
                 this.playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
             }

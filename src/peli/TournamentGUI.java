@@ -402,7 +402,7 @@ public class TournamentGUI extends JPanel {
         return ok;
     }
 
-        /**
+    /**
      * warn about replacing playoffs with new ones
      * @return
      */
@@ -425,7 +425,7 @@ public class TournamentGUI extends JPanel {
         return ok;
     }
 
-        /**
+    /**
      * warn about replacing playoffs with new ones
      * @return
      */
@@ -581,25 +581,30 @@ public class TournamentGUI extends JPanel {
 
     public static JTabbedPane newPlacementMatches(JTabbedPane pane) {
         if (tournament.isPlacementMatches() || tournament.getNumberOfPlayoffs() > 0) {
-            if (mutualmatchestab != null) {
-                pane.remove(mutualmatchestab);
-                mutualmatchestab = null;
+            if (placementmatchestab != null) {
+                pane.remove(placementmatchestab);
+                placementmatchestab = null;
             }
-            mutualmatchestab = createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
-            pane.addTab(messages.getString("placementMatches"), mutualmatchestab);
+            placementmatchestab = createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
+            if (placementmatchestab != null) {
+                pane.addTab(messages.getString("placementMatches"), placementmatchestab);
+            }
         }
 
         return pane;
     }
 
     public static JTabbedPane newBronzeMatch(JTabbedPane pane) {
-        if (tournament.isBronzeMatch() || tournament.getNumberOfPlayoffs() > 0) {
+        if (tournament.isBronzeMatch() || tournament.getNumberOfPlayoffs() > 0) { //@TODO make sure final exists
             if (bronzematchtab != null) {
                 pane.remove(bronzematchtab);
+                bronzematchtab.setVisible(false);
                 bronzematchtab = null;
             }
             bronzematchtab = createBronzeMatchPanel();
-            pane.addTab(messages.getString("bronzeMatch"), bronzematchtab);
+            if (bronzematchtab != null) {
+                pane.addTab(messages.getString("bronzeMatch"), bronzematchtab);
+            }
         }
 
         return pane;
@@ -664,12 +669,16 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = tournament.getPlacementMatches(size); //get a full playoffround of size players
+        Playoff playoff = tournament.getPlacementMatches(size); //get a full playoffround of all-size players
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
             return null;
         }
         PlayoffPair[] pairs = playoff.getPlayoffPairs();
+        if(pairs.length < 1) {
+            return null;
+        }
+
         for (int x = 0; x < pairs.length; x++) {
             if (x >= (playoffSize / 2)) { //show the ones below the playoff-line
                 PlayoffPair pair = pairs[x];
@@ -830,7 +839,7 @@ public class TournamentGUI extends JPanel {
     private static JTabbedPane playoffpane;
     private static JTabbedPane placementmatchpane;
     private static Component bronzematchtab;
-    private static Component mutualmatchestab;
+    private static Component placementmatchestab;
     private static ActionListener createlistener;
     private static ActionListener createplacementmatchlistener;
     private static DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer() {

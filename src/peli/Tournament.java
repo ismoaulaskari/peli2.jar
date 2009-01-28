@@ -38,7 +38,7 @@ public class Tournament {
     private HashMap playoffs = new HashMap();
     private Playoff placementMatches = null;
     private Playoff bronzeMatch = null;
-    private int largestPlayoff = 0;
+    private volatile int largestPlayoff = 0;
     // private ArrayList playoffSurvivors = new ArrayList();
 
     public HashMap getPlayoffs() {
@@ -63,6 +63,7 @@ public class Tournament {
         ArrayList groupStandings = this.getStandingsNames();
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames();
+            placementPlayers = new ArrayList(placementPlayers.subList(size-1, placementPlayers.size()-1));
             //int firstLoser = size;
             //ArrayList placementPlayers = new ArrayList();
             //for(int i = firstLoser; i < this.getStandings().size(); i++) {
@@ -82,7 +83,7 @@ public class Tournament {
      */
     public Playoff getBronzeMatch() {
         ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
-        if (this.bronzeMatch == null && this.playoffs.containsKey(4)) {
+        if (this.bronzeMatch == null && this.playoffs.containsKey(4) && this.playoffs.containsKey(2)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
             if (losers.size() == 2) {
                 this.bronzeMatch = new Playoff(losers, 2);
@@ -794,6 +795,6 @@ public class Tournament {
     }
 
     public int getLargestPlayoff() {
-        return largestPlayoff;
+        return this.largestPlayoff;
     }
 }
