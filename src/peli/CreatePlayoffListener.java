@@ -21,7 +21,7 @@ public class CreatePlayoffListener implements ActionListener {
 
     public CreatePlayoffListener(JTabbedPane playoffpane) {
         this.playoffpane = playoffpane;
-        this.firstRun = true;
+        this.firstRun = false;
     }
 
     public void actionPerformed(ActionEvent ae) {

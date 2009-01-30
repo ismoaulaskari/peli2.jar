@@ -182,6 +182,7 @@ public class Tournament {
 
     public void clearPlayoffs() {
         this.playoffs.clear();
+        this.largestPlayoff = 0;
     }
 
     public void clearPlacementMatches() {

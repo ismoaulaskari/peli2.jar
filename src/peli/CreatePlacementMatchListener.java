@@ -22,8 +22,8 @@ public class CreatePlacementMatchListener implements ActionListener {
 
     public CreatePlacementMatchListener(JTabbedPane playoffpane) {
         this.playoffpane = playoffpane;
-        this.plFirstRun = true;
-        this.brFirstRun = true;
+        this.plFirstRun = false;
+        this.brFirstRun = false;
     }
 
     public void actionPerformed(ActionEvent ae) {

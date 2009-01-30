@@ -460,9 +460,9 @@ public class TournamentGUI extends JPanel {
         for (int i = 1; maxPlayers / i > 1; i *= 2) {
             int tmp = maxPlayers / i;
             JRadioButton option = new JRadioButton(tmp + " " + messages.getString("players"));
-            if (tmp == 8) {
+            /*if (tmp == 8) {
                 option.setSelected(true);
-            }
+            }*/
             option.setActionCommand(String.valueOf(tmp));
             option.addActionListener(createlistener);
             playoffSize.add(option);
