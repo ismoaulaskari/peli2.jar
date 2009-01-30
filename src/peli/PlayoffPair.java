@@ -150,18 +150,18 @@ public class PlayoffPair {
     public String saveAll() {
         StringBuilder output = new StringBuilder();
         if (this.getHomeTeam().equals(this.getWinner())) {
-            output.append("<ul class=\"playoff\">");
+            output.append("<u class=\"playoff\">");
             output.append(this.getHomeTeam());
-            output.append("</ul>");
+            output.append("</u>");
             output.append("-");
             output.append(this.getAwayTeam());
         } else {
             if (this.getAwayTeam().equals(this.getWinner())) {
                 output.append(this.getHomeTeam());
                 output.append("-");
-                output.append("<ul class=\"playoff\">");
+                output.append("<u class=\"playoff\">");
                 output.append(this.getAwayTeam());
-                output.append("</ul>");
+                output.append("</u>");
             } else {
                 output.append(this.getHomeTeam());
                 output.append("-");

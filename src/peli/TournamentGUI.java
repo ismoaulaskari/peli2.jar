@@ -681,7 +681,7 @@ public class TournamentGUI extends JPanel {
 
         for (int x = 0; x < pairs.length; x++) {
             if (x >= (playoffSize / 2)) { //show the ones below the playoff-line
-                PlayoffPair pair = pairs[x];
+                PlayoffPair pair = pairs[x];                
                 PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                 JTable jtable2 = new JTable(pairmodel);
                 setPlacementMatchTableRenderers(jtable2.getColumnModel());

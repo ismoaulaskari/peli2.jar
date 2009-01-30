@@ -63,7 +63,7 @@ public class Tournament {
         ArrayList groupStandings = this.getStandingsNames();
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames();
-            placementPlayers = new ArrayList(placementPlayers.subList(size-1, placementPlayers.size()-1));
+            //OOPS placementPlayers = new ArrayList(placementPlayers.subList(0, placementPlayers.size()-1));
             //int firstLoser = size;
             //ArrayList placementPlayers = new ArrayList();
             //for(int i = firstLoser; i < this.getStandings().size(); i++) {
