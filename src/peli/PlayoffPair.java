@@ -175,7 +175,7 @@ public class PlayoffPair {
             }
         }
         if (!emptyrow) {
-            output.append(" : (");
+            output.append(" : ").append(this.getHomeWins()).append("-").append(this.getAwayWins()).append(" (");
             for (int i = 0; i < this.matches.size(); i++) {
                 Match match = (Match) this.matches.get(i);
                 output.append(match.saveAll());
