@@ -754,7 +754,7 @@ public class Tournament {
                 }
                 output = output.replaceAll("<!-- PLAYOFF -->", playoffoutput.toString());
             }
-            if (bronzeMatch != null) {
+            if (bronzeMatch != null) {//@TODO pronssi-html
                 output = output.replaceAll("<!--HIDE_BRONZEMATCH", "");
                 output = output.replaceAll("HIDE_BRONZEMATCH-->", "");
                 output = output.replaceAll("<!-- BRONZEMATCH -->", bronzeMatch.saveAll());
