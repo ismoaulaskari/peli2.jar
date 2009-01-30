@@ -59,11 +59,11 @@ public class Tournament {
      * @param size
      * @return
      */
-    public Playoff getPlacementMatches(int size) {
+    public Playoff getPlacementMatches(int size, int playoffSize) {
         ArrayList groupStandings = this.getStandingsNames();
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames();
-            //OOPS placementPlayers = new ArrayList(placementPlayers.subList(0, placementPlayers.size()-1));
+             //placementPlayers = new ArrayList(placementPlayers.subList(playoffSize - 1, placementPlayers.size() - playoffSize));
             //int firstLoser = size;
             //ArrayList placementPlayers = new ArrayList();
             //for(int i = firstLoser; i < this.getStandings().size(); i++) {
@@ -369,7 +369,11 @@ public class Tournament {
                 int playoffsSize = Tools.parseIntAfter("PLAYOFFS-SIZE:", bufferedreader.readLine());
                 for (int i = 0; i < playoffsSize; i++) {
                     Playoff playoff = new Playoff(bufferedreader);
-                    playoffs.put(playoff.getSize(), playoff);
+                    int size = playoff.getSize();
+                    playoffs.put(size, playoff);
+                    if (size > this.getLargestPlayoff()) { //needed for placementmatches
+                        this.largestPlayoff = size;
+                    }
                 }
             }
 
@@ -741,7 +745,7 @@ public class Tournament {
                 //if playoff, save playoff
                 StringBuilder playoffoutput = new StringBuilder();
                 Set rounds = playoffs.keySet();
-                if (!rounds.isEmpty()) {                    
+                if (!rounds.isEmpty()) {
                     for (Iterator i = rounds.iterator(); i.hasNext();) {
                         playoffoutput.append(((Playoff) playoffs.get(i.next())).saveAll());
                     }
@@ -756,8 +760,8 @@ public class Tournament {
             if (playoffs.size() > 0) {
                 StringBuilder standingsoutput = new StringBuilder();
                 standingsoutput.append("<ol class=\"playoff\">").append(System.getProperty("line.separator"));
-                for(Object ob : getOverAllStandings()) {
-                    standingsoutput.append("<li class=\"standings\">").append((String)ob).append("</li>").append(System.getProperty("line.separator"));
+                for (Object ob : getOverAllStandings()) {
+                    standingsoutput.append("<li class=\"standings\">").append((String) ob).append("</li>").append(System.getProperty("line.separator"));
                 }
                 standingsoutput.append("</ol>").append(System.getProperty("line.separator"));
                 output = output.replaceAll("<!--HIDE_STANDINGS", "");

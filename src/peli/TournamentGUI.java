@@ -669,7 +669,7 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = tournament.getPlacementMatches(size); //get a full playoffround of all-size players
+        Playoff playoff = tournament.getPlacementMatches(size, playoffSize); //get a full playoffround of all-size players
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
             return null;

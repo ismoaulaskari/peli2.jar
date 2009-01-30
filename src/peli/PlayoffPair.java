@@ -148,8 +148,10 @@ public class PlayoffPair {
 
     //html @TODO bronze how?
     public String saveAll() {
+        boolean emptyrow = true;
         StringBuilder output = new StringBuilder();
         if (this.getHomeTeam().equals(this.getWinner())) {
+            emptyrow = false;
             output.append("<u class=\"playoff\">");
             output.append(this.getHomeTeam());
             output.append("</u>");
@@ -157,26 +159,34 @@ public class PlayoffPair {
             output.append(this.getAwayTeam());
         } else {
             if (this.getAwayTeam().equals(this.getWinner())) {
+                emptyrow = false;
                 output.append(this.getHomeTeam());
                 output.append("-");
                 output.append("<u class=\"playoff\">");
                 output.append(this.getAwayTeam());
                 output.append("</u>");
             } else {
-                output.append(this.getHomeTeam());
-                output.append("-");
-                output.append(this.getAwayTeam());
+                emptyrow = true;
+            /*
+            output.append(this.getHomeTeam());
+            output.append("-");
+            output.append(this.getAwayTeam());
+             */
             }
         }
-        output.append(" ; (");
-        for (int i = 0; i < this.matches.size(); i++) {
-            Match match = (Match) this.matches.get(i);
-            output.append(match.saveAll());
-            if (i < (this.matches.size() - 1)) {
-                output.append(", ");
+        if (!emptyrow) {
+            output.append(" : (");
+            for (int i = 0; i < this.matches.size(); i++) {
+                Match match = (Match) this.matches.get(i);
+                output.append(match.saveAll());
+                if (i < (getPlayedMatches() - 1)) {
+                    if (match.isOver()) {
+                        output.append(", ");
+                    }
+                }
             }
+            output.append(")<br class=\"playoff\"/><br class=\"playoff\"/>");
         }
-        output.append(")<br class=\"playoff\"/><br class=\"playoff\"/>");
 
         return output.toString();
     }
@@ -218,5 +228,16 @@ public class PlayoffPair {
 
     public void setHomePlacement(String string) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public int getPlayedMatches() {
+        int played = 0;
+        for(int i = 0; i < this.matches.size(); i++) {
+            if(((Match)this.matches.get(i)).isOver()) {
+                played++;
+            }
+        }
+
+        return played;
     }
 }
