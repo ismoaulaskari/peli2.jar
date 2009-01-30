@@ -744,8 +744,9 @@ public class Tournament {
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
                 //if playoff, save playoff
                 StringBuilder playoffoutput = new StringBuilder();
-                Set rounds = playoffs.keySet();
+                List rounds = new LinkedList(playoffs.keySet());
                 if (!rounds.isEmpty()) {
+                    Collections.reverse(rounds);
                     for (Iterator i = rounds.iterator(); i.hasNext();) {
                         playoffoutput.append(((Playoff) playoffs.get(i.next())).saveAll());
                     }
