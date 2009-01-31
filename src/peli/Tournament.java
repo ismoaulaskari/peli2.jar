@@ -738,7 +738,7 @@ public class Tournament {
             if (placementMatches != null) {
                 output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
                 output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
-                output = output.replaceAll("<!-- PLACEMENTMATCHES -->", placementMatches.saveAll());
+                output = output.replaceAll("<PLACEMENTMATCHES/>", placementMatches.saveAll());
             }
             if (playoffs.size() > 0) {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
@@ -749,15 +749,19 @@ public class Tournament {
                 if (!rounds.isEmpty()) {
                     Collections.reverse(rounds);
                     for (Iterator i = rounds.iterator(); i.hasNext();) {
-                        playoffoutput.append(((Playoff) playoffs.get(i.next())).saveAll());
+                        Integer round = (Integer)i.next();
+                        if(round == 2) {
+                            //bronze
+                        }
+                        playoffoutput.append(((Playoff) playoffs.get(round)).saveAll());
                     }
                 }
-                output = output.replaceAll("<!-- PLAYOFF -->", playoffoutput.toString());
+                output = output.replaceAll("<PLAYOFF/>", playoffoutput.toString());
             }
             if (bronzeMatch != null) {//@TODO pronssi-html
                 output = output.replaceAll("<!--HIDE_BRONZEMATCH", "");
                 output = output.replaceAll("HIDE_BRONZEMATCH-->", "");
-                output = output.replaceAll("<!-- BRONZEMATCH -->", bronzeMatch.saveAll());
+                output = output.replaceAll("<BRONZEMATCH/>", bronzeMatch.saveAll());
             }
             if (playoffs.size() > 0) {
                 StringBuilder standingsoutput = new StringBuilder();
@@ -768,7 +772,7 @@ public class Tournament {
                 standingsoutput.append("</ol>").append(System.getProperty("line.separator"));
                 output = output.replaceAll("<!--HIDE_STANDINGS", "");
                 output = output.replaceAll("HIDE_STANDINGS-->", "");
-                output = output.replaceAll("<!-- STANDINGS -->", standingsoutput.toString());
+                output = output.replaceAll("<STANDINGS/>", standingsoutput.toString());
             }
 
             /*hidden tnmt-output*/

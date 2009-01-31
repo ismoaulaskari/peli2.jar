@@ -88,7 +88,7 @@ public class Match {
     //html
     public String saveAll() {
         StringBuilder output = new StringBuilder();
-        String special = ((postFix.length() > 0) ? ":" + postFix : "");
+        String special = ((postFix.length() > 0) ? "" + postFix : "");
         output.append(isOver ? homeGoals + "-" + visitorGoals + special : "");
 
         return output.toString();
