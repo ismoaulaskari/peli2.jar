@@ -752,6 +752,9 @@ public class Tournament {
                         Integer round = (Integer)i.next();
                         if(round == 2) {
                             //bronze
+                            playoffoutput.append("<!--HIDE_BRONZEMATCH");
+                            playoffoutput.append("<BRONZEMATCH/>");
+                            playoffoutput.append("HIDE_BRONZEMATCH-->");
                         }
                         playoffoutput.append(((Playoff) playoffs.get(round)).saveAll());
                     }
