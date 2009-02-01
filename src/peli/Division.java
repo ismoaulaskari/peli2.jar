@@ -168,7 +168,11 @@ public class Division {
      * @return
      */
     private String getScoreFormat(String resultHome, String resultAway) {
-        String mutualResultClass = null;
+        String mutualResultClass = "tie";
+
+        if(resultHome == null || resultAway == null) {
+            return mutualResultClass;
+        }
 
         //must get rid of result prefixes for parseint
         int[] tmpScores = {Integer.parseInt(Tools.getNumber(resultHome)), Integer.parseInt(Tools.getNumber(resultAway))};
@@ -255,7 +259,7 @@ public class Division {
         }
         mutualtable.append("</tr>" + System.getProperty("line.separator"));
         String tmpResult = null;
-        String mutualResultClass = null;
+        String mutualResultClass = "";
         for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
@@ -272,8 +276,10 @@ public class Division {
                     if (tmpResult.matches(".*<BR>.*")) {
                         tmpResult = formatMultiResult(tmpResult);
                     } else { //simple comparison, not needed?
-                        String[] tmpResults = tmpResult.split("-");                        
-                        mutualResultClass = getScoreFormat(tmpResults[0], tmpResults[1]);
+                        String[] tmpResults = tmpResult.split("-");
+                        if(tmpResults != null && tmpResults.length >= 2) {
+                            mutualResultClass = getScoreFormat(tmpResults[0], tmpResults[1]);
+                        }
                     }
                     //put out formatted mutual html-results:
                     if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
