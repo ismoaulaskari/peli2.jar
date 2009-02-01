@@ -1,4 +1,6 @@
+<center>
 <h3><!-- HEADING --></h3>
+</center>
 <table align="center" bgcolor="#c0c0c0">
 <tr>
 <td>

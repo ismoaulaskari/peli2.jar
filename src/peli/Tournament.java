@@ -726,8 +726,7 @@ public class Tournament {
             header = header.replaceAll("<!-- TITLE -->", System.getProperty("TournamentFileName"));
             header = header.replaceAll("<!-- DATE -->", date);            
             printwriter.print(header);
-
-            //String output = Constants.getTemplate().toString();
+            
             String output = "";
             String[] divisiontitles = getDivisionTitles();
             //use template.txt                                                
@@ -735,7 +734,7 @@ public class Tournament {
                 output += getDivision(i).saveAll();
                 output = output.replaceFirst("<!-- HEADING -->", 
                     divisiontitles[i] + " " + messages.getString("templateHeading"));
-            //HtmlTools.hr(printwriter);
+                //HtmlTools.hr(printwriter);
             }
             
             output += Constants.getFooter().toString();
