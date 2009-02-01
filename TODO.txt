@@ -33,16 +33,16 @@ Peli.jar
           o päivämäärä /FIXED 1.9
           o template? /FIXED 1.9
           o Englanninnos! /FIXED 1.9.3
-          o super-tnmt /FIXED 1.11.6
-          o luovutus? /FIXED 1.11.6
           o loppusijoitusten muodostaminen /fixed 1.11.2
           o sijoitusotteluiden dynaamisempi muodostuminen /fixed 1.11.3
+          o super-tnmt /FIXED 1.11.6
+          o luovutus? /FIXED 1.11.6
+          o Playoff /FIXED 1.11.6
           o ruotsalainen playoff-kaavio
           o tuki Platka-ohjelman xml:n tulostamiseen
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana?
           o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa
           o hakemistot tiedostovalikossa
-          o Playoff /FIXED 1.11.6
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o Alkusarjan tulokset finaalisarjaan
