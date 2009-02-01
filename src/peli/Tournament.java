@@ -713,6 +713,10 @@ public class Tournament {
         HtmlTools.outro(printwriter);
     }
 
+    /**
+     * print html-file with embedded tnmt
+     * @param printwriter
+     */
     public void saveAll(PrintWriter printwriter) {
         //won't work
         //if(rules.getString("useVersion1HtmlOutput").equalsIgnoreCase("false")) {        
@@ -778,8 +782,14 @@ public class Tournament {
                 output = output.replaceAll("<STANDINGS/>", standingsoutput.toString());
             }
 
-            /*hidden tnmt-output*/
-            //@TODO tnmt
+            /*hidden tnmt-output is always printed*/
+            StringWriter stringwriter = new StringWriter();
+            PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
+            sprintwriter.println("<TNMT>");
+            this.save(sprintwriter);
+            sprintwriter.println("</TNMT>");
+            output = output.replaceAll("<!-- TNMT -->", stringwriter.toString());
+            sprintwriter.close();
 
             //use footer.txt
             printwriter.print(output);

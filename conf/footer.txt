@@ -1,2 +1,28 @@
+<!--HIDE_PLACEMENTMATCHES
+<h3>Sijoitusottelut</h3>
+<p>
+<PLACEMENTMATCHES/>
+</p>
+HIDE_PLACEMENTMATCHES-->
+
+<!--HIDE_PLAYOFF
+<h3>Playoff</h3>
+<p>
+<PLAYOFF/>
+</p>
+HIDE_PLAYOFF-->
+
+<!--HIDE_STANDINGS
+<hr><h3>Lopulliset sijoitukset</h3>
+<p>
+<STANDINGS/>
+</p>
+HIDE_STANDINGS-->
+<hr />
+
+<!--
+<!-- TNMT -->
+-->
+
 </body>
 </html>
