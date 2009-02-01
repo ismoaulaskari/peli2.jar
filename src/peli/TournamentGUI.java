@@ -537,7 +537,7 @@ public class TournamentGUI extends JPanel {
         createlistener = new CreatePlayoffListener(playoffpane);
         newPlayoffpane(playoffpane);
         jpanel2.add(playoffpane);
-        JScrollPane columnScrollPane = new JScrollPane(jpanel2);
+        JScrollPane columnScrollPane = new JScrollPane(jpanel2); //@TODO skrollaus ei toimi
         columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
         //ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
 
