@@ -426,7 +426,7 @@ public class Tournament {
 
     public String[] getDivisionTitles() {
         String displayName = System.getProperty("TournamentFileName") + " / ";
-        switch (numberOfDivisions) {
+        switch (numberOfDivisions) { //@TODO this as dynamic one-liner
             case 1: // '\001'
                 return (new String[]{
                             displayName + "Agdur"
@@ -454,18 +454,40 @@ public class Tournament {
 
             case 6: // '\006'
                 return (new String[]{
-                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E" + displayName + "F"
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F"
                         });
 
             case 7: // '\007'
                 return (new String[]{
-                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E" + displayName + "F" + displayName + "G"
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F", displayName + "G"
                         });
 
             case 8: // '\b'
                 return (new String[]{
-                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E" + displayName + "F" + displayName + "G" + displayName + "H"
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F", displayName + "G", displayName + "H"
                         });
+
+            case 9:
+                return (new String[]{
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F", displayName + "G", displayName + "H", displayName + "I"
+                        });
+
+            case 10:
+                return (new String[]{
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F", displayName + "G", displayName + "H", displayName + "I", displayName + "J"
+                        });
+
+            case 11:
+                return (new String[]{
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F", displayName + "G", displayName + "H", displayName + "I", displayName + "J", displayName + "K"
+                        });
+
+            case 12:
+                return (new String[]{
+                            displayName + "A", displayName + "B", displayName + "C", displayName + "D", displayName + "E", displayName + "F", displayName + "G", displayName + "H", displayName + "I", displayName + "J", displayName + "K", displayName + "L"
+                        });
+
+
         }
         return (new String[]{
                     displayName + " A"

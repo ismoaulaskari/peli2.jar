@@ -769,12 +769,12 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 3, 4, 3), BorderFactory.createLineBorder(Color.black)), " " + messages.getString("selectedGroup") + " "));
         jpanel.setLayout(new CardLayout());
-        int i = tournament.size();
-        JTabbedPane ajtabbedpane[] = new JTabbedPane[i + 1];
-        for (int j = 0; j < i; j++) {
+        int divisions_i = tournament.size();
+        JTabbedPane ajtabbedpane[] = new JTabbedPane[divisions_i + 1];
+        for (int j = 0; j < divisions_i; j++) {
             ajtabbedpane[j] = new JTabbedPane();
         }
-        for (int k = 0; k < i; k++) {
+        for (int k = 0; k < divisions_i; k++) {
             JScrollPane jscrollpane = new JScrollPane(createMatchListTable(k), 20, 31);
             jscrollpane.setPreferredSize(new Dimension(480, 540));
             ajtabbedpane[k].addTab(messages.getString("matches"), jscrollpane);
@@ -812,7 +812,7 @@ public class TournamentGUI extends JPanel {
 
         //add each division
         String as[] = tournament.getDivisionTitles();
-        for (int l = 0; l < i; l++) {
+        for (int l = 0; l < divisions_i; l++) {
             jpanel.add(ajtabbedpane[l], as[l]);
         }
 
