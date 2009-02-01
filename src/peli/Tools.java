@@ -119,6 +119,12 @@ public class Tools
         }
     }
 
+    public static String getNumber(String s) {
+        s = s.replaceAll("[\\D]", "");
+
+        return s;
+    }
+
     /*fixed A-K bug  */
     public static String capitalize(String s, boolean strict) {
         //StringBuffer stringbuffer = new StringBuffer(s.toLowerCase());

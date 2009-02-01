@@ -603,7 +603,7 @@ public class Tournament {
                 }
             }
         } else {
-            System.err.println("placementmatches null");
+            //System.err.println("placementmatches null");
         }
 
         return overallstandings;

@@ -167,10 +167,11 @@ public class Division {
      * @param tmpResults
      * @return
      */
-    private String getScoreFormat(String[] tmpResults) {
+    private String getScoreFormat(String resultHome, String resultAway) {
         String mutualResultClass = null;
 
-        int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
+        //must get rid of result prefixes for parseint
+        int[] tmpScores = {Integer.parseInt(Tools.getNumber(resultHome)), Integer.parseInt(Tools.getNumber(resultAway))};
         if (tmpScores[0] > tmpScores[1]) {
             mutualResultClass = "win";
         } else if (tmpScores[0] < tmpScores[1]) {
@@ -194,7 +195,7 @@ public class Division {
         String[] tmpRows = tmpResult.split("<BR>");
         for (int i = 0; i < tmpRows.length; i++) {
             String[] tmpResults = tmpRows[i].split("-");
-            mutualResultClass = getScoreFormat(tmpResults);
+            mutualResultClass = getScoreFormat(tmpResults[0], tmpResults[1]);
             formattedResult.append("<tr><td class=\"").append(mutualResultClass).append("\">").append(tmpRows[i]).append("</td></tr>");
         }
         formattedResult.append("</table>");
@@ -206,7 +207,7 @@ public class Division {
      * @deprecated, was voted illlogical
      * @param tmpResult
      * @return
-     */
+     *//*
     private String getCombinedMultiResult(String tmpResult) {
         //handle n-times-series
         String mutualResultClass = null;
@@ -238,7 +239,7 @@ public class Division {
         }
 
         return mutualResultClass;
-    }
+    }*/
 
     //mutual matches table on a template-based tournament html-page
     public String saveAll() {
@@ -271,9 +272,8 @@ public class Division {
                     if (tmpResult.matches(".*<BR>.*")) {
                         tmpResult = formatMultiResult(tmpResult);
                     } else { //simple comparison, not needed?
-                        String[] tmpResults = tmpResult.split("-");
-                        int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
-                        mutualResultClass = getScoreFormat(tmpResults);
+                        String[] tmpResults = tmpResult.split("-");                        
+                        mutualResultClass = getScoreFormat(tmpResults[0], tmpResults[1]);
                     }
                     //put out formatted mutual html-results:
                     if (seriestableentry.getHasTiedPoints() >= 0 && seriestableentry.getHasTiedPoints() == seriestableentry1.getHasTiedPoints()) {
