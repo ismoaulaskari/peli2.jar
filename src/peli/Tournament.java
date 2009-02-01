@@ -724,14 +724,17 @@ public class Tournament {
             //use header.txt            
             String header = Constants.getHeader().toString();
             header = header.replaceAll("<!-- TITLE -->", System.getProperty("TournamentFileName"));
-            header = header.replaceAll("<!-- DATE -->", date);
-            header = header.replaceAll("<!-- HEADING -->", messages.getString("templateHeading"));
+            header = header.replaceAll("<!-- DATE -->", date);            
             printwriter.print(header);
 
-            String output = Constants.getTemplate().toString();
+            //String output = Constants.getTemplate().toString();
+            String output = "";
+            String[] divisiontitles = getDivisionTitles();
             //use template.txt                                                
             for (int i = 0; i < getNumberOfDivisions(); i++) {
                 output += getDivision(i).saveAll();
+                output = output.replaceFirst("<!-- HEADING -->", 
+                    divisiontitles[i] + " " + messages.getString("templateHeading"));
             //HtmlTools.hr(printwriter);
             }
             

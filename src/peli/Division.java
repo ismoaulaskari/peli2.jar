@@ -249,6 +249,9 @@ public class Division {
     public String saveAll() {
         String output = Constants.getTemplate().toString();
         SeriesTable seriestable = getSeriesTable();
+        if(seriestable.size() < 1) {
+            return ""; //@TODO strange extra division
+        }
 
         output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
 

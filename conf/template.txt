@@ -1,3 +1,4 @@
+<h3><!-- HEADING --></h3>
 <table align="center" bgcolor="#c0c0c0">
 <tr>
 <td>
