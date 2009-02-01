@@ -18,7 +18,7 @@ import javax.swing.table.*;
  * added a full tournament results tab,
  * and a button for saving final standings of the tournament
  * v.1.9 playoff-tab, placement matches tab, unsaved-notification
- * @TODO show bronze game and support creating placement matches
+ * v.1.11 show bronze game and support creating placement matches
  * @author aulaskar
  *
  */
@@ -83,7 +83,7 @@ public class TournamentGUI extends JPanel {
                     try {
                         super.finalize(); //huh                                
                     } catch (Throwable e) {
-                        e.printStackTrace();		// TODO: handle exception
+                        e.printStackTrace();		//handle exception?
                     }
 
                     System.runFinalization();
@@ -595,7 +595,7 @@ public class TournamentGUI extends JPanel {
     }
 
     public static JTabbedPane newBronzeMatch(JTabbedPane pane) {
-        if (tournament.isBronzeMatch() || tournament.getNumberOfPlayoffs() > 0) { //@TODO make sure final exists
+        if (tournament.isBronzeMatch() || tournament.getNumberOfPlayoffs() > 0) { 
             if (bronzematchtab != null) {
                 pane.remove(bronzematchtab);
                 bronzematchtab.setVisible(false);

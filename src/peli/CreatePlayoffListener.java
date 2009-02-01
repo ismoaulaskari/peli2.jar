@@ -29,11 +29,11 @@ public class CreatePlayoffListener implements ActionListener {
             if (this.playoffpane != null) {
                 String size = source;
                 if (this.source == null) {
-                    size = "8"; //default, @TODO something
+                    return;
                 }
                 if (ae.getActionCommand().equals("CREATE")) {
                     if((! firstRun) && (! TournamentGUI.warnCreatePlayoff())) return; //confirm overwrite of playoffs
-                    //@TODO when loading saved tournament, firstrun should be off
+                    //when loading saved tournament, firstrun should be off
                     TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
                 

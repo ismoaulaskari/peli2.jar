@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * fix tournament date here! fixed now with v. 1.9
  * so is clearer division names in the GUI
  * and html-template support
- * @TODO playoff and placementmatch into html
- * @TODO combine html and tnmt-save
- * @TODO super-tnmt
+ * v.1.11 playoff and placementmatch into html
+ * v.1.11 combine html and tnmt-save
+ * v.1.11 super-tnmt
  * @TODO disqualified players
  * @TODO support for extending a series(make default series bigger but hidden)
  * @TODO match schedule printout for players?
@@ -558,7 +558,6 @@ public class Tournament {
     }
 
     //by aulaskar
-    //@TODO what about bronze game result
     public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
         Set rounds = playoffs.keySet();
         Boolean isFirst = true;
@@ -735,8 +734,7 @@ public class Tournament {
                 output += getDivision(i).saveAll();
             //HtmlTools.hr(printwriter);
             }
-
-            //@TODO järkevät tulosteet
+            
             output += Constants.getFooter().toString();
 
             if (placementMatches != null) {
@@ -765,7 +763,7 @@ public class Tournament {
                 }
                 output = output.replaceAll("<PLAYOFF/>", playoffoutput.toString());
             }
-            if (bronzeMatch != null) {//@TODO pronssi-html
+            if (bronzeMatch != null) {
                 output = output.replaceAll("<!--HIDE_BRONZEMATCH", "");
                 output = output.replaceAll("HIDE_BRONZEMATCH-->", "");
                 output = output.replaceAll("<BRONZEMATCH/>", bronzeMatch.saveAll());

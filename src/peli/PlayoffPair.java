@@ -146,7 +146,7 @@ public class PlayoffPair {
         }
     }
 
-    //html @TODO bronze how?
+    //html 
     public String saveAll() {
         boolean emptyrow = true;
         StringBuilder output = new StringBuilder();
