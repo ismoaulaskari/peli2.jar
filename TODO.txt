@@ -38,7 +38,9 @@ Peli.jar
           o super-tnmt /FIXED 1.11.6
           o luovutus? /FIXED 1.11.6
           o Playoff /FIXED 1.11.6
+          o jatkoaikakirjaimien yms. rajoitus
           o playoff ja sijoitusottelut ei skrollaa
+          o enemmän kierroksia?
           o ruotsalainen playoff-kaavio
           o tuki Platka-ohjelman xml:n tulostamiseen
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana?

@@ -15,6 +15,7 @@ import javax.swing.*;
  * v1.1 A last name can be Ala-kojola or Ala-Kojola
  * v1.9 choose all-button
  * @TODO filtteröi pelaajalistaa tyyliin turnausilmoN.pl vapaavalintaisella suffixilla
+ * @TODO useampia kierroksia kuin 4
  * @author aulaskar
  *
  */
@@ -69,6 +70,7 @@ public class RegistrationGUI extends JPanel {
             }
         }
 
+        //number of rounds?
         JRadioButton jradiobutton = new JRadioButton("1");
         jradiobutton.setActionCommand("1");
         jradiobutton.setSelected(true);
