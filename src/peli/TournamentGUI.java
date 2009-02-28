@@ -19,7 +19,6 @@ import javax.swing.table.*;
  * and a button for saving final standings of the tournament
  * v.1.9 playoff-tab, placement matches tab, unsaved-notification
  * v.1.11 show bronze game and support creating placement matches
- * @TODO scrollaava playoff
  * @author aulaskar
  *
  */
@@ -538,8 +537,8 @@ public class TournamentGUI extends JPanel {
         createlistener = new CreatePlayoffListener(playoffpane);
         newPlayoffpane(playoffpane);
         jpanel2.add(playoffpane);
-        /*JScrollPane columnScrollPane = new JScrollPane(jpanel2); //@TODO skrollaus ei toimi koska scrollpanea ei lisätä mihkään
-        columnScrollPane.setSize(new Dimension(jpanel2.getSize()));*/
+        JScrollPane columnScrollPane = new JScrollPane(jpanel2); //@TODO skrollaus ei toimi
+        columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
         //ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
 
         Set set = tournament.getPlayoffs().keySet(); //hmm? iterator?
@@ -547,9 +546,7 @@ public class TournamentGUI extends JPanel {
         list.addAll(set);
         Collections.reverse(list);
         for (Object playoffnumber : list) {
-            JScrollPane columnScrollPane = new JScrollPane(createPlayoffPanel((Integer) playoffnumber), 21, 30);
-            columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
-            playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, columnScrollPane);
+            playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
         }
         playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
 
@@ -598,7 +595,7 @@ public class TournamentGUI extends JPanel {
     }
 
     public static JTabbedPane newBronzeMatch(JTabbedPane pane) {
-        if (tournament.isPlacementMatches() && (tournament.isBronzeMatch() || tournament.getNumberOfPlayoffs() > 0)) {
+        if (tournament.isBronzeMatch() || (tournament.isPlacementMatches() && tournament.getNumberOfPlayoffs() > 0)) {
             if (bronzematchtab != null) {
                 pane.remove(bronzematchtab);
                 bronzematchtab.setVisible(false);
