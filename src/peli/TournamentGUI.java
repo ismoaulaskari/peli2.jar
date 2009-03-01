@@ -495,7 +495,10 @@ public class TournamentGUI extends JPanel {
         JButton createButton = new JButton(messages.getString("createPlacementMatches"));
         createButton.setActionCommand("CREATEPLACEMENT");
         createButton.addActionListener(createplacementmatchlistener);
-        jpanel.add(createButton);
+        jpanel.add(createButton);        
+        jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
+        JLabel noticeLabel = new JLabel(messages.getString("placementMatchOrder"));
+        jpanel.add(noticeLabel);
 
         return jpanel;
     }
@@ -521,7 +524,7 @@ public class TournamentGUI extends JPanel {
      */
     public static void newPlacementMatchPane(JTabbedPane playoffpane) {
         playoffpane.removeAll();
-        playoffpane.addTab(messages.getString("newPlayoff"), TournamentGUI.createPlacementMatchButtons());
+        playoffpane.addTab(messages.getString("newPlacementMatches"), TournamentGUI.createPlacementMatchButtons());
 
     }
 
