@@ -42,6 +42,7 @@ Peli.jar
           o playoff ja sijoitusottelut ei skrollaa
           o enemmän kierroksia?
           o ruotsalainen playoff-kaavio
+          o cup-playoffkaavion sekoitus!
           o tuki Platka-ohjelman xml:n tulostamiseen
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana?
           o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa

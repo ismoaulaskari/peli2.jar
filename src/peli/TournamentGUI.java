@@ -653,7 +653,16 @@ public class TournamentGUI extends JPanel {
 
         SaveTracker.setIsSaved(false);
 
-        return jpanel;
+        //scrollpanel has to added here for some reason
+        JPanel outerpanel = new JPanel();
+        JScrollPane playoffscrollpane = new JScrollPane(jpanel);
+        //playoffscrollpane.setPreferredSize(new Dimension(640, 640));
+        Dimension playofpanesize = playoffpane.getSize();
+        playofpanesize.setSize(playofpanesize.getWidth(), 800);
+        playoffscrollpane.setPreferredSize(playofpanesize);
+        outerpanel.add(playoffscrollpane);
+
+        return outerpanel;
     }
 
     public static JPanel createPlacementMatchPanel() {
@@ -712,7 +721,16 @@ public class TournamentGUI extends JPanel {
         //}
         SaveTracker.setIsSaved(false);
 
-        return jpanel;
+                //scrollpanel has to added here for some reason
+        JPanel outerpanel = new JPanel();
+        JScrollPane playoffscrollpane = new JScrollPane(jpanel);
+        //playoffscrollpane.setPreferredSize(new Dimension(640, 640));
+        Dimension playofpanesize = placementmatchpane.getSize();
+        playofpanesize.setSize(playofpanesize.getWidth(), 800);
+        playoffscrollpane.setPreferredSize(playofpanesize);
+        outerpanel.add(playoffscrollpane);
+
+        return outerpanel;
     }
 
     public static JPanel createBronzeMatchPanel() {
