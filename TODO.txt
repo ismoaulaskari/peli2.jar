@@ -38,8 +38,9 @@ Peli.jar
           o super-tnmt /FIXED 1.11.6
           o luovutus? /FIXED 1.11.6
           o Playoff /FIXED 1.11.6
+          o Sijoitusottelut aina luotava vaikka tyhjänä /FIXED 1.12.2 (pakotettu luonti ennen pronssiottelua)
+          o playoff ja sijoitusottelut ei skrollaa /FIXED 1.12.2
           o jatkoaikakirjaimien yms. rajoitus
-          o playoff ja sijoitusottelut ei skrollaa
           o enemmän kierroksia?
           o ruotsalainen playoff-kaavio
           o cup-playoffkaavion sekoitus!
