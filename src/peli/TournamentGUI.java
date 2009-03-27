@@ -588,7 +588,7 @@ public class TournamentGUI extends JPanel {
                 pane.remove(placementmatchestab);
                 placementmatchestab = null;
             }
-            placementmatchestab = createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
+            placementmatchestab = createPlacementMatchPanel(tournament.getStandingsNames(tournament.getStandings()).size(), tournament.getLargestPlayoff());
             if (placementmatchestab != null) {
                 pane.addTab(messages.getString("placementMatches"), placementmatchestab);
             }
@@ -669,7 +669,7 @@ public class TournamentGUI extends JPanel {
     }
 
     public static JPanel createPlacementMatchPanel() {
-        return createPlacementMatchPanel(tournament.getStandingsNames().size(), tournament.getLargestPlayoff());
+        return createPlacementMatchPanel(tournament.getStandingsNames(tournament.getStandings()).size(), tournament.getLargestPlayoff());
     }
 
     /**

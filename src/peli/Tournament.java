@@ -60,9 +60,9 @@ public class Tournament {
      * @return
      */
     public Playoff getPlacementMatches(int size, int playoffSize) {
-        ArrayList groupStandings = this.getStandingsNames();
+        ArrayList groupStandings = this.getStandingsNames(getStandings());
         if (this.placementMatches == null) { //new
-            ArrayList placementPlayers = this.getStandingsNames();
+            ArrayList placementPlayers = this.getStandingsNames(getStandings());
              //placementPlayers = new ArrayList(placementPlayers.subList(playoffSize - 1, placementPlayers.size() - playoffSize));
             //int firstLoser = size;
             //ArrayList placementPlayers = new ArrayList();
@@ -82,7 +82,7 @@ public class Tournament {
      * @return
      */
     public Playoff getBronzeMatch() {
-        ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames());
+        ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames(getStandings()));
         if (this.bronzeMatch == null && this.playoffs.containsKey(4) && this.playoffs.containsKey(2)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
             if (losers.size() == 2) {
@@ -104,7 +104,7 @@ public class Tournament {
      */
     public Playoff getPlayoffWithReseed(int size) {
         Playoff playoff = null;
-        ArrayList groupStandings = this.getStandingsNames();
+        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) {
@@ -128,7 +128,7 @@ public class Tournament {
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
 
             } else {
-                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
+                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
             }
 
         }
@@ -161,7 +161,7 @@ public class Tournament {
                 this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
 
             } else {
-                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(), size), size));
+                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
             }
 
         }
@@ -579,6 +579,33 @@ public class Tournament {
         return overallstandings;
     }
 
+    
+    /** print combined standings of all divisions, but preserve mutual ordering for 2-group playoffs */
+    public ArrayList getStandingsForPlayoffs() {
+        ArrayList divisions = new ArrayList();
+        ArrayList overallstandings = new ArrayList();
+
+        for (int i = 0; i < getNumberOfDivisions(); i++) {
+            divisions.add(getDivision(i).getStandings());        //trust that the first division allways exists
+        }
+        int maxdivisionsize = ((ArrayList) divisions.get(0)).size() + 2;
+
+        //order combined standings of all divisions
+        for (int i = 0; i < maxdivisionsize; i++) {            
+
+            for (int j = 0; j < getNumberOfDivisions(); j++) {
+                try {
+                    overallstandings.add(((ArrayList) divisions.get(j)).get(i));
+                } catch (IndexOutOfBoundsException ie) {
+                    //nothing, divisions may have different sizes
+                }
+            }
+            
+        }
+
+        return overallstandings;
+    }
+
     //by aulaskar
     public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
         Set rounds = playoffs.keySet();
@@ -668,9 +695,9 @@ public class Tournament {
         return sb.toString();
     }
 
-    public ArrayList getStandingsNames() {
+    public ArrayList getStandingsNames(ArrayList overallstandings) {
         ArrayList justnames = new ArrayList();
-        ArrayList overallstandings = getStandings();
+        //ArrayList overallstandings = getStandings();
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
             justnames.add(((SeriesTableEntry) iterator.next()).getName());
         }
@@ -679,7 +706,7 @@ public class Tournament {
     }
 
     public ArrayList getOverAllStandings() {
-        ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames()));
+        ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames(getStandings())));
         overallstandings = addBronzeMatchToStandings(overallstandings);
 
         return overallstandings;
