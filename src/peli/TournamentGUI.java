@@ -461,7 +461,7 @@ public class TournamentGUI extends JPanel {
             int tmp = maxPlayers / i;
             JRadioButton option = new JRadioButton(tmp + " " + messages.getString("players"));
             /*if (tmp == 8) {
-                option.setSelected(true);
+            option.setSelected(true);
             }*/
             option.setActionCommand(String.valueOf(tmp));
             option.addActionListener(createlistener);
@@ -471,16 +471,19 @@ public class TournamentGUI extends JPanel {
 
         JButton createDynamicButton = new JButton(messages.getString("createDynamicPlayoffs"));
         createDynamicButton.setActionCommand("CREATEDYNAMIC");
+        createDynamicButton.setToolTipText(messages.getString("createDynamicPlayoffsTip"));
         createDynamicButton.addActionListener(createlistener);
         jpanel.add(createDynamicButton);
 
         JButton createStaticButton = new JButton(messages.getString("createStaticPlayoffs"));
         createStaticButton.setActionCommand("CREATESTATIC");
+        createStaticButton.setToolTipText(messages.getString("createStaticPlayoffsTip"));
         createStaticButton.addActionListener(createlistener);
         jpanel.add(createStaticButton);
 
         JButton createRandomButton = new JButton(messages.getString("createRandomPlayoffs"));
         createRandomButton.setActionCommand("CREATERANDOM");
+        createRandomButton.setToolTipText(messages.getString("createRandomPlayoffsTip"));
         createRandomButton.addActionListener(createlistener);
         jpanel.add(createRandomButton);
 
@@ -505,7 +508,7 @@ public class TournamentGUI extends JPanel {
         JButton createButton = new JButton(messages.getString("createPlacementMatches"));
         createButton.setActionCommand("CREATEPLACEMENT");
         createButton.addActionListener(createplacementmatchlistener);
-        jpanel.add(createButton);        
+        jpanel.add(createButton);
         jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
         JLabel noticeLabel = new JLabel(messages.getString("placementMatchOrder"));
         jpanel.add(noticeLabel);
@@ -559,7 +562,7 @@ public class TournamentGUI extends JPanel {
         list.addAll(set);
         Collections.reverse(list);
         for (Object playoffnumber : list) {
-            playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber));
+            playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber, tournament.getSeedingModel()));
         }
         playoffpane.setSelectedIndex(playoffpane.getTabCount() - 1);
 
@@ -628,11 +631,27 @@ public class TournamentGUI extends JPanel {
      * @param size
      * @return
      */
-    public static JPanel createPlayoffPanel(int size) {
+    public static JPanel createPlayoffPanel(int size, String seedingModel) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = tournament.getPlayoffWithReseed(size);
+        Playoff playoff = null;
+        if (seedingModel.equals("CREATERANDOM")) {
+            //playoff = null;
+        } else {
+            if (seedingModel.equals("CREATESTATIC")) {
+                playoff = tournament.getPlayoffNoReseed(size);
+            } else {
+                if (seedingModel.equals("CREATEDYNAMIC")) {
+                    playoff = tournament.getPlayoffWithReseed(size);
+                }
+                else {
+                    //default
+                    playoff = tournament.getPlayoffWithReseed(size);
+                }
+            }
+        }
+
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
             return null;
@@ -697,13 +716,13 @@ public class TournamentGUI extends JPanel {
             return null;
         }
         PlayoffPair[] pairs = playoff.getPlayoffPairs();
-        if(pairs.length < 1) {
+        if (pairs.length < 1) {
             return null;
         }
 
         for (int x = 0; x < pairs.length; x++) {
             if (x >= (playoffSize / 2)) { //show the ones below the playoff-line
-                PlayoffPair pair = pairs[x];                
+                PlayoffPair pair = pairs[x];
                 PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                 JTable jtable2 = new JTable(pairmodel);
                 setPlacementMatchTableRenderers(jtable2.getColumnModel());
@@ -734,7 +753,7 @@ public class TournamentGUI extends JPanel {
         //}
         SaveTracker.setIsSaved(false);
 
-                //scrollpanel has to added here for some reason
+        //scrollpanel has to added here for some reason
         JPanel outerpanel = new JPanel();
         JScrollPane playoffscrollpane = new JScrollPane(jpanel);
         //playoffscrollpane.setPreferredSize(new Dimension(640, 640));

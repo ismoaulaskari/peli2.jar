@@ -40,6 +40,7 @@ public class Tournament {
     private Playoff placementMatches = null;
     private Playoff bronzeMatch = null;
     private volatile int largestPlayoff = 0;
+    private String seedingModel = "CREATEDYNAMIC";
     // private ArrayList playoffSurvivors = new ArrayList();
 
     public HashMap getPlayoffs() {
@@ -210,6 +211,10 @@ public class Tournament {
 
         return newPairs;
     }
+
+    public String getSeedingModel() {
+        return this.seedingModel;
+    }
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
 
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
@@ -369,6 +374,7 @@ public class Tournament {
 
             if (bufferedreader.ready()) { //there's a playoff too
                 int playoffsSize = Tools.parseIntAfter("PLAYOFFS-SIZE:", bufferedreader.readLine());
+                this.seedingModel = Tools.parseStringAfter("SEEDINGMODEL:", bufferedreader.readLine());
                 for (int i = 0; i < playoffsSize; i++) {
                     Playoff playoff = new Playoff(bufferedreader);
                     int size = playoff.getSize();
@@ -380,7 +386,7 @@ public class Tournament {
             }
 
             if (bufferedreader.ready()) { //there's placementmatches too
-                int playoffsSize = Tools.parseIntAfter("PLACEMENTMATCHES:", bufferedreader.readLine());
+                int playoffsSize = Tools.parseIntAfter("PLACEMENTMATCHES:", bufferedreader.readLine());                
                 for (int i = 0; i < playoffsSize; i++) {
                     this.placementMatches = new Playoff(bufferedreader);
                 }

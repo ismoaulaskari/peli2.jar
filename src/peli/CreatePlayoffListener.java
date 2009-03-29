@@ -25,19 +25,19 @@ public class CreatePlayoffListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getActionCommand().equals("CREATE") || ae.getActionCommand().equals("CREATENEXT")) {
+        if (ae.getActionCommand().equals("CREATEDYNAMIC") || ae.getActionCommand().equals("CREATESTATIC") || ae.getActionCommand().equals("CREATERANDOM") || ae.getActionCommand().equals("CREATENEXT")) {
             if (this.playoffpane != null) {
                 String size = source;
                 if (this.source == null) {
                     return;
                 }
-                if (ae.getActionCommand().equals("CREATE")) {
+                if (ae.getActionCommand().equals("CREATEDYNAMIC") || ae.getActionCommand().equals("CREATESTATIC") || ae.getActionCommand().equals("CREATERANDOM")) {
                     if((! firstRun) && (! TournamentGUI.warnCreatePlayoff())) return; //confirm overwrite of playoffs
                     //when loading saved tournament, firstrun should be off
                     TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
                 
-                JPanel jpanel = TournamentGUI.createPlayoffPanel(Integer.parseInt(size));
+                JPanel jpanel = TournamentGUI.createPlayoffPanel(Integer.parseInt(size), ae.getActionCommand());
                 if(jpanel == null) {
                     return;
                 }
