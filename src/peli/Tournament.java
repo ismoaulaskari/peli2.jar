@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * v.1.11 playoff and placementmatch into html
  * v.1.11 combine html and tnmt-save
  * v.1.11 super-tnmt
+ * v.1.13 playoff schema options
  * @TODO disqualified players
  * @TODO support for extending a series(make default series bigger but hidden)
  * @TODO match schedule printout for players?
@@ -550,7 +551,7 @@ public class Tournament {
     }
 
     //added by aulaskar to help organising final groups
-    /** print combined standings of all divisions */
+    /** get combined standings of all divisions */
     public ArrayList getStandings() {
         ArrayList divisions = new ArrayList();
         ArrayList overallstandings = new ArrayList();
@@ -580,7 +581,7 @@ public class Tournament {
     }
 
     
-    /** print combined standings of all divisions, but preserve mutual ordering for 2-group playoffs */
+    /** get combined standings of all divisions, but preserve mutual ordering for 2-group playoffs */
     public ArrayList getStandingsForPlayoffs() {
         ArrayList divisions = new ArrayList();
         ArrayList overallstandings = new ArrayList();

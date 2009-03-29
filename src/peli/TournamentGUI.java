@@ -469,10 +469,20 @@ public class TournamentGUI extends JPanel {
             jpanel.add(option);
         }
 
-        JButton createButton = new JButton(messages.getString("createPlayoffs"));
-        createButton.setActionCommand("CREATE");
-        createButton.addActionListener(createlistener);
-        jpanel.add(createButton);
+        JButton createDynamicButton = new JButton(messages.getString("createDynamicPlayoffs"));
+        createDynamicButton.setActionCommand("CREATEDYNAMIC");
+        createDynamicButton.addActionListener(createlistener);
+        jpanel.add(createDynamicButton);
+
+        JButton createStaticButton = new JButton(messages.getString("createStaticPlayoffs"));
+        createStaticButton.setActionCommand("CREATESTATIC");
+        createStaticButton.addActionListener(createlistener);
+        jpanel.add(createStaticButton);
+
+        JButton createRandomButton = new JButton(messages.getString("createRandomPlayoffs"));
+        createRandomButton.setActionCommand("CREATERANDOM");
+        createRandomButton.addActionListener(createlistener);
+        jpanel.add(createRandomButton);
 
         return jpanel;
     }
