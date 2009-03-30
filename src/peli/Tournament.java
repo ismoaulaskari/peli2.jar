@@ -109,7 +109,7 @@ public class Tournament {
         ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
         if (!this.playoffs.containsKey(size)) {
 
-            if (this.playoffs.containsKey(size * 2)) {
+            if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
                 //who are left?
                 ArrayList survivors = ((Playoff) this.playoffs.get(size * 2)).getSurvivors();
                 ArrayList survivorIndexes = new ArrayList();
@@ -128,7 +128,6 @@ public class Tournament {
                     }
                 }
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
-
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
             }
@@ -156,18 +155,21 @@ public class Tournament {
      */
     public Playoff getPlayoffNoReseed(int size) {
         Playoff playoff = null;
+        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
         if (!this.playoffs.containsKey(size)) {
 
-            if (this.playoffs.containsKey(size * 2)) {
+            if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
                 //this.playoffs.put(size, new Playoff(seedPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
                 this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
 
             } else {
-                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+                this.playoffs.put(size, new Playoff(seedStaticPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+                //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
             }
 
         }
         playoff = (Playoff) this.playoffs.get(size);
+        playoff.markRankings(groupStandings);
 
         //don't advance to next round with empty results:
         if (playoff.isEmptyPlayoffs()) {
@@ -211,6 +213,30 @@ public class Tournament {
 
         return newPairs;
     }
+
+        /**
+     * Need to return a list of playoff pairs ordered for the static playoff
+     *
+     * @param playerStandings
+     * @TODO indexoutofbounds luodessa liian iso playoff
+     * @return
+     */
+    public ArrayList seedStaticPlayoff(ArrayList playerStandings, int size) {
+        ArrayList newPairs = new ArrayList(size);
+        //order first players
+        for (int i = 0; i < size - 1; i++) {
+            newPairs.add(playerStandings.get(0 + i));
+            newPairs.add(playerStandings.get(size - (i + 1)));
+        }
+
+        //then order matches
+        for(int i = 2; i < newPairs.size(); i += 2) {
+            
+        }
+
+        return newPairs;
+    }
+
 
     public String getSeedingModel() {
         return this.seedingModel;
