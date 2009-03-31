@@ -99,6 +99,15 @@ public class Tournament {
         return this.bronzeMatch;
     }
 
+    public Playoff getPlayoff(String seedingModel, int size) {
+        if(seedingModel.equals("CREATESTATIC")) {
+            return getPlayoffNoReseed(size);
+        }
+        else {
+            return getPlayoffWithReseed(size);
+        }
+    }
+
     /**
      * Reseed each new playoff round
      * @param size
@@ -218,7 +227,7 @@ public class Tournament {
 
         /**
      * Need to return a list of playoff pairs ordered for the static playoff
-     *
+     * created from ordered list of matches
      * @param playerStandings
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
@@ -240,6 +249,7 @@ public class Tournament {
      * @param playerStandings
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
+         * @TODO NOT WORKING
      */
     public ArrayList seedStaticPlayoff2(ArrayList playerStandings, int size) {
         ArrayList newPairs = new ArrayList(size);
@@ -265,6 +275,11 @@ public class Tournament {
     public String getSeedingModel() {
         return this.seedingModel;
     }
+
+    public void setSeedingModel(String seedingModel) {
+        this.seedingModel = seedingModel;
+    }
+
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
 
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
