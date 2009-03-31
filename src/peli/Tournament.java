@@ -159,11 +159,13 @@ public class Tournament {
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
-                //this.playoffs.put(size, new Playoff(seedPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
-                this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
+
+                this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff)this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+                //this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
+                //this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
 
             } else {
-                this.playoffs.put(size, new Playoff(seedStaticPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
                 //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
             }
 
@@ -221,7 +223,25 @@ public class Tournament {
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
      */
-    public ArrayList seedStaticPlayoff(ArrayList playerStandings, int size) {
+    public ArrayList seedStaticPlayoff(PlayoffPair[] playoffMatches, int size) {
+        ArrayList newPairs = new ArrayList(size);
+        //order first players
+        for (int i = 0; i < size - 1; i++) {
+            newPairs.add(playoffMatches[0 + i].getWinner());
+            newPairs.add(playoffMatches[size - (i + 1)].getWinner());
+        }
+
+        return newPairs;
+    }
+
+        /**
+     * Need to return a list of playoff pairs ordered for the static playoff
+     *
+     * @param playerStandings
+     * @TODO indexoutofbounds luodessa liian iso playoff
+     * @return
+     */
+    public ArrayList seedStaticPlayoff2(ArrayList playerStandings, int size) {
         ArrayList newPairs = new ArrayList(size);
         //order first players
         for (int i = 0; i < size - 1; i++) {
@@ -229,14 +249,18 @@ public class Tournament {
             newPairs.add(playerStandings.get(size - (i + 1)));
         }
 
+        ArrayList newPairs2 = new ArrayList(size);
         //then order matches
-        for(int i = 2; i < newPairs.size(); i += 2) {
-            
+        for(int i = 0; i < newPairs.size(); i += 2) {
+            newPairs2.add(i, newPairs.get(i));
+            //newPairs2.add(i+1, newPairs.get(i+1));
+
+            //newPairs2.add(newPairs.size()-i-1, newPairs.get(i+2));
+            newPairs2.add(newPairs.size()-i, newPairs.get(i+3));
         }
 
-        return newPairs;
+        return newPairs2;
     }
-
 
     public String getSeedingModel() {
         return this.seedingModel;
