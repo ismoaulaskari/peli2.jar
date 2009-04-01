@@ -176,6 +176,7 @@ public class Tournament {
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
                 //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
+                System.err.println("initialstaticseed");
             }
 
         }
@@ -234,11 +235,14 @@ public class Tournament {
      */
     public ArrayList seedStaticPlayoff(PlayoffPair[] playoffMatches, int size) {
         ArrayList newPairs = new ArrayList(size);
+                System.err.println("seedstaticplayoff");
         //order first players
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playoffMatches[0 + i].getWinner());
             newPairs.add(playoffMatches[size - (i + 1)].getWinner());
         }
+
+        System.err.print(newPairs);
 
         return newPairs;
     }

@@ -653,7 +653,7 @@ public class TournamentGUI extends JPanel {
                 else {
                     //default
                     System.err.println("DEFAULT SEEDING MODEL" + tournament.getSeedingModel());
-                    playoff = tournament.getPlayoff(seedingModel, size);
+                    playoff = tournament.getPlayoff(tournament.getSeedingModel(), size);
                 }
             }
         }
