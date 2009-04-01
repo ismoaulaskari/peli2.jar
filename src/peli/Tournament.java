@@ -202,6 +202,12 @@ public class Tournament {
         return playoff;
     }
 
+
+    public Playoff getPlayoffRandomSeed(int size) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+
     public void clearPlayoffs() {
         this.playoffs.clear();
         this.largestPlayoff = 0;

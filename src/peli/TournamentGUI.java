@@ -638,7 +638,7 @@ public class TournamentGUI extends JPanel {
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         Playoff playoff = null;
         if (seedingModel.equals("CREATERANDOM")) {
-            //playoff = null;            
+            playoff = tournament.getPlayoffRandomSeed(size);
             tournament.setSeedingModel(seedingModel);
         } else {
             if (seedingModel.equals("CREATESTATIC")) {                
