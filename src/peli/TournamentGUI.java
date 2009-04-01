@@ -641,18 +641,18 @@ public class TournamentGUI extends JPanel {
             tournament.setSeedingModel(seedingModel);
         } else {
             if (seedingModel.equals("CREATESTATIC")) {
-                System.err.println("STATIC SEEDING MODEL");
+                //System.err.println("STATIC SEEDING MODEL");
                 playoff = tournament.getPlayoffNoReseed(size);
                 tournament.setSeedingModel(seedingModel);
             } else {
                 if (seedingModel.equals("CREATEDYNAMIC")) {
-                    System.err.println("DYNAMIC SEEDING MODEL");
+                    //System.err.println("DYNAMIC SEEDING MODEL");
                     playoff = tournament.getPlayoffWithReseed(size);
                     tournament.setSeedingModel(seedingModel);
                 }
                 else {
                     //default
-                    System.err.println("DEFAULT SEEDING MODEL" + tournament.getSeedingModel());
+                    //System.err.println("DEFAULT SEEDING MODEL" + tournament.getSeedingModel());
                     playoff = tournament.getPlayoff(tournament.getSeedingModel(), size);
                 }
             }
