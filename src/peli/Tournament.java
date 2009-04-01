@@ -47,6 +47,13 @@ public class Tournament {
         return this.playoffs;
     }
 
+    public List getPlayoffsSortedKeySet() {
+        List rounds = new LinkedList(playoffs.keySet());
+        Collections.sort(rounds);
+
+        return rounds;
+    }
+
     public boolean isPlacementMatches() {
         return (this.placementMatches != null);
     }
@@ -601,7 +608,8 @@ public class Tournament {
             getDivision(i).save(printwriter);
         }
         //if playoff, save playoff
-        Set rounds = playoffs.keySet();
+        //Set rounds = playoffs.keySet();
+        List rounds = getPlayoffsSortedKeySet();
         if (!rounds.isEmpty()) {
             printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
             printwriter.println("SEEDINGMODEL:" + getSeedingModel());
@@ -681,7 +689,8 @@ public class Tournament {
 
     //by aulaskar
     public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
-        Set rounds = playoffs.keySet();
+        //Set rounds = playoffs.keySet();
+        List rounds = getPlayoffsSortedKeySet();
         Boolean isFirst = true;
         int x = 0;
         for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs

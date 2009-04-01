@@ -557,9 +557,10 @@ public class TournamentGUI extends JPanel {
         columnScrollPane.setSize(new Dimension(jpanel2.getSize()));
         //ajtabbedpane[k].addTab(messages.getString("playoff"), columnScrollPane);
 
-        Set set = tournament.getPlayoffs().keySet(); //hmm? iterator?
-        ArrayList list = new ArrayList();
-        list.addAll(set);
+        //Set set = tournament.getPlayoffs().keySet(); //hmm? iterator?
+        //ArrayList list = new ArrayList();
+        //list.addAll(set);
+        java.util.List list = tournament.getPlayoffsSortedKeySet();
         Collections.reverse(list);
         for (Object playoffnumber : list) {
             playoffpane.addTab(messages.getString("bestOf") + " " + (Integer) playoffnumber, createPlayoffPanel((Integer) playoffnumber, tournament.getSeedingModel()));
@@ -626,7 +627,7 @@ public class TournamentGUI extends JPanel {
         return pane;
     }
 
-    /**@TODO REGRESSIO r243
+    /**
      * a playoff round
      * @param size
      * @return
