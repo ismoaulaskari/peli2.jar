@@ -607,8 +607,7 @@ public class Tournament {
         for (int i = 0; i < getNumberOfDivisions(); i++) {
             getDivision(i).save(printwriter);
         }
-        //if playoff, save playoff
-        //Set rounds = playoffs.keySet();
+        //if playoff, save playoff        
         List rounds = getPlayoffsSortedKeySet();
         if (!rounds.isEmpty()) {
             printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
@@ -879,8 +878,8 @@ public class Tournament {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
                 //if playoff, save playoff
-                StringBuilder playoffoutput = new StringBuilder();
-                List rounds = new LinkedList(playoffs.keySet());
+                StringBuilder playoffoutput = new StringBuilder();                
+                List rounds = getPlayoffsSortedKeySet();
                 if (!rounds.isEmpty()) {
                     Collections.reverse(rounds);
                     for (Iterator i = rounds.iterator(); i.hasNext();) {
