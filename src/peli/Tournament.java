@@ -176,7 +176,7 @@ public class Tournament {
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
                 //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
-                //System.err.println("initialstaticseed");
+                System.err.println("initialstaticseed");
             }
 
         }
@@ -187,6 +187,7 @@ public class Tournament {
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
             playoff = null;
+            System.err.println("null playoff of size " + size);
         } else {
             if (size > this.getLargestPlayoff()) {
                 this.largestPlayoff = size;

@@ -638,21 +638,22 @@ public class TournamentGUI extends JPanel {
         Playoff playoff = null;
         if (seedingModel.equals("CREATERANDOM")) {
             //playoff = null;
+            System.err.println(seedingModel);
             tournament.setSeedingModel(seedingModel);
         } else {
             if (seedingModel.equals("CREATESTATIC")) {
-                //System.err.println("STATIC SEEDING MODEL");
+                System.err.println(seedingModel);
                 playoff = tournament.getPlayoffNoReseed(size);
                 tournament.setSeedingModel(seedingModel);
             } else {
                 if (seedingModel.equals("CREATEDYNAMIC")) {
-                    //System.err.println("DYNAMIC SEEDING MODEL");
+                    System.err.println(seedingModel);
                     playoff = tournament.getPlayoffWithReseed(size);
                     tournament.setSeedingModel(seedingModel);
                 }
                 else {
                     //default
-                    //System.err.println("DEFAULT SEEDING MODEL" + tournament.getSeedingModel());
+                    System.err.println("DEFAULT SEEDING MODEL " + tournament.getSeedingModel());
                     playoff = tournament.getPlayoff(tournament.getSeedingModel(), size);
                 }
             }
@@ -660,6 +661,7 @@ public class TournamentGUI extends JPanel {
 
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
+            System.err.println("playoffpanel playoff null");
             return null;
         }
         PlayoffPair[] pairs = playoff.getPlayoffPairs();
