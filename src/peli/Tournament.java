@@ -175,8 +175,7 @@ public class Tournament {
 
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
-                //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
-                System.err.println("initialstaticseed");
+                //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));                
             }
 
         }
@@ -186,8 +185,7 @@ public class Tournament {
         //don't advance to next round with empty results:
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
-            playoff = null;
-            System.err.println("null playoff of size " + size);
+            playoff = null;            
         } else {
             if (size > this.getLargestPlayoff()) {
                 this.largestPlayoff = size;
@@ -235,15 +233,12 @@ public class Tournament {
      * @return
      */
     public ArrayList seedStaticPlayoff(PlayoffPair[] playoffMatches, int size) {
-        ArrayList newPairs = new ArrayList(size);
-                System.err.println("seedstaticplayoff");
+        ArrayList newPairs = new ArrayList(size);               
         //order first players
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playoffMatches[0 + i].getWinner());
             newPairs.add(playoffMatches[size - (i + 1)].getWinner());
-        }
-
-        System.err.print(newPairs);
+        }       
 
         return newPairs;
     }

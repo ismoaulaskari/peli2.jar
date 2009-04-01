@@ -637,31 +637,26 @@ public class TournamentGUI extends JPanel {
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         Playoff playoff = null;
         if (seedingModel.equals("CREATERANDOM")) {
-            //playoff = null;
-            System.err.println(seedingModel);
+            //playoff = null;            
             tournament.setSeedingModel(seedingModel);
         } else {
-            if (seedingModel.equals("CREATESTATIC")) {
-                System.err.println(seedingModel);
+            if (seedingModel.equals("CREATESTATIC")) {                
                 playoff = tournament.getPlayoffNoReseed(size);
                 tournament.setSeedingModel(seedingModel);
             } else {
-                if (seedingModel.equals("CREATEDYNAMIC")) {
-                    System.err.println(seedingModel);
+                if (seedingModel.equals("CREATEDYNAMIC")) {                    
                     playoff = tournament.getPlayoffWithReseed(size);
                     tournament.setSeedingModel(seedingModel);
                 }
                 else {
-                    //default
-                    System.err.println("DEFAULT SEEDING MODEL " + tournament.getSeedingModel());
+                    //default                    
                     playoff = tournament.getPlayoff(tournament.getSeedingModel(), size);
                 }
             }
         }
 
         if (playoff == null) {
-            //jpanel.add(new JLabel(messages.getString("areYouSure")));
-            System.err.println("playoffpanel playoff null");
+            //jpanel.add(new JLabel(messages.getString("areYouSure")));            
             return null;
         }
         PlayoffPair[] pairs = playoff.getPlayoffPairs();
@@ -698,7 +693,8 @@ public class TournamentGUI extends JPanel {
         JScrollPane playoffscrollpane = new JScrollPane(jpanel);
         //playoffscrollpane.setPreferredSize(new Dimension(640, 640));
         Dimension playofpanesize = playoffpane.getSize();
-        playofpanesize.setSize(playofpanesize.getWidth(), 800);
+                //playofpanesize.setSize(playofpanesize.getWidth(), 800); //witdht=0 when opening old playoff
+        playofpanesize.setSize(700, 800);
         playoffscrollpane.setPreferredSize(playofpanesize);
         outerpanel.add(playoffscrollpane);
 
@@ -766,7 +762,8 @@ public class TournamentGUI extends JPanel {
         JScrollPane playoffscrollpane = new JScrollPane(jpanel);
         //playoffscrollpane.setPreferredSize(new Dimension(640, 640));
         Dimension playofpanesize = placementmatchpane.getSize();
-        playofpanesize.setSize(playofpanesize.getWidth(), 800);
+          //playofpanesize.setSize(playofpanesize.getWidth(), 800);
+        playofpanesize.setSize(700, 800);
         playoffscrollpane.setPreferredSize(playofpanesize);
         outerpanel.add(playoffscrollpane);
 
