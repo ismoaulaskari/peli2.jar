@@ -176,7 +176,7 @@ public class Tournament {
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
                 //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
-                System.err.println("initialstaticseed");
+                //System.err.println("initialstaticseed");
             }
 
         }
@@ -608,6 +608,7 @@ public class Tournament {
         Set rounds = playoffs.keySet();
         if (!rounds.isEmpty()) {
             printwriter.println("PLAYOFFS-SIZE:" + getNumberOfPlayoffs());
+            printwriter.println("SEEDINGMODEL:" + getSeedingModel());
             for (Iterator i = rounds.iterator(); i.hasNext();) {
                 ((Playoff) playoffs.get(i.next())).save(printwriter);
             }
