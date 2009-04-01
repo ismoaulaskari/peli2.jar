@@ -40,10 +40,10 @@ Peli.jar
           o Playoff /FIXED 1.11.6
           o Sijoitusottelut aina luotava vaikka tyhjänä /FIXED 1.12.2 (pakotettu luonti ennen pronssiottelua)
           o playoff ja sijoitusottelut ei skrollaa /FIXED 1.12.2
-          o useamman lohkon playoffkaavio
+          o useamman lohkon playoffkaavio /FIXED 1.13
+          o ruotsalainen playoff-kaavio /FIXED 1.13
           o jatkoaikakirjaimien yms. rajoitus
           o enemmän kierroksia?
-          o ruotsalainen playoff-kaavio
           o cup-playoffkaavion sekoitus!
           o tuki Platka-ohjelman xml:n tulostamiseen
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana?
