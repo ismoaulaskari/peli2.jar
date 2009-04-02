@@ -72,7 +72,7 @@ public class Tournament {
         ArrayList groupStandings = this.getStandingsNames(getStandings());
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames(getStandings());
-             //placementPlayers = new ArrayList(placementPlayers.subList(playoffSize - 1, placementPlayers.size() - playoffSize));
+            //placementPlayers = new ArrayList(placementPlayers.subList(playoffSize - 1, placementPlayers.size() - playoffSize));
             //int firstLoser = size;
             //ArrayList placementPlayers = new ArrayList();
             //for(int i = firstLoser; i < this.getStandings().size(); i++) {
@@ -107,10 +107,9 @@ public class Tournament {
     }
 
     public Playoff getPlayoff(String seedingModel, int size) {
-        if(seedingModel.equals("CREATESTATIC")) {
+        if (seedingModel.equals("CREATESTATIC")) {
             return getPlayoffNoReseed(size);
-        }
-        else {
+        } else {
             return getPlayoffWithReseed(size);
         }
     }
@@ -176,13 +175,13 @@ public class Tournament {
 
             if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
 
-                this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff)this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
-                //this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
-                //this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
+                this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+            //this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
+            //this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
 
             } else {
                 this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
-                //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));                
+            //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
             }
 
         }
@@ -192,7 +191,7 @@ public class Tournament {
         //don't advance to next round with empty results:
         if (playoff.isEmptyPlayoffs()) {
             this.playoffs.remove(size);
-            playoff = null;            
+            playoff = null;
         } else {
             if (size > this.getLargestPlayoff()) {
                 this.largestPlayoff = size;
@@ -202,11 +201,31 @@ public class Tournament {
         return playoff;
     }
 
-
     public Playoff getPlayoffRandomSeed(int size) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
+        Playoff playoff = null;
+        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
 
+        if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
+            this.playoffs.put(size, new Playoff(seedRandomPlayoff(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+        } else {
+            this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+        }
+
+        playoff = (Playoff) this.playoffs.get(size);
+        playoff.markRankings(groupStandings);
+
+        //don't advance to next round with empty results:
+        if (playoff.isEmptyPlayoffs()) {
+            this.playoffs.remove(size);
+            playoff = null;
+        } else {
+            if (size > this.getLargestPlayoff()) {
+                this.largestPlayoff = size;
+            }
+        }
+
+        return playoff;
+    }
 
     public void clearPlayoffs() {
         this.playoffs.clear();
@@ -238,7 +257,59 @@ public class Tournament {
         return newPairs;
     }
 
-        /**
+    /**
+     * Need to return a random list of playoff pairs
+     *
+     * @param playerStandings
+     * @TODO indexoutofbounds luodessa liian iso playoff
+     * @return
+     */
+    public ArrayList seedRandomPlayoff(ArrayList playerStandings, int size) {
+        ArrayList newPairs = new ArrayList(size);
+
+        for (int i = 0; i < size - 1; i++) {
+            newPairs.add(playerStandings.get(0 + i));
+            newPairs.add(playerStandings.get(size - (i + 1)));
+        }
+
+        int newi = 0;
+        String tmp = null;
+        System.err.print(newPairs);
+        for (int i = 0; i < newPairs.size(); i++) {
+            newi = (int) (Math.random() * newPairs.size());
+            if (i != newi) {
+                tmp = (String) newPairs.set(newi, newPairs.get(i));
+                newPairs.set(i, tmp);
+            }
+        }
+
+        return newPairs;
+    }
+
+    public ArrayList seedRandomPlayoff(PlayoffPair[] playoffMatches, int size) {
+        ArrayList newPairs = new ArrayList(size);
+        //order first players
+        for (int i = 0; i < size - 1; i++) {
+            newPairs.add(playoffMatches[0 + i].getWinner());
+            newPairs.add(playoffMatches[size - (i + 1)].getWinner());
+        }
+
+        System.err.print(newPairs);
+        int newi = 0;
+        String tmp = null;
+        System.err.print(newPairs);
+        for (int i = 0; i < newPairs.size(); i++) {
+            newi = (int) (Math.random() * newPairs.size());
+            if (i != newi) {
+                tmp = (String) newPairs.set(newi, newPairs.get(i));
+                newPairs.set(i, tmp);
+            }
+        }
+
+        return newPairs;
+    }
+
+    /**
      * Need to return a list of playoff pairs ordered for the static playoff
      * created from ordered list of matches
      * @param playerStandings
@@ -246,23 +317,23 @@ public class Tournament {
      * @return
      */
     public ArrayList seedStaticPlayoff(PlayoffPair[] playoffMatches, int size) {
-        ArrayList newPairs = new ArrayList(size);               
+        ArrayList newPairs = new ArrayList(size);
         //order first players
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playoffMatches[0 + i].getWinner());
             newPairs.add(playoffMatches[size - (i + 1)].getWinner());
-        }       
+        }
 
         return newPairs;
     }
 
-        /**
+    /**
      * Need to return a list of playoff pairs ordered for the static playoff
      *
      * @param playerStandings
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
-         * @TODO NOT WORKING
+     * @TODO NOT WORKING
      */
     public ArrayList seedStaticPlayoff2(ArrayList playerStandings, int size) {
         ArrayList newPairs = new ArrayList(size);
@@ -274,12 +345,12 @@ public class Tournament {
 
         ArrayList newPairs2 = new ArrayList(size);
         //then order matches
-        for(int i = 0; i < newPairs.size(); i += 2) {
+        for (int i = 0; i < newPairs.size(); i += 2) {
             newPairs2.add(i, newPairs.get(i));
             //newPairs2.add(i+1, newPairs.get(i+1));
 
             //newPairs2.add(newPairs.size()-i-1, newPairs.get(i+2));
-            newPairs2.add(newPairs.size()-i, newPairs.get(i+3));
+            newPairs2.add(newPairs.size() - i, newPairs.get(i + 3));
         }
 
         return newPairs2;
@@ -294,7 +365,6 @@ public class Tournament {
     }
 
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
-
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {
             atreeset[i] = new TreeSet(new PlayerComparator());
@@ -464,7 +534,7 @@ public class Tournament {
             }
 
             if (bufferedreader.ready()) { //there's placementmatches too
-                int playoffsSize = Tools.parseIntAfter("PLACEMENTMATCHES:", bufferedreader.readLine());                
+                int playoffsSize = Tools.parseIntAfter("PLACEMENTMATCHES:", bufferedreader.readLine());
                 for (int i = 0; i < playoffsSize; i++) {
                     this.placementMatches = new Playoff(bufferedreader);
                 }
@@ -665,7 +735,6 @@ public class Tournament {
         return overallstandings;
     }
 
-    
     /** get combined standings of all divisions, but preserve mutual ordering for 2-group playoffs */
     public ArrayList getStandingsForPlayoffs() {
         ArrayList divisions = new ArrayList();
@@ -677,7 +746,7 @@ public class Tournament {
         int maxdivisionsize = ((ArrayList) divisions.get(0)).size() + 2;
 
         //order combined standings of all divisions
-        for (int i = 0; i < maxdivisionsize; i++) {            
+        for (int i = 0; i < maxdivisionsize; i++) {
 
             for (int j = 0; j < getNumberOfDivisions(); j++) {
                 try {
@@ -686,7 +755,7 @@ public class Tournament {
                     //nothing, divisions may have different sizes
                 }
             }
-            
+
         }
 
         return overallstandings;
@@ -860,19 +929,19 @@ public class Tournament {
             //use header.txt            
             String header = Constants.getHeader().toString();
             header = header.replaceAll("<!-- TITLE -->", System.getProperty("TournamentFileName"));
-            header = header.replaceAll("<!-- DATE -->", date);            
+            header = header.replaceAll("<!-- DATE -->", date);
             printwriter.print(header);
-            
+
             String output = "";
             String[] divisiontitles = getDivisionTitles();
             //use template.txt                                                
             for (int i = 0; i < getNumberOfDivisions(); i++) {
                 output += getDivision(i).saveAll();
-                output = output.replaceFirst("<!-- HEADING -->", 
-                    divisiontitles[i] + " " + messages.getString("templateHeading"));
-                //HtmlTools.hr(printwriter);
+                output = output.replaceFirst("<!-- HEADING -->",
+                        divisiontitles[i] + " " + messages.getString("templateHeading"));
+            //HtmlTools.hr(printwriter);
             }
-            
+
             output += Constants.getFooter().toString();
 
             if (placementMatches != null) {
@@ -884,13 +953,13 @@ public class Tournament {
                 output = output.replaceAll("<!--HIDE_PLAYOFF", "");
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
                 //if playoff, save playoff
-                StringBuilder playoffoutput = new StringBuilder();                
+                StringBuilder playoffoutput = new StringBuilder();
                 List rounds = getPlayoffsSortedKeySet();
                 if (!rounds.isEmpty()) {
                     Collections.reverse(rounds);
                     for (Iterator i = rounds.iterator(); i.hasNext();) {
-                        Integer round = (Integer)i.next();
-                        if(round == 2) {
+                        Integer round = (Integer) i.next();
+                        if (round == 2) {
                             //bronze
                             playoffoutput.append("<!--HIDE_BRONZEMATCH");
                             playoffoutput.append("<BRONZEMATCH/>");
