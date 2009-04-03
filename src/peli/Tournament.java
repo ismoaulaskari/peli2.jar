@@ -248,7 +248,7 @@ public class Tournament {
      * @return
      */
     public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
-        ArrayList newPairs = new ArrayList(size);
+        ArrayList newPairs = new ArrayList(size);        
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playerStandings.get(0 + i));
             newPairs.add(playerStandings.get(size - (i + 1)));
@@ -267,7 +267,7 @@ public class Tournament {
     public ArrayList seedRandomPlayoff(ArrayList playerStandings, int size) {
         ArrayList newPairs = new ArrayList(size);
 
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size / 2; i++) {
             newPairs.add(playerStandings.get(0 + i));
             newPairs.add(playerStandings.get(size - (i + 1)));
         }
@@ -296,8 +296,7 @@ public class Tournament {
 
         System.err.print(newPairs);
         int newi = 0;
-        String tmp = null;
-        System.err.print(newPairs);
+        String tmp = null;        
         for (int i = 0; i < newPairs.size(); i++) {
             newi = (int) (Math.random() * newPairs.size());
             if (i != newi) {
