@@ -209,7 +209,8 @@ public class Tournament {
         if (this.playoffs.containsKey(size)) {
             //no reseed for existing random playoff!
         } else if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
-            this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+            this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(((Playoff)this.playoffs.get(size * 2)).getSurvivors()), size), size));
+            //this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
         } else {
             this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
         }
