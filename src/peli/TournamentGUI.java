@@ -468,18 +468,21 @@ public class TournamentGUI extends JPanel {
             jpanel.add(option);
         }
 
+        jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
         JButton createDynamicButton = new JButton(messages.getString("createDynamicPlayoffs"));
         createDynamicButton.setActionCommand("CREATEDYNAMIC");
         createDynamicButton.setToolTipText(messages.getString("createDynamicPlayoffsTip"));
         createDynamicButton.addActionListener(createlistener);
         jpanel.add(createDynamicButton);
 
+        jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
         JButton createStaticButton = new JButton(messages.getString("createStaticPlayoffs"));
         createStaticButton.setActionCommand("CREATESTATIC");
         createStaticButton.setToolTipText(messages.getString("createStaticPlayoffsTip"));
         createStaticButton.addActionListener(createlistener);
         jpanel.add(createStaticButton);
 
+        jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
         JButton createRandomButton = new JButton(messages.getString("createRandomPlayoffs"));
         createRandomButton.setActionCommand("CREATERANDOM");
         createRandomButton.setToolTipText(messages.getString("createRandomPlayoffsTip"));
@@ -635,7 +638,7 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = null;
+        Playoff playoff = null;        
         if (seedingModel.equals("CREATERANDOM")) {
             playoff = tournament.getPlayoffRandomSeed(size);
             tournament.setSeedingModel(seedingModel);
@@ -695,7 +698,7 @@ public class TournamentGUI extends JPanel {
         Dimension playofpanesize = playoffpane.getSize();
         double width = playofpanesize.getWidth();
         if(width == 0) {
-            width = 730;
+            width = 720;
         }
                 //playofpanesize.setSize(playofpanesize.getWidth(), 800); //witdht=0 when opening old playoff
         playofpanesize.setSize(width, 800);
@@ -768,7 +771,7 @@ public class TournamentGUI extends JPanel {
         Dimension playofpanesize = placementmatchpane.getSize();
         double width = playofpanesize.getWidth();
         if(width == 0) {
-            width = 730;
+            width = 720;
         }
           //playofpanesize.setSize(playofpanesize.getWidth(), 800);
         playofpanesize.setSize(width, 800);

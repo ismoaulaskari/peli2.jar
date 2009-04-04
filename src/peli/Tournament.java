@@ -109,6 +109,8 @@ public class Tournament {
     public Playoff getPlayoff(String seedingModel, int size) {
         if (seedingModel.equals("CREATESTATIC")) {
             return getPlayoffNoReseed(size);
+        } else if (seedingModel.equals("CREATERANDOM")) {
+            return getPlayoffRandomSeed(size);
         } else {
             return getPlayoffWithReseed(size);
         }
@@ -204,15 +206,14 @@ public class Tournament {
     public Playoff getPlayoffRandomSeed(int size) {
         Playoff playoff = null;
 
-        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
-
+        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());        
         if (this.playoffs.containsKey(size)) {
-            //no reseed for existing random playoff!
-        } else if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
-            this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(((Playoff)this.playoffs.get(size * 2)).getSurvivors()), size), size));
-            //this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+            //no reseed for existing random playoff!            
+        } else if (this.playoffs.containsKey(size * 2)) { //there is a previous round?            
+            this.playoffs.put(size, new Playoff(seedRandomPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
+        //this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
         } else {
-            this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+            this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));            
         }
 
         playoff = (Playoff) this.playoffs.get(size);
@@ -290,6 +291,7 @@ public class Tournament {
         return newPairs;
     }
 
+    //** not in use */
     public ArrayList seedRandomPlayoffByPairs(PlayoffPair[] playoffMatches, int size) {
         ArrayList newPairs = new ArrayList(size);
         //order first players
@@ -297,8 +299,7 @@ public class Tournament {
             newPairs.add(playoffMatches[0 + i].getWinner());
             newPairs.add(playoffMatches[size - (i + 1)].getWinner());
         }
-
-        System.err.print(newPairs);
+        
         int newi = 0;
         String tmp = null;
         for (int i = 0; i < newPairs.size(); i++) {
