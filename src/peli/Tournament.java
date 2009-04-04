@@ -203,9 +203,12 @@ public class Tournament {
 
     public Playoff getPlayoffRandomSeed(int size) {
         Playoff playoff = null;
+
         ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
 
-        if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
+        if (this.playoffs.containsKey(size)) {
+            //no reseed for existing random playoff!
+        } else if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
             this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
         } else {
             this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
@@ -248,7 +251,7 @@ public class Tournament {
      * @return
      */
     public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
-        ArrayList newPairs = new ArrayList(size);        
+        ArrayList newPairs = new ArrayList(size);
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playerStandings.get(0 + i));
             newPairs.add(playerStandings.get(size - (i + 1)));
@@ -274,7 +277,7 @@ public class Tournament {
 
         int newi = 0;
         String tmp = null;
-        
+
         for (int i = 0; i < newPairs.size(); i++) {
             newi = (int) (Math.random() * newPairs.size());
             if (i != newi) {
@@ -296,7 +299,7 @@ public class Tournament {
 
         System.err.print(newPairs);
         int newi = 0;
-        String tmp = null;        
+        String tmp = null;
         for (int i = 0; i < newPairs.size(); i++) {
             newi = (int) (Math.random() * newPairs.size());
             if (i != newi) {
