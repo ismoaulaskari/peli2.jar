@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.*;
-import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -696,7 +695,7 @@ public class TournamentGUI extends JPanel {
         Dimension playofpanesize = playoffpane.getSize();
         double width = playofpanesize.getWidth();
         if(width == 0) {
-            width = 740;
+            width = 730;
         }
                 //playofpanesize.setSize(playofpanesize.getWidth(), 800); //witdht=0 when opening old playoff
         playofpanesize.setSize(width, 800);
@@ -769,7 +768,7 @@ public class TournamentGUI extends JPanel {
         Dimension playofpanesize = placementmatchpane.getSize();
         double width = playofpanesize.getWidth();
         if(width == 0) {
-            width = 740;
+            width = 730;
         }
           //playofpanesize.setSize(playofpanesize.getWidth(), 800);
         playofpanesize.setSize(width, 800);

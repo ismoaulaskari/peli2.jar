@@ -206,7 +206,7 @@ public class Tournament {
         ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
 
         if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
-            this.playoffs.put(size, new Playoff(seedRandomPlayoff(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+            this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
         } else {
             this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
         }
@@ -274,7 +274,7 @@ public class Tournament {
 
         int newi = 0;
         String tmp = null;
-        System.err.print(newPairs);
+        
         for (int i = 0; i < newPairs.size(); i++) {
             newi = (int) (Math.random() * newPairs.size());
             if (i != newi) {
@@ -286,10 +286,10 @@ public class Tournament {
         return newPairs;
     }
 
-    public ArrayList seedRandomPlayoff(PlayoffPair[] playoffMatches, int size) {
+    public ArrayList seedRandomPlayoffByPairs(PlayoffPair[] playoffMatches, int size) {
         ArrayList newPairs = new ArrayList(size);
         //order first players
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size / 2; i++) {
             newPairs.add(playoffMatches[0 + i].getWinner());
             newPairs.add(playoffMatches[size - (i + 1)].getWinner());
         }
