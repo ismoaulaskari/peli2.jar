@@ -42,16 +42,17 @@ Peli.jar
           o playoff ja sijoitusottelut ei skrollaa /FIXED 1.12.2
           o useamman lohkon playoffkaavio /FIXED 1.13
           o ruotsalainen playoff-kaavio /FIXED 1.13
+          o cup-playoffkaavion sekoitus! /FIXED 1.13.1
           o jatkoaikakirjaimien yms. rajoitus
           o enemmän kierroksia?
-          o cup-playoffkaavion sekoitus!
           o tuki Platka-ohjelman xml:n tulostamiseen
-          o Otteluohjelma pienellä turnauksen html-sivulle? kuvana?
+          o Otteluohjelma pienellä turnauksen html-sivulle? kuvana? javascriptalla kätkettynä
+          o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa
           o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa
           o hakemistot tiedostovalikossa
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
-          o Alkusarjan tulokset finaalisarjaan
+          o Alkusarjan tulokset finaalisarjaan ? käsin?
           o duplikaattinimet pois
           o nollan-yhden pelaajan turnaus
           o nimetön turnaus
