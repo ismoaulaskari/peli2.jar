@@ -466,6 +466,14 @@ public class TournamentGUI extends JPanel {
             option.addActionListener(createlistener);
             playoffSize.add(option);
             jpanel.add(option);
+    /*        if (tmp == 8) { //testing
+                JRadioButton option2 = new JRadioButton(6 + " " + messages.getString("players"));
+                option2.setActionCommand(String.valueOf(6));
+                option2.addActionListener(createlistener);
+                playoffSize.add(option2);
+                jpanel.add(option2);
+            }
+*/
         }
 
         jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
@@ -638,20 +646,19 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = null;        
+        Playoff playoff = null;
         if (seedingModel.equals("CREATERANDOM")) {
             playoff = tournament.getPlayoffRandomSeed(size);
             tournament.setSeedingModel(seedingModel);
         } else {
-            if (seedingModel.equals("CREATESTATIC")) {                
+            if (seedingModel.equals("CREATESTATIC")) {
                 playoff = tournament.getPlayoffNoReseed(size);
                 tournament.setSeedingModel(seedingModel);
             } else {
-                if (seedingModel.equals("CREATEDYNAMIC")) {                    
+                if (seedingModel.equals("CREATEDYNAMIC")) {
                     playoff = tournament.getPlayoffWithReseed(size);
                     tournament.setSeedingModel(seedingModel);
-                }
-                else {
+                } else {
                     //default                    
                     playoff = tournament.getPlayoff(tournament.getSeedingModel(), size);
                 }
@@ -697,10 +704,10 @@ public class TournamentGUI extends JPanel {
         //playoffscrollpane.setPreferredSize(new Dimension(640, 640));
         Dimension playofpanesize = playoffpane.getSize();
         double width = playofpanesize.getWidth();
-        if(width == 0) {
+        if (width == 0) {
             width = 720;
         }
-                //playofpanesize.setSize(playofpanesize.getWidth(), 800); //witdht=0 when opening old playoff
+        //playofpanesize.setSize(playofpanesize.getWidth(), 800); //witdht=0 when opening old playoff
         playofpanesize.setSize(width, 800);
         playoffscrollpane.setPreferredSize(playofpanesize);
         outerpanel.add(playoffscrollpane);
@@ -770,10 +777,10 @@ public class TournamentGUI extends JPanel {
         //playoffscrollpane.setPreferredSize(new Dimension(640, 640));
         Dimension playofpanesize = placementmatchpane.getSize();
         double width = playofpanesize.getWidth();
-        if(width == 0) {
+        if (width == 0) {
             width = 720;
         }
-          //playofpanesize.setSize(playofpanesize.getWidth(), 800);
+        //playofpanesize.setSize(playofpanesize.getWidth(), 800);
         playofpanesize.setSize(width, 800);
         playoffscrollpane.setPreferredSize(playofpanesize);
         outerpanel.add(playoffscrollpane);
