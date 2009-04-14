@@ -7,6 +7,7 @@ package peli;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -21,6 +22,14 @@ import peli.PlayoffPair;
 public class PlayoffTest {
 
     public PlayoffTest() {
+    }
+
+
+    @Test public void testPlayoff() {
+        System.out.println("Playoff(list,size)");
+        String[] players = new String[] { "Kristian Iso-Tryykäri", "Seppo Kosonen", "Anssi Järvinen", "Janne Kokko", "Konsta Jukka", "Jani Lappalainen", "Mika Myllykangas", "Erik Lindgren", "Erno Lantiainen", "Janne Ollila" };
+        ArrayList playersArrayList = new ArrayList(Arrays.asList(players));
+        assertEquals(playersArrayList.subList(0, 1), new Playoff(playersArrayList, 2).getPlayers());
     }
 
     /**
