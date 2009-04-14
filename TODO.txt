@@ -43,22 +43,25 @@ Peli.jar
           o useamman lohkon playoffkaavio /FIXED 1.13
           o ruotsalainen playoff-kaavio /FIXED 1.13
           o cup-playoffkaavion sekoitus! /FIXED 1.13.1
-          o jatkoaikakirjaimien yms. rajoitus
-          o enemmän kierroksia?
-          o tuki Platka-ohjelman xml:n tulostamiseen
+          o 6 ja 12 playoff sekä luovuttajat
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana? javascriptalla kätkettynä
+          o jatkoaikakirjaimien yms. rajoitus
+          o Pelaajakohtaiset otteluohjelmat tulostettavaksi
+          o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
+          o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
+          o enemmän kierroksia?
+          o OHJE spjkl:n sivuille
+          o default-asetukset jos properties puuttuu 
+          o sarjataulukko tableiksi, css
+          o tuki Platka-ohjelman xml:n tulostamiseen
           o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa
           o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa
           o hakemistot tiedostovalikossa
-          o Pelaajakohtaiset otteluohjelmat tulostettavaksi
-          o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o Alkusarjan tulokset finaalisarjaan ? käsin?
           o duplikaattinimet pois
           o nollan-yhden pelaajan turnaus
           o nimetön turnaus
           o vanhan tiedoston avaus-otsikko "uuden tiedoston nimi"
-          o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
-          o OHJE spjkl:n sivuille
           o hakemiston vaihto?
           o tuloskirjauksen pikanäppäimet?
           o Muistintuhlaus?
@@ -68,10 +71,8 @@ Peli.jar
           o J2ME?
           o boldaus 1.5.09 /win
           o koko nimet? /EI
-          o default-asetukset jos properties puuttuu 
           o playoff-viiva
           o välierä-, pronssiottelu-, finaalitekstit..
-          o sarjataulukko tableiksi, css
     *
     * Markku:
     * botti: robustiutta /FIXED 0.4.0
