@@ -43,13 +43,13 @@ Peli.jar
           o useamman lohkon playoffkaavio /FIXED 1.13
           o ruotsalainen playoff-kaavio /FIXED 1.13
           o cup-playoffkaavion sekoitus! /FIXED 1.13.1
+          o enemmän kierroksia? /FIXED 1.13.2
           o 6 ja 12 playoff sekä luovuttajat
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana? javascriptalla kätkettynä
           o jatkoaikakirjaimien yms. rajoitus
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
-          o enemmän kierroksia?
           o OHJE spjkl:n sivuille
           o default-asetukset jos properties puuttuu 
           o sarjataulukko tableiksi, css
