@@ -23,6 +23,7 @@ public class RegistrationGUI extends JPanel {
 
     private Locale locale;
     private ResourceBundle messages;
+    private ResourceBundle rules;
     private MainWindow mainWindow;
     private Container mainWindowContents;
     private static TreeSet names = new TreeSet(new PlayerCheckBoxComparator());
@@ -40,6 +41,7 @@ public class RegistrationGUI extends JPanel {
         messages = ResourceBundle.getBundle("Messages", locale);*/
         locale = Constants.getInstance().getLocale();
         messages = Constants.getInstance().getMessages();
+        rules = Constants.getInstance().getRules();
         counter = 0;
         rank = 0;
         mainWindow = mainwindow;
@@ -71,7 +73,7 @@ public class RegistrationGUI extends JPanel {
         }
 
         //number of rounds?
-        JRadioButton jradiobutton = new JRadioButton("1");
+        /*JRadioButton jradiobutton = new JRadioButton("1");
         jradiobutton.setActionCommand("1");
         jradiobutton.setSelected(true);
         JRadioButton jradiobutton1 = new JRadioButton("2");
@@ -82,17 +84,17 @@ public class RegistrationGUI extends JPanel {
         jradiobutton2.setSelected(true);
         JRadioButton jradiobutton3 = new JRadioButton("4");
         jradiobutton3.setActionCommand("4");
-        jradiobutton3.setSelected(true);
+        jradiobutton3.setSelected(true);*/
         ButtonGroup buttongroup = new ButtonGroup();
-        buttongroup.add(jradiobutton);
+        /*buttongroup.add(jradiobutton);
         buttongroup.add(jradiobutton1);
         buttongroup.add(jradiobutton2);
-        buttongroup.add(jradiobutton3);
+        buttongroup.add(jradiobutton3);*/
         RadioListener radiolistener = new RadioListener();
-        jradiobutton.addActionListener(radiolistener);
+        /*jradiobutton.addActionListener(radiolistener);
         jradiobutton1.addActionListener(radiolistener);
         jradiobutton2.addActionListener(radiolistener);
-        jradiobutton3.addActionListener(radiolistener);
+        jradiobutton3.addActionListener(radiolistener);*/
         JPanel jpanel = new JPanel();
         jpanel.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
         jpanel.setLayout(new BoxLayout(jpanel, 0));
@@ -100,13 +102,32 @@ public class RegistrationGUI extends JPanel {
         jpanel.add(Box.createHorizontalGlue());
         jpanel.add(new JLabel(messages.getString("rounds") + ":"));
         jpanel.add(Box.createRigidArea(new Dimension(30, 0)));
-        jpanel.add(jradiobutton);
+        /*jpanel.add(jradiobutton);
         jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
         jpanel.add(jradiobutton1);
         jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
         jpanel.add(jradiobutton2);
         jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
-        jpanel.add(jradiobutton3);
+        jpanel.add(jradiobutton3);*/
+        int rounds = 0;
+        if(rules.containsKey("maxRounds")) {
+            try {
+                rounds = Integer.parseInt(rules.getString("maxRounds"));
+            }
+            catch (NumberFormatException ne) {
+                rounds = 4;
+            }
+        }
+        for(int i = 1; i <= rounds; i++) {
+            JRadioButton jradiobutton = new JRadioButton(String.valueOf(i));
+            jradiobutton.setActionCommand(String.valueOf(i));
+            jradiobutton.setSelected(true);
+            buttongroup.add(jradiobutton);
+            jradiobutton.addActionListener(radiolistener);
+            jpanel.add(jradiobutton);
+            jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        }
+
         final JPanel mainPanel = new JPanel();
         javax.swing.border.Border border = BorderFactory.createEmptyBorder(15, 30, 15, 30);
         mainPanel.setBorder(border);
