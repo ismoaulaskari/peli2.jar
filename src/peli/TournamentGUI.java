@@ -757,7 +757,7 @@ public class TournamentGUI extends JPanel {
         }
 
         for (int x = 0; x < pairs.length; x++) {
-            if (x >= (playoffSize / 2)) { //show the ones below the playoff-line
+            if (x >= (playoffSize / 2) || pairs[x].getPlayedMatches() > 0) { //show the ones below the playoff-line or every pair that has games
                 PlayoffPair pair = pairs[x];
                 PlayoffPairTableModel pairmodel = new PlayoffPairTableModel(pair);
                 JTable jtable2 = new JTable(pairmodel);
