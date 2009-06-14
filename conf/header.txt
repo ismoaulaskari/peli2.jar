@@ -20,6 +20,9 @@ font-family : verdana, arial, helvetica, sans-serif;
 pre {
 font-family : courier;
 }
+.tnmt {
+font-size : small;
+}
 </style>
 <title><!-- TITLE --></title>
 
