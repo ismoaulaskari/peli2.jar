@@ -44,7 +44,8 @@ Peli.jar
           o ruotsalainen playoff-kaavio /FIXED 1.13
           o cup-playoffkaavion sekoitus! /FIXED 1.13.1
           o enemmän kierroksia? /FIXED 1.13.2
-          o 6 ja 12 playoff sekä luovuttajat
+          o 6 ja 12 playoff /FIXED 1.14.0
+          o sekä luovuttajat
           o Otteluohjelma pienellä turnauksen html-sivulle? kuvana? javascriptalla kätkettynä
           o jatkoaikakirjaimien yms. rajoitus
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
