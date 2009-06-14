@@ -1,6 +1,14 @@
 <center>
 <h3><!-- HEADING --></h3>
 </center>
+
+<p><a href="#" onclick="showhide('div1');">Otteluohjelma</a></p>
+<div id="div1" style="display: none;">
+<pre>
+<!-- TNMT -->
+</pre>
+</div>
+
 <table align="center" bgcolor="#c0c0c0">
 <tr>
 <td>
