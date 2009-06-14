@@ -812,7 +812,9 @@ public class Tournament {
             }
             //the rest are all losers (but they should  be ordered based on the group)
             for (Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
-                overallstandings.set(x++, loser);
+                if(! ((String)loser).equals("X")) {
+                    overallstandings.set(x++, loser);
+                }
             }
         }
 
