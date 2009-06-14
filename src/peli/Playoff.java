@@ -28,7 +28,16 @@ public class Playoff {
         //if (players == null || size == 0) {
         if (size == 0) {
             throw new IllegalArgumentException("Empty playoffs attempted!");
+        } else { //special cases
+            /*if (size == 6) {
+                size = 8;
+            } else {
+                if (size == 12) {
+                    size = 16;
+                }
+            }*/
         }
+
         this.players = players;
         this.size = size;
         //this.mother = tournament;
@@ -63,37 +72,38 @@ public class Playoff {
      * @param groupStandings
      */
     void markRankings(ArrayList groupStandings) {
-        for(int i = 0; i < this.playoffPairs.length; i++) {
+        for (int i = 0; i < this.playoffPairs.length; i++) {
             this.playoffPairs[i].setHomePlacement(groupStandings.indexOf(this.playoffPairs[i].getHomeTeam()) + 1);
             this.playoffPairs[i].setAwayPlacement(groupStandings.indexOf(this.playoffPairs[i].getAwayTeam()) + 1);
         }
     }
-    
+
     //won't support empty players
     private PlayoffPair[] createPairs(List players, int size) {
 
         PlayoffPair[] pairs = new PlayoffPair[size / 2];
         for (int i = 0; i < size / 2; i++) {
-            String player1 = null; String player2 = null;
+            String player1 = null;
+            String player2 = null;
 
             if (!players.isEmpty()) {
                 player1 = (String) players.remove(0);
                 if (player1 == null) {
                     player1 = "X";
                 } else {
-                    this.emptyPlayoffs = false;                    
+                    this.emptyPlayoffs = false;
                 }
             }
-            
+
             if (!players.isEmpty()) {
                 player2 = (String) players.remove(0);
                 if (player2 == null) {
                     player2 = "X";
                 } else {
-                    this.emptyPlayoffs = false;                    
+                    this.emptyPlayoffs = false;
                 }
             }
-            
+
             pairs[i] = new PlayoffPair(this, player1, player2);
         }
 
@@ -132,7 +142,7 @@ public class Playoff {
     public ArrayList getLosers() {
         ArrayList pairs = new ArrayList();
         ArrayList losers = new ArrayList();
-        for (int i = 0; i < playoffPairs.length; i++) {        
+        for (int i = 0; i < playoffPairs.length; i++) {
             pairs.add(playoffPairs[i]);
         }
         //must be ordered like basic group
@@ -147,7 +157,7 @@ public class Playoff {
     public PlayoffPair[] getPlayoffPairs() {
         return playoffPairs;
     }
-    
+
     //tnmt-file writing
     public void save(PrintWriter printwriter) {
         printwriter.println("PLAYOFF-SIZE:" + this.size);
@@ -159,7 +169,7 @@ public class Playoff {
         printwriter.println("END-OF-PLAYOFF");
     }
 
-        //html-file content
+    //html-file content
     public String saveAll() {
         StringBuilder output = new StringBuilder();
         output.append("<p class=\"playoff\">").append(System.getProperty("line.separator"));
@@ -167,12 +177,11 @@ public class Playoff {
         for (int i = 0; i < this.playoffPairs.length; i++) {
             //printwriter.println("PLAYOFFPAIR");
             output.append(this.playoffPairs[i].saveAll());
-            //printwriter.println("END-OF-PLAYOFFPAIR");
+        //printwriter.println("END-OF-PLAYOFFPAIR");
         }
         //printwriter.println("END-OF-PLAYOFF");
         output.append("</p>").append(System.getProperty("line.separator"));
 
         return output.toString();
     }
-
 }

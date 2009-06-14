@@ -466,14 +466,23 @@ public class TournamentGUI extends JPanel {
             option.addActionListener(createlistener);
             playoffSize.add(option);
             jpanel.add(option);
-    /*        if (tmp == 8) { //testing
-                JRadioButton option2 = new JRadioButton(6 + " " + messages.getString("players"));
-                option2.setActionCommand(String.valueOf(6));
+            //special cases
+            if (tmp == 16) {
+                JRadioButton option2 = new JRadioButton(12 + " " + messages.getString("players"));
+                option2.setActionCommand(String.valueOf(12));
                 option2.addActionListener(createlistener);
                 playoffSize.add(option2);
                 jpanel.add(option2);
+            } else {
+                if (tmp == 8) {
+                    JRadioButton option2 = new JRadioButton(6 + " " + messages.getString("players"));
+                    option2.setActionCommand(String.valueOf(6));
+                    option2.addActionListener(createlistener);
+                    playoffSize.add(option2);
+                    jpanel.add(option2);
+                }
             }
-*/
+
         }
 
         jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
@@ -693,7 +702,16 @@ public class TournamentGUI extends JPanel {
 
         if (size > 2) {
             jpanel.add(Box.createRigidArea(new Dimension(5, 15)));
-            jpanel.add(createNextRoundButton(size / 2));
+            int nextSize = size / 2;
+            //special cases
+            if (size == 6) {
+                nextSize = 4;
+            } else {
+                if (size == 12) {
+                    nextSize = 8;
+                }
+            }
+            jpanel.add(createNextRoundButton(nextSize));
         }
 
         SaveTracker.setIsSaved(false);
@@ -728,7 +746,7 @@ public class TournamentGUI extends JPanel {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
         jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        Playoff playoff = tournament.getPlacementMatches(size, playoffSize); //get a full playoffround of all-size players
+        Playoff playoff = tournament.getPlacementMatches(size); //get a full playoffround of all-size players
         if (playoff == null) {
             //jpanel.add(new JLabel(messages.getString("areYouSure")));
             return null;

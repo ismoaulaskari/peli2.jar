@@ -68,7 +68,7 @@ public class Tournament {
      * @param size
      * @return
      */
-    public Playoff getPlacementMatches(int size, int playoffSize) {
+    public Playoff getPlacementMatches(int size) {
         ArrayList groupStandings = this.getStandingsNames(getStandings());
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames(getStandings());
@@ -124,6 +124,8 @@ public class Tournament {
     public Playoff getPlayoffWithReseed(int size) {
         Playoff playoff = null;
         ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
+        int rememberSize = size;
+
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
@@ -145,8 +147,10 @@ public class Tournament {
                     }
                 }
                 this.playoffs.put(size, new Playoff(seedPlayoff(newSurvivors, size), size));
-            } else {
-                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+            } else { //no previous round so create new
+                ArrayList playoffStandings = getStandingsNames(getStandingsForPlayoffs());
+                size = handleSpecialPlayoffsize(size, playoffStandings);
+                this.playoffs.put(size, new Playoff(seedPlayoff(playoffStandings, size), size));
             }
 
         }
@@ -157,8 +161,8 @@ public class Tournament {
             this.playoffs.remove(size);
             playoff = null;
         } else {
-            if (size > this.getLargestPlayoff()) {
-                this.largestPlayoff = size;
+            if (rememberSize > this.getLargestPlayoff()) {
+                this.largestPlayoff = rememberSize;
             }
         }
 
@@ -173,6 +177,8 @@ public class Tournament {
     public Playoff getPlayoffNoReseed(int size) {
         Playoff playoff = null;
         ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
+        int rememberSize = size;
+
         if (!this.playoffs.containsKey(size)) {
 
             if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
@@ -182,7 +188,9 @@ public class Tournament {
             //this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
 
             } else {
-                this.playoffs.put(size, new Playoff(seedPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));
+                ArrayList playoffStandings = getStandingsNames(getStandingsForPlayoffs());
+                size = handleSpecialPlayoffsize(size, playoffStandings);
+                this.playoffs.put(size, new Playoff(seedPlayoff(playoffStandings, size), size));
             //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
             }
 
@@ -195,8 +203,8 @@ public class Tournament {
             this.playoffs.remove(size);
             playoff = null;
         } else {
-            if (size > this.getLargestPlayoff()) {
-                this.largestPlayoff = size;
+            if (rememberSize > this.getLargestPlayoff()) {
+                this.largestPlayoff = rememberSize;
             }
         }
 
@@ -205,15 +213,18 @@ public class Tournament {
 
     public Playoff getPlayoffRandomSeed(int size) {
         Playoff playoff = null;
+        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
+        int rememberSize = size;
 
-        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());        
         if (this.playoffs.containsKey(size)) {
             //no reseed for existing random playoff!            
         } else if (this.playoffs.containsKey(size * 2)) { //there is a previous round?            
             this.playoffs.put(size, new Playoff(seedRandomPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
         //this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
         } else {
-            this.playoffs.put(size, new Playoff(seedRandomPlayoff(getStandingsNames(getStandingsForPlayoffs()), size), size));            
+            ArrayList playoffStandings = getStandingsNames(getStandingsForPlayoffs());
+            size = handleSpecialPlayoffsize(size, playoffStandings);
+            this.playoffs.put(size, new Playoff(seedRandomPlayoff(playoffStandings, size), size));
         }
 
         playoff = (Playoff) this.playoffs.get(size);
@@ -224,8 +235,8 @@ public class Tournament {
             this.playoffs.remove(size);
             playoff = null;
         } else {
-            if (size > this.getLargestPlayoff()) {
-                this.largestPlayoff = size;
+            if (rememberSize > this.getLargestPlayoff()) {
+                this.largestPlayoff = rememberSize;
             }
         }
 
@@ -299,7 +310,7 @@ public class Tournament {
             newPairs.add(playoffMatches[0 + i].getWinner());
             newPairs.add(playoffMatches[size - (i + 1)].getWinner());
         }
-        
+
         int newi = 0;
         String tmp = null;
         for (int i = 0; i < newPairs.size(); i++) {
@@ -446,6 +457,24 @@ public class Tournament {
             return i >= 120 ? 8 : 7;
 
         }
+    }
+
+    private int handleSpecialPlayoffsize(int size, ArrayList playoffStandings) {
+        //special cases
+        if (size == 6) {
+            playoffStandings.add(6, "X");
+            playoffStandings.add(7, "X");
+            size = 8;
+        } else {
+            if (size == 12) {
+                playoffStandings.add(12, "X");
+                playoffStandings.add(13, "X");
+                playoffStandings.add(14, "X");
+                playoffStandings.add(15, "X");
+                size = 16;
+            }
+        }
+        return size;
     }
 
     private void loadRules(ResourceBundle rules1) {
