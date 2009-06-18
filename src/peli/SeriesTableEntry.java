@@ -13,8 +13,7 @@ import java.io.PrintWriter;
  * @author aulaskar
  *
  */
-public class SeriesTableEntry extends Player
-{
+public class SeriesTableEntry extends Player {
 
     private String playerName;
     private int wins;
@@ -24,11 +23,10 @@ public class SeriesTableEntry extends Player
     private int goalsYielded;
     private static int pointsPerWin = 0;
     private static int pointsPerTie = 0;
-    private int isInMutualComparison = -1; //is tied at x points
+    private int isInMutualComparison = -1; //is tied at x points    
 
-    SeriesTableEntry(String s)
-    {
-    	super(0, s); //hacked to extend player for mutual comparison casting
+    SeriesTableEntry(String s) {
+        super(0, s); //hacked to extend player for mutual comparison casting
         wins = 0;
         ties = 0;
         losses = 0;
@@ -36,237 +34,195 @@ public class SeriesTableEntry extends Player
         goalsYielded = 0;
         playerName = s;
         isInMutualComparison = -1;
-        
+
         //hack
-        if(pointsPerWin == 0) {
-        	try {
-        		pointsPerWin = Integer.parseInt(System.getProperty("TournamentPointsPerWin"));
-        		pointsPerTie = Integer.parseInt(System.getProperty("TournamentPointsPerTie"));
-        	}
-        	catch (Exception e) {
-        		System.err.println("No Rules.properties ?");
-        		pointsPerWin = 2;
-        		pointsPerTie = 1;
-        	}
+        if (pointsPerWin == 0) {
+            try {
+                pointsPerWin = Integer.parseInt(System.getProperty("TournamentPointsPerWin"));
+                pointsPerTie = Integer.parseInt(System.getProperty("TournamentPointsPerTie"));
+            } catch (Exception e) {
+                System.err.println("No Rules.properties ?");
+                pointsPerWin = 2;
+                pointsPerTie = 1;
+            }
         }
     }
 
-    public String getName()
-    {
+    public String getName() {
         return playerName;
     }
 
-    public int getGames()
-    {
+    public int getGames() {
         return wins + ties + losses;
     }
 
-    public int getWins()
-    {
+    public int getWins() {
         return wins;
     }
 
-    public int getTies()
-    {
+    public int getTies() {
         return ties;
     }
 
-    public int getLosses()
-    {
+    public int getLosses() {
         return losses;
     }
 
-    public int getScored()
-    {
+    public int getScored() {
         return goalsScored;
     }
 
-    public int getYielded()
-    {
+    public int getYielded() {
         return goalsYielded;
     }
 
-    public int getPoints()
-    {
+    public int getPoints() {
+
         return (pointsPerWin * wins) + (pointsPerTie * ties);
     }
 
     public int getHasTiedPoints() {
-    	return isInMutualComparison;
+        return isInMutualComparison;
     }
-    
+
     public void setHasTiedPoints(int points1) {
-    	this.isInMutualComparison = points1;
+        this.isInMutualComparison = points1;
     }
-    
-    public void increaseWins()
-    {
+
+    public void increaseWins() {
         wins++;
     }
 
-    public void increaseTies()
-    {
+    public void increaseTies() {
         ties++;
     }
 
-    public void increaseLosses()
-    {
+    public void increaseLosses() {
         losses++;
     }
 
-    public void score(int i)
-    {
+    public void score(int i) {
         goalsScored += i;
     }
 
-    public void yield(int i)
-    {
+    public void yield(int i) {
         goalsYielded += i;
     }
 
-    public void decreaseWins()
-    {
+    public void decreaseWins() {
         wins--;
     }
 
-    public void decreaseTies()
-    {
+    public void decreaseTies() {
         ties--;
     }
 
-    public void decreaseLosses()
-    {
+    public void decreaseLosses() {
         losses--;
     }
 
-    public void unscore(int i)
-    {
+    public void unscore(int i) {
         goalsScored -= i;
     }
 
-    public void unyield(int i)
-    {
+    public void unyield(int i) {
         goalsYielded -= i;
     }
 
-    public int goalDifference()
-    {
+    public int goalDifference() {
         return goalsScored - goalsYielded;
     }
 
-    public String getHtmlTableRow()
-    {
+    public String getHtmlTableRow() {
         String s = HtmlTools.td(getName()) + HtmlTools.td(getGames()) + HtmlTools.td(getWins()) + HtmlTools.td(getTies()) + HtmlTools.td(getLosses()) + HtmlTools.td(getScored()) + HtmlTools.td("-") + HtmlTools.td(getYielded()) + HtmlTools.td(getPoints());
         return HtmlTools.tr(s);
     }
 
-    public String getRow()
-    {
+    public String getRow() {
         return Tools.format(playerName, 24) + Tools.format(getGames(), 3) + Tools.format(getWins(), 3) + Tools.format(getTies(), 3) + Tools.format(getLosses(), 3) + Tools.format(getScored(), 4) + "-" + Tools.format(getYielded() + "", 3) + Tools.format(getPoints(), 4);
     }
 
-    public void print(PrintWriter printwriter)
-    {
+    public void print(PrintWriter printwriter) {
         printwriter.println(getRow());
     }
 
-    public void print()
-    {
+    public void print() {
         System.out.println(getRow());
     }
 
-    public void updateWith(Match match)
-    {
-        if(!match.isOver())
+    public void updateWith(Match match) {
+        if (!match.isOver() || match.isDisqualified()) {
             return;
-        if(playerName.equals(match.home()))
-        {
+        }
+        if (playerName.equals(match.home())) {
             score(match.homeGoals());
             yield(match.visitorGoals());
-            if(match.homeGoals() > match.visitorGoals())
-            {
+            if (match.homeGoals() > match.visitorGoals()) {
                 increaseWins();
                 return;
             }
-            if(match.homeGoals() < match.visitorGoals())
-            {
+            if (match.homeGoals() < match.visitorGoals()) {
                 increaseLosses();
                 return;
-            } else
-            {
+            } else {
                 increaseTies();
                 return;
             }
         }
-        if(playerName.equals(match.visitor()))
-        {
+        if (playerName.equals(match.visitor())) {
             score(match.visitorGoals());
             yield(match.homeGoals());
-            if(match.homeGoals() > match.visitorGoals())
-            {
+            if (match.homeGoals() > match.visitorGoals()) {
                 increaseLosses();
                 return;
             }
-            if(match.homeGoals() < match.visitorGoals())
-            {
+            if (match.homeGoals() < match.visitorGoals()) {
                 increaseWins();
                 return;
-            } else
-            {
+            } else {
                 increaseTies();
                 return;
             }
-        } else
-        {
+        } else {
             return;
         }
     }
 
-    public void cancelMatch(Match match)
-    {
-        if(!match.isOver())
+    public void cancelMatch(Match match) {
+        if (!match.isOver() || match.isDisqualified()) {
             return;
-        if(playerName.equals(match.home()))
-        {
+        }
+        if (playerName.equals(match.home())) {
             unscore(match.homeGoals());
             unyield(match.visitorGoals());
-            if(match.homeGoals() > match.visitorGoals())
-            {
+            if (match.homeGoals() > match.visitorGoals()) {
                 decreaseWins();
                 return;
             }
-            if(match.homeGoals() < match.visitorGoals())
-            {
+            if (match.homeGoals() < match.visitorGoals()) {
                 decreaseLosses();
                 return;
-            } else
-            {
+            } else {
                 decreaseTies();
                 return;
             }
         }
-        if(playerName.equals(match.visitor()))
-        {
+        if (playerName.equals(match.visitor())) {
             unscore(match.visitorGoals());
             unyield(match.homeGoals());
-            if(match.homeGoals() > match.visitorGoals())
-            {
+            if (match.homeGoals() > match.visitorGoals()) {
                 decreaseLosses();
                 return;
             }
-            if(match.homeGoals() < match.visitorGoals())
-            {
+            if (match.homeGoals() < match.visitorGoals()) {
                 decreaseWins();
                 return;
-            } else
-            {
+            } else {
                 decreaseTies();
                 return;
             }
-        } else
-        {
+        } else {
             return;
         }
     }
-
 }

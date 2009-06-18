@@ -17,8 +17,8 @@ public class Match {
     private int homeGoals;
     private int visitorGoals;
     private boolean isOver;
-    private String postFix; //overtime? disqualification?
-
+    private String postFix; //overtime? disqualification? walkover?
+    private final String DISQUALIFIED = "dq";
     //for England..and mutual comparison
     Match(String home, String visitor) {
         this.home = home;
@@ -166,5 +166,9 @@ public class Match {
 
     public void setVisitor(String visitor) {
         this.visitor = Tools.fixName(visitor);
+    }
+
+    public boolean isDisqualified() {
+        return (this.postFix.equalsIgnoreCase(DISQUALIFIED)) ? true : false;
     }
 }
