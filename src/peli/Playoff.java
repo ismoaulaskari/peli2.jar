@@ -12,7 +12,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @TODO swedish playoff
+ * v.1.14.1 support for different seeding models and
+ * playoffs for 6 and 12 players have been completed without
+ * changing this class
+ * Check Tournament.java ant TournamentGUI.java
  * @author aulaskar
  */
 public class Playoff {
@@ -28,7 +31,7 @@ public class Playoff {
         //if (players == null || size == 0) {
         if (size == 0) {
             throw new IllegalArgumentException("Empty playoffs attempted!");
-        } else { //special cases
+        } else { //special cases not needed so far
             /*if (size == 6) {
                 size = 8;
             } else {

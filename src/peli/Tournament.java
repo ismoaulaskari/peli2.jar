@@ -18,7 +18,8 @@ import java.util.ArrayList;
  * v.1.11 playoff and placementmatch into html
  * v.1.11 combine html and tnmt-save
  * v.1.11 super-tnmt
- * v.1.13 playoff schema options
+ * v.1.13 playoff schema/seeding options
+ * v.1.14 special playoff sizes
  * @TODO disqualified players
  * @TODO support for extending a series(make default series bigger but hidden)
  * @TODO match schedule printout for players?
