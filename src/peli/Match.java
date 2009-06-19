@@ -4,6 +4,7 @@ package peli;
 // Decompiler options: packimports(3) 
 // Source File Name:   Match.java
 import java.io.PrintWriter;
+import java.util.ResourceBundle;
 
 /**
  * Understands the inputted match result
@@ -18,7 +19,12 @@ public class Match {
     private int visitorGoals;
     private boolean isOver;
     private String postFix; //overtime? disqualification? walkover?
-    private final String DISQUALIFIED = "dq";
+    private ResourceBundle messages = Constants.getInstance().getMessages();
+    private final String DISQUALIFIED = messages.getString("disqualified");
+    private final String OVERTIME = messages.getString("overtime");
+    private final String WALKOVER = messages.getString("walkover");
+    private final String allowedPrefixes = "^(" + DISQUALIFIED + "|" + OVERTIME + "|" + WALKOVER + ")$";
+
     //for England..and mutual comparison
     Match(String home, String visitor) {
         this.home = home;
@@ -125,7 +131,7 @@ public class Match {
                 visitorGoals = Integer.parseInt(s.replaceFirst("\\D+", ""));
                 isOver = true;
                 postFix = (s.replaceAll("\\d+", ""));
-                if (postFix == null) {
+                if (postFix == null || ! postFix.matches(allowedPrefixes)) {
                     postFix = "";
                 }
             } catch (NumberFormatException numberformatexception) {
