@@ -75,11 +75,11 @@ Peli.jar
           o Pelaajatiedosto cancel->ohita
           o tiedostojen avaus eri hakemistoista?
           o uusi turnaus jyrää olemassaolevan
-          o J2ME?
           o boldaus java 1.5.09 /win          
           o playoff-viiva
           o välierä-, pronssiottelu-, finaalitekstit..
           o koko nimet? /EI
+          o J2ME? /EI, mobiililaitteet kehittyneet pc-tasolle
     *
     * Markku:
     * botti: robustiutta /FIXED 0.4.0
@@ -103,3 +103,4 @@ Peli.jar
     * botti: huuda!
     * botti: älä pysähdy X:ään
     * irc-botti uudelle formaatille 
+    * tilastopalvelu uudelle formaatille
