@@ -45,16 +45,15 @@ Peli.jar
           o cup-playoffkaavion sekoitus! /FIXED 1.13.1
           o enemmän kierroksia? /FIXED 1.13.2
           o 6 ja 12 playoff /FIXED 1.14.0
-          o Otteluohjelma pienellä turnauksen html-sivulle? kuvana? javascriptalla kätkettynä /FIXED 1.14.1
-          o sekä luovuttajat
-          o jatkoaikakirjaimien yms. rajoitus
-          o Speksi erikoismerkinnöille: j,ja,lv,(o,ot,wo) + uusi dq
+          o Otteluohjelma pienellä turnauksen html-sivulle? kuvana? javascriptalla kätkettynä /FIXED 1.14.1                    
+          o Speksi erikoismerkinnöille: j,ja,lv,(o,ot,wo) + uusi dq /FIXED 1.14.2
           o erikoistilanne: 
-            * pelaaja luovuttaa sallitun määrän = ottelut vaan jätetään kirjaamatta 
-            * luovuttaa playoffin tai sijoitusottelun = 5-0lv
+            * pelaaja luovuttaa sallitun määrän = ottelut vaan jätetään kirjaamatta /OK 1.0
+            * luovuttaa playoffin tai sijoitusottelun = 5-0lv /OK 1.14.2
             * pelaaja luovuttaa yli sallitun määrän ja pelatut ottelut diskataan = tarvitaan erikoismerkki, 
-              jolla peli.jar ja tilastohärveli osaavat karsia tulokset rankingiin vaikuttavista tuloksista (dq = disqualified)
+              jolla peli.jar ja tilastohärveli osaavat karsia tulokset rankingiin vaikuttavista tuloksista (dq = disqualified) /FIXED 1.14.2
             * käyttäjälle tarjottava helppo apuväline muistaa erikoismerkinnät, hylätä kaikki?
+          o jatkoaikakirjaimien yms. rajoitus
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan

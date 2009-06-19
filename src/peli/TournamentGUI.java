@@ -277,7 +277,7 @@ public class TournamentGUI extends JPanel {
             jpanel1.setLayout(new BorderLayout());
             jpanel1.add(jtable.getTableHeader(), "North");
             jpanel1.add(jtable, "Center");
-            jpanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("round") + " " + (j + 1) + "  "));
+            jpanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("round") + " " + (j + 1) + ".    " + messages.getString("allowed_prefixes") + ": " + messages.getString("overtime") + ", " + messages.getString("disqualified")));
             jpanel.add(jpanel1);
         }
 
@@ -567,7 +567,7 @@ public class TournamentGUI extends JPanel {
     public static JPanel createPlayoff() {
         JPanel jpanel2 = new JPanel();
         jpanel2.setLayout(new BoxLayout(jpanel2, BoxLayout.Y_AXIS));
-        jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jpanel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));        
         playoffpane = new JTabbedPane();
         createlistener = new CreatePlayoffListener(playoffpane);
         newPlayoffpane(playoffpane);
@@ -654,7 +654,8 @@ public class TournamentGUI extends JPanel {
     public static JPanel createPlayoffPanel(int size, String seedingModel) {
         JPanel jpanel = new JPanel();
         jpanel.setLayout(new BoxLayout(jpanel, BoxLayout.Y_AXIS));
-        jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        //jpanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("allowed_prefixes") + ": " + messages.getString("overtime") + ", " + messages.getString("walkover")));
         Playoff playoff = null;
         if (seedingModel.equals("CREATERANDOM")) {
             playoff = tournament.getPlayoffRandomSeed(size);
