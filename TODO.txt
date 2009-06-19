@@ -52,8 +52,8 @@ Peli.jar
             * luovuttaa playoffin tai sijoitusottelun = 5-0lv /OK 1.14.2
             * pelaaja luovuttaa yli sallitun määrän ja pelatut ottelut diskataan = tarvitaan erikoismerkki, 
               jolla peli.jar ja tilastohärveli osaavat karsia tulokset rankingiin vaikuttavista tuloksista (dq = disqualified) /FIXED 1.14.2
-            * käyttäjälle tarjottava helppo apuväline muistaa erikoismerkinnät, hylätä kaikki?
-          o jatkoaikakirjaimien yms. rajoitus
+            * käyttäjälle tarjottava helppo apuväline muistaa erikoismerkinnät, hylätä kaikki? /FIXED 1.14.3
+          o jatkoaikakirjaimien yms. rajoitus /FIXED 1.14.3
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
@@ -76,10 +76,10 @@ Peli.jar
           o tiedostojen avaus eri hakemistoista?
           o uusi turnaus jyrää olemassaolevan
           o J2ME?
-          o boldaus 1.5.09 /win
-          o koko nimet? /EI
+          o boldaus java 1.5.09 /win          
           o playoff-viiva
           o välierä-, pronssiottelu-, finaalitekstit..
+          o koko nimet? /EI
     *
     * Markku:
     * botti: robustiutta /FIXED 0.4.0
