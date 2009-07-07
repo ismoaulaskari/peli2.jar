@@ -26,15 +26,15 @@ import org.jibble.pircbot.*;
 public class ResultBot extends PircBot {
     
     String version = "0.11";
-    private boolean isFirstRun = true;
-    private boolean stop = false;
-    private boolean resultsFound = false;
-    private String lastLine = null;
-    private int lastRound = 0;
-    private int currentRound = 1;
-    private long lastPrintedLine = 0;
-    private long currentLine = 0;
-    private ArrayList playoffs = new ArrayList();
+    protected boolean isFirstRun = true;
+    protected boolean stop = false;
+    protected boolean resultsFound = false;
+    protected String lastLine = null;
+    protected int lastRound = 0;
+    protected int currentRound = 1;
+    protected long lastPrintedLine = 0;
+    protected long currentLine = 0;
+    protected ArrayList playoffs = new ArrayList();
     
     public ResultBot() {
         this.setName("Tulospalvelu");
