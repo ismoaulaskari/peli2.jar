@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 import java.util.StringTokenizer;
-import org.jibble.pircbot.*;
 
 public class Main extends Thread {
 
@@ -65,7 +64,7 @@ public class Main extends Thread {
 
     
     public static void main(String[] args) throws Exception {
-        
+        String version = "Version 1.00 for Peli.jar 1.0-1.1";
         String conffile = "irc.properties";
         
         Properties props = new Properties();
@@ -98,6 +97,7 @@ public class Main extends Thread {
 
         // Enable debugging output.
         bot.setVerbose(true);
+        System.out.println(version);
         
         // try to talk slow and avoid being kicked
         bot.setMessageDelay(Integer.parseInt(delay));
