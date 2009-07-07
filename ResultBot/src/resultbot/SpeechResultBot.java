@@ -12,7 +12,7 @@ import javax.sound.sampled.*;
  *
  * @author aulaskar
  */
-public class SpeechResultBot extends ResultBot {
+public class SpeechResultBot extends ResultBot2 {
 
     private boolean noisy = true;
     private Voice voice;

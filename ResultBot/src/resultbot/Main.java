@@ -64,7 +64,7 @@ public class Main extends Thread {
 
     
     public static void main(String[] args) throws Exception {
-        String version = "Version 1.00 for Peli.jar 1.0-1.1";
+        String version = "Version 2.00 for Peli2.jar";
         String conffile = "irc.properties";
         
         Properties props = new Properties();
@@ -91,7 +91,7 @@ public class Main extends Thread {
         // Now start our bot up.
         ResultBot bot = null; 
         if(nospeech)        
-            bot = new ResultBot(name, login, finger);
+            bot = new ResultBot2(name, login, finger);
         else 
             bot = new SpeechResultBot(name, login, finger);
 
