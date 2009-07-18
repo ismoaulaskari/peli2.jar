@@ -54,6 +54,8 @@ Peli.jar
               jolla peli.jar ja tilastohärveli osaavat karsia tulokset rankingiin vaikuttavista tuloksista (dq = disqualified) /FIXED 1.14.2
             * käyttäjälle tarjottava helppo apuväline muistaa erikoismerkinnät, hylätä kaikki? /FIXED 1.14.3
           o jatkoaikakirjaimien yms. rajoitus /FIXED 1.14.3
+          o HEADLESS-versio /FIXED 1.15.0
+          o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan

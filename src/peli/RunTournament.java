@@ -55,7 +55,10 @@ public class RunTournament {
             }
             try {
                 Tournament tournament = new Tournament(file);
-                tournament.save(new PrintWriter(System.out, true), 3); //print html, autoflush
+                PrintWriter output = new PrintWriter(System.out, true);
+                tournament.save(output, 3); //print html, autoflush
+                output.flush();
+                output.close();
             } catch (IOException ex) {
                 System.err.print("Error " + ex);
             } catch (FileFormatException ex) {
