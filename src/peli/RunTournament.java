@@ -5,6 +5,11 @@ package peli;
 // Source File Name:   RunTournament.java
 
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Main class for invocation of tournament result program Peli.jar
@@ -16,33 +21,57 @@ import java.awt.event.ActionEvent;
  * @author aulaskar
  *
  */
-public class RunTournament
-{
+public class RunTournament {
 
-    public RunTournament()
-    {
+    public RunTournament() {
     }
 
-    public static void main(String args[])
-    {
-    	
-        MainWindow mainwindow = new MainWindow();
-        mainwindow.pack();
-        Tools.center(mainwindow);
-        mainwindow.setVisible(true);
-        
+    public static void main(String args[]) {
+        boolean headless = false;
+
         /* added to open a tnmt from commandline*/
-    	try {       		
-          if(args.length > 0)
-    		System.setProperty("TournamentFileArgs", args[0]);
-    	} catch (SecurityException e) {
-    		System.err.println("Setting properties from commandline args was denied.");
-    	}
-    	
+        try {
+            if (args.length > 0) {
+                System.setProperty("TournamentFileArgs", args[0]);
+            }
+        } catch (SecurityException e) {
+            System.err.println("Setting properties from commandline args was denied.");
+        }
+
         /* if restart is called, open specified old tournament and go straight to the GUI */
-        if(args.length == 2)
-        	if(args[1].equalsIgnoreCase("RESTART"))
-        		new OldActionListener(mainwindow).actionPerformed(new ActionEvent(mainwindow, ActionEvent.ACTION_FIRST, "restart"));
-        
+        if (args.length == 2) {
+            if (args[1].equalsIgnoreCase("HEADLESS")) {
+                headless = true;
+            }
+        }
+
+        if (headless) { //limited headless operation
+            File file = new File(System.getProperty("TournamentFileArgs"));
+            System.setProperty("TournamentFileName", file.getName());
+    		file = FileTools.canonize(file, ".tnmt");
+            if(!file.exists()) {
+                System.err.println("File " + file.getName() + " does not exist!");
+                System.exit(1);
+            }
+            try {
+                Tournament tournament = new Tournament(file);
+                tournament.save(new PrintWriter(System.out, true), 3); //print html, autoflush
+            } catch (IOException ex) {
+                System.err.print("Error " + ex);
+            } catch (FileFormatException ex) {
+                System.err.print("Error " + ex);
+            }
+        } else { //normal operation with Swing gui
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.pack();
+            Tools.center(mainwindow);
+            mainwindow.setVisible(true);
+
+            if (args.length == 2) {
+                if (args[1].equalsIgnoreCase("RESTART")) {
+                    new OldActionListener(mainwindow).actionPerformed(new ActionEvent(mainwindow, ActionEvent.ACTION_FIRST, "restart"));
+                }
+            }
+        }
     }
 }
