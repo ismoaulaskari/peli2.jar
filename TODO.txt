@@ -104,5 +104,5 @@ Peli.jar
     * botti: sarjataulukko
     * botti: huuda!
     * botti: älä pysähdy X:ään
-    * irc-botti uudelle formaatille 
-    * tilastopalvelu uudelle formaatille
+    * irc-botti uudelle formaatille /FIXED kesä 2009
+    * tilastopalvelu uudelle formaatille /FIXED kesä 2009
