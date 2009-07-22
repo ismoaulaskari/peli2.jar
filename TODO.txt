@@ -57,6 +57,10 @@ Peli.jar
           o HEADLESS-versio /FIXED 1.15.0
           o BUGI: luetut pelaajalistat ei pysy järjestyksessä, koskien playoffeja ja default-aakkosjärjestystä /FIXED 1.15.1
           o blackbox-testauksen alku /1.15.1
+          o ilmolistan shuffle
+          o tnmt:n/html:n lähetys: 
+             *client generoi html:n ja lähettää pjknetiin, katsotaan selaimella tai markulla, JOO
+             *vai client lähettää tnmt:n iste2:een, java generoi html:n jonka markku lukee EIII 
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
