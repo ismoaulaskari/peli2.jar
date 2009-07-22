@@ -115,9 +115,14 @@ public class Division {
     }
 
     private void buildSeriesTableEntries(TreeSet treeset) {
-        String s;
-        for (Iterator iterator = treeset.iterator(); iterator.hasNext(); seriesTableEntries.put(s, new SeriesTableEntry(s))) {
-            s = ((Player) iterator.next()).getName();
+        int rank;
+        String name;
+        Iterator iterator = treeset.iterator(); 
+        while(iterator.hasNext()) { 
+            Player nextPlayer = ((Player) iterator.next());            
+            name = nextPlayer.getName();
+            rank = nextPlayer.getRank();
+            seriesTableEntries.put(name, new SeriesTableEntry(rank, name));
         }
     }
 

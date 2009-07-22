@@ -9,12 +9,12 @@ public class MutualSeriesTableEntry extends SeriesTableEntry {
 	
         private SeriesTableEntry overallresults = null;
         
-	public MutualSeriesTableEntry(String s) {
-		super(s);		
+	public MutualSeriesTableEntry(int rank, String name) {
+		super(rank, name);
 	}
 
-	public MutualSeriesTableEntry(String s, SeriesTableEntry overallresults1) {
-		super(s);		
+	public MutualSeriesTableEntry(int rank, String name, SeriesTableEntry overallresults1) {
+		super(rank, name);
 		this.overallresults = overallresults1;
 	}
 	

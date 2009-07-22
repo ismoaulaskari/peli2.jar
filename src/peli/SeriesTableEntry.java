@@ -25,14 +25,14 @@ public class SeriesTableEntry extends Player {
     private static int pointsPerTie = 0;
     private int isInMutualComparison = -1; //is tied at x points    
 
-    SeriesTableEntry(String s) {
-        super(0, s); //hacked to extend player for mutual comparison casting
+    SeriesTableEntry(int rank, String name) {
+        super(rank, name); //hacked to extend player for mutual comparison casting
         wins = 0;
         ties = 0;
         losses = 0;
         goalsScored = 0;
         goalsYielded = 0;
-        playerName = s;
+        playerName = name;
         isInMutualComparison = -1;
 
         //hack

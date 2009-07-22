@@ -88,8 +88,10 @@ public class SeriesTable {
     			//create new player entries that don't have results yet
     			tmpplayers = currentmutualplayers.elements();
     			while(tmpplayers.hasMoreElements()) {
-    				String currentplayer = ((SeriesTableEntry)tmpplayers.nextElement()).getName(); 
-    				MutualSeriesTableEntry mutualplayer = new MutualSeriesTableEntry(currentplayer, (SeriesTableEntry)currentmutualplayers.get(currentplayer));
+                    SeriesTableEntry ste = ((SeriesTableEntry)tmpplayers.nextElement());
+    				String currentplayer = ste.getName();
+
+    				MutualSeriesTableEntry mutualplayer = new MutualSeriesTableEntry(ste.getRank(), currentplayer, (SeriesTableEntry)currentmutualplayers.get(currentplayer));
 
     				//add only mutual results for the named player
     				for(String s : names) {     					 
