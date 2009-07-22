@@ -1,0 +1,188 @@
+TOURNAMENT-SIZE:1
+DIVISION:Lohko 1
+PLAYERS:8
+Lauri Happo
+Ismo Lahtinen
+Petteri Sevon
+Lauri Eronen
+Niko Tuominen
+Netta Jousi
+Angi Mauranen
+Esa Heilimo
+END-OF-PLAYERS
+ROUNDS:9
+ROUND:1
+(Lauri Happo)
+X:Ismo Lahtinen
+Petteri Sevon:Esa Heilimo
+Lauri Eronen:Angi Mauranen
+Niko Tuominen:Netta Jousi
+END-OF-ROUND
+ROUND:2
+(Ismo Lahtinen)
+Lauri Happo:Esa Heilimo
+X:Angi Mauranen
+Petteri Sevon:Netta Jousi
+Lauri Eronen:Niko Tuominen
+END-OF-ROUND
+ROUND:3
+(Esa Heilimo)
+Ismo Lahtinen:Angi Mauranen
+Lauri Happo:Netta Jousi
+X:Niko Tuominen
+Petteri Sevon:Lauri Eronen
+END-OF-ROUND
+ROUND:4
+(Angi Mauranen)
+Esa Heilimo:Netta Jousi
+Ismo Lahtinen:Niko Tuominen
+Lauri Happo:Lauri Eronen
+X:Petteri Sevon
+END-OF-ROUND
+ROUND:5
+(Netta Jousi)
+Angi Mauranen:Niko Tuominen
+Esa Heilimo:Lauri Eronen
+Ismo Lahtinen:Petteri Sevon
+Lauri Happo:X
+END-OF-ROUND
+ROUND:6
+(Niko Tuominen)
+Netta Jousi:Lauri Eronen
+Angi Mauranen:Petteri Sevon
+Esa Heilimo:X
+Ismo Lahtinen:Lauri Happo
+END-OF-ROUND
+ROUND:7
+(Lauri Eronen)
+Niko Tuominen:Petteri Sevon
+Netta Jousi:X
+Angi Mauranen:Lauri Happo
+Esa Heilimo:Ismo Lahtinen
+END-OF-ROUND
+ROUND:8
+(Petteri Sevon)
+Lauri Eronen:X
+Niko Tuominen:Lauri Happo
+Netta Jousi:Ismo Lahtinen
+Angi Mauranen:Esa Heilimo
+END-OF-ROUND
+ROUND:9
+(X)
+Petteri Sevon:Lauri Happo
+Lauri Eronen:Ismo Lahtinen
+Niko Tuominen:Esa Heilimo
+Netta Jousi:Angi Mauranen
+END-OF-ROUND
+END-OF-DIVISION
+PLAYOFFS-SIZE:3
+SEEDINGMODEL:CREATEDYNAMIC
+PLAYOFF-SIZE:2
+PLAYOFFPAIR
+Petteri Sevon:Angi Mauranen:2:5
+Petteri Sevon:Angi Mauranen:5:4:j
+Petteri Sevon:Angi Mauranen:7:0
+Petteri Sevon:Angi Mauranen:4:2
+Petteri Sevon:Angi Mauranen:7:0
+Petteri Sevon:Angi Mauranen
+Petteri Sevon:Angi Mauranen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:4
+PLAYOFFPAIR
+Lauri Happo:Angi Mauranen:1:3
+Lauri Happo:Angi Mauranen:2:3
+Lauri Happo:Angi Mauranen:8:0
+Lauri Happo:Angi Mauranen:2:3:j
+Lauri Happo:Angi Mauranen:3:0
+Lauri Happo:Angi Mauranen:2:3:j
+Lauri Happo:Angi Mauranen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Lauri Eronen:4:6
+Petteri Sevon:Lauri Eronen:5:3
+Petteri Sevon:Lauri Eronen:4:2
+Petteri Sevon:Lauri Eronen:2:4
+Petteri Sevon:Lauri Eronen:6:1
+Petteri Sevon:Lauri Eronen:2:3
+Petteri Sevon:Lauri Eronen:4:3
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:8
+PLAYOFFPAIR
+Lauri Happo:Esa Heilimo:3:2
+Lauri Happo:Esa Heilimo:6:2
+Lauri Happo:Esa Heilimo:5:2
+Lauri Happo:Esa Heilimo:3:2:j
+Lauri Happo:Esa Heilimo
+Lauri Happo:Esa Heilimo
+Lauri Happo:Esa Heilimo
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Ismo Lahtinen:Angi Mauranen:1:2
+Ismo Lahtinen:Angi Mauranen:1:2
+Ismo Lahtinen:Angi Mauranen:6:2
+Ismo Lahtinen:Angi Mauranen:7:4
+Ismo Lahtinen:Angi Mauranen:2:4
+Ismo Lahtinen:Angi Mauranen:3:4:j
+Ismo Lahtinen:Angi Mauranen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Netta Jousi:5:2
+Petteri Sevon:Netta Jousi:3:1
+Petteri Sevon:Netta Jousi:3:2
+Petteri Sevon:Netta Jousi:1:4
+Petteri Sevon:Netta Jousi:4:3:j
+Petteri Sevon:Netta Jousi
+Petteri Sevon:Netta Jousi
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Lauri Eronen:Niko Tuominen:5:2
+Lauri Eronen:Niko Tuominen:4:3:j
+Lauri Eronen:Niko Tuominen:1:2
+Lauri Eronen:Niko Tuominen:2:1
+Lauri Eronen:Niko Tuominen:0:4
+Lauri Eronen:Niko Tuominen:4:3:j
+Lauri Eronen:Niko Tuominen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLACEMENTMATCHES:1
+PLAYOFF-SIZE:8
+PLAYOFFPAIR
+Lauri Happo:Ismo Lahtinen
+Lauri Happo:Ismo Lahtinen
+Lauri Happo:Ismo Lahtinen
+Lauri Happo:Ismo Lahtinen
+Lauri Happo:Ismo Lahtinen
+Lauri Happo:Ismo Lahtinen
+Lauri Happo:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Niko Tuominen:Netta Jousi
+Niko Tuominen:Netta Jousi
+Niko Tuominen:Netta Jousi
+Niko Tuominen:Netta Jousi
+Niko Tuominen:Netta Jousi
+Niko Tuominen:Netta Jousi
+Niko Tuominen:Netta Jousi
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Angi Mauranen:Esa Heilimo
+Angi Mauranen:Esa Heilimo
+Angi Mauranen:Esa Heilimo
+Angi Mauranen:Esa Heilimo
+Angi Mauranen:Esa Heilimo
+Angi Mauranen:Esa Heilimo
+Angi Mauranen:Esa Heilimo
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+END-OF-PLACEMENTMATCHES

@@ -55,6 +55,8 @@ Peli.jar
             * käyttäjälle tarjottava helppo apuväline muistaa erikoismerkinnät, hylätä kaikki? /FIXED 1.14.3
           o jatkoaikakirjaimien yms. rajoitus /FIXED 1.14.3
           o HEADLESS-versio /FIXED 1.15.0
+          o BUGI: luetut pelaajalistat ei pysy järjestyksessä, koskien playoffeja ja default-aakkosjärjestystä /FIXED 1.15.1
+          o blackbox-testauksen alku /1.15.1
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
