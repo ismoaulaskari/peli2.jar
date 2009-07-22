@@ -107,4 +107,7 @@ Peli.jar
     * botti: huuda!
     * botti: älä pysähdy X:ään
     * irc-botti uudelle formaatille /FIXED kesä 2009
+
+SPJKL tilastopalvelu
     * tilastopalvelu uudelle formaatille /FIXED kesä 2009
+    * kausien versiointi
