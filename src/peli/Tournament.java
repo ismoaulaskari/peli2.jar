@@ -803,6 +803,7 @@ public class Tournament {
         int x = 0;
         for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs
             Integer size = (Integer) i.next();
+            ((Playoff) playoffs.get(size)).markRankings(overallstandings); //HACK just in case placements are not set in headless mode
             if (isFirst) {
                 isFirst = false;
                 if (size == 2) { //final, get the winner
