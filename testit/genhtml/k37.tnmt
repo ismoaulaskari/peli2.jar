@@ -1,0 +1,309 @@
+TOURNAMENT-SIZE:1
+DIVISION:Lohko 1
+PLAYERS:15
+Timo Toivonen
+Juha Erälaukko
+Justus Erälaukko
+Mikko Haverinen
+Esa Heilimo
+Jani Herlevi
+Ismo Lahtinen
+Lari Metsälä
+Petrus Miettinen
+Teuvo Moisa
+Janne Rantanen
+Santtu Sainio
+Petteri Sevon
+Niko Tuominen
+Anita Tuovinen
+END-OF-PLAYERS
+ROUNDS:15
+ROUND:1
+(Timo Toivonen)
+Juha Erälaukko:Anita Tuovinen:3:1
+Justus Erälaukko:Niko Tuominen:0:2
+Mikko Haverinen:Petteri Sevon:4:4
+Esa Heilimo:Santtu Sainio:1:5
+Jani Herlevi:Janne Rantanen:2:6
+Ismo Lahtinen:Teuvo Moisa:3:2
+Lari Metsälä:Petrus Miettinen:2:2
+END-OF-ROUND
+ROUND:2
+(Anita Tuovinen)
+Timo Toivonen:Niko Tuominen:4:2
+Juha Erälaukko:Petteri Sevon:6:2
+Justus Erälaukko:Santtu Sainio:2:5
+Mikko Haverinen:Janne Rantanen:0:5
+Esa Heilimo:Teuvo Moisa:1:3
+Jani Herlevi:Petrus Miettinen:2:3
+Ismo Lahtinen:Lari Metsälä:2:2
+END-OF-ROUND
+ROUND:3
+(Niko Tuominen)
+Anita Tuovinen:Petteri Sevon:1:3
+Timo Toivonen:Santtu Sainio:2:6
+Juha Erälaukko:Janne Rantanen:6:4
+Justus Erälaukko:Teuvo Moisa:0:5
+Mikko Haverinen:Petrus Miettinen:4:1
+Esa Heilimo:Lari Metsälä:1:1
+Jani Herlevi:Ismo Lahtinen:1:3
+END-OF-ROUND
+ROUND:4
+(Petteri Sevon)
+Niko Tuominen:Santtu Sainio:1:2
+Anita Tuovinen:Janne Rantanen:3:3
+Timo Toivonen:Teuvo Moisa:4:3
+Juha Erälaukko:Petrus Miettinen:8:3
+Justus Erälaukko:Lari Metsälä:0:2
+Mikko Haverinen:Ismo Lahtinen:1:7
+Esa Heilimo:Jani Herlevi:2:3
+END-OF-ROUND
+ROUND:5
+(Santtu Sainio)
+Petteri Sevon:Janne Rantanen:0:4
+Niko Tuominen:Teuvo Moisa:3:4
+Anita Tuovinen:Petrus Miettinen:0:4
+Timo Toivonen:Lari Metsälä:5:2
+Juha Erälaukko:Ismo Lahtinen:2:0
+Justus Erälaukko:Jani Herlevi:1:6
+Mikko Haverinen:Esa Heilimo:2:1
+END-OF-ROUND
+ROUND:6
+(Janne Rantanen)
+Santtu Sainio:Teuvo Moisa:3:2
+Petteri Sevon:Petrus Miettinen:6:3
+Niko Tuominen:Lari Metsälä:4:1
+Anita Tuovinen:Ismo Lahtinen:0:7
+Timo Toivonen:Jani Herlevi:3:1
+Juha Erälaukko:Esa Heilimo:2:2
+Justus Erälaukko:Mikko Haverinen:1:2
+END-OF-ROUND
+ROUND:7
+(Teuvo Moisa)
+Janne Rantanen:Petrus Miettinen:0:6
+Santtu Sainio:Lari Metsälä:4:2
+Petteri Sevon:Ismo Lahtinen:5:2
+Niko Tuominen:Jani Herlevi:2:3
+Anita Tuovinen:Esa Heilimo:0:4
+Timo Toivonen:Mikko Haverinen:3:1
+Juha Erälaukko:Justus Erälaukko:0:1
+END-OF-ROUND
+ROUND:8
+(Petrus Miettinen)
+Teuvo Moisa:Lari Metsälä:3:0
+Janne Rantanen:Ismo Lahtinen:4:1
+Santtu Sainio:Jani Herlevi:2:2
+Petteri Sevon:Esa Heilimo:2:2
+Niko Tuominen:Mikko Haverinen:3:0
+Anita Tuovinen:Justus Erälaukko:0:2
+Timo Toivonen:Juha Erälaukko:3:5
+END-OF-ROUND
+ROUND:9
+(Lari Metsälä)
+Petrus Miettinen:Ismo Lahtinen:5:1
+Teuvo Moisa:Jani Herlevi:4:2
+Janne Rantanen:Esa Heilimo:6:1
+Santtu Sainio:Mikko Haverinen:2:1
+Petteri Sevon:Justus Erälaukko:4:0
+Niko Tuominen:Juha Erälaukko:3:4
+Anita Tuovinen:Timo Toivonen:0:3
+END-OF-ROUND
+ROUND:10
+(Ismo Lahtinen)
+Lari Metsälä:Jani Herlevi:3:3
+Petrus Miettinen:Esa Heilimo:3:1
+Teuvo Moisa:Mikko Haverinen:1:4
+Janne Rantanen:Justus Erälaukko:3:1
+Santtu Sainio:Juha Erälaukko:0:2
+Petteri Sevon:Timo Toivonen:5:3
+Niko Tuominen:Anita Tuovinen:7:0
+END-OF-ROUND
+ROUND:11
+(Jani Herlevi)
+Ismo Lahtinen:Esa Heilimo:6:0
+Lari Metsälä:Mikko Haverinen:2:3
+Petrus Miettinen:Justus Erälaukko:4:1
+Teuvo Moisa:Juha Erälaukko:1:5
+Janne Rantanen:Timo Toivonen:3:5
+Santtu Sainio:Anita Tuovinen:8:1
+Petteri Sevon:Niko Tuominen:5:1
+END-OF-ROUND
+ROUND:12
+(Esa Heilimo)
+Jani Herlevi:Mikko Haverinen:3:3
+Ismo Lahtinen:Justus Erälaukko:4:1
+Lari Metsälä:Juha Erälaukko:0:4
+Petrus Miettinen:Timo Toivonen:3:3
+Teuvo Moisa:Anita Tuovinen:4:0
+Janne Rantanen:Niko Tuominen:5:5
+Santtu Sainio:Petteri Sevon:3:1
+END-OF-ROUND
+ROUND:13
+(Mikko Haverinen)
+Esa Heilimo:Justus Erälaukko:3:2
+Jani Herlevi:Juha Erälaukko:1:1
+Ismo Lahtinen:Timo Toivonen:4:3
+Lari Metsälä:Anita Tuovinen:4:0
+Petrus Miettinen:Niko Tuominen:3:3
+Teuvo Moisa:Petteri Sevon:2:1
+Janne Rantanen:Santtu Sainio:5:3
+END-OF-ROUND
+ROUND:14
+(Justus Erälaukko)
+Mikko Haverinen:Juha Erälaukko:2:4
+Esa Heilimo:Timo Toivonen:1:2
+Jani Herlevi:Anita Tuovinen:4:3
+Ismo Lahtinen:Niko Tuominen:1:2
+Lari Metsälä:Petteri Sevon:1:3
+Petrus Miettinen:Santtu Sainio:1:9
+Teuvo Moisa:Janne Rantanen:2:6
+END-OF-ROUND
+ROUND:15
+(Juha Erälaukko)
+Justus Erälaukko:Timo Toivonen:1:2
+Mikko Haverinen:Anita Tuovinen:3:1
+Esa Heilimo:Niko Tuominen:2:5
+Jani Herlevi:Petteri Sevon:6:3
+Ismo Lahtinen:Santtu Sainio:6:2
+Lari Metsälä:Janne Rantanen:0:1
+Petrus Miettinen:Teuvo Moisa:2:1
+END-OF-ROUND
+END-OF-DIVISION
+PLAYOFFS-SIZE:3
+SEEDINGMODEL:CREATEDYNAMIC
+PLAYOFF-SIZE:2
+PLAYOFFPAIR
+Juha Erälaukko:Timo Toivonen:3:0
+Juha Erälaukko:Timo Toivonen:4:1
+Juha Erälaukko:Timo Toivonen
+Juha Erälaukko:Timo Toivonen
+Juha Erälaukko:Timo Toivonen
+Juha Erälaukko:Timo Toivonen
+Juha Erälaukko:Timo Toivonen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:4
+PLAYOFFPAIR
+Juha Erälaukko:Petteri Sevon:3:1
+Juha Erälaukko:Petteri Sevon:3:4:j
+Juha Erälaukko:Petteri Sevon:3:2
+Juha Erälaukko:Petteri Sevon
+Juha Erälaukko:Petteri Sevon
+Juha Erälaukko:Petteri Sevon
+Juha Erälaukko:Petteri Sevon
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Timo Toivonen:Ismo Lahtinen:3:2
+Timo Toivonen:Ismo Lahtinen:5:2
+Timo Toivonen:Ismo Lahtinen
+Timo Toivonen:Ismo Lahtinen
+Timo Toivonen:Ismo Lahtinen
+Timo Toivonen:Ismo Lahtinen
+Timo Toivonen:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:8
+PLAYOFFPAIR
+Juha Erälaukko:Teuvo Moisa:2:1
+Juha Erälaukko:Teuvo Moisa:3:0
+Juha Erälaukko:Teuvo Moisa
+Juha Erälaukko:Teuvo Moisa
+Juha Erälaukko:Teuvo Moisa
+Juha Erälaukko:Teuvo Moisa
+Juha Erälaukko:Teuvo Moisa
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Santtu Sainio:Petteri Sevon:2:8
+Santtu Sainio:Petteri Sevon:3:5
+Santtu Sainio:Petteri Sevon
+Santtu Sainio:Petteri Sevon
+Santtu Sainio:Petteri Sevon
+Santtu Sainio:Petteri Sevon
+Santtu Sainio:Petteri Sevon
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Janne Rantanen:Ismo Lahtinen:4:5:j
+Janne Rantanen:Ismo Lahtinen:4:3:j
+Janne Rantanen:Ismo Lahtinen:2:6
+Janne Rantanen:Ismo Lahtinen
+Janne Rantanen:Ismo Lahtinen
+Janne Rantanen:Ismo Lahtinen
+Janne Rantanen:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Timo Toivonen:Petrus Miettinen:7:2
+Timo Toivonen:Petrus Miettinen:2:3
+Timo Toivonen:Petrus Miettinen:4:3
+Timo Toivonen:Petrus Miettinen
+Timo Toivonen:Petrus Miettinen
+Timo Toivonen:Petrus Miettinen
+Timo Toivonen:Petrus Miettinen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLACEMENTMATCHES:1
+PLAYOFF-SIZE:15
+PLAYOFFPAIR
+Juha Erälaukko:Santtu Sainio
+Juha Erälaukko:Santtu Sainio
+Juha Erälaukko:Santtu Sainio
+Juha Erälaukko:Santtu Sainio
+Juha Erälaukko:Santtu Sainio
+Juha Erälaukko:Santtu Sainio
+Juha Erälaukko:Santtu Sainio
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Janne Rantanen:Timo Toivonen
+Janne Rantanen:Timo Toivonen
+Janne Rantanen:Timo Toivonen
+Janne Rantanen:Timo Toivonen
+Janne Rantanen:Timo Toivonen
+Janne Rantanen:Timo Toivonen
+Janne Rantanen:Timo Toivonen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Teuvo Moisa
+Petteri Sevon:Teuvo Moisa
+Petteri Sevon:Teuvo Moisa
+Petteri Sevon:Teuvo Moisa
+Petteri Sevon:Teuvo Moisa
+Petteri Sevon:Teuvo Moisa
+Petteri Sevon:Teuvo Moisa
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Mikko Haverinen:Jani Herlevi:2:1
+Mikko Haverinen:Jani Herlevi
+Mikko Haverinen:Jani Herlevi
+Mikko Haverinen:Jani Herlevi
+Mikko Haverinen:Jani Herlevi
+Mikko Haverinen:Jani Herlevi
+Mikko Haverinen:Jani Herlevi
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Niko Tuominen:Lari Metsälä:1:2
+Niko Tuominen:Lari Metsälä
+Niko Tuominen:Lari Metsälä
+Niko Tuominen:Lari Metsälä
+Niko Tuominen:Lari Metsälä
+Niko Tuominen:Lari Metsälä
+Niko Tuominen:Lari Metsälä
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Esa Heilimo:Justus Erälaukko:2:1:j
+Esa Heilimo:Justus Erälaukko
+Esa Heilimo:Justus Erälaukko
+Esa Heilimo:Justus Erälaukko
+Esa Heilimo:Justus Erälaukko
+Esa Heilimo:Justus Erälaukko
+Esa Heilimo:Justus Erälaukko
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+END-OF-PLACEMENTMATCHES

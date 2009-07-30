@@ -1,0 +1,274 @@
+TOURNAMENT-SIZE:1
+DIVISION:Lohko 1
+PLAYERS:10
+Mikko Haverinen
+Mikael Haverinen
+Jani Herlevi
+Lassi Kostamo
+Ismo Lahtinen
+Angi Mauranen
+Teuvo Moisa
+Santtu Sainio
+Niko Tuominen
+Juha Erälaukko
+END-OF-PLAYERS
+ROUNDS:22
+ROUND:1
+(Mikko Haverinen)
+X:Mikael Haverinen
+Jani Herlevi:Juha Erälaukko:0:4
+Lassi Kostamo:Niko Tuominen:5:2
+Ismo Lahtinen:Santtu Sainio:4:2
+Angi Mauranen:Teuvo Moisa:4:3
+END-OF-ROUND
+ROUND:2
+(Mikael Haverinen)
+Mikko Haverinen:Juha Erälaukko:2:5
+X:Niko Tuominen
+Jani Herlevi:Santtu Sainio:3:5
+Lassi Kostamo:Teuvo Moisa:6:1
+Ismo Lahtinen:Angi Mauranen:8:1
+END-OF-ROUND
+ROUND:3
+(Juha Erälaukko)
+Mikael Haverinen:Niko Tuominen:1:3
+Mikko Haverinen:Santtu Sainio:0:2
+X:Teuvo Moisa
+Jani Herlevi:Angi Mauranen:2:2
+Lassi Kostamo:Ismo Lahtinen:2:6
+END-OF-ROUND
+ROUND:4
+(Niko Tuominen)
+Juha Erälaukko:Santtu Sainio:1:3
+Mikael Haverinen:Teuvo Moisa:2:3
+Mikko Haverinen:Angi Mauranen:3:3
+X:Ismo Lahtinen
+Jani Herlevi:Lassi Kostamo:1:4
+END-OF-ROUND
+ROUND:5
+(Santtu Sainio)
+Niko Tuominen:Teuvo Moisa:5:0
+Juha Erälaukko:Angi Mauranen:1:1
+Mikael Haverinen:Ismo Lahtinen:1:5
+Mikko Haverinen:Lassi Kostamo:3:4
+X:Jani Herlevi
+END-OF-ROUND
+ROUND:6
+(Teuvo Moisa)
+Santtu Sainio:Angi Mauranen:4:2
+Niko Tuominen:Ismo Lahtinen:1:1
+Juha Erälaukko:Lassi Kostamo:3:2
+Mikael Haverinen:Jani Herlevi:1:2
+Mikko Haverinen:X
+END-OF-ROUND
+ROUND:7
+(Angi Mauranen)
+Teuvo Moisa:Ismo Lahtinen:3:5
+Santtu Sainio:Lassi Kostamo:2:2
+Niko Tuominen:Jani Herlevi:3:1
+Juha Erälaukko:X
+Mikael Haverinen:Mikko Haverinen:2:1
+END-OF-ROUND
+ROUND:8
+(Ismo Lahtinen)
+Angi Mauranen:Lassi Kostamo:2:6
+Teuvo Moisa:Jani Herlevi:3:1
+Santtu Sainio:X
+Niko Tuominen:Mikko Haverinen:3:0
+Juha Erälaukko:Mikael Haverinen:3:4
+END-OF-ROUND
+ROUND:9
+(Lassi Kostamo)
+Ismo Lahtinen:Jani Herlevi:9:2
+Angi Mauranen:X
+Teuvo Moisa:Mikko Haverinen:2:4
+Santtu Sainio:Mikael Haverinen:3:1
+Niko Tuominen:Juha Erälaukko:2:4
+END-OF-ROUND
+ROUND:10
+(Jani Herlevi)
+Lassi Kostamo:X
+Ismo Lahtinen:Mikko Haverinen:2:3
+Angi Mauranen:Mikael Haverinen:3:2
+Teuvo Moisa:Juha Erälaukko:2:5
+Santtu Sainio:Niko Tuominen:5:3
+END-OF-ROUND
+ROUND:11
+(X)
+Jani Herlevi:Mikko Haverinen:3:2
+Lassi Kostamo:Mikael Haverinen:2:0
+Ismo Lahtinen:Juha Erälaukko:1:1
+Angi Mauranen:Niko Tuominen:2:2
+Teuvo Moisa:Santtu Sainio:1:4
+END-OF-ROUND
+ROUND:12
+(Mikko Haverinen)
+X:Mikael Haverinen
+Jani Herlevi:Juha Erälaukko:1:2
+Lassi Kostamo:Niko Tuominen:6:0
+Ismo Lahtinen:Santtu Sainio:1:4
+Angi Mauranen:Teuvo Moisa:1:0
+END-OF-ROUND
+ROUND:13
+(Mikael Haverinen)
+Mikko Haverinen:Juha Erälaukko:2:1
+X:Niko Tuominen
+Jani Herlevi:Santtu Sainio:1:3
+Lassi Kostamo:Teuvo Moisa:4:1
+Ismo Lahtinen:Angi Mauranen:7:2
+END-OF-ROUND
+ROUND:14
+(Juha Erälaukko)
+Mikael Haverinen:Niko Tuominen:3:7
+Mikko Haverinen:Santtu Sainio:3:5
+X:Teuvo Moisa
+Jani Herlevi:Angi Mauranen:2:6
+Lassi Kostamo:Ismo Lahtinen:3:3
+END-OF-ROUND
+ROUND:15
+(Niko Tuominen)
+Juha Erälaukko:Santtu Sainio:3:0
+Mikael Haverinen:Teuvo Moisa:2:6
+Mikko Haverinen:Angi Mauranen:1:5
+X:Ismo Lahtinen
+Jani Herlevi:Lassi Kostamo:1:1
+END-OF-ROUND
+ROUND:16
+(Santtu Sainio)
+Niko Tuominen:Teuvo Moisa:2:1
+Juha Erälaukko:Angi Mauranen:3:1
+Mikael Haverinen:Ismo Lahtinen:1:3
+Mikko Haverinen:Lassi Kostamo:1:6
+X:Jani Herlevi
+END-OF-ROUND
+ROUND:17
+(Teuvo Moisa)
+Santtu Sainio:Angi Mauranen:5:3
+Niko Tuominen:Ismo Lahtinen:0:3
+Juha Erälaukko:Lassi Kostamo:1:1
+Mikael Haverinen:Jani Herlevi:1:6
+Mikko Haverinen:X
+END-OF-ROUND
+ROUND:18
+(Angi Mauranen)
+Teuvo Moisa:Ismo Lahtinen:1:3
+Santtu Sainio:Lassi Kostamo:2:4
+Niko Tuominen:Jani Herlevi:5:3
+Juha Erälaukko:X
+Mikael Haverinen:Mikko Haverinen:0:1
+END-OF-ROUND
+ROUND:19
+(Ismo Lahtinen)
+Angi Mauranen:Lassi Kostamo:2:2
+Teuvo Moisa:Jani Herlevi:2:1
+Santtu Sainio:X
+Niko Tuominen:Mikko Haverinen:0:2
+Juha Erälaukko:Mikael Haverinen:5:2
+END-OF-ROUND
+ROUND:20
+(Lassi Kostamo)
+Ismo Lahtinen:Jani Herlevi:3:2
+Angi Mauranen:X
+Teuvo Moisa:Mikko Haverinen:3:2
+Santtu Sainio:Mikael Haverinen:5:2
+Niko Tuominen:Juha Erälaukko:3:4
+END-OF-ROUND
+ROUND:21
+(Jani Herlevi)
+Lassi Kostamo:X
+Ismo Lahtinen:Mikko Haverinen:1:1
+Angi Mauranen:Mikael Haverinen:8:0
+Teuvo Moisa:Juha Erälaukko:0:3
+Santtu Sainio:Niko Tuominen:2:0
+END-OF-ROUND
+ROUND:22
+(X)
+Jani Herlevi:Mikko Haverinen:5:1
+Lassi Kostamo:Mikael Haverinen:0:1
+Ismo Lahtinen:Juha Erälaukko:1:3
+Angi Mauranen:Niko Tuominen:1:2
+Teuvo Moisa:Santtu Sainio:0:7
+END-OF-ROUND
+END-OF-DIVISION
+PLAYOFFS-SIZE:2
+SEEDINGMODEL:CREATEDYNAMIC
+PLAYOFF-SIZE:2
+PLAYOFFPAIR
+Santtu Sainio:Juha Erälaukko:2:3:j
+Santtu Sainio:Juha Erälaukko:4:2
+Santtu Sainio:Juha Erälaukko:3:4
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:4
+PLAYOFFPAIR
+Santtu Sainio:Lassi Kostamo:1:2
+Santtu Sainio:Lassi Kostamo:4:2
+Santtu Sainio:Lassi Kostamo:3:1
+Santtu Sainio:Lassi Kostamo
+Santtu Sainio:Lassi Kostamo
+Santtu Sainio:Lassi Kostamo
+Santtu Sainio:Lassi Kostamo
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Juha Erälaukko:Ismo Lahtinen:3:4
+Juha Erälaukko:Ismo Lahtinen:2:1
+Juha Erälaukko:Ismo Lahtinen:5:1
+Juha Erälaukko:Ismo Lahtinen
+Juha Erälaukko:Ismo Lahtinen
+Juha Erälaukko:Ismo Lahtinen
+Juha Erälaukko:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLACEMENTMATCHES:1
+PLAYOFF-SIZE:10
+PLAYOFFPAIR
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+Santtu Sainio:Juha Erälaukko
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Ismo Lahtinen:Lassi Kostamo
+Ismo Lahtinen:Lassi Kostamo
+Ismo Lahtinen:Lassi Kostamo
+Ismo Lahtinen:Lassi Kostamo
+Ismo Lahtinen:Lassi Kostamo
+Ismo Lahtinen:Lassi Kostamo
+Ismo Lahtinen:Lassi Kostamo
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Niko Tuominen:Angi Mauranen:1:8
+Niko Tuominen:Angi Mauranen
+Niko Tuominen:Angi Mauranen
+Niko Tuominen:Angi Mauranen
+Niko Tuominen:Angi Mauranen
+Niko Tuominen:Angi Mauranen
+Niko Tuominen:Angi Mauranen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Mikko Haverinen:Teuvo Moisa:2:6
+Mikko Haverinen:Teuvo Moisa
+Mikko Haverinen:Teuvo Moisa
+Mikko Haverinen:Teuvo Moisa
+Mikko Haverinen:Teuvo Moisa
+Mikko Haverinen:Teuvo Moisa
+Mikko Haverinen:Teuvo Moisa
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Jani Herlevi:Mikael Haverinen:7:3
+Jani Herlevi:Mikael Haverinen
+Jani Herlevi:Mikael Haverinen
+Jani Herlevi:Mikael Haverinen
+Jani Herlevi:Mikael Haverinen
+Jani Herlevi:Mikael Haverinen
+Jani Herlevi:Mikael Haverinen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+END-OF-PLACEMENTMATCHES

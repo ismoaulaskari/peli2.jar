@@ -1,0 +1,357 @@
+TOURNAMENT-SIZE:1
+DIVISION:Lohko 1
+PLAYERS:17
+Santtu Sainio
+Lauri Eronen
+Mikko Haverinen
+Ismo Lahtinen
+Janne Roivas
+Tim Roivas
+Petteri Sevon
+Magnus Ahlberg
+Mika Myllykangas
+Ahti Lampi
+Angi Mauranen
+Teuvo Moisa
+Jani Herlevi
+Lauri Happo
+Ismo Aulaskari
+Jari Eskelinen
+Tom Hägg
+END-OF-PLAYERS
+ROUNDS:17
+ROUND:1
+(Lauri Eronen)
+Santtu Sainio:Mikko Haverinen:2:0
+Ismo Lahtinen:Tom Hägg:5:3
+Janne Roivas:Jari Eskelinen:1:2
+Tim Roivas:Ismo Aulaskari:4:6
+Petteri Sevon:Lauri Happo:6:7
+Magnus Ahlberg:Jani Herlevi:7:0
+Mika Myllykangas:Teuvo Moisa:5:0
+Ahti Lampi:Angi Mauranen:13:1
+END-OF-ROUND
+ROUND:2
+(Mikko Haverinen)
+Lauri Eronen:Tom Hägg:3:4
+Santtu Sainio:Jari Eskelinen:4:2
+Ismo Lahtinen:Ismo Aulaskari:0:6
+Janne Roivas:Lauri Happo:4:6
+Tim Roivas:Jani Herlevi:1:2
+Petteri Sevon:Teuvo Moisa:2:2
+Magnus Ahlberg:Angi Mauranen:6:0
+Mika Myllykangas:Ahti Lampi:2:5
+END-OF-ROUND
+ROUND:3
+(Tom Hägg)
+Mikko Haverinen:Jari Eskelinen:2:12
+Lauri Eronen:Ismo Aulaskari:3:1
+Santtu Sainio:Lauri Happo:1:2
+Ismo Lahtinen:Jani Herlevi:2:2
+Janne Roivas:Teuvo Moisa:1:2
+Tim Roivas:Angi Mauranen:3:4
+Petteri Sevon:Ahti Lampi:1:6
+Magnus Ahlberg:Mika Myllykangas:0:3
+END-OF-ROUND
+ROUND:4
+(Jari Eskelinen)
+Tom Hägg:Ismo Aulaskari:2:5
+Mikko Haverinen:Lauri Happo:1:5
+Lauri Eronen:Jani Herlevi:2:1
+Santtu Sainio:Teuvo Moisa:5:1
+Ismo Lahtinen:Angi Mauranen:6:2
+Janne Roivas:Ahti Lampi:1:8
+Tim Roivas:Mika Myllykangas:2:6
+Petteri Sevon:Magnus Ahlberg:3:4
+END-OF-ROUND
+ROUND:5
+(Ismo Aulaskari)
+Jari Eskelinen:Lauri Happo:4:4
+Tom Hägg:Jani Herlevi:4:2
+Mikko Haverinen:Teuvo Moisa:3:0
+Lauri Eronen:Angi Mauranen:3:2
+Santtu Sainio:Ahti Lampi:1:5
+Ismo Lahtinen:Mika Myllykangas:1:2
+Janne Roivas:Magnus Ahlberg:1:4
+Tim Roivas:Petteri Sevon:1:5
+END-OF-ROUND
+ROUND:6
+(Lauri Happo)
+Ismo Aulaskari:Jani Herlevi:2:0
+Jari Eskelinen:Teuvo Moisa:5:2
+Tom Hägg:Angi Mauranen:6:3
+Mikko Haverinen:Ahti Lampi:2:3
+Lauri Eronen:Mika Myllykangas:0:2
+Santtu Sainio:Magnus Ahlberg:1:3
+Ismo Lahtinen:Petteri Sevon:2:5
+Janne Roivas:Tim Roivas:4:4
+END-OF-ROUND
+ROUND:7
+(Jani Herlevi)
+Lauri Happo:Teuvo Moisa:2:3
+Ismo Aulaskari:Angi Mauranen:5:3
+Jari Eskelinen:Ahti Lampi:0:7
+Tom Hägg:Mika Myllykangas:0:7
+Mikko Haverinen:Magnus Ahlberg:3:3
+Lauri Eronen:Petteri Sevon:2:3
+Santtu Sainio:Tim Roivas:2:1
+Ismo Lahtinen:Janne Roivas:6:2
+END-OF-ROUND
+ROUND:8
+(Teuvo Moisa)
+Jani Herlevi:Angi Mauranen:2:1
+Lauri Happo:Ahti Lampi:1:6
+Ismo Aulaskari:Mika Myllykangas:1:2
+Jari Eskelinen:Magnus Ahlberg:2:2
+Tom Hägg:Petteri Sevon:4:5
+Mikko Haverinen:Tim Roivas:4:2
+Lauri Eronen:Janne Roivas:6:2
+Santtu Sainio:Ismo Lahtinen:2:2
+END-OF-ROUND
+ROUND:9
+(Angi Mauranen)
+Teuvo Moisa:Ahti Lampi:1:4
+Jani Herlevi:Mika Myllykangas:1:9
+Lauri Happo:Magnus Ahlberg:1:5
+Ismo Aulaskari:Petteri Sevon:3:2
+Jari Eskelinen:Tim Roivas:4:6
+Tom Hägg:Janne Roivas:3:3
+Mikko Haverinen:Ismo Lahtinen:3:4
+Lauri Eronen:Santtu Sainio:2:3
+END-OF-ROUND
+ROUND:10
+(Ahti Lampi)
+Angi Mauranen:Mika Myllykangas:1:1
+Teuvo Moisa:Magnus Ahlberg:1:6
+Jani Herlevi:Petteri Sevon:0:3
+Lauri Happo:Tim Roivas:3:4
+Ismo Aulaskari:Janne Roivas:6:4
+Jari Eskelinen:Ismo Lahtinen:1:1
+Tom Hägg:Santtu Sainio:4:3
+Mikko Haverinen:Lauri Eronen:0:1
+END-OF-ROUND
+ROUND:11
+(Mika Myllykangas)
+Ahti Lampi:Magnus Ahlberg:1:2
+Angi Mauranen:Petteri Sevon:3:2
+Teuvo Moisa:Tim Roivas:3:3
+Jani Herlevi:Janne Roivas:5:4
+Lauri Happo:Ismo Lahtinen:3:5
+Ismo Aulaskari:Santtu Sainio:5:2
+Jari Eskelinen:Lauri Eronen:5:0
+Tom Hägg:Mikko Haverinen:2:1
+END-OF-ROUND
+ROUND:12
+(Magnus Ahlberg)
+Mika Myllykangas:Petteri Sevon:1:3
+Ahti Lampi:Tim Roivas:2:1
+Angi Mauranen:Janne Roivas:1:4
+Teuvo Moisa:Ismo Lahtinen:2:3
+Jani Herlevi:Santtu Sainio:2:1
+Lauri Happo:Lauri Eronen:3:6
+Ismo Aulaskari:Mikko Haverinen:1:1
+Jari Eskelinen:Tom Hägg:2:2
+END-OF-ROUND
+ROUND:13
+(Petteri Sevon)
+Magnus Ahlberg:Tim Roivas:4:1
+Mika Myllykangas:Janne Roivas:7:1
+Ahti Lampi:Ismo Lahtinen:5:1
+Angi Mauranen:Santtu Sainio:2:4
+Teuvo Moisa:Lauri Eronen:1:5
+Jani Herlevi:Mikko Haverinen:1:1
+Lauri Happo:Tom Hägg:1:7
+Ismo Aulaskari:Jari Eskelinen:5:2
+END-OF-ROUND
+ROUND:14
+(Tim Roivas)
+Petteri Sevon:Janne Roivas:4:1
+Magnus Ahlberg:Ismo Lahtinen:3:2
+Mika Myllykangas:Santtu Sainio:4:4
+Ahti Lampi:Lauri Eronen:4:0
+Angi Mauranen:Mikko Haverinen:0:1
+Teuvo Moisa:Tom Hägg:1:6
+Jani Herlevi:Jari Eskelinen:4:2
+Lauri Happo:Ismo Aulaskari:3:5
+END-OF-ROUND
+ROUND:15
+(Janne Roivas)
+Tim Roivas:Ismo Lahtinen:2:4
+Petteri Sevon:Santtu Sainio:3:3
+Magnus Ahlberg:Lauri Eronen:4:3
+Mika Myllykangas:Mikko Haverinen:4:1
+Ahti Lampi:Tom Hägg:3:1
+Angi Mauranen:Jari Eskelinen:3:3
+Teuvo Moisa:Ismo Aulaskari:1:5
+Jani Herlevi:Lauri Happo:5:6
+END-OF-ROUND
+ROUND:16
+(Ismo Lahtinen)
+Janne Roivas:Santtu Sainio:5:3
+Tim Roivas:Lauri Eronen:1:4
+Petteri Sevon:Mikko Haverinen:3:2
+Magnus Ahlberg:Tom Hägg:2:2
+Mika Myllykangas:Jari Eskelinen:3:0
+Ahti Lampi:Ismo Aulaskari:1:0
+Angi Mauranen:Lauri Happo:1:3
+Teuvo Moisa:Jani Herlevi:3:1
+END-OF-ROUND
+ROUND:17
+(Santtu Sainio)
+Ismo Lahtinen:Lauri Eronen:1:2
+Janne Roivas:Mikko Haverinen:4:0
+Tim Roivas:Tom Hägg:4:3
+Petteri Sevon:Jari Eskelinen:4:2
+Magnus Ahlberg:Ismo Aulaskari:2:4
+Mika Myllykangas:Lauri Happo:3:4
+Ahti Lampi:Jani Herlevi:8:1
+Angi Mauranen:Teuvo Moisa:5:3
+END-OF-ROUND
+END-OF-DIVISION
+PLAYOFFS-SIZE:3
+SEEDINGMODEL:CREATEDYNAMIC
+PLAYOFF-SIZE:2
+PLAYOFFPAIR
+Ahti Lampi:Magnus Ahlberg:3:1
+Ahti Lampi:Magnus Ahlberg
+Ahti Lampi:Magnus Ahlberg
+Ahti Lampi:Magnus Ahlberg
+Ahti Lampi:Magnus Ahlberg
+Ahti Lampi:Magnus Ahlberg
+Ahti Lampi:Magnus Ahlberg
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:4
+PLAYOFFPAIR
+Ahti Lampi:Mika Myllykangas:1:2
+Ahti Lampi:Mika Myllykangas:6:0
+Ahti Lampi:Mika Myllykangas:6:2
+Ahti Lampi:Mika Myllykangas
+Ahti Lampi:Mika Myllykangas
+Ahti Lampi:Mika Myllykangas
+Ahti Lampi:Mika Myllykangas
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Ismo Aulaskari:Magnus Ahlberg:4:2
+Ismo Aulaskari:Magnus Ahlberg:3:4
+Ismo Aulaskari:Magnus Ahlberg:2:3
+Ismo Aulaskari:Magnus Ahlberg
+Ismo Aulaskari:Magnus Ahlberg
+Ismo Aulaskari:Magnus Ahlberg
+Ismo Aulaskari:Magnus Ahlberg
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:8
+PLAYOFFPAIR
+Ahti Lampi:Tom Hägg:3:2
+Ahti Lampi:Tom Hägg:5:0
+Ahti Lampi:Tom Hägg
+Ahti Lampi:Tom Hägg
+Ahti Lampi:Tom Hägg
+Ahti Lampi:Tom Hägg
+Ahti Lampi:Tom Hägg
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Ismo Aulaskari:Ismo Lahtinen:3:2
+Ismo Aulaskari:Ismo Lahtinen:2:1
+Ismo Aulaskari:Ismo Lahtinen
+Ismo Aulaskari:Ismo Lahtinen
+Ismo Aulaskari:Ismo Lahtinen
+Ismo Aulaskari:Ismo Lahtinen
+Ismo Aulaskari:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Magnus Ahlberg:Lauri Eronen:6:0
+Magnus Ahlberg:Lauri Eronen:5:2
+Magnus Ahlberg:Lauri Eronen
+Magnus Ahlberg:Lauri Eronen
+Magnus Ahlberg:Lauri Eronen
+Magnus Ahlberg:Lauri Eronen
+Magnus Ahlberg:Lauri Eronen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Mika Myllykangas:Petteri Sevon:4:2
+Mika Myllykangas:Petteri Sevon:5:1
+Mika Myllykangas:Petteri Sevon
+Mika Myllykangas:Petteri Sevon
+Mika Myllykangas:Petteri Sevon
+Mika Myllykangas:Petteri Sevon
+Mika Myllykangas:Petteri Sevon
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLACEMENTMATCHES:1
+PLAYOFF-SIZE:17
+PLAYOFFPAIR
+Ahti Lampi:Ismo Aulaskari
+Ahti Lampi:Ismo Aulaskari
+Ahti Lampi:Ismo Aulaskari
+Ahti Lampi:Ismo Aulaskari
+Ahti Lampi:Ismo Aulaskari
+Ahti Lampi:Ismo Aulaskari
+Ahti Lampi:Ismo Aulaskari
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Magnus Ahlberg:Mika Myllykangas
+Magnus Ahlberg:Mika Myllykangas
+Magnus Ahlberg:Mika Myllykangas
+Magnus Ahlberg:Mika Myllykangas
+Magnus Ahlberg:Mika Myllykangas
+Magnus Ahlberg:Mika Myllykangas
+Magnus Ahlberg:Mika Myllykangas
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Ismo Lahtinen:Tom Hägg
+Ismo Lahtinen:Tom Hägg
+Ismo Lahtinen:Tom Hägg
+Ismo Lahtinen:Tom Hägg
+Ismo Lahtinen:Tom Hägg
+Ismo Lahtinen:Tom Hägg
+Ismo Lahtinen:Tom Hägg
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Lauri Happo:Santtu Sainio:0:1:j
+Lauri Happo:Santtu Sainio
+Lauri Happo:Santtu Sainio
+Lauri Happo:Santtu Sainio
+Lauri Happo:Santtu Sainio
+Lauri Happo:Santtu Sainio
+Lauri Happo:Santtu Sainio
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Jari Eskelinen:Jani Herlevi:3:4:j
+Jari Eskelinen:Jani Herlevi
+Jari Eskelinen:Jani Herlevi
+Jari Eskelinen:Jani Herlevi
+Jari Eskelinen:Jani Herlevi
+Jari Eskelinen:Jani Herlevi
+Jari Eskelinen:Jani Herlevi
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Mikko Haverinen:Angi Mauranen:0:1
+Mikko Haverinen:Angi Mauranen
+Mikko Haverinen:Angi Mauranen
+Mikko Haverinen:Angi Mauranen
+Mikko Haverinen:Angi Mauranen
+Mikko Haverinen:Angi Mauranen
+Mikko Haverinen:Angi Mauranen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Janne Roivas:Teuvo Moisa:3:2
+Janne Roivas:Teuvo Moisa
+Janne Roivas:Teuvo Moisa
+Janne Roivas:Teuvo Moisa
+Janne Roivas:Teuvo Moisa
+Janne Roivas:Teuvo Moisa
+Janne Roivas:Teuvo Moisa
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+END-OF-PLACEMENTMATCHES
