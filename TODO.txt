@@ -57,6 +57,8 @@ Peli.jar
           o HEADLESS-versio /FIXED 1.15.0
           o BUGI: luetut pelaajalistat ei pysy järjestyksessä, koskien playoffeja ja default-aakkosjärjestystä /FIXED 1.15.1
           o blackbox-testauksen alku /1.15.1
+          o headless-sijoituslistabugi /FIXED 1.15.2
+          o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa /FIXED 1.15.3
           o ilmolistan shuffle *
           o tnmt:n/html:n lähetys: *
              *client generoi html:n ja lähettää pjknetiin, katsotaan selaimella tai markulla, JOO
@@ -65,7 +67,6 @@ Peli.jar
           o välierä-, pronssiottelu-, finaalitekstit.. *
           o sarjataulukko tableiksi, css *
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
-          o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa *
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
