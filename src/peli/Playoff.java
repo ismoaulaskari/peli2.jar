@@ -117,6 +117,17 @@ public class Playoff {
         return this.emptyPlayoffs;
     }
 
+    public boolean isFinished() {
+        boolean finished = true;
+        for (int i = 0; i < playoffPairs.length; i++) {
+            if(Integer.parseInt(playoffPairs[i].getHomeWins()) == Integer.parseInt(playoffPairs[i].getAwayWins())) {
+                finished = false;
+            }            
+        }
+
+        return finished;
+    }
+
     public int getSize() {
         return size;
     }

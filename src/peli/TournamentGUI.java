@@ -23,6 +23,8 @@ import javax.swing.table.*;
  */
 public class TournamentGUI extends JPanel {
 
+
+
     TournamentGUI(MainWindow mainwindow, Tournament tournament1, File file) {
         System.setProperty("TournamentFileName", file.getName()); //hack, throws e
         //System.setProperty("TemplateTitle", file.getName()); 
@@ -376,6 +378,15 @@ public class TournamentGUI extends JPanel {
         nextButton.addActionListener(createlistener);
 
         return nextButton;
+    }
+
+    public static boolean playoffsFinished() {
+        return tournament.isPlayoffRoundFinished();
+    }
+
+    public static void warnUnfinishedPlayoff()
+    {
+        JOptionPane.showMessageDialog(null, messages.getString("playoffMustEndInWinner"), messages.getString("unfinishedPlayoff"), 2, null);
     }
 
     /**

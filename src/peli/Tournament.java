@@ -380,6 +380,25 @@ public class Tournament {
         this.seedingModel = seedingModel;
     }
 
+    /**
+     * Checks that existing playoffrounds have winners
+     * @return
+     */
+    public boolean isPlayoffRoundFinished() {
+        if(this.largestPlayoff == 0) {
+            return true;
+        }
+
+        boolean finished = true;
+        for (Object playoff : this.playoffs.values()) {
+            if(! ((Playoff) playoff).isFinished()) {
+                finished = false;                
+            }            
+        }
+
+        return finished;
+    }
+
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
     private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
         for (int i = 0; i < atreeset.length; i++) {

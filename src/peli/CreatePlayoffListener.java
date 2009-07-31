@@ -36,7 +36,12 @@ public class CreatePlayoffListener implements ActionListener {
                     //when loading saved tournament, firstrun should be off
                     TournamentGUI.newPlayoffpane(this.playoffpane);
                 }
-                
+
+                if(! TournamentGUI.playoffsFinished()) {
+                    TournamentGUI.warnUnfinishedPlayoff();
+                    return;
+                }
+
                 JPanel jpanel = TournamentGUI.createPlayoffPanel(Integer.parseInt(size), ae.getActionCommand());
                 if(jpanel == null) {
                     return;
