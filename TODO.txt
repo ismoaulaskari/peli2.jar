@@ -57,20 +57,22 @@ Peli.jar
           o HEADLESS-versio /FIXED 1.15.0
           o BUGI: luetut pelaajalistat ei pysy järjestyksessä, koskien playoffeja ja default-aakkosjärjestystä /FIXED 1.15.1
           o blackbox-testauksen alku /1.15.1
-          o ilmolistan shuffle
-          o tnmt:n/html:n lähetys: 
+          o ilmolistan shuffle *
+          o tnmt:n/html:n lähetys: *
              *client generoi html:n ja lähettää pjknetiin, katsotaan selaimella tai markulla, JOO
              *vai client lähettää tnmt:n iste2:een, java generoi html:n jonka markku lukee EIII 
+          o playoff-viiva *
+          o välierä-, pronssiottelu-, finaalitekstit.. *
+          o sarjataulukko tableiksi, css *
+          o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
+          o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa *
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
-          o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
           o OHJE spjkl:n sivuille
           o default-asetukset jos properties puuttuu 
-          o sarjataulukko tableiksi, css
-          o tuki Platka-ohjelman xml:n tulostamiseen
-          o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa
-          o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa
+          o tuki Platka-ohjelman xml:n tulostamiseen, vai lukemiseen?
+          o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa 
           o hakemistot tiedostovalikossa
           o Alkusarjan tulokset finaalisarjaan ? käsin?
           o duplikaattinimet pois
@@ -84,8 +86,6 @@ Peli.jar
           o tiedostojen avaus eri hakemistoista?
           o uusi turnaus jyrää olemassaolevan
           o boldaus java 1.5.09 /win          
-          o playoff-viiva
-          o välierä-, pronssiottelu-, finaalitekstit..
           o koko nimet? /EI
           o J2ME? /EI, mobiililaitteet kehittyneet pc-tasolle
     *
