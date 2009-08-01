@@ -186,6 +186,17 @@ public class SeriesTable {
 		return seriestable.toString();
 	}
 
+	//hack
+	public String toCssHtmlTable() {
+		StringBuffer seriestable = new StringBuffer();
+
+		for (int i = 0; i < size(); i++)
+			seriestable.append("<tr class=\"seriestablerow\">").append(System.getProperty("line.separator")).
+                    append("<td class=\"seriesorder\">").append(i+1).append("</td>").append(elementAt(i).getCssHtmlTableRow()).
+                    append(System.getProperty("line.separator")).append("</tr>").append(System.getProperty("line.separator"));
+
+		return seriestable.toString();
+	}
 	
 	
 }

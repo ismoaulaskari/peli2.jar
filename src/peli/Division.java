@@ -258,7 +258,7 @@ public class Division {
             return ""; //@TODO strange extra division
         }
 
-        output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toString());
+        output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toCssHtmlTable());
 
         StringBuilder mutualtable = new StringBuilder();
         for (int i = 0; i < seriestable.size(); i++) {

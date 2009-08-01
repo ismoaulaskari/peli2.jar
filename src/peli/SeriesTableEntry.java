@@ -138,6 +138,17 @@ public class SeriesTableEntry extends Player {
         return HtmlTools.tr(s);
     }
 
+     public String getCssHtmlTableRow() {
+        String s = 
+                "<td class=\"seriesname\">" + getName() + "</td>" + "<td class=\"seriesgames\">" + getGames() + "</td>" +
+                "<td class=\"serieswins\">" + getWins() + "</td>" + "<td class=\"seriesties\">" + getTies() + "</td>" +
+                "<td class=\"serieslosses\">" + getLosses() + "</td>" + "<td class=\"seriesscored\">" + getScored() + "</td>" +
+                "<td class=\"seriesminus\">" + "-" + "</td>" + "<td class=\"seriesyielded\">" + getYielded() + "</td>" +
+                "<td class=\"seriespoints\">" + getPoints() + "</td>";
+        return s;
+    }
+
+
     public String getRow() {
         return Tools.format(playerName, 24) + Tools.format(getGames(), 3) + Tools.format(getWins(), 3) + Tools.format(getTies(), 3) + Tools.format(getLosses(), 3) + Tools.format(getScored(), 4) + "-" + Tools.format(getYielded() + "", 3) + Tools.format(getPoints(), 4);
     }
