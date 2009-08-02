@@ -7,7 +7,7 @@ Esa Heilimo
 Netta Jousi
 Ismo Lahtinen
 Angi Mauranen
-Lari Mets‰l‰
+Lari Mets√§l√§
 Petrus Miettinen
 Teuvo Moisa
 Janne Rantanen
@@ -23,7 +23,7 @@ Esa Heilimo:Niko Tuominen:4:2
 Netta Jousi:Petteri Sevon:0:3:dq
 Ismo Lahtinen:Janne Rantanen:5:6
 Angi Mauranen:Teuvo Moisa:3:1
-Lari Mets‰l‰:Petrus Miettinen:0:0
+Lari Mets√§l√§:Petrus Miettinen:0:0
 END-OF-ROUND
 ROUND:2
 (Pasi Vihinen)
@@ -32,7 +32,7 @@ Lauri Happo:Petteri Sevon:5:0
 Esa Heilimo:Janne Rantanen:2:0
 Netta Jousi:Teuvo Moisa:1:3:dq
 Ismo Lahtinen:Petrus Miettinen:2:6
-Angi Mauranen:Lari Mets‰l‰:4:1
+Angi Mauranen:Lari Mets√§l√§:4:1
 END-OF-ROUND
 ROUND:3
 (Niko Tuominen)
@@ -40,7 +40,7 @@ Pasi Vihinen:Petteri Sevon:3:4
 Lauri Eronen:Janne Rantanen:0:6
 Lauri Happo:Teuvo Moisa:9:3
 Esa Heilimo:Petrus Miettinen:2:1
-Netta Jousi:Lari Mets‰l‰:2:3:dq
+Netta Jousi:Lari Mets√§l√§:2:3:dq
 Ismo Lahtinen:Angi Mauranen:2:2
 END-OF-ROUND
 ROUND:4
@@ -48,7 +48,7 @@ ROUND:4
 Niko Tuominen:Janne Rantanen:4:2
 Pasi Vihinen:Teuvo Moisa:4:0
 Lauri Eronen:Petrus Miettinen:7:1
-Lauri Happo:Lari Mets‰l‰:4:2
+Lauri Happo:Lari Mets√§l√§:4:2
 Esa Heilimo:Angi Mauranen:1:2
 Netta Jousi:Ismo Lahtinen:0:5:dq
 END-OF-ROUND
@@ -56,7 +56,7 @@ ROUND:5
 (Janne Rantanen)
 Petteri Sevon:Teuvo Moisa:6:3
 Niko Tuominen:Petrus Miettinen:1:8
-Pasi Vihinen:Lari Mets‰l‰:2:2
+Pasi Vihinen:Lari Mets√§l√§:2:2
 Lauri Eronen:Angi Mauranen:3:4
 Lauri Happo:Ismo Lahtinen:1:1
 Esa Heilimo:Netta Jousi:6:2:dq
@@ -64,7 +64,7 @@ END-OF-ROUND
 ROUND:6
 (Teuvo Moisa)
 Janne Rantanen:Petrus Miettinen:4:2
-Petteri Sevon:Lari Mets‰l‰:1:2
+Petteri Sevon:Lari Mets√§l√§:1:2
 Niko Tuominen:Angi Mauranen:1:3
 Pasi Vihinen:Ismo Lahtinen:4:2
 Lauri Eronen:Netta Jousi:3:4:dq
@@ -72,7 +72,7 @@ Lauri Happo:Esa Heilimo:3:3
 END-OF-ROUND
 ROUND:7
 (Petrus Miettinen)
-Teuvo Moisa:Lari Mets‰l‰:1:4
+Teuvo Moisa:Lari Mets√§l√§:1:4
 Janne Rantanen:Angi Mauranen:5:1
 Petteri Sevon:Ismo Lahtinen:5:2
 Niko Tuominen:Netta Jousi
@@ -80,7 +80,7 @@ Pasi Vihinen:Esa Heilimo:2:2
 Lauri Eronen:Lauri Happo:3:1
 END-OF-ROUND
 ROUND:8
-(Lari Mets‰l‰)
+(Lari Mets√§l√§)
 Petrus Miettinen:Angi Mauranen:4:2
 Teuvo Moisa:Ismo Lahtinen:2:5
 Janne Rantanen:Netta Jousi
@@ -90,7 +90,7 @@ Pasi Vihinen:Lauri Eronen:5:3
 END-OF-ROUND
 ROUND:9
 (Angi Mauranen)
-Lari Mets‰l‰:Ismo Lahtinen:0:6
+Lari Mets√§l√§:Ismo Lahtinen:0:6
 Petrus Miettinen:Netta Jousi
 Teuvo Moisa:Esa Heilimo:1:1
 Janne Rantanen:Lauri Happo:3:2
@@ -100,7 +100,7 @@ END-OF-ROUND
 ROUND:10
 (Ismo Lahtinen)
 Angi Mauranen:Netta Jousi
-Lari Mets‰l‰:Esa Heilimo:4:0
+Lari Mets√§l√§:Esa Heilimo:4:0
 Petrus Miettinen:Lauri Happo:3:7
 Teuvo Moisa:Lauri Eronen:4:3
 Janne Rantanen:Pasi Vihinen:3:2
@@ -110,7 +110,7 @@ ROUND:11
 (Netta Jousi)
 Ismo Lahtinen:Esa Heilimo:4:1
 Angi Mauranen:Lauri Happo:7:2
-Lari Mets‰l‰:Lauri Eronen:1:3
+Lari Mets√§l√§:Lauri Eronen:1:3
 Petrus Miettinen:Pasi Vihinen:2:1
 Teuvo Moisa:Niko Tuominen:6:2
 Janne Rantanen:Petteri Sevon:3:2
@@ -120,7 +120,7 @@ ROUND:12
 Netta Jousi:Lauri Happo
 Ismo Lahtinen:Lauri Eronen:4:3
 Angi Mauranen:Pasi Vihinen:4:2
-Lari Mets‰l‰:Niko Tuominen:2:2
+Lari Mets√§l√§:Niko Tuominen:2:2
 Petrus Miettinen:Petteri Sevon:1:1
 Teuvo Moisa:Janne Rantanen:1:2
 END-OF-ROUND
@@ -130,7 +130,7 @@ Esa Heilimo:Lauri Eronen:4:4
 Netta Jousi:Pasi Vihinen
 Ismo Lahtinen:Niko Tuominen:1:0
 Angi Mauranen:Petteri Sevon:3:5
-Lari Mets‰l‰:Janne Rantanen:5:3
+Lari Mets√§l√§:Janne Rantanen:5:3
 Petrus Miettinen:Teuvo Moisa:3:1
 END-OF-ROUND
 END-OF-DIVISION
@@ -169,13 +169,13 @@ END-OF-PLAYOFFPAIR
 END-OF-PLAYOFF
 PLAYOFF-SIZE:8
 PLAYOFFPAIR
-Janne Rantanen:Lari Mets‰l‰:5:4:j
-Janne Rantanen:Lari Mets‰l‰:1:2:j
-Janne Rantanen:Lari Mets‰l‰:3:1
-Janne Rantanen:Lari Mets‰l‰
-Janne Rantanen:Lari Mets‰l‰
-Janne Rantanen:Lari Mets‰l‰
-Janne Rantanen:Lari Mets‰l‰
+Janne Rantanen:Lari Mets√§l√§:5:4:j
+Janne Rantanen:Lari Mets√§l√§:1:2:j
+Janne Rantanen:Lari Mets√§l√§:3:1
+Janne Rantanen:Lari Mets√§l√§
+Janne Rantanen:Lari Mets√§l√§
+Janne Rantanen:Lari Mets√§l√§
+Janne Rantanen:Lari Mets√§l√§
 END-OF-PLAYOFFPAIR
 PLAYOFFPAIR
 Angi Mauranen:Pasi Vihinen:4:2
@@ -235,13 +235,13 @@ Petrus Miettinen:Ismo Lahtinen
 Petrus Miettinen:Ismo Lahtinen
 END-OF-PLAYOFFPAIR
 PLAYOFFPAIR
-Pasi Vihinen:Lari Mets‰l‰
-Pasi Vihinen:Lari Mets‰l‰
-Pasi Vihinen:Lari Mets‰l‰
-Pasi Vihinen:Lari Mets‰l‰
-Pasi Vihinen:Lari Mets‰l‰
-Pasi Vihinen:Lari Mets‰l‰
-Pasi Vihinen:Lari Mets‰l‰
+Pasi Vihinen:Lari Mets√§l√§
+Pasi Vihinen:Lari Mets√§l√§
+Pasi Vihinen:Lari Mets√§l√§
+Pasi Vihinen:Lari Mets√§l√§
+Pasi Vihinen:Lari Mets√§l√§
+Pasi Vihinen:Lari Mets√§l√§
+Pasi Vihinen:Lari Mets√§l√§
 END-OF-PLAYOFFPAIR
 PLAYOFFPAIR
 Esa Heilimo:Lauri Eronen:2:1

@@ -1,0 +1,313 @@
+TOURNAMENT-SIZE:1
+DIVISION:Lohko 1
+PLAYERS:11
+Netta Jousi
+Lauri Eronen
+Aku Haapalinna
+Ismo Lahtinen
+Angi Mauranen
+Janne Rantanen
+Petteri Sevon
+Rate Staboulis
+Timo Toivonen
+Niko Tuominen
+Pirkka Weijo
+END-OF-PLAYERS
+ROUNDS:22
+ROUND:1
+(Netta Jousi)
+Lauri Eronen:Pirkka Weijo:3:3
+Aku Haapalinna:Niko Tuominen:3:3
+Ismo Lahtinen:Timo Toivonen:1:2
+Angi Mauranen:Rate Staboulis:2:1
+Janne Rantanen:Petteri Sevon:3:2
+END-OF-ROUND
+ROUND:2
+(Pirkka Weijo)
+Netta Jousi:Niko Tuominen:0:5
+Lauri Eronen:Timo Toivonen:4:4
+Aku Haapalinna:Rate Staboulis:3:2
+Ismo Lahtinen:Petteri Sevon:0:4
+Angi Mauranen:Janne Rantanen:4:1
+END-OF-ROUND
+ROUND:3
+(Niko Tuominen)
+Pirkka Weijo:Timo Toivonen:2:6
+Netta Jousi:Rate Staboulis:0:5
+Lauri Eronen:Petteri Sevon:2:1
+Aku Haapalinna:Janne Rantanen:1:4
+Ismo Lahtinen:Angi Mauranen:7:1
+END-OF-ROUND
+ROUND:4
+(Timo Toivonen)
+Niko Tuominen:Rate Staboulis:3:1
+Pirkka Weijo:Petteri Sevon:1:7
+Netta Jousi:Janne Rantanen:1:5
+Lauri Eronen:Angi Mauranen:3:4
+Aku Haapalinna:Ismo Lahtinen:3:1
+END-OF-ROUND
+ROUND:5
+(Rate Staboulis)
+Timo Toivonen:Petteri Sevon:5:1
+Niko Tuominen:Janne Rantanen:1:4
+Pirkka Weijo:Angi Mauranen:2:7
+Netta Jousi:Ismo Lahtinen:1:2
+Lauri Eronen:Aku Haapalinna:3:4
+END-OF-ROUND
+ROUND:6
+(Petteri Sevon)
+Rate Staboulis:Janne Rantanen:1:5
+Timo Toivonen:Angi Mauranen:2:2
+Niko Tuominen:Ismo Lahtinen:2:3
+Pirkka Weijo:Aku Haapalinna:3:1
+Netta Jousi:Lauri Eronen:2:3
+END-OF-ROUND
+ROUND:7
+(Janne Rantanen)
+Petteri Sevon:Angi Mauranen:4:2
+Rate Staboulis:Ismo Lahtinen:0:5
+Timo Toivonen:Aku Haapalinna:5:0
+Niko Tuominen:Lauri Eronen:2:5
+Pirkka Weijo:Netta Jousi:3:9
+END-OF-ROUND
+ROUND:8
+(Angi Mauranen)
+Janne Rantanen:Ismo Lahtinen:4:1
+Petteri Sevon:Aku Haapalinna:6:1
+Rate Staboulis:Lauri Eronen:2:2
+Timo Toivonen:Netta Jousi:3:1
+Niko Tuominen:Pirkka Weijo:5:2
+END-OF-ROUND
+ROUND:9
+(Ismo Lahtinen)
+Angi Mauranen:Aku Haapalinna:1:5
+Janne Rantanen:Lauri Eronen:4:3
+Petteri Sevon:Netta Jousi:3:4
+Rate Staboulis:Pirkka Weijo:6:0
+Timo Toivonen:Niko Tuominen:3:1
+END-OF-ROUND
+ROUND:10
+(Aku Haapalinna)
+Ismo Lahtinen:Lauri Eronen:2:2
+Angi Mauranen:Netta Jousi:3:3
+Janne Rantanen:Pirkka Weijo:5:1
+Petteri Sevon:Niko Tuominen:5:1
+Rate Staboulis:Timo Toivonen:2:4
+END-OF-ROUND
+ROUND:11
+(Lauri Eronen)
+Aku Haapalinna:Netta Jousi:3:2
+Ismo Lahtinen:Pirkka Weijo:5:1
+Angi Mauranen:Niko Tuominen:0:0
+Janne Rantanen:Timo Toivonen:2:5
+Petteri Sevon:Rate Staboulis:3:2
+END-OF-ROUND
+ROUND:12
+(Netta Jousi)
+Lauri Eronen:Pirkka Weijo:4:1
+Aku Haapalinna:Niko Tuominen:3:2
+Ismo Lahtinen:Timo Toivonen:4:1
+Angi Mauranen:Rate Staboulis:4:0
+Janne Rantanen:Petteri Sevon:3:1
+END-OF-ROUND
+ROUND:13
+(Pirkka Weijo)
+Netta Jousi:Niko Tuominen:5:0
+Lauri Eronen:Timo Toivonen:3:6
+Aku Haapalinna:Rate Staboulis:2:2
+Ismo Lahtinen:Petteri Sevon:1:3
+Angi Mauranen:Janne Rantanen:0:4
+END-OF-ROUND
+ROUND:14
+(Niko Tuominen)
+Pirkka Weijo:Timo Toivonen:0:11
+Netta Jousi:Rate Staboulis:2:1
+Lauri Eronen:Petteri Sevon:2:5
+Aku Haapalinna:Janne Rantanen:1:4
+Ismo Lahtinen:Angi Mauranen:5:2
+END-OF-ROUND
+ROUND:15
+(Timo Toivonen)
+Niko Tuominen:Rate Staboulis:4:1
+Pirkka Weijo:Petteri Sevon:1:7
+Netta Jousi:Janne Rantanen:4:4
+Lauri Eronen:Angi Mauranen:4:2
+Aku Haapalinna:Ismo Lahtinen:0:1
+END-OF-ROUND
+ROUND:16
+(Rate Staboulis)
+Timo Toivonen:Petteri Sevon:7:1
+Niko Tuominen:Janne Rantanen:0:5
+Pirkka Weijo:Angi Mauranen:2:7
+Netta Jousi:Ismo Lahtinen:1:1
+Lauri Eronen:Aku Haapalinna:5:2
+END-OF-ROUND
+ROUND:17
+(Petteri Sevon)
+Rate Staboulis:Janne Rantanen:4:5
+Timo Toivonen:Angi Mauranen:3:2
+Niko Tuominen:Ismo Lahtinen:4:2
+Pirkka Weijo:Aku Haapalinna:2:5
+Netta Jousi:Lauri Eronen:3:5
+END-OF-ROUND
+ROUND:18
+(Janne Rantanen)
+Petteri Sevon:Angi Mauranen:7:3
+Rate Staboulis:Ismo Lahtinen:3:3
+Timo Toivonen:Aku Haapalinna:3:2
+Niko Tuominen:Lauri Eronen:2:5
+Pirkka Weijo:Netta Jousi:1:9
+END-OF-ROUND
+ROUND:19
+(Angi Mauranen)
+Janne Rantanen:Ismo Lahtinen:3:1
+Petteri Sevon:Aku Haapalinna:5:0
+Rate Staboulis:Lauri Eronen:2:1
+Timo Toivonen:Netta Jousi:2:3
+Niko Tuominen:Pirkka Weijo:9:1
+END-OF-ROUND
+ROUND:20
+(Ismo Lahtinen)
+Angi Mauranen:Aku Haapalinna:1:1
+Janne Rantanen:Lauri Eronen:3:1
+Petteri Sevon:Netta Jousi:4:7
+Rate Staboulis:Pirkka Weijo:7:0
+Timo Toivonen:Niko Tuominen:3:1
+END-OF-ROUND
+ROUND:21
+(Aku Haapalinna)
+Ismo Lahtinen:Lauri Eronen:4:5
+Angi Mauranen:Netta Jousi:1:3
+Janne Rantanen:Pirkka Weijo:4:1
+Petteri Sevon:Niko Tuominen:2:2
+Rate Staboulis:Timo Toivonen:2:2
+END-OF-ROUND
+ROUND:22
+(Lauri Eronen)
+Aku Haapalinna:Netta Jousi:2:4
+Ismo Lahtinen:Pirkka Weijo:10:1
+Angi Mauranen:Niko Tuominen:1:5
+Janne Rantanen:Timo Toivonen:1:3
+Petteri Sevon:Rate Staboulis:3:2
+END-OF-ROUND
+END-OF-DIVISION
+PLAYOFFS-SIZE:3
+SEEDINGMODEL:CREATEDYNAMIC
+PLAYOFF-SIZE:2
+PLAYOFFPAIR
+Petteri Sevon:Lauri Eronen:5:4
+Petteri Sevon:Lauri Eronen:7:0
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:4
+PLAYOFFPAIR
+Timo Toivonen:Lauri Eronen:6:1
+Timo Toivonen:Lauri Eronen:0:2
+Timo Toivonen:Lauri Eronen:3:5
+Timo Toivonen:Lauri Eronen
+Timo Toivonen:Lauri Eronen
+Timo Toivonen:Lauri Eronen
+Timo Toivonen:Lauri Eronen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Janne Rantanen:Petteri Sevon:4:8
+Janne Rantanen:Petteri Sevon:0:5
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:8
+PLAYOFFPAIR
+Timo Toivonen:X:5:0:lv
+Timo Toivonen:X
+Timo Toivonen:X
+Timo Toivonen:X
+Timo Toivonen:X
+Timo Toivonen:X
+Timo Toivonen:X
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Janne Rantanen:X:5:0:lv
+Janne Rantanen:X
+Janne Rantanen:X
+Janne Rantanen:X
+Janne Rantanen:X
+Janne Rantanen:X
+Janne Rantanen:X
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Netta Jousi:4:2
+Petteri Sevon:Netta Jousi:2:3:j
+Petteri Sevon:Netta Jousi:6:3
+Petteri Sevon:Netta Jousi
+Petteri Sevon:Netta Jousi
+Petteri Sevon:Netta Jousi
+Petteri Sevon:Netta Jousi
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Lauri Eronen:Ismo Lahtinen:2:3:j
+Lauri Eronen:Ismo Lahtinen:5:1
+Lauri Eronen:Ismo Lahtinen:6:2
+Lauri Eronen:Ismo Lahtinen
+Lauri Eronen:Ismo Lahtinen
+Lauri Eronen:Ismo Lahtinen
+Lauri Eronen:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLACEMENTMATCHES:1
+PLAYOFF-SIZE:11
+PLAYOFFPAIR
+Timo Toivonen:Janne Rantanen
+Timo Toivonen:Janne Rantanen
+Timo Toivonen:Janne Rantanen
+Timo Toivonen:Janne Rantanen
+Timo Toivonen:Janne Rantanen
+Timo Toivonen:Janne Rantanen
+Timo Toivonen:Janne Rantanen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+Petteri Sevon:Lauri Eronen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Ismo Lahtinen:Netta Jousi
+Ismo Lahtinen:Netta Jousi
+Ismo Lahtinen:Netta Jousi
+Ismo Lahtinen:Netta Jousi
+Ismo Lahtinen:Netta Jousi
+Ismo Lahtinen:Netta Jousi
+Ismo Lahtinen:Netta Jousi
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Aku Haapalinna:Niko Tuominen:5:4:j
+Aku Haapalinna:Niko Tuominen
+Aku Haapalinna:Niko Tuominen
+Aku Haapalinna:Niko Tuominen
+Aku Haapalinna:Niko Tuominen
+Aku Haapalinna:Niko Tuominen
+Aku Haapalinna:Niko Tuominen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Angi Mauranen:Rate Staboulis:3:4:j
+Angi Mauranen:Rate Staboulis
+Angi Mauranen:Rate Staboulis
+Angi Mauranen:Rate Staboulis
+Angi Mauranen:Rate Staboulis
+Angi Mauranen:Rate Staboulis
+Angi Mauranen:Rate Staboulis
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+END-OF-PLACEMENTMATCHES
