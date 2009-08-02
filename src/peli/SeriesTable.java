@@ -186,15 +186,25 @@ public class SeriesTable {
 		return seriestable.toString();
 	}
 
-	//hack
-	public String toCssHtmlTable() {
+	/**
+     * Print seriestable as html, separate playoff-players and players who didn't make it
+    */
+	public String toCssHtmlTable(List<Integer> playoffSeparators) {
 		StringBuffer seriestable = new StringBuffer();
         seriestable.append("<table class=\"seriestable\">").append(System.getProperty("line.separator"));
         
-		for (int i = 0; i < size(); i++)			
+		for (int i = 0; i < size(); i++) {
+            if(playoffSeparators.contains(i)) { //place separatorline below this
+                seriestable.append("<tr class=\"seriestableseparator\">").append(System.getProperty("line.separator")).
+                        append("<td class=\"seriestableseparator\">&nbsp;</td>").
+                        append(System.getProperty("line.separator")).append("</tr>").append(System.getProperty("line.separator"));
+            }
+
             seriestable.append("<tr class=\"seriestablerow\">").append(System.getProperty("line.separator")).
                     append("<td class=\"seriesorder\">").append(i+1).append("</td>").append(elementAt(i).getCssHtmlTableRow()).
                     append(System.getProperty("line.separator")).append("</tr>").append(System.getProperty("line.separator"));
+            
+        }
 
         seriestable.append(System.getProperty("line.separator")).append("</table>").append(System.getProperty("line.separator"));
 

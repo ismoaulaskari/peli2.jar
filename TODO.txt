@@ -51,7 +51,7 @@ Peli.jar
             * pelaaja luovuttaa sallitun määrän = ottelut vaan jätetään kirjaamatta /OK 1.0
             * luovuttaa playoffin tai sijoitusottelun = 5-0lv /OK 1.14.2
             * pelaaja luovuttaa yli sallitun määrän ja pelatut ottelut diskataan = tarvitaan erikoismerkki, 
-              jolla peli.jar ja tilastohärveli osaavat karsia tulokset rankingiin vaikuttavista tuloksista (dq = disqualified) /FIXED 1.14.2
+              jolla peli.jar ja tbilastohärveli osaavat karsia tulokset rankingiin vaikuttavista tuloksista (dq = disqualified) /FIXED 1.14.2
             * käyttäjälle tarjottava helppo apuväline muistaa erikoismerkinnät, hylätä kaikki? /FIXED 1.14.3
           o jatkoaikakirjaimien yms. rajoitus /FIXED 1.14.3
           o HEADLESS-versio /FIXED 1.15.0
@@ -59,17 +59,18 @@ Peli.jar
           o blackbox-testauksen alku /1.15.1
           o headless-sijoituslistabugi /FIXED 1.15.2
           o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa /FIXED 1.15.3
+          o sarjataulukko tableiksi, css /FIXED 1.15.4
+          o playoff-viiva /FIXED 1.15.5
           o ilmolistan shuffle *
           o tnmt:n/html:n lähetys: *
              *client generoi html:n ja lähettää pjknetiin, katsotaan selaimella tai markulla, JOO
              *vai client lähettää tnmt:n iste2:een, java generoi html:n jonka markku lukee EIII 
-          o playoff-viiva *
           o välierä-, pronssiottelu-, finaalitekstit.. *
-          o sarjataulukko tableiksi, css *
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
+          o playoff-viiva pienturnauksille
           o OHJE spjkl:n sivuille
           o default-asetukset jos properties puuttuu 
           o tuki Platka-ohjelman xml:n tulostamiseen, vai lukemiseen?
@@ -83,10 +84,12 @@ Peli.jar
           o hakemiston vaihto?
           o tuloskirjauksen pikanäppäimet?
           o Muistintuhlaus?
+          o divariviivat rankingien alkusarjoille ?
           o Pelaajatiedosto cancel->ohita
           o tiedostojen avaus eri hakemistoista?
           o uusi turnaus jyrää olemassaolevan
           o boldaus java 1.5.09 /win          
+          o välierä-, pronssiottelu-, finaalitekstit..
           o koko nimet? /EI
           o J2ME? /EI, mobiililaitteet kehittyneet pc-tasolle
     *

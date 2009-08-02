@@ -37,7 +37,7 @@ public class Tournament {
     private int numberOfDivisions;
     private static final String legacydate = "x.x.2000";
     private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
-    private HashMap playoffs = new HashMap();
+    private HashMap playoffs = new HashMap<Integer,Playoff>();
     private Playoff placementMatches = null;
     private Playoff bronzeMatch = null;
     private volatile int largestPlayoff = 0;
@@ -990,9 +990,12 @@ public class Tournament {
 
             String output = "";
             String[] divisiontitles = getDivisionTitles();
+            ArrayList playoffSeparators = new ArrayList<Integer>(); //separate playoff-qualified players in output
+            playoffSeparators.add(this.getRealPlayoffSize());
+
             //use template.txt                                                
             for (int i = 0; i < getNumberOfDivisions(); i++) {
-                output += getDivision(i).saveAll();
+                output += getDivision(i).saveAll(playoffSeparators);
                 output = output.replaceFirst("<!-- HEADING -->",
                         divisiontitles[i] + " " + messages.getString("templateHeading"));
             //HtmlTools.hr(printwriter);
@@ -1081,4 +1084,25 @@ public class Tournament {
     public int getLargestPlayoff() {
         return this.largestPlayoff;
     }
+
+    /**
+     * calculate the real playoffsize ignoring X-players
+     * @return
+     */
+    public int getRealPlayoffSize() {
+        int realsize = 0;
+        if(this.getLargestPlayoff() > 0) {
+            for (PlayoffPair playoffpair : ((Playoff)this.playoffs.get(this.getLargestPlayoff())).getPlayoffPairs()) {
+                if(!playoffpair.getHomeTeam().equalsIgnoreCase("X") && !playoffpair.getAwayTeam().equalsIgnoreCase("X")) {
+                    realsize += 2;
+                }
+                else { //at least one player is X
+                    realsize++;
+                }
+            }
+        }
+
+        return realsize;
+    }
+
 }
