@@ -1,0 +1,265 @@
+TOURNAMENT-SIZE:1
+DIVISION:Lohko 1
+PLAYERS:13
+Lauri Eronen
+Lauri Happo
+Esa Heilimo
+Netta Jousi
+Ismo Lahtinen
+Angi Mauranen
+Lari Metsälä
+Petrus Miettinen
+Teuvo Moisa
+Janne Rantanen
+Petteri Sevon
+Niko Tuominen
+Pasi Vihinen
+END-OF-PLAYERS
+ROUNDS:13
+ROUND:1
+(Lauri Eronen)
+Lauri Happo:Pasi Vihinen:1:2
+Esa Heilimo:Niko Tuominen:4:2
+Netta Jousi:Petteri Sevon:0:3:dq
+Ismo Lahtinen:Janne Rantanen:5:6
+Angi Mauranen:Teuvo Moisa:3:1
+Lari Metsälä:Petrus Miettinen:0:0
+END-OF-ROUND
+ROUND:2
+(Pasi Vihinen)
+Lauri Eronen:Niko Tuominen:2:2
+Lauri Happo:Petteri Sevon:5:0
+Esa Heilimo:Janne Rantanen:2:0
+Netta Jousi:Teuvo Moisa:1:3:dq
+Ismo Lahtinen:Petrus Miettinen:2:6
+Angi Mauranen:Lari Metsälä:4:1
+END-OF-ROUND
+ROUND:3
+(Niko Tuominen)
+Pasi Vihinen:Petteri Sevon:3:4
+Lauri Eronen:Janne Rantanen:0:6
+Lauri Happo:Teuvo Moisa:9:3
+Esa Heilimo:Petrus Miettinen:2:1
+Netta Jousi:Lari Metsälä:2:3:dq
+Ismo Lahtinen:Angi Mauranen:2:2
+END-OF-ROUND
+ROUND:4
+(Petteri Sevon)
+Niko Tuominen:Janne Rantanen:4:2
+Pasi Vihinen:Teuvo Moisa:4:0
+Lauri Eronen:Petrus Miettinen:7:1
+Lauri Happo:Lari Metsälä:4:2
+Esa Heilimo:Angi Mauranen:1:2
+Netta Jousi:Ismo Lahtinen:0:5:dq
+END-OF-ROUND
+ROUND:5
+(Janne Rantanen)
+Petteri Sevon:Teuvo Moisa:6:3
+Niko Tuominen:Petrus Miettinen:1:8
+Pasi Vihinen:Lari Metsälä:2:2
+Lauri Eronen:Angi Mauranen:3:4
+Lauri Happo:Ismo Lahtinen:1:1
+Esa Heilimo:Netta Jousi:6:2:dq
+END-OF-ROUND
+ROUND:6
+(Teuvo Moisa)
+Janne Rantanen:Petrus Miettinen:4:2
+Petteri Sevon:Lari Metsälä:1:2
+Niko Tuominen:Angi Mauranen:1:3
+Pasi Vihinen:Ismo Lahtinen:4:2
+Lauri Eronen:Netta Jousi:3:4:dq
+Lauri Happo:Esa Heilimo:3:3
+END-OF-ROUND
+ROUND:7
+(Petrus Miettinen)
+Teuvo Moisa:Lari Metsälä:1:4
+Janne Rantanen:Angi Mauranen:5:1
+Petteri Sevon:Ismo Lahtinen:5:2
+Niko Tuominen:Netta Jousi
+Pasi Vihinen:Esa Heilimo:2:2
+Lauri Eronen:Lauri Happo:3:1
+END-OF-ROUND
+ROUND:8
+(Lari Metsälä)
+Petrus Miettinen:Angi Mauranen:4:2
+Teuvo Moisa:Ismo Lahtinen:2:5
+Janne Rantanen:Netta Jousi
+Petteri Sevon:Esa Heilimo:6:1
+Niko Tuominen:Lauri Happo:2:7
+Pasi Vihinen:Lauri Eronen:5:3
+END-OF-ROUND
+ROUND:9
+(Angi Mauranen)
+Lari Metsälä:Ismo Lahtinen:0:6
+Petrus Miettinen:Netta Jousi
+Teuvo Moisa:Esa Heilimo:1:1
+Janne Rantanen:Lauri Happo:3:2
+Petteri Sevon:Lauri Eronen:4:3
+Niko Tuominen:Pasi Vihinen:2:2
+END-OF-ROUND
+ROUND:10
+(Ismo Lahtinen)
+Angi Mauranen:Netta Jousi
+Lari Metsälä:Esa Heilimo:4:0
+Petrus Miettinen:Lauri Happo:3:7
+Teuvo Moisa:Lauri Eronen:4:3
+Janne Rantanen:Pasi Vihinen:3:2
+Petteri Sevon:Niko Tuominen:4:7
+END-OF-ROUND
+ROUND:11
+(Netta Jousi)
+Ismo Lahtinen:Esa Heilimo:4:1
+Angi Mauranen:Lauri Happo:7:2
+Lari Metsälä:Lauri Eronen:1:3
+Petrus Miettinen:Pasi Vihinen:2:1
+Teuvo Moisa:Niko Tuominen:6:2
+Janne Rantanen:Petteri Sevon:3:2
+END-OF-ROUND
+ROUND:12
+(Esa Heilimo)
+Netta Jousi:Lauri Happo
+Ismo Lahtinen:Lauri Eronen:4:3
+Angi Mauranen:Pasi Vihinen:4:2
+Lari Metsälä:Niko Tuominen:2:2
+Petrus Miettinen:Petteri Sevon:1:1
+Teuvo Moisa:Janne Rantanen:1:2
+END-OF-ROUND
+ROUND:13
+(Lauri Happo)
+Esa Heilimo:Lauri Eronen:4:4
+Netta Jousi:Pasi Vihinen
+Ismo Lahtinen:Niko Tuominen:1:0
+Angi Mauranen:Petteri Sevon:3:5
+Lari Metsälä:Janne Rantanen:5:3
+Petrus Miettinen:Teuvo Moisa:3:1
+END-OF-ROUND
+END-OF-DIVISION
+PLAYOFFS-SIZE:3
+SEEDINGMODEL:CREATEDYNAMIC
+PLAYOFF-SIZE:2
+PLAYOFFPAIR
+Janne Rantanen:Petteri Sevon:5:4:j
+Janne Rantanen:Petteri Sevon:3:5
+Janne Rantanen:Petteri Sevon:3:5
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+Janne Rantanen:Petteri Sevon
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:4
+PLAYOFFPAIR
+Janne Rantanen:Lauri Happo:5:4:j
+Janne Rantanen:Lauri Happo:3:4:j
+Janne Rantanen:Lauri Happo:4:1
+Janne Rantanen:Lauri Happo
+Janne Rantanen:Lauri Happo
+Janne Rantanen:Lauri Happo
+Janne Rantanen:Lauri Happo
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Angi Mauranen:Petteri Sevon:4:5:j
+Angi Mauranen:Petteri Sevon:2:6
+Angi Mauranen:Petteri Sevon
+Angi Mauranen:Petteri Sevon
+Angi Mauranen:Petteri Sevon
+Angi Mauranen:Petteri Sevon
+Angi Mauranen:Petteri Sevon
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLAYOFF-SIZE:8
+PLAYOFFPAIR
+Janne Rantanen:Lari Metsälä:5:4:j
+Janne Rantanen:Lari Metsälä:1:2:j
+Janne Rantanen:Lari Metsälä:3:1
+Janne Rantanen:Lari Metsälä
+Janne Rantanen:Lari Metsälä
+Janne Rantanen:Lari Metsälä
+Janne Rantanen:Lari Metsälä
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Angi Mauranen:Pasi Vihinen:4:2
+Angi Mauranen:Pasi Vihinen:1:2:j
+Angi Mauranen:Pasi Vihinen:3:2
+Angi Mauranen:Pasi Vihinen
+Angi Mauranen:Pasi Vihinen
+Angi Mauranen:Pasi Vihinen
+Angi Mauranen:Pasi Vihinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Ismo Lahtinen:4:5:j
+Petteri Sevon:Ismo Lahtinen:3:2
+Petteri Sevon:Ismo Lahtinen:3:1
+Petteri Sevon:Ismo Lahtinen
+Petteri Sevon:Ismo Lahtinen
+Petteri Sevon:Ismo Lahtinen
+Petteri Sevon:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Lauri Happo:Petrus Miettinen:4:2
+Lauri Happo:Petrus Miettinen:4:2
+Lauri Happo:Petrus Miettinen
+Lauri Happo:Petrus Miettinen
+Lauri Happo:Petrus Miettinen
+Lauri Happo:Petrus Miettinen
+Lauri Happo:Petrus Miettinen
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+PLACEMENTMATCHES:1
+PLAYOFF-SIZE:13
+PLAYOFFPAIR
+Janne Rantanen:Angi Mauranen
+Janne Rantanen:Angi Mauranen
+Janne Rantanen:Angi Mauranen
+Janne Rantanen:Angi Mauranen
+Janne Rantanen:Angi Mauranen
+Janne Rantanen:Angi Mauranen
+Janne Rantanen:Angi Mauranen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petteri Sevon:Lauri Happo
+Petteri Sevon:Lauri Happo
+Petteri Sevon:Lauri Happo
+Petteri Sevon:Lauri Happo
+Petteri Sevon:Lauri Happo
+Petteri Sevon:Lauri Happo
+Petteri Sevon:Lauri Happo
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+Petrus Miettinen:Ismo Lahtinen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Pasi Vihinen:Lari Metsälä
+Pasi Vihinen:Lari Metsälä
+Pasi Vihinen:Lari Metsälä
+Pasi Vihinen:Lari Metsälä
+Pasi Vihinen:Lari Metsälä
+Pasi Vihinen:Lari Metsälä
+Pasi Vihinen:Lari Metsälä
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Esa Heilimo:Lauri Eronen:2:1
+Esa Heilimo:Lauri Eronen
+Esa Heilimo:Lauri Eronen
+Esa Heilimo:Lauri Eronen
+Esa Heilimo:Lauri Eronen
+Esa Heilimo:Lauri Eronen
+Esa Heilimo:Lauri Eronen
+END-OF-PLAYOFFPAIR
+PLAYOFFPAIR
+Niko Tuominen:Teuvo Moisa:4:3:j
+Niko Tuominen:Teuvo Moisa
+Niko Tuominen:Teuvo Moisa
+Niko Tuominen:Teuvo Moisa
+Niko Tuominen:Teuvo Moisa
+Niko Tuominen:Teuvo Moisa
+Niko Tuominen:Teuvo Moisa
+END-OF-PLAYOFFPAIR
+END-OF-PLAYOFF
+END-OF-PLACEMENTMATCHES
