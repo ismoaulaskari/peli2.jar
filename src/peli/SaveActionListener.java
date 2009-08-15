@@ -77,7 +77,7 @@ public class SaveActionListener
                     StringWriter stringwriter = new StringWriter();
                     PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
                     tournament.save(sprintwriter, 3); //print html, autoflush
-                    System.err.print(liveResults.sendFile(file.getName().toString() + ".html", sprintwriter.toString()));
+                    System.err.print(liveResults.sendFile(file.getName().toString() + ".html", stringwriter.toString()));
                     sprintwriter.close();
                 }
             }
