@@ -61,17 +61,17 @@ Peli.jar
           o varoitusta tilanteesta, jossa ollaan playoffsarjan lopussa tasoissa /FIXED 1.15.3
           o sarjataulukko tableiksi, css /FIXED 1.15.4
           o playoff-viiva /FIXED 1.15.5
-          o ilmolistan shuffle *
           o tnmt:n/html:n lähetys: *
              *client generoi html:n ja lähettää pjknetiin, katsotaan selaimella tai markulla, JOO
              *vai client lähettää tnmt:n iste2:een, java generoi html:n jonka markku lukee EIII 
           o välierä-, pronssiottelu-, finaalitekstit.. *
+          o ilmolistan shuffle *
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
+          o OHJE spjkl:n sivuille *
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
           o playoff-viiva pienturnauksille
-          o OHJE spjkl:n sivuille
           o default-asetukset jos properties puuttuu 
           o tuki Platka-ohjelman xml:n tulostamiseen, vai lukemiseen?
           o varoitusta tilanteesta, jossa ollaan sarjan lopussa tasoissa 

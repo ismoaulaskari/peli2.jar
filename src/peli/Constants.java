@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: packimports(3) 
 // Source File Name:   Constants.java
-
 /**
  * @author aulaskar
  * v1.1 lets make this a global class with settings 
@@ -23,79 +22,80 @@ import java.util.ResourceBundle;
  * and set it as Class-path in the MANIFEST.MF
  */
 public class Constants {
-	private static Constants constants = null;
-	private static Locale locale = null;
-	private static ResourceBundle messages = null;
-	private static ResourceBundle keyCodes = null;
-	private static ResourceBundle rules = null;
-	private static StringBuilder header = new StringBuilder(500);
-        private static StringBuilder template = new StringBuilder(500);
-        private static StringBuilder footer = new StringBuilder(100);
-        private static int MAXMATCHES;
-        
-	static {
-		constants = new Constants();
-		locale = new Locale(new String("fi"), new String("FI"));
-                //locale = new Locale(new String("en"), new String("US"));
-                System.setProperty("Peli.jarVersion", "v. 1.15.5");
-                try {
-                    messages = ResourceBundle.getBundle("Messages", locale);
-                    rules = ResourceBundle.getBundle("Rules");
-                    //store html-template in memory:
-                    BufferedReader bufferedreader = 
-                            new BufferedReader(
-                                new FileReader("conf" + File.separatorChar + "header.txt"));
-                    String line = null;
-                    while ((line = bufferedreader.readLine()) != null) {
-                        header.append(line).append(System.getProperty("line.separator"));
-                    }
 
-                    bufferedreader = 
-                            new BufferedReader(
-                                new FileReader("conf" + File.separatorChar + "template.txt"));
-                    line = null;
-                    while ((line = bufferedreader.readLine()) != null) {
-                        template.append(line).append(System.getProperty("line.separator"));
-                    }
+    private static Constants constants = null;
+    private static Locale locale = null;
+    private static ResourceBundle messages = null;
+    private static ResourceBundle keyCodes = null;
+    private static ResourceBundle rules = null;
+    private static StringBuilder header = new StringBuilder(500);
+    private static StringBuilder template = new StringBuilder(500);
+    private static StringBuilder footer = new StringBuilder(100);
+    private static int MAXMATCHES;  
 
-                    bufferedreader = 
-                            new BufferedReader(
-                                new FileReader("conf" + File.separatorChar + "footer.txt"));
-                    line = null;
-                    while ((line = bufferedreader.readLine()) != null) {
-                        footer.append(line).append(System.getProperty("line.separator"));
-                    }
 
-                } 
-                catch (MissingResourceException e) {
-                    messages = ResourceBundle.getBundle("conf.Messages", locale, Constants.class.getClass().getClassLoader());
-                    rules = ResourceBundle.getBundle("conf.Rules", locale, Constants.class.getClass().getClassLoader());
-                }
-                catch (FileNotFoundException fe) {
-                    System.err.println(fe);
-                    System.setProperty("TournamentUseVersion1HtmlOutput", "true");
-                }
-                catch (IOException ie) {
-                    System.err.println(ie);
-                    System.setProperty("TournamentUseVersion1HtmlOutput", "true");
-                }
-                
-                //this should always be found
-                keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);                
-                  
-                //too big gui dependencies
-                //if(rules.containsKey("maxPlayoffMatches")) {
-                 //   MAXMATCHES = Integer.parseInt(rules.getString("maxPlayoffMatches"));
-                //}
-                //else {
-                    MAXMATCHES = 7;
-                //}
-	}
+    static {
+        constants = new Constants();
+        locale = new Locale(new String("fi"), new String("FI"));
+        //locale = new Locale(new String("en"), new String("US"));
+        System.setProperty("Peli.jarVersion", "v. 1.16.0");
+        try {
+            messages = ResourceBundle.getBundle("Messages", locale);
+            rules = ResourceBundle.getBundle("Rules");
+            //store html-template in memory:
+            BufferedReader bufferedreader =
+                    new BufferedReader(
+                    new FileReader("conf" + File.separatorChar + "header.txt"));
+            String line = null;
+            while ((line = bufferedreader.readLine()) != null) {
+                header.append(line).append(System.getProperty("line.separator"));
+            }
+
+            bufferedreader =
+                    new BufferedReader(
+                    new FileReader("conf" + File.separatorChar + "template.txt"));
+            line = null;
+            while ((line = bufferedreader.readLine()) != null) {
+                template.append(line).append(System.getProperty("line.separator"));
+            }
+
+            bufferedreader =
+                    new BufferedReader(
+                    new FileReader("conf" + File.separatorChar + "footer.txt"));
+            line = null;
+            while ((line = bufferedreader.readLine()) != null) {
+                footer.append(line).append(System.getProperty("line.separator"));
+            }
+
+        } catch (MissingResourceException e) {
+            messages = ResourceBundle.getBundle("conf.Messages", locale, Constants.class.getClass().getClassLoader());
+            rules = ResourceBundle.getBundle("conf.Rules", locale, Constants.class.getClass().getClassLoader());
+        } catch (FileNotFoundException fe) {
+            System.err.println(fe);
+            System.setProperty("TournamentUseVersion1HtmlOutput", "true");
+        } catch (IOException ie) {
+            System.err.println(ie);
+            System.setProperty("TournamentUseVersion1HtmlOutput", "true");
+        }
+
+        //this should always be found
+        keyCodes = ResourceBundle.getBundle("peli.KeyCodeBundle", locale);
+
+        //too big gui dependencies
+        //if(rules.containsKey("maxPlayoffMatches")) {
+        //   MAXMATCHES = Integer.parseInt(rules.getString("maxPlayoffMatches"));
+        //}
+        //else {
+        MAXMATCHES = 7;
+        //}
+
+  
+    }
 
     public static StringBuilder getHeader() {
         return header;
     }
-            
+
     public static StringBuilder getTemplate() {
         return template;
     }
@@ -108,31 +108,28 @@ public class Constants {
         return MAXMATCHES;
     }
 
-    
-	private Constants() {
-        
-	}
+    private Constants() {
+    }
 
-	public static Constants getInstance() {
-		return constants;
-	}
+    public static Constants getInstance() {
+        return constants;
+    }
 
-	public static Locale getLocale() {
-		return locale;
-	}
+    public static Locale getLocale() {
+        return locale;
+    }
 
-	public static ResourceBundle getMessages() {
-		return messages;
-	}
+    public static ResourceBundle getMessages() {
+        return messages;
+    }
 
-	public static ResourceBundle getKeyCodes() {
-		return keyCodes;
-	}
+    public static ResourceBundle getKeyCodes() {
+        return keyCodes;
+    }
 
-	public static ResourceBundle getRules() {
-		return rules;
-	}
-
+    public static ResourceBundle getRules() {
+        return rules;
+    }
 }
 
 
