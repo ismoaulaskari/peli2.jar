@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.Authenticator;
 import java.util.ResourceBundle;
 
 /**
@@ -18,6 +19,7 @@ public class LiveResults {
 
     private ResourceBundle rules;
     private ClientHttpRequest postRequest = null;
+    private boolean basicAuth = false;
 
     public LiveResults() {
         this.rules = Constants.getInstance().getRules();
@@ -25,16 +27,20 @@ public class LiveResults {
         //post results to website
         if (this.rules.containsKey("postLiveResultsToWeb") &&
                 this.rules.getString("postLiveResultsToWeb").equalsIgnoreCase("true")) {
-            
+
             try {
                 this.postRequest = new ClientHttpRequest(this.rules.getString("uploadUrl")); //or fail
             } catch (IOException ex) {
                 System.err.print("Starting live results failed" + ex);
             }
+
+            if (this.rules.containsKey("userName") && this.rules.containsKey("passWord")) {
+                this.basicAuth = true;
+            }
         }
-        
+
     }
-    
+
     /**
      * send results, read response
      * @param data
@@ -45,13 +51,7 @@ public class LiveResults {
 
         try {
             this.postRequest.setParameter("userfile", data);
-            this.postRequest.connect();        
-            InputStream serverReply = this.postRequest.post();
-            if(serverReply != null) {
-                reply = serverReply.toString();
-                serverReply.close();
-            }
-
+            reply = makeRequest();
         } catch (IOException ex) {
             System.err.print(ex);
         }
@@ -65,32 +65,21 @@ public class LiveResults {
         try {
             InputStream is = new ByteArrayInputStream(data.getBytes());
             this.postRequest.setParameter("userfile", fileName, is);
-            this.postRequest.connect();
-            InputStream serverReply = this.postRequest.post();
+            reply = makeRequest();
             is.close();
-            if(serverReply != null) {
-                reply = serverReply.toString();
-                serverReply.close();
-            }
         } catch (IOException ex) {
             System.err.print(ex);
         }
 
         return reply;
     }
-
 
     public String sendFile(File file) {
         String reply = null;
 
         try {
             this.postRequest.setParameter("userfile", file);
-            this.postRequest.connect();
-            InputStream serverReply = this.postRequest.post();
-            if(serverReply != null) {
-                reply = serverReply.toString();
-                serverReply.close();
-            }
+            reply = makeRequest();
         } catch (IOException ex) {
             System.err.print(ex);
         }
@@ -98,5 +87,17 @@ public class LiveResults {
         return reply;
     }
 
-
+    private String makeRequest() throws IOException {
+        String reply = null;
+        if (this.basicAuth == true) {
+            Authenticator.setDefault(new HttpBasicAuthenticator(this.rules.getString("userName"), this.rules.getString("passWord")));
+        }
+        this.postRequest.connect();
+        InputStream serverReply = this.postRequest.post();
+        if (serverReply != null) {
+            reply = serverReply.toString();
+            serverReply.close();
+        }
+        return reply;
+    }
 }
