@@ -32,7 +32,7 @@ public class SaveActionListener
         what = i;
         frame = component;
         messages = Constants.getInstance().getMessages();
-        if (Constants.getInstance().getMessages().getString("postLiveResultsToWeb").equalsIgnoreCase("true")) {
+        if (Constants.getInstance().getRules().getString("postLiveResultsToWeb").equalsIgnoreCase("true")) {
             liveResults = new LiveResults(); //could be null
         }
 
