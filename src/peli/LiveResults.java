@@ -44,7 +44,7 @@ public class LiveResults {
         String reply = null;
 
         try {
-            this.postRequest.setParameter("peli2data", data);
+            this.postRequest.setParameter("userfile", data);
             this.postRequest.connect();        
             InputStream serverReply = this.postRequest.post();
             if(serverReply != null) {
@@ -64,7 +64,7 @@ public class LiveResults {
 
         try {
             InputStream is = new ByteArrayInputStream(data.getBytes());
-            this.postRequest.setParameter("peli2data", fileName, is);
+            this.postRequest.setParameter("userfile", fileName, is);
             this.postRequest.connect();
             InputStream serverReply = this.postRequest.post();
             is.close();
@@ -84,7 +84,7 @@ public class LiveResults {
         String reply = null;
 
         try {
-            this.postRequest.setParameter("peli2data", file);
+            this.postRequest.setParameter("userfile", file);
             this.postRequest.connect();
             InputStream serverReply = this.postRequest.post();
             if(serverReply != null) {
