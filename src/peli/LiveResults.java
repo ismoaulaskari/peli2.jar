@@ -15,14 +15,17 @@ import java.util.ResourceBundle;
  * Live results via HTTP to remote server
  * @author aulaskar
  */
-public class LiveResults {
+public class LiveResults extends Thread {
 
     private ResourceBundle rules;
     private ClientHttpRequest postRequest = null;
     private boolean basicAuth = false;
+    private String data = null;
+    private String fileName = null;
 
-    public LiveResults() {
+    public LiveResults(String fileName) {
         this.rules = Constants.getInstance().getRules();
+        this.fileName = fileName;
 
         //post results to website
         if (this.rules.containsKey("postLiveResultsToWeb") &&
@@ -31,7 +34,7 @@ public class LiveResults {
             try {
                 this.postRequest = new ClientHttpRequest(this.rules.getString("uploadUrl")); //or fail
             } catch (IOException ex) {
-                System.err.print("Starting live results failed" + ex);
+                System.err.println("Starting live results failed" + ex);
             }
 
             if (this.rules.containsKey("userName") && this.rules.containsKey("passWord")) {
@@ -42,11 +45,30 @@ public class LiveResults {
     }
 
     /**
+     *  poll for sendable results
+     */
+    public void run() {
+        System.err.print("run");
+        int delay = Integer.parseInt(this.rules.getString("liveResultDelaySeconds"));
+        try {
+    
+            this.data = Constants.getInstance().getLiveResults();
+            if(this.data != null) { //send & reset
+                this.sendFile(this.fileName, this.data);
+                Constants.getInstance().setLiveResults(null);
+            }
+            this.sleep(10 + delay);
+        } catch (InterruptedException ie) {
+            return;
+        }
+    }
+
+    /**
      * send results, read response
      * @param data
      * @return
      */
-    public String sendData(String data) {
+    public void sendData(String data) {
         String reply = null;
 
         try {
@@ -56,10 +78,10 @@ public class LiveResults {
             System.err.print(ex);
         }
 
-        return reply;
+        System.err.println(reply);
     }
 
-    public String sendFile(String fileName, String data) {
+    public void sendFile(String fileName, String data) {
         String reply = null;
 
         try {
@@ -71,10 +93,10 @@ public class LiveResults {
             System.err.print(ex);
         }
 
-        return reply;
+        System.err.println(reply);
     }
 
-    public String sendFile(File file) {
+    public void sendFile(File file) {
         String reply = null;
 
         try {
@@ -84,7 +106,7 @@ public class LiveResults {
             System.err.print(ex);
         }
 
-        return reply;
+        System.err.println(reply);
     }
 
     private String makeRequest() throws IOException {

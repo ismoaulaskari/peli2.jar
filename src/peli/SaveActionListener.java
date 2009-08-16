@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +27,7 @@ public class SaveActionListener
     private Component frame;
     private ResourceBundle messages;
     private LiveResults liveResults;
+    private boolean doLiveResults = false;
 
     SaveActionListener(File file1, Tournament tournament1, int i, Component component) {
         tournament = tournament1;
@@ -32,8 +35,10 @@ public class SaveActionListener
         what = i;
         frame = component;
         messages = Constants.getInstance().getMessages();
-        if (Constants.getInstance().getRules().getString("postLiveResultsToWeb").equalsIgnoreCase("true")) {
-            liveResults = new LiveResults(); //could be null
+        if (Constants.getInstance().getRules().getString("postLiveResultsToWeb").equalsIgnoreCase("true") && what == 2) {
+            liveResults = new LiveResults(file.getName().toString() + ".html"); //could be null
+            liveResults.start();
+            this.doLiveResults = true;
         }
 
     }
@@ -73,12 +78,18 @@ public class SaveActionListener
             if (what == 2) {
                 SaveTracker.setIsSaved(true);
                 //liveresults
-                if (liveResults != null) {
+                if (doLiveResults) {
                     StringWriter stringwriter = new StringWriter();
                     PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
                     tournament.save(sprintwriter, 3); //print html, autoflush
-                    System.err.print(liveResults.sendFile(file.getName().toString() + ".html", stringwriter.toString()));
+                    //liveResults.sendFile(file.getName().toString() + ".html", stringwriter.toString());
+                    Constants.getInstance().setLiveResults(stringwriter.toString());
                     sprintwriter.close();
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(SaveActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         } catch (IOException ioexception) {
