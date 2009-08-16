@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  */
 public class ResultBot2 extends ResultBot {
 
-    String version = "0.20";
+    String version = "0.21";
     ArrayList<String> tnmtMemory = new ArrayList<String>();
     private boolean isPlayoff = false;
 
@@ -83,10 +83,10 @@ public class ResultBot2 extends ResultBot {
                         this.isPlayoff = true;
                     }
 
-                    if (inputLine.matches("^ROUND:.*")) {
-                        
-                        return inputLine;
-                    }
+                    /*if (inputLine.matches("^ROUND:.*")) {
+
+                    return inputLine;
+                    }*/
 
                     if (!this.isFirstRun) {
                         return null;
@@ -111,7 +111,7 @@ public class ResultBot2 extends ResultBot {
             return null;
         }
 
-        if(inputLine.matches("^PLAYOFF-SIZE:.*")) {
+        if (inputLine.matches("^PLAYOFF-SIZE:.*")) {
             return inputLine;
         }
 
@@ -121,12 +121,17 @@ public class ResultBot2 extends ResultBot {
         }
 
 
-       if (this.isPlayoff) {
-            return inputLine;
+        if (this.isPlayoff) {
+            if (inputLine.matches(".*PLAYOFFPAIR.*")) {
+                return null;
+            }
+            else {
+                return inputLine;
+            }
         } else {
             return null;
         }
-        
+
     }
 
     public String smartFilterTnmtLine(String input) {
@@ -141,21 +146,21 @@ public class ResultBot2 extends ResultBot {
 
     private String pipeOnlyIfChanged(String inputLine, int lineNumber) {
         return inputLine;
-        /*
-        if (this.tnmtMemory.size() > lineNumber &&
-                this.tnmtMemory.get(lineNumber).equalsIgnoreCase(inputLine)) {
-            //line has not changed
-            System.out.println(this.tnmtMemory.get(lineNumber) + "=" + inputLine);
-            inputLine = null;
-        } else {
-            try {
-                System.out.print("REMOVE" + this.tnmtMemory.remove(lineNumber));
-                this.tnmtMemory.add(lineNumber, inputLine);
-            } catch (IndexOutOfBoundsException ie) {
-                //ok
-            }
-        }
+    /*
+    if (this.tnmtMemory.size() > lineNumber &&
+    this.tnmtMemory.get(lineNumber).equalsIgnoreCase(inputLine)) {
+    //line has not changed
+    System.out.println(this.tnmtMemory.get(lineNumber) + "=" + inputLine);
+    inputLine = null;
+    } else {
+    try {
+    System.out.print("REMOVE" + this.tnmtMemory.remove(lineNumber));
+    this.tnmtMemory.add(lineNumber, inputLine);
+    } catch (IndexOutOfBoundsException ie) {
+    //ok
+    }
+    }
 
-        return inputLine;*/
+    return inputLine;*/
     }
 }
