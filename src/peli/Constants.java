@@ -136,7 +136,7 @@ public class Constants {
         return liveResults;
     }
 
-    public static void setLiveResults(String data) {
+    public synchronized static void setLiveResults(String data) {
         liveResults = data;
     }
 

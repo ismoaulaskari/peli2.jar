@@ -9,8 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Timer;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +27,7 @@ public class SaveActionListener
     private ResourceBundle messages;
     private LiveResults liveResults;
     private boolean doLiveResults = false;
+    private Timer timer = null;
 
     SaveActionListener(File file1, Tournament tournament1, int i, Component component) {
         tournament = tournament1;
@@ -36,9 +36,8 @@ public class SaveActionListener
         frame = component;
         messages = Constants.getInstance().getMessages();
         if (Constants.getInstance().getRules().getString("postLiveResultsToWeb").equalsIgnoreCase("true") && what == 2) {
-            liveResults = new LiveResults(file.getName().toString() + ".html"); //could be null
-            liveResults.start();
             this.doLiveResults = true;
+            this.timer = new Timer();
         }
 
     }
@@ -78,18 +77,14 @@ public class SaveActionListener
             if (what == 2) {
                 SaveTracker.setIsSaved(true);
                 //liveresults
-                if (doLiveResults) {
+                if (doLiveResults) {                    
                     StringWriter stringwriter = new StringWriter();
                     PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
                     tournament.save(sprintwriter, 3); //print html, autoflush
-                    //liveResults.sendFile(file.getName().toString() + ".html", stringwriter.toString());
-                    Constants.getInstance().setLiveResults(stringwriter.toString());
+                    liveResults = new LiveResults(s, stringwriter.toString());
+                    timer.schedule(liveResults, 0);
                     sprintwriter.close();
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(SaveActionListener.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    Thread.yield();
                 }
             }
         } catch (IOException ioexception) {

@@ -10,12 +10,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Authenticator;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
 
 /**
  * Live results via HTTP to remote server
  * @author aulaskar
  */
-public class LiveResults extends Thread {
+public class LiveResults extends TimerTask {
 
     private ResourceBundle rules;
     private ClientHttpRequest postRequest = null;
@@ -23,9 +24,10 @@ public class LiveResults extends Thread {
     private String data = null;
     private String fileName = null;
 
-    public LiveResults(String fileName) {
+    public LiveResults(String fileName, String data) {
         this.rules = Constants.getInstance().getRules();
         this.fileName = fileName;
+        this.data = data;
 
         //post results to website
         if (this.rules.containsKey("postLiveResultsToWeb") &&
@@ -48,18 +50,13 @@ public class LiveResults extends Thread {
      *  poll for sendable results
      */
     public void run() {
-        System.err.print("run");
         int delay = Integer.parseInt(this.rules.getString("liveResultDelaySeconds"));
         try {
-    
-            this.data = Constants.getInstance().getLiveResults();
-            if(this.data != null) { //send & reset
-                this.sendFile(this.fileName, this.data);
-                Constants.getInstance().setLiveResults(null);
-            }
-            this.sleep(10 + delay);
-        } catch (InterruptedException ie) {
-            return;
+            Thread.sleep(1000 * delay);
+        } catch (InterruptedException ex) {
+        }
+        if (this.data != null) { //send & reset
+            this.sendFile(this.fileName, this.data);
         }
     }
 
