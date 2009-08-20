@@ -84,7 +84,7 @@ public class LiveResults extends TimerTask {
         String reply = null;
 
         try {
-            InputStream is = new ByteArrayInputStream(data.getBytes());
+            InputStream is = new ByteArrayInputStream(data.getBytes("UTF-8"));                     
             this.postRequest.setParameter("userfile", fileName, is);
             reply = makeRequest();
             is.close();

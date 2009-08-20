@@ -81,7 +81,7 @@ public class SaveActionListener
                     StringWriter stringwriter = new StringWriter();
                     PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
                     tournament.save(sprintwriter, 3); //print html, autoflush
-                    liveResults = new LiveResults(s, stringwriter.toString());
+                    liveResults = new LiveResults(file.getName() + ".html", stringwriter.toString());
                     timer.schedule(liveResults, 0);
                     sprintwriter.close();
                     Thread.yield();
