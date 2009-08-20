@@ -25,6 +25,7 @@ public class SaveActionListener
     private int what;
     private Component frame;
     private ResourceBundle messages;
+    private ResourceBundle rules;
     private LiveResults liveResults;
     private boolean doLiveResults = false;
     private Timer timer = null;
@@ -35,7 +36,8 @@ public class SaveActionListener
         what = i;
         frame = component;
         messages = Constants.getInstance().getMessages();
-        if (Constants.getInstance().getRules().getString("postLiveResultsToWeb").equalsIgnoreCase("true") && what == 2) {
+        rules = Constants.getInstance().getRules();
+        if (rules.getString("postLiveResultsToWeb").equalsIgnoreCase("true") && what == 2) {
             this.doLiveResults = true;
             this.timer = new Timer();
         }
@@ -73,7 +75,7 @@ public class SaveActionListener
             PrintWriter printwriter = new PrintWriter(new BufferedWriter(new FileWriter(file.getName() + s)));
             tournament.save(printwriter, what);
             printwriter.close();
-            popUpMessage(getTargetType(what) + " " + messages.getString("wasSaved") + " " + file.getName() + s, frame);
+            String savedMessage = getTargetType(what) + " " + messages.getString("wasSaved") + " " + file.getName() + s;
             if (what == 2) {
                 SaveTracker.setIsSaved(true);
                 //liveresults
@@ -85,8 +87,10 @@ public class SaveActionListener
                     timer.schedule(liveResults, 0);
                     sprintwriter.close();
                     Thread.yield();
+                    savedMessage += System.getProperty("line.separator") + messages.getString("liveResultsSentTo") + " " + rules.getString("websiteUrl");
                 }
             }
+            popUpMessage(savedMessage, frame);
         } catch (IOException ioexception) {
             System.err.print(ioexception);
         }
