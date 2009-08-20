@@ -279,7 +279,7 @@ public class TournamentGUI extends JPanel {
             jpanel1.setLayout(new BorderLayout());
             jpanel1.add(jtable.getTableHeader(), "North");
             jpanel1.add(jtable, "Center");
-            jpanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("round") + " " + (j + 1) + ".    " + messages.getString("allowed_prefixes") + ": " + messages.getString("overtime") + ", " + messages.getString("disqualified")));
+            jpanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 6, 6, 6), BorderFactory.createLineBorder(Color.black)), "  " + messages.getString("round") + " " + (j + 1) + ".    " + messages.getString("allowed_prefixes") + ": " + messages.getString("overtime") + ", " + messages.getString("disqualified") + ", " + messages.getString("walkover")));
             jpanel.add(jpanel1);
         }
 
