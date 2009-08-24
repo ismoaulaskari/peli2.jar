@@ -52,7 +52,7 @@ public class LiveResults extends TimerTask {
      *  poll for sendable results
      */
     public void run() {
-        int delay = Integer.parseInt(this.rules.getString("liveResultDelaySeconds"));
+        int delay = Integer.parseInt(this.rules.getString("liveResultDelayMinutes")) * 60;
         try {
             Thread.sleep(1000 * delay);
         } catch (InterruptedException ex) {

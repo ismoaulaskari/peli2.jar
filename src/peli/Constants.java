@@ -32,13 +32,12 @@ public class Constants {
     private static StringBuilder template = new StringBuilder(500);
     private static StringBuilder footer = new StringBuilder(100);
     private static int MAXMATCHES;  
-    private volatile static String liveResults;
 
     static {
         constants = new Constants();
         locale = new Locale(new String("fi"), new String("FI"));
         //locale = new Locale(new String("en"), new String("US"));
-        System.setProperty("Peli.jarVersion", "v. 1.16.2");
+        System.setProperty("Peli.jarVersion", "v. 1.16.3");
         try {
             messages = ResourceBundle.getBundle("Messages", locale);
             rules = ResourceBundle.getBundle("Rules");
@@ -130,14 +129,6 @@ public class Constants {
 
     public static ResourceBundle getRules() {
         return rules;
-    }
-
-    public static String getLiveResults() {
-        return liveResults;
-    }
-
-    public synchronized static void setLiveResults(String data) {
-        liveResults = data;
     }
 
 }

@@ -82,7 +82,18 @@ public class SaveActionListener
                 if (doLiveResults) {                    
                     StringWriter stringwriter = new StringWriter();
                     PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
-                    tournament.save(sprintwriter, 3); //print html, autoflush
+                    Tournament tmpTournament = null;
+                    if(rules.getString("lowMem").equalsIgnoreCase("TRUE")) {
+                        tmpTournament = tournament;
+                    }
+                    else {
+                        try {
+                            tmpTournament = new Tournament(file);
+                        } catch (FileFormatException ex) {
+                           System.err.print("Can't send live results, try option lowMem=true Error " + ex);
+                        }
+                    }
+                    tmpTournament.save(sprintwriter, 3); //print html, autoflush
                     liveResults = new LiveResults(file.getName() + ".html", stringwriter.toString());
                     timer.schedule(liveResults, 0);
                     sprintwriter.close();
