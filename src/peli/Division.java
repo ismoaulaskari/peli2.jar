@@ -251,14 +251,14 @@ public class Division {
     }*/
 
     //mutual matches table on a template-based tournament html-page
-    public String saveAll(List<Integer> playoffSeparators) {
+    public String saveAll(List<Integer> playoffSeparators, String groupName) {
         String output = Constants.getTemplate().toString();
         SeriesTable seriestable = getSeriesTable();
         if(seriestable.size() < 1) {
             return ""; //@TODO strange extra division
         }
 
-        output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toCssHtmlTable(playoffSeparators));
+        output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toCssHtmlTableWithAnchors(playoffSeparators, groupName));
 
         StringBuilder mutualtable = new StringBuilder();
         for (int i = 0; i < seriestable.size(); i++) {

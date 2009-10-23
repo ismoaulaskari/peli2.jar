@@ -65,14 +65,18 @@ Peli.jar
           o tnmt:n/html:n lähetys: /FIXED 1.16.0
              o taustalla /FIXED 1.16.1 
              o keskinäiset /FIXED 1.16.3
+             o keskeneräisen kisan lopputulokset veks
              *client generoi html:n ja lähettää pjknetiin, katsotaan selaimella tai markulla, JOO
              *vai client lähettää tnmt:n iste2:een, java generoi html:n jonka markku lukee EIII           
           o ilmolistan shuffle ja aakkosjärjestys *
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
           o OHJE spjkl:n sivuille *
           o välierä-, pronssiottelu-, finaalitekstit.. *
-          o pakota lopputulos unicodeksi? merkistö html:ään
+          o tarkemmat virheilmoitukset tiedostoa parsiessa
+          o stiben uudet tulospäätteet
+          o stiben jotenkin pätkityt tnmt:t, ei saa rikkoa X:ttömiä kisoja
           o Huomio-kenttä ottelukohtainen metatieto?
+          o pakota lopputulos unicodeksi? merkistö html:ään
           o vanhat tnmt:t ei avaudu
           o Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan
@@ -86,6 +90,7 @@ Peli.jar
           o nollan-yhden pelaajan turnaus
           o nimetön turnaus
           o vanhan tiedoston avaus-otsikko "uuden tiedoston nimi"
+          o pronssiottelun pystyy luomaan vasta kun 1. finaalimatsi pelattu
           o hakemiston vaihto?
           o tuloskirjauksen pikanäppäimet?
           o Muistintuhlaus?

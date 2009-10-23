@@ -995,7 +995,7 @@ public class Tournament {
 
             //use template.txt                                                
             for (int i = 0; i < getNumberOfDivisions(); i++) {
-                output += getDivision(i).saveAll(playoffSeparators);
+                output += getDivision(i).saveAll(playoffSeparators, String.valueOf(i));
                 output = output.replaceFirst("<!-- HEADING -->",
                         divisiontitles[i] + " " + messages.getString("templateHeading"));
             //HtmlTools.hr(printwriter);
