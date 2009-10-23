@@ -66,6 +66,10 @@ public class HtmlTools
         printwriter.println("<BR>");
     }
 
+    static final void pageBreak(PrintWriter printwriter) {
+        printwriter.println("<p style=\"page-break-before: always\"/>");
+    }
+
     static final void tableIntro(PrintWriter printwriter, boolean flag)
     {
         printwriter.print("<TABLE WIDTH=\"100%\"");

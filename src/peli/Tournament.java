@@ -966,6 +966,7 @@ public class Tournament {
         HtmlTools.hr(printwriter);
         for (int i = 0; i < divisions.size(); i++) {
             getDivision(i).saveMatches(printwriter);
+            HtmlTools.pageBreak(printwriter);
         }
         HtmlTools.br(printwriter);
         HtmlTools.hr(printwriter);
