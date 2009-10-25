@@ -991,15 +991,17 @@ public class Tournament {
 
             String output = "";
             String[] divisiontitles = getDivisionTitles();
+            int numberOfDivisions = getNumberOfDivisions();
             ArrayList playoffSeparators = new ArrayList<Integer>(); //separate playoff-qualified players in output
-            playoffSeparators.add(this.getRealPlayoffSize());
+            playoffSeparators.add(this.getRealPlayoffSize() / numberOfDivisions);
 
-            //use template.txt                                                
-            for (int i = 0; i < getNumberOfDivisions(); i++) {
+            //use template.txt
+            for (int i = 0; i < numberOfDivisions; i++) {
                 output += getDivision(i).saveAll(playoffSeparators, String.valueOf(i));
                 output = output.replaceFirst("<!-- HEADING -->",
                         divisiontitles[i] + " " + messages.getString("templateHeading"));
             //HtmlTools.hr(printwriter);
+                output += "<p style=\"page-break-before: always\"/>";
             }
 
             output += Constants.getFooter().toString();
