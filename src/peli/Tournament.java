@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * v.1.11 super-tnmt
  * v.1.13 playoff schema/seeding options
  * v.1.14 special playoff sizes
- * @TODO disqualified players
+ * v.1.16 Supprot disqualified players of two types, partly (wo) and completely (dq) disqualified
  * @TODO support for extending a series(make default series bigger but hidden)
  * @TODO match schedule printout for players?
  * @TODO xml-output
@@ -759,14 +759,24 @@ public class Tournament {
     }
 
     //added by aulaskar to help organising final groups
-    /** get combined standings of all divisions */
+    /** get combined standings of all divisions 
+    * Different division sizes are compensated */
     public ArrayList getStandings() {
         ArrayList divisions = new ArrayList();
         ArrayList overallstandings = new ArrayList();
-
+        int divisionMaxNoOfMatches = 0;
+        int divTimes = 1; //how many round robins?
+        
         for (int i = 0; i < getNumberOfDivisions(); i++) {
             divisions.add(getDivision(i).getStandings());        //trust that the first division allways exists
+            int divSize = getDivision(i).getNumberOfPlayers();
+            int divRounds = getDivision(i).getNumberOfRounds();
+            divTimes = divRounds / divSize;
+            if(divSize > divisionMaxNoOfMatches) {
+                divisionMaxNoOfMatches = divSize;
+            }
         }
+        
         int maxdivisionsize = ((ArrayList) divisions.get(0)).size() + 2;
 
         //order combined standings of all divisions
@@ -775,7 +785,13 @@ public class Tournament {
 
             for (int j = 0; j < getNumberOfDivisions(); j++) {
                 try {
-                    treeset.add(((ArrayList) divisions.get(j)).get(i));
+                    SeriesTableEntry playerInGroup = (SeriesTableEntry)((ArrayList) divisions.get(j)).get(i);
+                    //compensate only if many different divisions, and only one round robin
+                    if(getNumberOfDivisions() > 1 && divTimes == 1) {
+                        playerInGroup.setCompensatedMatches(divisionMaxNoOfMatches - (playerInGroup.getGames() + 1));
+                    }
+                    System.err.println(playerInGroup.getCompensatedMatches());
+                    treeset.add(playerInGroup);
                 } catch (IndexOutOfBoundsException ie) {
                     //nothing, divisions may have different sizes
                 }

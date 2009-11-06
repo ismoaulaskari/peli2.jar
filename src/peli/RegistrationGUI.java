@@ -14,8 +14,8 @@ import javax.swing.*;
  * This is the source of the Ala-kojola bug but it's fixed now:
  * v1.1 A last name can be Ala-kojola or Ala-Kojola
  * v1.9 choose all-button
+ * v1.16 You can configure more than 4 round-robins from Rules.properties
  * @TODO filtteröi pelaajalistaa tyyliin turnausilmoN.pl vapaavalintaisella suffixilla
- * @TODO useampia kierroksia kuin 4
  * @author aulaskar
  *
  */

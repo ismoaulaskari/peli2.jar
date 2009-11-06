@@ -71,7 +71,8 @@ public class Playoff {
     }
 
     /**
-     * how expensive is this..
+     * Adds metadata to playoffpairs about the players groupstandings
+     * how expensive is this..not a problem with 100 players
      * @param groupStandings
      */
     void markRankings(ArrayList groupStandings) {

@@ -27,8 +27,8 @@ public class SeriesTableEntryComparator
         if (seriestableentry1.getGames() == 0 && seriestableentry.getGames() != 0) {
             return -1;
         }
-        if (seriestableentry1.getPoints() != seriestableentry.getPoints()) {
-            return seriestableentry1.getPoints() - seriestableentry.getPoints();
+        if (seriestableentry1.getPointsCompensatedByDivisionSize() != seriestableentry.getPointsCompensatedByDivisionSize()) {
+            return seriestableentry1.getPointsCompensatedByDivisionSize() - seriestableentry.getPointsCompensatedByDivisionSize();
         }
         if (seriestableentry1.goalDifference() != seriestableentry.goalDifference()) {
             return seriestableentry1.goalDifference() - seriestableentry.goalDifference();

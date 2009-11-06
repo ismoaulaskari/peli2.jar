@@ -1,0 +1,324 @@
+Luetaan a166.tnmt ja generoidaan a166.tnmt.html
+27c27
+< <title>a166.tnmt</title>
+---
+> <title>akti_20090421.tnmt</title>
+60c60
+< <h1>06.11.2009</h1>
+---
+> <h1>20.06.2009</h1>
+65c65
+< <h3>a166.tnmt / Agdur tulokset </h3>
+---
+> <h3>akti_20090421.tnmt / Agdur tulokset </h3>
+395,433c395,405
+< <table class="seriestable">
+< <tr class="seriestablerow">
+< <td class="seriesorder"><a name="0"/>1</td><td class="seriesname">Timo Toivonen</td><td class="seriesgames">20</td><td class="serieswins">15</td><td class="seriesties">3</td><td class="serieslosses">2</td><td class="seriesscored">80</td><td class="seriesminus">-</td><td class="seriesyielded">35</td><td class="seriespoints">33</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">2</td><td class="seriesname">Janne Rantanen</td><td class="seriesgames">20</td><td class="serieswins">16</td><td class="seriesties">1</td><td class="serieslosses">3</td><td class="seriesscored">73</td><td class="seriesminus">-</td><td class="seriesyielded">36</td><td class="seriespoints">33</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">3</td><td class="seriesname">Petteri Sevon</td><td class="seriesgames">20</td><td class="serieswins">12</td><td class="seriesties">1</td><td class="serieslosses">7</td><td class="seriesscored">74</td><td class="seriesminus">-</td><td class="seriesyielded">49</td><td class="seriespoints">25</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">4</td><td class="seriesname">Lauri Eronen</td><td class="seriesgames">20</td><td class="serieswins">9</td><td class="seriesties">4</td><td class="serieslosses">7</td><td class="seriesscored">65</td><td class="seriesminus">-</td><td class="seriesyielded">58</td><td class="seriespoints">22</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">5</td><td class="seriesname">Ismo Lahtinen</td><td class="seriesgames">20</td><td class="serieswins">9</td><td class="seriesties">3</td><td class="serieslosses">8</td><td class="seriesscored">59</td><td class="seriesminus">-</td><td class="seriesyielded">43</td><td class="seriespoints">21</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">6</td><td class="seriesname">Netta Jousi</td><td class="seriesgames">20</td><td class="serieswins">9</td><td class="seriesties">3</td><td class="serieslosses">8</td><td class="seriesscored">64</td><td class="seriesminus">-</td><td class="seriesyielded">56</td><td class="seriespoints">21</td>
+< </tr>
+< <tr class="seriestableseparator">
+< <td class="seriestableseparator">&nbsp;</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">7</td><td class="seriesname">Aku Haapalinna</td><td class="seriesgames">20</td><td class="serieswins">7</td><td class="seriesties">3</td><td class="serieslosses">10</td><td class="seriesscored">42</td><td class="seriesminus">-</td><td class="seriesyielded">59</td><td class="seriespoints">17</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">8</td><td class="seriesname">Niko Tuominen</td><td class="seriesgames">20</td><td class="serieswins">7</td><td class="seriesties">3</td><td class="serieslosses">10</td><td class="seriesscored">52</td><td class="seriesminus">-</td><td class="seriesyielded">54</td><td class="seriespoints">17</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">9</td><td class="seriesname">Angi Mauranen</td><td class="seriesgames">20</td><td class="serieswins">6</td><td class="seriesties">4</td><td class="serieslosses">10</td><td class="seriesscored">49</td><td class="seriesminus">-</td><td class="seriesyielded">62</td><td class="seriespoints">16</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">10</td><td class="seriesname">Rate Staboulis</td><td class="seriesgames">20</td><td class="serieswins">4</td><td class="seriesties">4</td><td class="serieslosses">12</td><td class="seriesscored">46</td><td class="seriesminus">-</td><td class="seriesyielded">53</td><td class="seriespoints">12</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">11</td><td class="seriesname">Pirkka Weijo</td><td class="seriesgames">20</td><td class="serieswins">1</td><td class="seriesties">1</td><td class="serieslosses">18</td><td class="seriesscored">28</td><td class="seriesminus">-</td><td class="seriesyielded">127</td><td class="seriespoints">3</td>
+< </tr>
+< 
+< </table>
+---
+>    1 Timo Toivonen            20 15  3  2  80-35   33  
+>    2 Janne Rantanen           20 16  1  3  73-36   33  
+>    3 Petteri Sevon            20 12  1  7  74-49   25  
+>    4 Lauri Eronen             20  9  4  7  65-58   22  
+>    5 Ismo Lahtinen            20  9  3  8  59-43   21  
+>    6 Netta Jousi              20  9  3  8  64-56   21  
+>    7 Aku Haapalinna           20  7  3 10  42-59   17  
+>    8 Niko Tuominen            20  7  3 10  52-54   17  
+>    9 Angi Mauranen            20  6  4 10  49-62   16  
+>   10 Rate Staboulis           20  4  4 12  46-53   12  
+>   11 Pirkka Weijo             20  1  1 18  28-127   3  
+602c574
+< <p style="page-break-before: always"/>
+---
+> 
+Luetaan a_slh_s08.tnmt ja generoidaan a_slh_s08.tnmt.html
+60c60
+< <h1>06.11.2009</h1>
+---
+> <h1>22.07.2009</h1>
+270,296c270,277
+< <table class="seriestable">
+< <tr class="seriestablerow">
+< <td class="seriesorder"><a name="0"/>1</td><td class="seriesname">Lauri Happo</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">2</td><td class="seriesname">Ismo Lahtinen</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">3</td><td class="seriesname">Petteri Sevon</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">4</td><td class="seriesname">Lauri Eronen</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">5</td><td class="seriesname">Niko Tuominen</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">6</td><td class="seriesname">Netta Jousi</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">7</td><td class="seriesname">Angi Mauranen</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< <tr class="seriestablerow">
+< <td class="seriesorder">8</td><td class="seriesname">Esa Heilimo</td><td class="seriesgames">0</td><td class="serieswins">0</td><td class="seriesties">0</td><td class="serieslosses">0</td><td class="seriesscored">0</td><td class="seriesminus">-</td><td class="seriesyielded">0</td><td class="seriespoints">0</td>
+< </tr>
+< 
+< </table>
+---
+>    1 Lauri Happo               0  0  0  0   0-0     0  
+>    2 Ismo Lahtinen             0  0  0  0   0-0     0  
+>    3 Petteri Sevon             0  0  0  0   0-0     0  
+>    4 Lauri Eronen              0  0  0  0   0-0     0  
+>    5 Niko Tuominen             0  0  0  0   0-0     0  
+>    6 Netta Jousi               0  0  0  0   0-0     0  
+>    7 Angi Mauranen             0  0  0  0   0-0     0  
+>    8 Esa Heilimo               0  0  0  0   0-0     0  
+316,322c297,303
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+325c306
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+327,332c308,313
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+335,336c316,317
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+338,342c319,323
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+345,347c326,328
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+349,352c330,333
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+355,358c336,339
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+360,362c341,343
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+365,369c346,350
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+371,372c352,353
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+375,380c356,361
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+382c363
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+385,391c366,372
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+< 	<td align="center" class=""> </td>
+---
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+> 	<td align="center" class=""> &nbsp;</td>
+399c380
+< <p style="page-break-before: always"/>
+---
+> 
+Luetaan k34_utf8.tnmt ja generoidaan k34_utf8.tnmt.html
+60c60
+< <h1>06.11.2009</h1>
+---
+> <h1>01.08.2009</h1>
+441c441
+< <td class="seriesorder"><a name="0"/>1</td><td class="seriesname">Ahti Lampi</td><td class="seriesgames">16</td><td class="serieswins">15</td><td class="seriesties">0</td><td class="serieslosses">1</td><td class="seriesscored">81</td><td class="seriesminus">-</td><td class="seriesyielded">16</td><td class="seriespoints">30</td>
+---
+> <td class="seriesorder">1</td><td class="seriesname">Ahti Lampi</td><td class="seriesgames">16</td><td class="serieswins">15</td><td class="seriesties">0</td><td class="serieslosses">1</td><td class="seriesscored">81</td><td class="seriesminus">-</td><td class="seriesyielded">16</td><td class="seriespoints">30</td>
+464,466d463
+< <tr class="seriestableseparator">
+< <td class="seriestableseparator">&nbsp;</td>
+< </tr>
+850c847
+< <p style="page-break-before: always"/>
+---
+> 
+Luetaan k35_utf8.tnmt ja generoidaan k35_utf8.tnmt.html
+60c60
+< <h1>06.11.2009</h1>
+---
+> <h1>01.08.2009</h1>
+358c358
+< <td class="seriesorder"><a name="0"/>1</td><td class="seriesname">Santtu Sainio</td><td class="seriesgames">18</td><td class="serieswins">14</td><td class="seriesties">1</td><td class="serieslosses">3</td><td class="seriesscored">63</td><td class="seriesminus">-</td><td class="seriesyielded">34</td><td class="seriespoints">29</td>
+---
+> <td class="seriesorder">1</td><td class="seriesname">Santtu Sainio</td><td class="seriesgames">18</td><td class="serieswins">14</td><td class="seriesties">1</td><td class="serieslosses">3</td><td class="seriesscored">63</td><td class="seriesminus">-</td><td class="seriesyielded">34</td><td class="seriespoints">29</td>
+369,371d368
+< <tr class="seriestableseparator">
+< <td class="seriestableseparator">&nbsp;</td>
+< </tr>
+536c533
+< <p style="page-break-before: always"/>
+---
+> 
+Luetaan k36_utf8.tnmt ja generoidaan k36_utf8.tnmt.html
+60c60
+< <h1>06.11.2009</h1>
+---
+> <h1>01.08.2009</h1>
+349c349
+< <td class="seriesorder"><a name="0"/>1</td><td class="seriesname">Janne Rantanen</td><td class="seriesgames">11</td><td class="serieswins">8</td><td class="seriesties">0</td><td class="serieslosses">3</td><td class="seriesscored">37</td><td class="seriesminus">-</td><td class="seriesyielded">26</td><td class="seriespoints">16</td>
+---
+> <td class="seriesorder">1</td><td class="seriesname">Janne Rantanen</td><td class="seriesgames">11</td><td class="serieswins">8</td><td class="seriesties">0</td><td class="serieslosses">3</td><td class="seriesscored">37</td><td class="seriesminus">-</td><td class="seriesyielded">26</td><td class="seriespoints">16</td>
+372,374d371
+< <tr class="seriestableseparator">
+< <td class="seriestableseparator">&nbsp;</td>
+< </tr>
+614c611
+< <p style="page-break-before: always"/>
+---
+> 
+Luetaan k37_utf8.tnmt ja generoidaan k37_utf8.tnmt.html
+60c60
+< <h1>06.11.2009</h1>
+---
+> <h1>01.08.2009</h1>
+393c393
+< <td class="seriesorder"><a name="0"/>1</td><td class="seriesname">Juha Erälaukko</td><td class="seriesgames">14</td><td class="serieswins">11</td><td class="seriesties">2</td><td class="serieslosses">1</td><td class="seriesscored">52</td><td class="seriesminus">-</td><td class="seriesyielded">23</td><td class="seriespoints">24</td>
+---
+> <td class="seriesorder">1</td><td class="seriesname">Juha Erälaukko</td><td class="seriesgames">14</td><td class="serieswins">11</td><td class="seriesties">2</td><td class="serieslosses">1</td><td class="seriesscored">52</td><td class="seriesminus">-</td><td class="seriesyielded">23</td><td class="seriespoints">24</td>
+416,418d415
+< <tr class="seriestableseparator">
+< <td class="seriestableseparator">&nbsp;</td>
+< </tr>
+726c723
+< <p style="page-break-before: always"/>
+---
+> 
+Luetaan openseries_finalgroups.tnmt ja generoidaan openseries_finalgroups.tnmt.html

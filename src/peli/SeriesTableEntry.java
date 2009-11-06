@@ -23,7 +23,8 @@ public class SeriesTableEntry extends Player {
     private int goalsYielded;
     private static int pointsPerWin = 0;
     private static int pointsPerTie = 0;
-    private int isInMutualComparison = -1; //is tied at x points    
+    private int isInMutualComparison = -1; //is tied at x points
+    private int compensatedMatches;
 
     SeriesTableEntry(int rank, String name) {
         super(rank, name); //hacked to extend player for mutual comparison casting
@@ -34,6 +35,7 @@ public class SeriesTableEntry extends Player {
         goalsYielded = 0;
         playerName = name;
         isInMutualComparison = -1;
+        compensatedMatches = 0; //used to get accurate points for comparison of divisions of inequal sizes
 
         //hack
         if (pointsPerWin == 0) {
@@ -79,6 +81,18 @@ public class SeriesTableEntry extends Player {
     public int getPoints() {
 
         return (pointsPerWin * wins) + (pointsPerTie * ties);
+    }
+
+    public int getPointsCompensatedByDivisionSize() {
+        return getPoints() + (pointsPerWin * compensatedMatches);
+    }
+
+    public int getCompensatedMatches() {
+        return compensatedMatches;
+    }
+
+    public void setCompensatedMatches(int numberOfMatches) {
+        this.compensatedMatches = numberOfMatches;
     }
 
     public int getHasTiedPoints() {
