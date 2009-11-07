@@ -789,8 +789,7 @@ public class Tournament {
                     //compensate only if many different divisions, and only one round robin
                     if(getNumberOfDivisions() > 1 && divTimes == 1) {
                         playerInGroup.setCompensatedMatches(divisionMaxNoOfMatches - (playerInGroup.getGames() + 1));
-                    }
-                    System.err.println(playerInGroup.getCompensatedMatches());
+                    }                    
                     treeset.add(playerInGroup);
                 } catch (IndexOutOfBoundsException ie) {
                     //nothing, divisions may have different sizes
@@ -831,14 +830,17 @@ public class Tournament {
     }
 
     //by aulaskar
-    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
+    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {        
         //Set rounds = playoffs.keySet();
         List rounds = getPlayoffsSortedKeySet();
         Boolean isFirst = true;
         int x = 0;
-        for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs
+        for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs, mark placements from basic group first
             Integer size = (Integer) i.next();
             ((Playoff) playoffs.get(size)).markRankings(overallstandings); //HACK just in case placements are not set in headless mode
+        }
+        for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs, now overallstandings can be modified safely
+            Integer size = (Integer) i.next();            
             if (isFirst) {
                 isFirst = false;
                 if (size == 2) { //final, get the winner
