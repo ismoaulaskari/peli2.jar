@@ -112,7 +112,7 @@ public class PlayoffPairTableModel extends AbstractTableModel {
         }
 
         if (j == 0) {
-            if (i == 0) {
+            if (i == 0) { //are these ever used?
                 this.playoffpair.setHomePlacement((String) obj);
             } else if (i == 1) {
                 this.playoffpair.setAwayPlacement((String) obj);
