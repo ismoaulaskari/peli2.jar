@@ -1005,6 +1005,16 @@ public class Tournament {
             String header = Constants.getHeader().toString();
             header = header.replaceAll("<!-- TITLE -->", System.getProperty("TournamentFileName"));
             header = header.replaceAll("<!-- DATE -->", date);
+
+            /*hidden tnmt-output is always printed*/
+            StringWriter stringwriter = new StringWriter();
+            PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
+            sprintwriter.println("<TNMT>");
+            this.save(sprintwriter);
+            sprintwriter.println("</TNMT>");
+            header = header.replaceAll("<!-- TNMT -->", stringwriter.toString());
+            sprintwriter.close();
+
             printwriter.print(header);
 
             String output = "";
@@ -1066,15 +1076,6 @@ public class Tournament {
                 output = output.replaceAll("HIDE_STANDINGS-->", "");
                 output = output.replaceAll("<STANDINGS/>", standingsoutput.toString());
             }
-
-            /*hidden tnmt-output is always printed*/
-            StringWriter stringwriter = new StringWriter();
-            PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
-            sprintwriter.println("<TNMT>");
-            this.save(sprintwriter);
-            sprintwriter.println("</TNMT>");
-            output = output.replaceAll("<!-- TNMT -->", stringwriter.toString());
-            sprintwriter.close();
 
             //use footer.txt
             printwriter.print(output);

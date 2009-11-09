@@ -61,3 +61,10 @@ hza.style.display = state;
 </center>
 <hr>
 
+<p><a href="#" onclick="showhide('div1');">Otteluohjelma</a></p>
+<div id="div1" style="display: none;">
+<pre class="tnmt">
+<!-- TNMT -->
+</pre>
+</div>
+

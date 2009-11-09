@@ -71,6 +71,8 @@ Peli.jar
              *vai client lähettää tnmt:n iste2:een, java generoi html:n jonka markku lukee EIII
           o otteluohjelman page break /FIXED 1.16.4
           o ankkuri html-tulosten sarjataulukon alkuun /FIXED 1.16.4
+          o playoffeissa hävinneiden loppusijoitusten korjaus /FIXED 1.16.6
+          o printtaa tnmt vain kerran/html-tiedosto /FIXED 1.16.7
           o ilmolistan shuffle ja aakkosjärjestys *
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
           o OHJE spjkl:n sivuille *
