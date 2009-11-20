@@ -73,6 +73,7 @@ Peli.jar
           o ankkuri html-tulosten sarjataulukon alkuun /FIXED 1.16.4
           o playoffeissa hävinneiden loppusijoitusten korjaus /FIXED 1.16.6
           o printtaa tnmt vain kerran/html-tiedosto /FIXED 1.16.7
+          o peli.jar versionumero html:n sekaan
           o ilmolistan shuffle ja aakkosjärjestys *
           o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
           o OHJE spjkl:n sivuille *
