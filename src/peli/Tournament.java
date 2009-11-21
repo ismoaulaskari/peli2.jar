@@ -1033,6 +1033,7 @@ public class Tournament {
             }
 
             output += Constants.getFooter().toString();
+            output = output.replaceAll("<VERSION/>", System.getProperty("Peli.jarVersion"));
 
             if (placementMatches != null) {
                 output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
