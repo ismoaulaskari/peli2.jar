@@ -19,6 +19,6 @@ HIDE_PLAYOFF-->
 </p>
 HIDE_STANDINGS-->
 <hr />
-
+<!--Created with peli2.jar version <VERSION/> by the Finnish Table Hockey Association at www.poytajaakiekko.fi-->
 </body>
 </html>

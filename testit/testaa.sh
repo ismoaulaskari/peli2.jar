@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd ../dist && \
-cp ../testit/genhtml/*tnmt .
+cp -a ../testit/genhtml/*tnmt .
 for TNMT in `ls *tnmt` 
 do
   echo "Luetaan $TNMT ja generoidaan ${TNMT}.html"
