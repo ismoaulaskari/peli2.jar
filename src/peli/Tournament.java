@@ -36,8 +36,9 @@ public class Tournament {
     private Vector divisions;
     private int numberOfDivisions;
     private static final String legacydate = "x.x.2000";
-    private static final String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date().getTime());
-    private HashMap playoffs = new HashMap<Integer,Playoff>();
+    private static final SimpleDateFormat PELIJARDATE = new SimpleDateFormat("dd.MM.yyyy");
+    private static String date = PELIJARDATE.format(new Date().getTime());
+    private HashMap playoffs = new HashMap<Integer, Playoff>();
     private Playoff placementMatches = null;
     private Playoff bronzeMatch = null;
     private volatile int largestPlayoff = 0;
@@ -385,15 +386,15 @@ public class Tournament {
      * @return
      */
     public boolean isPlayoffRoundFinished() {
-        if(this.largestPlayoff == 0) {
+        if (this.largestPlayoff == 0) {
             return true;
         }
 
         boolean finished = true;
         for (Object playoff : this.playoffs.values()) {
-            if(! ((Playoff) playoff).isFinished()) {
-                finished = false;                
-            }            
+            if (!((Playoff) playoff).isFinished()) {
+                finished = false;
+            }
         }
 
         return finished;
@@ -562,6 +563,16 @@ public class Tournament {
         locale = Constants.getInstance().getLocale();
         messages = Constants.getInstance().getMessages();
         rules = Constants.getInstance().getRules();
+        Date lastModified = null;
+        try {
+            lastModified = new Date(file.lastModified());            
+        } catch (SecurityException se) {
+            System.err.println("Cannot get file modification date: " + se);
+        }
+        if(lastModified != null) {
+            date = PELIJARDATE.format(lastModified.getTime());
+        }
+        
         //rules = ResourceBundle.getBundle("Rules");added for changeable division sizes
         this.loadRules(rules);
         divisions = new Vector();
@@ -760,23 +771,23 @@ public class Tournament {
 
     //added by aulaskar to help organising final groups
     /** get combined standings of all divisions 
-    * Different division sizes are compensated */
+     * Different division sizes are compensated */
     public ArrayList getStandings() {
         ArrayList divisions = new ArrayList();
         ArrayList overallstandings = new ArrayList();
         int divisionMaxNoOfMatches = 0;
         int divTimes = 1; //how many round robins?
-        
+
         for (int i = 0; i < getNumberOfDivisions(); i++) {
             divisions.add(getDivision(i).getStandings());        //trust that the first division allways exists
             int divSize = getDivision(i).getNumberOfPlayers();
             int divRounds = getDivision(i).getNumberOfRounds();
             divTimes = divRounds / divSize;
-            if(divSize > divisionMaxNoOfMatches) {
+            if (divSize > divisionMaxNoOfMatches) {
                 divisionMaxNoOfMatches = divSize;
             }
         }
-        
+
         int maxdivisionsize = ((ArrayList) divisions.get(0)).size() + 2;
 
         //order combined standings of all divisions
@@ -785,11 +796,11 @@ public class Tournament {
 
             for (int j = 0; j < getNumberOfDivisions(); j++) {
                 try {
-                    SeriesTableEntry playerInGroup = (SeriesTableEntry)((ArrayList) divisions.get(j)).get(i);
+                    SeriesTableEntry playerInGroup = (SeriesTableEntry) ((ArrayList) divisions.get(j)).get(i);
                     //compensate only if many different divisions, and only one round robin
-                    if(getNumberOfDivisions() > 1 && divTimes == 1) {
+                    if (getNumberOfDivisions() > 1 && divTimes == 1) {
                         playerInGroup.setCompensatedMatches(divisionMaxNoOfMatches - (playerInGroup.getGames() + 1));
-                    }                    
+                    }
                     treeset.add(playerInGroup);
                 } catch (IndexOutOfBoundsException ie) {
                     //nothing, divisions may have different sizes
@@ -830,7 +841,7 @@ public class Tournament {
     }
 
     //by aulaskar
-    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {        
+    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
         //Set rounds = playoffs.keySet();
         List rounds = getPlayoffsSortedKeySet();
         Boolean isFirst = true;
@@ -840,7 +851,7 @@ public class Tournament {
             ((Playoff) playoffs.get(size)).markRankings(overallstandings); //HACK just in case placements are not set in headless mode
         }
         for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs, now overallstandings can be modified safely
-            Integer size = (Integer) i.next();            
+            Integer size = (Integer) i.next();
             if (isFirst) {
                 isFirst = false;
                 if (size == 2) { //final, get the winner
@@ -851,7 +862,7 @@ public class Tournament {
             }
             //the rest are all losers (but they should  be ordered based on the group)
             for (Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
-                if(! ((String)loser).equals("X")) {
+                if (!((String) loser).equals("X")) {
                     overallstandings.set(x++, loser);
                 }
             }
@@ -1028,7 +1039,7 @@ public class Tournament {
                 output += getDivision(i).saveAll(playoffSeparators, String.valueOf(i));
                 output = output.replaceFirst("<!-- HEADING -->",
                         divisiontitles[i] + " " + messages.getString("templateHeading"));
-            //HtmlTools.hr(printwriter);
+                //HtmlTools.hr(printwriter);
                 output += "<p style=\"page-break-before: always\"/>";
             }
 
@@ -1114,12 +1125,11 @@ public class Tournament {
      */
     public int getRealPlayoffSize() {
         int realsize = 0;
-        if(this.getLargestPlayoff() > 0) {
-            for (PlayoffPair playoffpair : ((Playoff)this.playoffs.get(this.getLargestPlayoff())).getPlayoffPairs()) {
-                if(!playoffpair.getHomeTeam().equalsIgnoreCase("X") && !playoffpair.getAwayTeam().equalsIgnoreCase("X")) {
+        if (this.getLargestPlayoff() > 0) {
+            for (PlayoffPair playoffpair : ((Playoff) this.playoffs.get(this.getLargestPlayoff())).getPlayoffPairs()) {
+                if (!playoffpair.getHomeTeam().equalsIgnoreCase("X") && !playoffpair.getAwayTeam().equalsIgnoreCase("X")) {
                     realsize += 2;
-                }
-                else { //at least one player is X
+                } else { //at least one player is X
                     realsize++;
                 }
             }
@@ -1127,5 +1137,4 @@ public class Tournament {
 
         return realsize;
     }
-
 }
