@@ -118,13 +118,14 @@ Peli.jar
     * markku: nimpparit /FIXED 0.6.1
     * markku: lotto /FIXED 0.6.1
     * markku: aivon lataaminen taustalle /FIXED 0.6.1
+    * markku: käyttäjän puheet /0.6.7
+    * markku: enemmän solvauksia /0.6.7
     * markku: nullit pois
     * markku: set markku-fbstatus privana
     * botti: markku-raportit
     * markku: lokin merkistöt
-    * markku: sarjataulukko
+    * markku: sarjataulukko /FIXED (LIVE)
     * markku: privasta viive pois
-    * markku: enemmän solvauksia
     *
     * Tulosbot:
     * botti: sarjataulukko
