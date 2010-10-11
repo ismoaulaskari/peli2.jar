@@ -158,6 +158,26 @@ public class RegistrationGUI extends JPanel {
                 }
             }
         });
+
+        JButton selectByLetterButton = new JButton(messages.getString("selectByLetterButton"));
+        selectByLetterButton.setToolTipText(messages.getString("selectByLetterToolTip"));
+        selectByLetterButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent actionevent) {
+                for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
+                    /*PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
+                    if (playerjcheckbox.isSelected()) {
+                        playerjcheckbox.setSelected(false);
+                    } else {
+                        playerjcheckbox.setSelected(true);
+                    }*/
+                }
+                playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
+                mainPanel.revalidate();
+                mainPanel.repaint();
+            }
+        });
+
         JButton selectAllButton = new JButton(messages.getString("selectAllButton"));
         selectAllButton.setToolTipText(messages.getString("selectAllToolTip"));
         selectAllButton.addActionListener(new ActionListener() {
@@ -194,6 +214,7 @@ public class RegistrationGUI extends JPanel {
         jpanel1.add(Box.createRigidArea(new Dimension(20, 0)));
         jpanel1.add(Box.createHorizontalGlue());
         jpanel1.add(jbutton);
+        jpanel.add(selectByLetterButton);
         jpanel.add(selectAllButton);
         add(jpanel, "North");
         add(jscrollpane, "Center");
