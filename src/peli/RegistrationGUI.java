@@ -27,13 +27,13 @@ public class RegistrationGUI extends JPanel {
     private MainWindow mainWindow;
     private Container mainWindowContents;
     private static TreeSet names = new TreeSet(new PlayerCheckBoxComparator());
+    private static TreeSet originalNames = new TreeSet(new PlayerCheckBoxComparator()); //unfiltered playernamelist
     private int counter;
     private int rank;
 
     private void popUpErrorMessage(String s) {
         JOptionPane.showMessageDialog(this, s, messages.getString("duplicateErrorMessageHeader"), 2, null);
     }
-
 
     RegistrationGUI(MainWindow mainwindow, File file, File file1) {
         super(new BorderLayout());
@@ -72,60 +72,31 @@ public class RegistrationGUI extends JPanel {
             }
         }
 
-        //number of rounds?
-        /*JRadioButton jradiobutton = new JRadioButton("1");
-        jradiobutton.setActionCommand("1");
-        jradiobutton.setSelected(true);
-        JRadioButton jradiobutton1 = new JRadioButton("2");
-        jradiobutton1.setActionCommand("2");
-        jradiobutton1.setSelected(true);
-        JRadioButton jradiobutton2 = new JRadioButton("3");
-        jradiobutton2.setActionCommand("3");
-        jradiobutton2.setSelected(true);
-        JRadioButton jradiobutton3 = new JRadioButton("4");
-        jradiobutton3.setActionCommand("4");
-        jradiobutton3.setSelected(true);*/
         ButtonGroup buttongroup = new ButtonGroup();
-        /*buttongroup.add(jradiobutton);
-        buttongroup.add(jradiobutton1);
-        buttongroup.add(jradiobutton2);
-        buttongroup.add(jradiobutton3);*/
         RadioListener radiolistener = new RadioListener();
-        /*jradiobutton.addActionListener(radiolistener);
-        jradiobutton1.addActionListener(radiolistener);
-        jradiobutton2.addActionListener(radiolistener);
-        jradiobutton3.addActionListener(radiolistener);*/
-        JPanel jpanel = new JPanel();
-        jpanel.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
-        jpanel.setLayout(new BoxLayout(jpanel, 0));
-        jpanel.add(new JLabel(messages.getString("choosePlayers")));
-        jpanel.add(Box.createHorizontalGlue());
-        jpanel.add(new JLabel(messages.getString("rounds") + ":"));
-        jpanel.add(Box.createRigidArea(new Dimension(30, 0)));
-        /*jpanel.add(jradiobutton);
-        jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
-        jpanel.add(jradiobutton1);
-        jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
-        jpanel.add(jradiobutton2);
-        jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
-        jpanel.add(jradiobutton3);*/
+        JPanel topJPanel = new JPanel();
+        topJPanel.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
+        topJPanel.setLayout(new BoxLayout(topJPanel, 0));
+        topJPanel.add(new JLabel(messages.getString("choosePlayers")));
+        topJPanel.add(Box.createHorizontalGlue());
+        topJPanel.add(new JLabel(messages.getString("rounds") + ":"));
+        topJPanel.add(Box.createRigidArea(new Dimension(30, 0)));
         int rounds = 0;
-        if(rules.containsKey("maxRounds")) {
+        if (rules.containsKey("maxRounds")) {
             try {
                 rounds = Integer.parseInt(rules.getString("maxRounds"));
-            }
-            catch (NumberFormatException ne) {
+            } catch (NumberFormatException ne) {
                 rounds = 4;
             }
         }
-        for(int i = 1; i <= rounds; i++) {
+        for (int i = 1; i <= rounds; i++) {
             JRadioButton jradiobutton = new JRadioButton(String.valueOf(i));
             jradiobutton.setActionCommand(String.valueOf(i));
             jradiobutton.setSelected(true);
             buttongroup.add(jradiobutton);
             jradiobutton.addActionListener(radiolistener);
-            jpanel.add(jradiobutton);
-            jpanel.add(Box.createRigidArea(new Dimension(10, 0)));
+            topJPanel.add(jradiobutton);
+            topJPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         }
 
         final JPanel mainPanel = new JPanel();
@@ -159,22 +130,54 @@ public class RegistrationGUI extends JPanel {
             }
         });
 
-        JButton selectByLetterButton = new JButton(messages.getString("selectByLetterButton"));
-        selectByLetterButton.setToolTipText(messages.getString("selectByLetterToolTip"));
-        selectByLetterButton.addActionListener(new ActionListener() {
-
+        JLabel selectByLetterLabel = new JLabel(messages.getString("selectByLetterField"));
+        selectByLetterLabel.setToolTipText(messages.getString("selectByLetterToolTip"));
+        final JTextField selectByLetterField = new JTextField(1);
+        selectByLetterField.setToolTipText(messages.getString("selectByLetterToolTip"));
+        selectByLetterField.addKeyListener(new KeyListener() {
+/*
             public void actionPerformed(ActionEvent actionevent) {
+                if(selectByLetterField.)
                 for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
-                    /*PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
+                    PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
                     if (playerjcheckbox.isSelected()) {
-                        playerjcheckbox.setSelected(false);
+                    playerjcheckbox.setSelected(false);
                     } else {
-                        playerjcheckbox.setSelected(true);
-                    }*/
+                    playerjcheckbox.setSelected(true);
+                    }
                 }
-                playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
+                //playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
                 mainPanel.revalidate();
                 mainPanel.repaint();
+            }
+*/
+            public void keyTyped(KeyEvent arg0) {
+                if(RegistrationGUI.originalNames.isEmpty()) {
+                    RegistrationGUI.originalNames.addAll(RegistrationGUI.names);
+                }
+
+                if(selectByLetterField.getText().isEmpty()) {
+                    RegistrationGUI.names.clear();
+                    RegistrationGUI.names.addAll(RegistrationGUI.originalNames);
+                }
+                else {
+                    for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
+                        PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
+                        if(playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+" + arg0.paramString())) {
+                            iterator.remove();
+                        }
+                    }
+                }
+                mainPanel.revalidate();
+                mainPanel.repaint();
+            }
+
+            public void keyPressed(KeyEvent arg0) {
+                //throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+            public void keyReleased(KeyEvent arg0) {
+                //throw new UnsupportedOperationException("Not supported yet.");
             }
         });
 
@@ -186,9 +189,9 @@ public class RegistrationGUI extends JPanel {
                 for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
                     PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
                     if (playerjcheckbox.isSelected()) {
-                        playerjcheckbox.setSelected(false);                        
+                        playerjcheckbox.setSelected(false);
                     } else {
-                        playerjcheckbox.setSelected(true);                        
+                        playerjcheckbox.setSelected(true);
                     }
                 }
                 playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
@@ -200,24 +203,34 @@ public class RegistrationGUI extends JPanel {
         JButton jbutton = new JButton(messages.getString("readyButton"));
         jbutton.setToolTipText(messages.getString("readyToolTip"));
         jbutton.addActionListener(new ReadyActionListener(mainWindow, names, file1, radiolistener));
-        JPanel jpanel1 = new JPanel();
-        jpanel1.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
-        jpanel1.setLayout(new BoxLayout(jpanel1, 0));
-        jpanel1.add(new JLabel(messages.getString("newPlayerPrompt")));
-        jpanel1.add(Box.createRigidArea(new Dimension(10, 0)));
-        jpanel1.add(Box.createHorizontalGlue());
-        jpanel1.add(newPlayerName);
-        jpanel1.add(Box.createRigidArea(new Dimension(10, 0)));
-        jpanel1.add(new JLabel(messages.getString("totalOf") + " "));
-        jpanel1.add(counterField);
-        jpanel1.add(playersLabel);
-        jpanel1.add(Box.createRigidArea(new Dimension(20, 0)));
-        jpanel1.add(Box.createHorizontalGlue());
-        jpanel1.add(jbutton);
-        jpanel.add(selectByLetterButton);
-        jpanel.add(selectAllButton);
-        add(jpanel, "North");
+
+        JPanel middleJPanel = new JPanel();
+        middleJPanel.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
+        middleJPanel.setLayout(new BoxLayout(middleJPanel, 0));
+        middleJPanel.add(selectByLetterLabel);
+        middleJPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        middleJPanel.add(Box.createHorizontalGlue());
+        middleJPanel.add(selectByLetterField);
+
+        JPanel bottomJPanel = new JPanel();
+        bottomJPanel.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
+        bottomJPanel.setLayout(new BoxLayout(bottomJPanel, 0));
+        bottomJPanel.add(new JLabel(messages.getString("newPlayerPrompt")));
+        bottomJPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        bottomJPanel.add(Box.createHorizontalGlue());
+        bottomJPanel.add(newPlayerName);
+        bottomJPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        bottomJPanel.add(new JLabel(messages.getString("totalOf") + " "));
+        bottomJPanel.add(counterField);
+        bottomJPanel.add(playersLabel);
+        bottomJPanel.add(Box.createRigidArea(new Dimension(20, 0)));
+        bottomJPanel.add(Box.createHorizontalGlue());
+        bottomJPanel.add(jbutton);
+
+        topJPanel.add(selectAllButton);
+        add(topJPanel, "North");
+        add(middleJPanel, "West");
         add(jscrollpane, "Center");
-        add(jpanel1, "South");
+        add(bottomJPanel, "South");
     }
 }
