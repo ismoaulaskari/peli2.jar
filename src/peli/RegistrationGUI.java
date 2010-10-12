@@ -152,18 +152,24 @@ public class RegistrationGUI extends JPanel {
             }
 */
             public void keyTyped(KeyEvent arg0) {
+                System.err.println("keytyped");
                 if(RegistrationGUI.originalNames.isEmpty()) {
                     RegistrationGUI.originalNames.addAll(RegistrationGUI.names);
+                    System.err.println("new originalnames");
                 }
 
                 if(selectByLetterField.getText().isEmpty()) {
                     RegistrationGUI.names.clear();
                     RegistrationGUI.names.addAll(RegistrationGUI.originalNames);
+                    System.err.println("new names");
                 }
-                else {
+
+                if(!arg0.paramString().isEmpty()) {
+                    System.err.println("filter");
                     for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
                         PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
-                        if(playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+" + arg0.paramString())) {
+                        if(playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+" + arg0.getKeyChar())) {
+                            System.err.println("match " + arg0.getKeyChar());
                             iterator.remove();
                         }
                     }
