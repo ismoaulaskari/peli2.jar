@@ -135,42 +135,55 @@ public class RegistrationGUI extends JPanel {
         final JTextField selectByLetterField = new JTextField(1);
         selectByLetterField.setToolTipText(messages.getString("selectByLetterToolTip"));
         selectByLetterField.addKeyListener(new KeyListener() {
-/*
+            /*
             public void actionPerformed(ActionEvent actionevent) {
-                if(selectByLetterField.)
-                for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
-                    PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
-                    if (playerjcheckbox.isSelected()) {
-                    playerjcheckbox.setSelected(false);
-                    } else {
-                    playerjcheckbox.setSelected(true);
-                    }
-                }
-                //playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
-                mainPanel.revalidate();
-                mainPanel.repaint();
+            if(selectByLetterField.)
+            for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
+            PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
+            if (playerjcheckbox.isSelected()) {
+            playerjcheckbox.setSelected(false);
+            } else {
+            playerjcheckbox.setSelected(true);
             }
-*/
+            }
+            //playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            }
+             */
+
             public void keyTyped(KeyEvent arg0) {
+                String filter = null;
+                char typed = arg0.getKeyChar();
+                if(typed < 97 || typed > 122) {
+                    filter = "";
+                }
+                else {
+                    filter = String.valueOf(typed);
+                }
+
                 System.err.println("keytyped");
-                if(RegistrationGUI.originalNames.isEmpty() && !RegistrationGUI.names.isEmpty()) {
+                if (RegistrationGUI.originalNames.isEmpty() && !RegistrationGUI.names.isEmpty()) {
                     RegistrationGUI.originalNames.addAll(RegistrationGUI.names);
                     System.err.println("new originalnames");
                 }
 
-                if(selectByLetterField.getText().isEmpty() && !RegistrationGUI.originalNames.isEmpty()) {
-                    RegistrationGUI.names.clear();
-                    RegistrationGUI.names.addAll(RegistrationGUI.originalNames);
-                    System.err.println("new names");
+                if (filter.matches("^\\s*$") || filter.length() < 1) {
+                    if (!RegistrationGUI.originalNames.isEmpty()) {
+                        RegistrationGUI.names.clear();
+                        RegistrationGUI.names.addAll(RegistrationGUI.originalNames);
+                        System.err.println("restore names");
+                    }
                 }
 
-                char filter = arg0.getKeyChar();
-                if(!String.valueOf(filter).isEmpty()) {
-                    System.err.println("filter " + filter);
+                if (filter.matches("^\\S+$") && filter.length() > 0) {
+                    System.err.println("filter " + filter + " " + Integer.valueOf(typed));
                     for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
                         PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
-                        if(playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+" + filter)) {
+                        if (playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+" + filter)) {
                             System.err.println("match " + filter);
+                        } else {
+                            mainPanel.remove(playerjcheckbox);
                             iterator.remove();
                         }
                     }
