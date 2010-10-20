@@ -27,7 +27,7 @@ public class ReadyActionListener
         {
             PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox)iterator.next();
             if(playerjcheckbox.isSelected())
-                players.add(new Player(playerjcheckbox.getRank(), playerjcheckbox.getText()));
+                players.add(new Player(playerjcheckbox.getRank(), Tools.limitNameToTwoParts(playerjcheckbox.getText())));
         }
 
         int i = radioListener.getTimes();

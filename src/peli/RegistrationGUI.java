@@ -15,7 +15,7 @@ import javax.swing.*;
  * v1.1 A last name can be Ala-kojola or Ala-Kojola
  * v1.9 choose all-button
  * v1.16 You can configure more than 4 round-robins from Rules.properties
- * @TODO filtteröi pelaajalistaa tyyliin turnausilmoN.pl vapaavalintaisella suffixilla
+ * v.1.17 filtteröi pelaajalistaa tyyliin turnausilmoN.pl vapaavalintaisella suffixilla
  * @author aulaskar
  *
  */
@@ -26,8 +26,8 @@ public class RegistrationGUI extends JPanel {
     private ResourceBundle rules;
     private MainWindow mainWindow;
     private Container mainWindowContents;
-    private static TreeSet names = new TreeSet(new PlayerCheckBoxComparator());
-    private static TreeSet originalNames = new TreeSet(new PlayerCheckBoxComparator()); //unfiltered playernamelist
+    private static TreeSet<PlayerJCheckBox> names = new TreeSet<PlayerJCheckBox>(new PlayerCheckBoxComparator());
+    private static TreeSet<PlayerJCheckBox> originalNames = new TreeSet<PlayerJCheckBox>(new PlayerCheckBoxComparator()); //unfiltered playernamelist
     private int counter;
     private int rank;
 
@@ -134,23 +134,8 @@ public class RegistrationGUI extends JPanel {
         selectByLetterLabel.setToolTipText(messages.getString("selectByLetterToolTip"));
         final JTextField selectByLetterField = new JTextField(1);
         selectByLetterField.setToolTipText(messages.getString("selectByLetterToolTip"));
+        selectByLetterField.setSize(2, 1);
         selectByLetterField.addKeyListener(new KeyListener() {
-            /*
-            public void actionPerformed(ActionEvent actionevent) {
-            if(selectByLetterField.)
-            for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
-            PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
-            if (playerjcheckbox.isSelected()) {
-            playerjcheckbox.setSelected(false);
-            } else {
-            playerjcheckbox.setSelected(true);
-            }
-            }
-            //playersLabel.setText(counter != 1 ? messages.getString("players") : messages.getString("player"));
-            mainPanel.revalidate();
-            mainPanel.repaint();
-            }
-             */
 
             public void keyTyped(KeyEvent arg0) {
                 String filter = null;
@@ -170,8 +155,14 @@ public class RegistrationGUI extends JPanel {
 
                 if (filter.matches("^\\s*$") || filter.length() < 1) {
                     if (!RegistrationGUI.originalNames.isEmpty()) {
+                        for(PlayerJCheckBox pc : RegistrationGUI.names) {
+                            mainPanel.remove(pc);
+                        }
                         RegistrationGUI.names.clear();
                         RegistrationGUI.names.addAll(RegistrationGUI.originalNames);
+                        for(PlayerJCheckBox pc : RegistrationGUI.names) {
+                            mainPanel.add(pc);
+                        }
                         System.err.println("restore names");
                     }
                 }
@@ -180,7 +171,7 @@ public class RegistrationGUI extends JPanel {
                     System.err.println("filter " + filter + " " + Integer.valueOf(typed));
                     for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
                         PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
-                        if (playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+" + filter)) {
+                        if (playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+\\S*" + filter + "\\S*")) {
                             System.err.println("match " + filter);
                         } else {
                             mainPanel.remove(playerjcheckbox);
@@ -192,12 +183,10 @@ public class RegistrationGUI extends JPanel {
                 mainPanel.repaint();
             }
 
-            public void keyPressed(KeyEvent arg0) {
-                //throw new UnsupportedOperationException("Not supported yet.");
+            public void keyPressed(KeyEvent arg0) {                
             }
 
-            public void keyReleased(KeyEvent arg0) {
-                //throw new UnsupportedOperationException("Not supported yet.");
+            public void keyReleased(KeyEvent arg0) {                
             }
         });
 
