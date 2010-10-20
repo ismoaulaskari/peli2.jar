@@ -134,7 +134,7 @@ public class RegistrationGUI extends JPanel {
         selectByLetterLabel.setToolTipText(messages.getString("selectByLetterToolTip"));
         final JTextField selectByLetterField = new JTextField(1);
         selectByLetterField.setToolTipText(messages.getString("selectByLetterToolTip"));
-        selectByLetterField.setSize(2, 1);
+        selectByLetterField.setSize(4, 2);
         selectByLetterField.addKeyListener(new KeyListener() {
 
             public void keyTyped(KeyEvent arg0) {
@@ -217,7 +217,7 @@ public class RegistrationGUI extends JPanel {
 
         JPanel middleJPanel = new JPanel();
         middleJPanel.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
-        middleJPanel.setLayout(new BoxLayout(middleJPanel, 0));
+        middleJPanel.add(Box.createVerticalGlue());
         middleJPanel.add(selectByLetterLabel);
         middleJPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         middleJPanel.add(Box.createHorizontalGlue());
