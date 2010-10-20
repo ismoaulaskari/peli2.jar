@@ -74,7 +74,7 @@ Peli.jar
           o playoffeissa hävinneiden loppusijoitusten korjaus /FIXED 1.16.6
           o printtaa tnmt vain kerran/html-tiedosto /FIXED 1.16.7
           o peli.jar versionumero html:n sekaan /FIXED 1.16.9
-          o @TODO ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen *
+          o ilmoittautumislistoille joku idioottihelppo tuki - filtteri pelaajatiedostonavaukseen 1.17.0 
           o @TODO Alkusarjan tulokset finaalisarjaan ? käsin?
           o @TODO Pelaajakohtaiset otteluohjelmat tulostettavaksi
           o @TODO ilmolistan shuffle ja aakkosjärjestys *
@@ -82,8 +82,8 @@ Peli.jar
           o välierä-, pronssiottelu-, finaalitekstit.. *
           o tarkemmat virheilmoitukset tiedostoa parsiessa
           o @TODO stiben uudet tulospäätteet
-          o stiben jotenkin pätkityt tnmt:t, ei saa rikkoa X:ttömiä kisoja
           o @TODO Huomio-kenttä ottelukohtainen metatieto?
+          o stiben jotenkin pätkityt tnmt:t, ei saa rikkoa X:ttömiä kisoja
           o pakota lopputulos unicodeksi? merkistö html:ään
           o vanhat tnmt:t ei avaudu
           o sarjan kierrosmäärän kasvattaminen kesken kaiken?--defaulttina isompi sarja kuin pelataan

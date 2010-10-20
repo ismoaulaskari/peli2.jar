@@ -28,7 +28,7 @@ public class RegistrationGUI extends JPanel {
     private Container mainWindowContents;
     private static TreeSet<PlayerJCheckBox> names = new TreeSet<PlayerJCheckBox>(new PlayerCheckBoxComparator());
     private static TreeSet<PlayerJCheckBox> originalNames = new TreeSet<PlayerJCheckBox>(new PlayerCheckBoxComparator()); //unfiltered playernamelist
-    private int counter;
+    private static int counter;
     private int rank;
 
     private void popUpErrorMessage(String s) {
@@ -161,8 +161,10 @@ public class RegistrationGUI extends JPanel {
                         RegistrationGUI.names.clear();
                         RegistrationGUI.names.addAll(RegistrationGUI.originalNames);
                         for(PlayerJCheckBox pc : RegistrationGUI.names) {
+                            pc.setSelected(false);
                             mainPanel.add(pc);
                         }
+                        counter = 0;
                         System.err.println("restore names");
                     }
                 }
