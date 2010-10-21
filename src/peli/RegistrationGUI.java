@@ -147,10 +147,10 @@ public class RegistrationGUI extends JPanel {
                     filter = String.valueOf(typed);
                 }
 
-                System.err.println("keytyped");
+                //System.err.println("keytyped");
                 if (RegistrationGUI.originalNames.isEmpty() && !RegistrationGUI.names.isEmpty()) {
                     RegistrationGUI.originalNames.addAll(RegistrationGUI.names);
-                    System.err.println("new originalnames");
+                    //System.err.println("new originalnames");
                 }
 
                 if (filter.matches("^\\s*$") || filter.length() < 1) {
@@ -165,16 +165,16 @@ public class RegistrationGUI extends JPanel {
                             mainPanel.add(pc);
                         }
                         counter = 0;
-                        System.err.println("restore names");
+                        //System.err.println("restore names");
                     }
                 }
 
                 if (filter.matches("^\\S+$") && filter.length() > 0) {
-                    System.err.println("filter " + filter + " " + Integer.valueOf(typed));
+                    //System.err.println("filter " + filter + " " + Integer.valueOf(typed));
                     for (Iterator iterator = RegistrationGUI.names.iterator(); iterator.hasNext();) {
                         PlayerJCheckBox playerjcheckbox = (PlayerJCheckBox) iterator.next();
                         if (playerjcheckbox.getText().matches("^\\S+\\s+\\S+\\s+\\S*" + filter + "\\S*")) {
-                            System.err.println("match " + filter);
+                            //System.err.println("match " + filter);
                         } else {
                             mainPanel.remove(playerjcheckbox);
                             iterator.remove();
