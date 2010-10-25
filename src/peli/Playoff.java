@@ -15,7 +15,7 @@ import java.util.List;
  * v.1.14.1 support for different seeding models and
  * playoffs for 6 and 12 players have been completed without
  * changing this class
- * Check Tournament.java ant TournamentGUI.java
+ * Check Tournament.java and TournamentGUI.java
  * @author aulaskar
  */
 public class Playoff {

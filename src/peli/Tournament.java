@@ -565,14 +565,14 @@ public class Tournament {
         rules = Constants.getInstance().getRules();
         Date lastModified = null;
         try {
-            lastModified = new Date(file.lastModified());            
+            lastModified = new Date(file.lastModified());
         } catch (SecurityException se) {
             System.err.println("Cannot get file modification date: " + se);
         }
-        if(lastModified != null) {
+        if (lastModified != null) {
             date = PELIJARDATE.format(lastModified.getTime());
         }
-        
+
         //rules = ResourceBundle.getBundle("Rules");added for changeable division sizes
         this.loadRules(rules);
         divisions = new Vector();
@@ -855,15 +855,23 @@ public class Tournament {
             if (isFirst) {
                 isFirst = false;
                 if (size == 2) { //final, get the winner
-                    overallstandings.set(x++, ((Playoff) playoffs.get(size)).getSurvivors().get(0));
+                    Object winner = ((Playoff) playoffs.get(size)).getSurvivors().get(0);
+                    if(winner == null) {
+                        winner = "?";
+                    }
+                    overallstandings.set(x++, winner);
                 } else { //playoff not finished
                     return overallstandings;
                 }
             }
             //the rest are all losers (but they should  be ordered based on the group)
             for (Object loser : ((Playoff) playoffs.get(size)).getLosers()) {
-                if (!((String) loser).equals("X")) {
-                    overallstandings.set(x++, loser);
+                if (loser == null) {
+                    overallstandings.set(x++, "?");
+                } else {
+                    if (!((String) loser).equals("X")) {
+                        overallstandings.set(x++, loser);
+                    }
                 }
             }
         }

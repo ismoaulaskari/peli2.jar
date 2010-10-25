@@ -166,12 +166,13 @@ public class PlayoffPair {
                 output.append(this.getAwayTeam());
                 output.append("</u>");
             } else {
-                emptyrow = true;
-            /*
-            output.append(this.getHomeTeam());
-            output.append("-");
-            output.append(this.getAwayTeam());
-             */
+//                emptyrow = true; //@TODO show situations where result even
+                if (this.getPlayedMatches() > 0) {
+                    output.append(this.getHomeTeam());
+                    output.append("-");
+                    output.append(this.getAwayTeam());
+                }
+
             }
         }
         if (!emptyrow) {
@@ -232,8 +233,8 @@ public class PlayoffPair {
 
     public int getPlayedMatches() {
         int played = 0;
-        for(int i = 0; i < this.matches.size(); i++) {
-            if(((Match)this.matches.get(i)).isOver()) {
+        for (int i = 0; i < this.matches.size(); i++) {
+            if (((Match) this.matches.get(i)).isOver()) {
                 played++;
             }
         }
