@@ -168,6 +168,7 @@ public class PlayoffPair {
             } else {
 //                emptyrow = true; //@TODO show situations where result even
                 if (this.getPlayedMatches() > 0) {
+                    emptyrow = false;
                     output.append(this.getHomeTeam());
                     output.append("-");
                     output.append(this.getAwayTeam());
