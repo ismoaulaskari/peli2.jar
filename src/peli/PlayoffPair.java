@@ -10,8 +10,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- *
+ * Contains a playoff-series
  * @author aulaskar
+ * v.1.17.1 fixed bug where html-output would not show situations where result was even
  */
 public class PlayoffPair {
     //rounds
@@ -166,7 +167,7 @@ public class PlayoffPair {
                 output.append(this.getAwayTeam());
                 output.append("</u>");
             } else {
-//                emptyrow = true; //@TODO show situations where result even
+//                emptyrow = true; 
                 if (this.getPlayedMatches() > 0) {
                     emptyrow = false;
                     output.append(this.getHomeTeam());
