@@ -30,6 +30,11 @@ public class RunTournament {
         /* added to open a tnmt from commandline*/
         try {
             if (args.length > 0) {
+                if (args[0].equalsIgnoreCase("-h") || args[0].equalsIgnoreCase("--help")) {
+                    System.err.println("Usage: java -jar peli2.jar [file.tnmt] [headless]");
+                    System.exit(1);
+                }
+
                 System.setProperty("TournamentFileArgs", args[0]);
             }
         } catch (SecurityException e) {
@@ -46,8 +51,8 @@ public class RunTournament {
         if (headless) { //limited headless operation
             File file = new File(System.getProperty("TournamentFileArgs"));
             System.setProperty("TournamentFileName", file.getName());
-    		file = FileTools.canonize(file, ".tnmt");
-            if(!file.exists()) {
+            file = FileTools.canonize(file, ".tnmt");
+            if (!file.exists()) {
                 System.err.println("File " + file.getName() + " does not exist!");
                 System.exit(1);
             }
