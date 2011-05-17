@@ -24,7 +24,7 @@
         </copy>
         <copy todir="dist" file="LICENCE.txt" />
         <copy todir="dist" file="CHANGELOG.txt" />
-        <copy todir="dist" file="TODO.txt" />
+        <copy todir="dist" file="TODO.html" />
         <copy todir="dist" file="README.txt" />
     </target>
 
