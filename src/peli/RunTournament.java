@@ -6,6 +6,7 @@ package peli;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -15,6 +16,7 @@ import java.io.PrintWriter;
  * feature-/bugfix update 1.1 by Ismo Aulaskari
  * v1.1 added arguments for opening a file from the command line
  * and a quick restart option "java -jar tournamentX.tnmt restart"
+ * v1.15 headless mode to generate html from command line
  * HACK HACK HACK away.. 
  * @author aulaskar
  *
@@ -30,23 +32,42 @@ public class RunTournament {
         /* added to open a tnmt from commandline*/
         try {
             if (args.length > 0) {
-                if (args[0].equalsIgnoreCase("-h") || args[0].equalsIgnoreCase("--help")) {
-                    System.err.println("Usage: java -jar peli2.jar [file.tnmt] [headless]");
+                if (args[0].equalsIgnoreCase("-h") || args[0].equalsIgnoreCase("--help") || args[0].equalsIgnoreCase("/h")) {
+                    System.err.println("Usage: java -jar peli2.jar [tournamentfile.tnmt] [headless|pgcopy from.tnmt]");
                     System.exit(1);
                 }
 
                 System.setProperty("TournamentFileArgs", args[0]);
+                
+                if (args.length == 2) {
+                    if (args[1].equalsIgnoreCase("HEADLESS")) {
+                        headless = true;
+                    }
+                } else {
+                    /* copy previous group results to current group */
+                    if (args.length == 3) {
+                        if (args[1].equalsIgnoreCase("PGCOPY")) {
+                            PreviousGroupCopier pgCopier = new PreviousGroupCopier();
+                            try {
+                                String oldGroupTnmt = FileTools.readFileAsString(args[2]);
+                                String newGroupTnmt = FileTools.readFileAsString(args[0]);
+                                String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
+                                System.out.println(mixedTnmt);
+                            } catch (FileNotFoundException fe) {
+                                System.err.println("Error " + fe);
+                            } catch (IOException ie) {
+                                System.err.println("Error " + ie);
+                            }
+                        }
+                    }
+
+                    System.exit(0);
+                }
             }
         } catch (SecurityException e) {
             System.err.println("Setting properties from commandline args was denied.");
         }
 
-        /* if restart is called, open specified old tournament and go straight to the GUI */
-        if (args.length == 2) {
-            if (args[1].equalsIgnoreCase("HEADLESS")) {
-                headless = true;
-            }
-        }
 
         if (headless) { //limited headless operation
             File file = new File(System.getProperty("TournamentFileArgs"));
@@ -74,6 +95,7 @@ public class RunTournament {
             mainwindow.setVisible(true);
 
             if (args.length == 2) {
+                /* if restart is called, open specified old tournament and go straight to the GUI */
                 if (args[1].equalsIgnoreCase("RESTART")) {
                     new OldActionListener(mainwindow).actionPerformed(new ActionEvent(mainwindow, ActionEvent.ACTION_FIRST, "restart"));
                 }

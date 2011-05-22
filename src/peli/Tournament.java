@@ -20,11 +20,11 @@ import java.util.ArrayList;
  * v.1.11 super-tnmt
  * v.1.13 playoff schema/seeding options
  * v.1.14 special playoff sizes
- * v.1.16 Supprot disqualified players of two types, partly (wo) and completely (dq) disqualified
+ * v.1.16 Support disqualified players of two types, partly (wo) and completely (dq) disqualified,
+ * v.1.18 and inherited from previous group (pg)
  * @TODO support for extending a series(make default series bigger but hidden)
  * @TODO match schedule printout for players?
  * @TODO xml-output
- * @TODO a way to get basic group results to final group
  * @author aulaskar
  *
  */

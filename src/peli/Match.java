@@ -18,7 +18,7 @@ public class Match {
     private int homeGoals;
     private int visitorGoals;
     private boolean isOver;
-    private String postFix; //overtime? disqualification? walkover?
+    private String postFix; //overtime? disqualification? walkover? previous group?
     private ResourceBundle messages = Constants.getInstance().getMessages();
     private final String DISQUALIFIED = messages.getString("disqualified");
     private final String OVERTIME = messages.getString("overtime");

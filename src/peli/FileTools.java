@@ -5,47 +5,62 @@ package peli;
 // Source File Name:   FileTools.java
 
 import java.awt.Container;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
-public class FileTools
-{
-    
+public class FileTools {
+
     private static ResourceBundle messages;
-    
-    
-    public FileTools()
-    {
-        
+
+    public FileTools() {
     }
 
-    public static File askFileName(String s, Container container, FileFilter filefilter)
-    {
+    public static File askFileName(String s, Container container, FileFilter filefilter) {
         messages = Constants.getInstance().getMessages();
         JFileChooser jfilechooser = new JFileChooser(new File("."));
         jfilechooser.setAcceptAllFileFilterUsed(false);
         jfilechooser.setDialogTitle(s);
         jfilechooser.addChoosableFileFilter(filefilter);
         int i = jfilechooser.showDialog(container, messages.getString("openFile"));
-        switch(i)
-        {
-        case 0: // '\0'
-            return jfilechooser.getSelectedFile();
+        switch (i) {
+            case 0: // '\0'
+                return jfilechooser.getSelectedFile();
 
-        case -1: 
-        case 1: // '\001'
-        default:
-            return new File("");
+            case -1:
+            case 1: // '\001'
+            default:
+                return new File("");
         }
     }
 
-    public static File canonize(File file, String s)
-    {
-        if(file.getName().endsWith(s))
+    public static File canonize(File file, String s) {
+        if (file.getName().endsWith(s)) {
             return file;
-        else
+        } else {
             return new File(file.getName() + s);
+        }
+    }
+
+    public static String readFileAsString(String filePath) throws java.io.IOException {
+        byte[] buffer = new byte[(int) new File(filePath).length()];
+        BufferedInputStream f = null;
+        try {
+            f = new BufferedInputStream(new FileInputStream(filePath));
+            f.read(buffer);
+        } finally {
+            if (f != null) {
+                try {
+                    f.close();
+                } catch (IOException ignored) {
+                    System.err.println("Closing " + filePath + " failed with " + ignored);
+                }
+            }
+        }
+        return new String(buffer);
     }
 }
