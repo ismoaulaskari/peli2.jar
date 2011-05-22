@@ -6,9 +6,13 @@ package peli;
 
 import java.awt.Container;
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -62,5 +66,16 @@ public class FileTools {
             }
         }
         return new String(buffer);
+    }
+
+    public static String[] readFileAsStringArray(String filePath) throws java.io.IOException {
+        List<String> list = new LinkedList<String>();
+        BufferedReader bufferedreader = new BufferedReader(new FileReader(filePath));
+        while(bufferedreader.ready()) {
+            list.add(bufferedreader.readLine());
+        }
+        bufferedreader.close();
+
+        return (String[]) list.toArray();
     }
 }

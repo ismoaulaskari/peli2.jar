@@ -49,8 +49,8 @@ public class RunTournament {
                         if (args[1].equalsIgnoreCase("PGCOPY")) {
                             PreviousGroupCopier pgCopier = new PreviousGroupCopier();
                             try {
-                                String oldGroupTnmt = FileTools.readFileAsString(args[2]);
-                                String newGroupTnmt = FileTools.readFileAsString(args[0]);
+                                String[] oldGroupTnmt = FileTools.readFileAsStringArray(args[2]);
+                                String[] newGroupTnmt = FileTools.readFileAsStringArray(args[0]);
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
                                 System.out.println(mixedTnmt);
                             } catch (FileNotFoundException fe) {
