@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package peli;
 
 /**
@@ -10,27 +9,39 @@ package peli;
  * @author aulaskar
  */
 public class PreviousGroupCopier {
+
     public String copyResultsFromPreviousGroup(String[] previousTnmt, String[] newTnmt) {
         StringBuffer mixedTnmt = new StringBuffer();
-        for (String line : previousTnmt) {
-            String[] foundResult = line.split(":");
-            if(foundResult.length == 4) { //regular result without postfixes
-                String player1 = foundResult[0];
-                String player2 = foundResult[1];
-                String result1 = foundResult[2];
-                String result2 = foundResult[3];
+        String lineToReturn = null;
 
-                for (String line2 : newTnmt) {
-                    String[] foundPair = line2.split(":");
-                    if(foundPair.length == 2) { //players without result
-                        if(foundPair[0].equalsIgnoreCase(player1)) {
+        //reads empty group first and searches found names for results in previous group
+        for (String line : newTnmt) {
+            lineToReturn = new String(line);
+            String[] foundPair = line.split(":");
+            if (foundPair.length == 2) { //players without result
+                String player1 = foundPair[0];
+                String player2 = foundPair[1];
 
+                for (String line2 : previousTnmt) {
+                    String[] foundResult = line2.split(":");
+                    if (foundResult.length == 4) { //players with results but no postfix
+                        if (foundResult[0].equalsIgnoreCase(player1)) {
+                            if (foundResult[1].equalsIgnoreCase(player2)) {
+                                lineToReturn = player1 + ":" + player2 + ":" + foundResult[2] + ":" + foundResult[3] + ":" + "pg";
+                            }
+                        } else {
+                            if (foundResult[1].equalsIgnoreCase(player1)) {
+                                if (foundResult[0].equalsIgnoreCase(player2)) {
+                                    lineToReturn = player1 + ":" + player2 + ":" + foundResult[3] + ":" + foundResult[2] + ":" + "pg";
+                                }
+                            }
                         }
                     }
                 }
             }
+            mixedTnmt.append(lineToReturn);
         }
 
-        return null;
+        return mixedTnmt.toString();
     }
 }
