@@ -60,8 +60,7 @@ public class RunTournament {
                             }
                         }
                     }
-
-                    System.exit(0);
+                    
                 }
             }
         } catch (SecurityException e) {
