@@ -5,8 +5,10 @@ package peli;
 // Source File Name:   RunTournament.java
 
 import java.awt.event.ActionEvent;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
  * v1.1 added arguments for opening a file from the command line
  * and a quick restart option "java -jar tournamentX.tnmt restart"
  * v1.15 headless mode to generate html from command line
+ * v1.18 copy results from basic group to final group from command line
  * HACK HACK HACK away.. 
  * @author aulaskar
  *
@@ -39,7 +42,7 @@ public class RunTournament {
                 }
 
                 System.setProperty("TournamentFileArgs", args[0]);
-                
+
                 if (args.length == 2) {
                     if (args[1].equalsIgnoreCase("HEADLESS")) {
                         headless = true;
@@ -53,15 +56,20 @@ public class RunTournament {
                                 List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
                                 List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
-                                System.out.println(mixedTnmt);
+                                PrintWriter output =  new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                output.print(mixedTnmt);
+                                output.flush();
+                                output.close();
                             } catch (FileNotFoundException fe) {
                                 System.err.println("Error " + fe);
+                                System.exit(1);
                             } catch (IOException ie) {
                                 System.err.println("Error " + ie);
+                                System.exit(1);
                             }
                             System.exit(0);
                         }
-                    }                    
+                    }
                 }
             }
         } catch (SecurityException e) {
