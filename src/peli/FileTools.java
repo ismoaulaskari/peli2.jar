@@ -68,7 +68,7 @@ public class FileTools {
         return new String(buffer);
     }
 
-    public static String[] readFileAsStringArray(String filePath) throws java.io.IOException {
+    public static List<String> readFileAsList(String filePath) throws java.io.IOException {
         List<String> list = new LinkedList<String>();
         BufferedReader bufferedreader = new BufferedReader(new FileReader(filePath));
         while(bufferedreader.ready()) {
@@ -76,6 +76,6 @@ public class FileTools {
         }
         bufferedreader.close();
 
-        return (String[]) list.toArray();
+        return list;
     }
 }

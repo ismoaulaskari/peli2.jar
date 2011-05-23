@@ -4,18 +4,22 @@
  */
 package peli;
 
+import java.util.List;
+
 /**
  *
  * @author aulaskar
  */
 public class PreviousGroupCopier {
 
-    public String copyResultsFromPreviousGroup(String[] previousTnmt, String[] newTnmt) {
+    public String copyResultsFromPreviousGroup(List<String> previousTnmt, List<String> newTnmt) {
         StringBuffer mixedTnmt = new StringBuffer();
         String lineToReturn = null;
+        int linesNotRead = newTnmt.size();
 
         //reads empty group first and searches found names for results in previous group
         for (String line : newTnmt) {
+            linesNotRead--;
             lineToReturn = new String(line);
             String[] foundPair = line.split(":");
             if (foundPair.length == 2) { //players without result
@@ -38,6 +42,9 @@ public class PreviousGroupCopier {
                         }
                     }
                 }
+            }
+            if(linesNotRead > 0) { //last line in tnmt must not be empty
+                lineToReturn = lineToReturn + System.getProperty("line.separator");
             }
             mixedTnmt.append(lineToReturn);
         }

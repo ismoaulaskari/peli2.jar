@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Main class for invocation of tournament result program Peli.jar
@@ -49,8 +50,8 @@ public class RunTournament {
                         if (args[1].equalsIgnoreCase("PGCOPY")) {
                             PreviousGroupCopier pgCopier = new PreviousGroupCopier();
                             try {
-                                String[] oldGroupTnmt = FileTools.readFileAsStringArray(args[2]);
-                                String[] newGroupTnmt = FileTools.readFileAsStringArray(args[0]);
+                                List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
+                                List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
                                 System.out.println(mixedTnmt);
                             } catch (FileNotFoundException fe) {
@@ -58,9 +59,9 @@ public class RunTournament {
                             } catch (IOException ie) {
                                 System.err.println("Error " + ie);
                             }
+                            System.exit(0);
                         }
-                    }
-                    
+                    }                    
                 }
             }
         } catch (SecurityException e) {

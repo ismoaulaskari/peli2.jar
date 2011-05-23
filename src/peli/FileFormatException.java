@@ -12,4 +12,9 @@ public class FileFormatException extends Exception
     {
         this.printStackTrace();
     }
+
+    public FileFormatException(FileFormatException e, int lineNumber) {        
+        e.printStackTrace();
+        System.err.println("FileFormatException at line " + lineNumber);
+    }
 }

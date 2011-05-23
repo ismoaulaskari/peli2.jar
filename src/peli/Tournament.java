@@ -577,8 +577,9 @@ public class Tournament {
         this.loadRules(rules);
         divisions = new Vector();
         numberOfDivisions = 1;
+        BufferedReader bufferedreader = null;
         try {
-            BufferedReader bufferedreader = new BufferedReader(new FileReader(file.getName()));
+            bufferedreader = new LineNumberReader(new FileReader(file.getName()));
             numberOfDivisions = Tools.parseIntAfter("TOURNAMENT-SIZE:", bufferedreader.readLine());
             for (int i = 0; i < numberOfDivisions; i++) {
                 divisions.add(new Division(bufferedreader));
@@ -622,7 +623,7 @@ public class Tournament {
         } catch (IOException ioexception) {
             throw ioexception;
         } catch (FileFormatException fileformatexception) {
-            throw fileformatexception;
+            throw new FileFormatException(fileformatexception, ((LineNumberReader)bufferedreader).getLineNumber());
         }
 
     }
