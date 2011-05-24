@@ -1016,13 +1016,11 @@ public class Tournament {
         HtmlTools.outro(printwriter);
     }
 
+    /**
+     * this is needed quickly for wch2011, not elegant
+     * @param printwriter
+     */
     public void saveMatchesByPlayer(PrintWriter printwriter) {
-        HtmlTools.intro(printwriter, messages.getString("matchProgrammeByPlayer"));
-        HtmlTools.hr(printwriter);
-        /*for (int i = 0; i < divisions.size(); i++) {
-        getDivision(i).saveMatches(printwriter);
-        HtmlTools.pageBreak(printwriter);
-        }*/
         ArrayList players = getOverAllStandings();
         StringWriter stringwriter = new StringWriter();
         PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
@@ -1030,28 +1028,25 @@ public class Tournament {
         String tnmt = stringwriter.toString();
         StringBuilder byPlayer = new StringBuilder();
         Object[] lines = tnmt.split(System.getProperty("line.separator"));
+
         for (Object player : players) {
-            printwriter.print(player);
             HtmlTools.br(printwriter);
+            printwriter.print("<b>" + player + "</b>");
+
             String printout = "";
             for (Object line : lines) {                
-                if(((String)line).matches("^ROUND:.*")) {                    
+                if(((String)line).matches("^ROUND:[0-9]+")) {
                     printout = "<br/>" + line + " ";
                 }
-                if(((String)line).matches(".*" + (String)player + ".*")) {                    
+                if(((String)line).matches(".*" + (String)player + ".*") && ((String)line).matches(".+:.+")) {
                     ((String)line).replaceFirst(":", "-"); //modifying inside loop
                     printwriter.print(printout + line);
                 }
             }
             HtmlTools.br(printwriter);
         }
-        //printwriter.print(tnmt);
-        sprintwriter.close();
 
-        HtmlTools.br(printwriter);
-        HtmlTools.hr(printwriter);
-        HtmlTools.br(printwriter);
-        HtmlTools.outro(printwriter);
+        sprintwriter.close();
     }
 
     /**
