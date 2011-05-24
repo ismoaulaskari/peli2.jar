@@ -1036,11 +1036,15 @@ public class Tournament {
             String printout = "";
             for (Object line : lines) {                
                 if(((String)line).matches("^ROUND:[0-9]+")) {
-                    printout = "<br/>" + line + " ";
+                    printout = "<br/>SERIES: " + line + " ";
                 }
                 if(((String)line).matches(".*" + (String)player + ".*") && ((String)line).matches(".+:.+")) {
-                    ((String)line).replaceFirst(":", "-"); //modifying inside loop
-                    printwriter.print(printout + line);
+                    String resultLine = new String((String)line);
+                    resultLine = resultLine.replaceFirst(":", "-");
+                    resultLine = resultLine.replaceFirst(":", " ");
+                    resultLine = resultLine.replaceFirst(":", "-");
+                    resultLine = resultLine.replaceFirst(":", "");
+                    printwriter.print(printout + resultLine);
                 }
             }
             HtmlTools.br(printwriter);
