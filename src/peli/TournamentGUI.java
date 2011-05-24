@@ -113,12 +113,22 @@ public class TournamentGUI extends JPanel {
         jtoolbar.add(restartbutton);
         /* end ugly hack */
 
+        //save progamme-button
         imageicon = new ImageIcon(messages.getString("printIconGifFile"));
         jbutton = new JButton(messages.getString("mHtmlButton"), imageicon);
         jbutton.setToolTipText(messages.getString("mHtmlToolTip"));
         jbutton.setMnemonic(((Integer) keyCodes.getObject("mHtmlMnemonic")).intValue());
         jbutton.addActionListener(new SaveActionListener(file, tournament1, 1, frame));
         jtoolbar.add(jbutton);
+
+        //savematchesbyplayer-button
+        imageicon = new ImageIcon(messages.getString("printIconGifFile"));
+        jbutton = new JButton(messages.getString("bHtmlButton"), imageicon);
+        jbutton.setToolTipText(messages.getString("bHtmlToolTip"));
+        //jbutton.setMnemonic(((Integer) keyCodes.getObject("mHtmlMnemonic")).intValue());
+        jbutton.addActionListener(new SaveActionListener(file, tournament1, 5, frame));
+        jtoolbar.add(jbutton);
+
         /*//no more confusing html-seriestable
         imageicon = new ImageIcon(messages.getString("printIconGifFile"));
         jbutton = new JButton(messages.getString("sHtmlButton"), imageicon);
@@ -135,12 +145,15 @@ public class TournamentGUI extends JPanel {
         jbutton.addActionListener(new SaveActionListener(file, tournament1, 4, frame));
         jtoolbar.add(jbutton);
 
+        //save html-button
         imageicon = new ImageIcon(messages.getString("printIconGifFile"));
         jbutton = new JButton(messages.getString("htmlButton"), imageicon);
         jbutton.setMnemonic(((Integer) keyCodes.getObject("htmlMnemonic")).intValue());
         jbutton.setToolTipText(messages.getString("htmlToolTip"));
         jbutton.addActionListener(new SaveActionListener(file, tournament1, 3, frame));
         jtoolbar.add(jbutton);
+
+        //save tournament-button
         imageicon = new ImageIcon(messages.getString("saveAllIconGifFile"));
         jbutton = new JButton(SaveTracker.getIsSavedLogo() + messages.getString("saveButton"), imageicon);
         SaveTracker.setRegisteredSaveButton(jbutton);
@@ -148,8 +161,6 @@ public class TournamentGUI extends JPanel {
         jbutton.setToolTipText(messages.getString("saveToolTip"));
         jbutton.addActionListener(new SaveActionListener(file, tournament1, 2, frame));
         jtoolbar.add(jbutton);
-
-
 
         imageicon = new ImageIcon(messages.getString("quitIconGifFile"));
         jbutton = new JButton(messages.getString("quitButton"), imageicon);

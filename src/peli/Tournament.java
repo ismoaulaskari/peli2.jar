@@ -186,14 +186,14 @@ public class Tournament {
             if (this.playoffs.containsKey(size * 2)) { //there is a previous round?
 
                 this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
-            //this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
-            //this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
+                //this.playoffs.put(size, new Playoff(seedStaticPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
+                //this.playoffs.put(size, new Playoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size));
 
             } else {
                 ArrayList playoffStandings = getStandingsNames(getStandingsForPlayoffs());
                 size = handleSpecialPlayoffsize(size, playoffStandings);
                 this.playoffs.put(size, new Playoff(seedPlayoff(playoffStandings, size), size));
-            //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
+                //this.playoffs.put(size, new Playoff(getStandingsNames(getStandingsForPlayoffs()), size));
             }
 
         }
@@ -222,7 +222,7 @@ public class Tournament {
             //no reseed for existing random playoff!            
         } else if (this.playoffs.containsKey(size * 2)) { //there is a previous round?            
             this.playoffs.put(size, new Playoff(seedRandomPlayoff(((Playoff) this.playoffs.get(size * 2)).getSurvivors(), size), size));
-        //this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
+            //this.playoffs.put(size, new Playoff(seedRandomPlayoffByPairs(((Playoff) this.playoffs.get(size * 2)).getPlayoffPairs(), size), size));
         } else {
             ArrayList playoffStandings = getStandingsNames(getStandingsForPlayoffs());
             size = handleSpecialPlayoffsize(size, playoffStandings);
@@ -623,7 +623,7 @@ public class Tournament {
         } catch (IOException ioexception) {
             throw ioexception;
         } catch (FileFormatException fileformatexception) {
-            throw new FileFormatException(fileformatexception, ((LineNumberReader)bufferedreader).getLineNumber());
+            throw new FileFormatException(fileformatexception, ((LineNumberReader) bufferedreader).getLineNumber());
         }
 
     }
@@ -734,6 +734,10 @@ public class Tournament {
 
             case 4:
                 saveStandingsWithPlayoffs(printwriter);
+                break;
+
+            case 5:
+                saveMatchesByPlayer(printwriter);
                 break;
 
             default:
@@ -857,7 +861,7 @@ public class Tournament {
                 isFirst = false;
                 if (size == 2) { //final, get the winner
                     Object winner = ((Playoff) playoffs.get(size)).getSurvivors().get(0);
-                    if(winner == null) {
+                    if (winner == null) {
                         winner = "?";
                     }
                     overallstandings.set(x++, winner);
@@ -1006,6 +1010,28 @@ public class Tournament {
             getDivision(i).saveMatches(printwriter);
             HtmlTools.pageBreak(printwriter);
         }
+        HtmlTools.br(printwriter);
+        HtmlTools.hr(printwriter);
+        HtmlTools.br(printwriter);
+        HtmlTools.outro(printwriter);
+    }
+
+    public void saveMatchesByPlayer(PrintWriter printwriter) {
+        HtmlTools.intro(printwriter, messages.getString("matchProgrammeByPlayer"));
+        HtmlTools.hr(printwriter);
+        /*for (int i = 0; i < divisions.size(); i++) {
+        getDivision(i).saveMatches(printwriter);
+        HtmlTools.pageBreak(printwriter);
+        }*/
+        
+        StringWriter stringwriter = new StringWriter();
+        PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
+        this.save(sprintwriter);
+        String tnmt = stringwriter.toString();
+        tnmt.replaceAll(":", " - ");
+        printwriter.print(tnmt);
+        sprintwriter.close();
+
         HtmlTools.br(printwriter);
         HtmlTools.hr(printwriter);
         HtmlTools.br(printwriter);

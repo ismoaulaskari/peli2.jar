@@ -67,6 +67,10 @@ public class SaveActionListener
                 s = messages.getString("standings.txt");
                 break;
 
+            case 5:
+                s = messages.getString("byplayer.html");
+                break;
+
             default:
                 s = "";
                 break;
@@ -123,6 +127,9 @@ public class SaveActionListener
 
             case 4:
                 return messages.getString("tournamentStandings");
+
+            case 5:
+                return messages.getString("programmeByPlayer");
 
         }
         return "";
