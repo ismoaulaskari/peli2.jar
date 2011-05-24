@@ -1023,13 +1023,29 @@ public class Tournament {
         getDivision(i).saveMatches(printwriter);
         HtmlTools.pageBreak(printwriter);
         }*/
-        
+        ArrayList players = getOverAllStandings();
         StringWriter stringwriter = new StringWriter();
         PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
         this.save(sprintwriter);
         String tnmt = stringwriter.toString();
-        tnmt.replaceAll(":", " - ");
-        printwriter.print(tnmt);
+        StringBuilder byPlayer = new StringBuilder();
+        Object[] lines = tnmt.split(System.getProperty("line.separator"));
+        for (Object player : players) {
+            printwriter.print(player);
+            HtmlTools.br(printwriter);
+            String printout = "";
+            for (Object line : lines) {                
+                if(((String)line).matches("^ROUND:.*")) {                    
+                    printout = "<br/>" + line + " ";
+                }
+                if(((String)line).matches(".*" + (String)player + ".*")) {                    
+                    ((String)line).replaceFirst(":", "-"); //modifying inside loop
+                    printwriter.print(printout + line);
+                }
+            }
+            HtmlTools.br(printwriter);
+        }
+        //printwriter.print(tnmt);
         sprintwriter.close();
 
         HtmlTools.br(printwriter);
