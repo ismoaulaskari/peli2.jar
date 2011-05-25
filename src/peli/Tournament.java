@@ -1028,27 +1028,29 @@ public class Tournament {
         String tnmt = stringwriter.toString();
         StringBuilder byPlayer = new StringBuilder();
         Object[] lines = tnmt.split(System.getProperty("line.separator"));
+        printwriter.print("<html><head><style type=\"text/css\"></style></head>");
+        printwriter.print("<body><table class=\"programmebyplayer\" border=\"1\">");
 
         for (Object player : players) {
-            HtmlTools.br(printwriter);
-            printwriter.print("<b>" + player + "</b>");
-
+            //HtmlTools.br(printwriter);
+            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer1\" ><b>" + player + "</b></td><td class=\"programmebyplayer2\" ></td><td class=\"programmebyplayer3\" >RESULT</td></tr>");
             String printout = "";
             for (Object line : lines) {                
                 if(((String)line).matches("^ROUND:[0-9]+")) {
-                    printout = "<br/>SERIES: " + line + " ";
+                    printout = "<tr><td>SERIES: " + line + "</td>";
                 }
                 if(((String)line).matches(".*" + (String)player + ".*") && ((String)line).matches(".+:.+")) {
                     String resultLine = new String((String)line);
                     resultLine = resultLine.replaceFirst(":", "-");
-                    resultLine = resultLine.replaceFirst(":", " ");
+                    resultLine = resultLine.replaceFirst(":", "</td><td>");
                     resultLine = resultLine.replaceFirst(":", "-");
                     resultLine = resultLine.replaceFirst(":", "");
-                    printwriter.print(printout + resultLine);
+                    printwriter.print(printout + "<td>" + resultLine + "</td></tr>");
                 }
             }
-            HtmlTools.br(printwriter);
+            //HtmlTools.br(printwriter);
         }
+        printwriter.print("</table></body></html>");
 
         sprintwriter.close();
     }
