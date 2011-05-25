@@ -34,13 +34,16 @@ public class Constants {
     private static int MAXMATCHES;  
 
     static {
-        constants = new Constants();
-        locale = new Locale(new String("fi"), new String("FI"));
-        //locale = new Locale(new String("en"), new String("US"));
-        System.setProperty("Peli.jarVersion", "v. 1.19.0");
+        constants = new Constants();                
+        System.setProperty("Peli.jarVersion", "v. 1.19.1");
         try {
-            messages = ResourceBundle.getBundle("Messages", locale);
             rules = ResourceBundle.getBundle("Rules");
+            locale = new Locale(rules.getString("languageCode"), rules.getString("countryCode"));
+            if(locale == null) {
+                locale = new Locale(new String("en"), new String("US"));
+            }
+            messages = ResourceBundle.getBundle("Messages", locale);
+            
             //store html-template in memory:
             BufferedReader bufferedreader =
                     new BufferedReader(
