@@ -1037,15 +1037,27 @@ public class Tournament {
             //HtmlTools.br(printwriter);
             printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);
             //printwriter.print("<tr><td colspan='3'>&nbsp;</td></tr>" + nl);
-            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >&nbsp;</td><td class=\"programmebyplayer1\" >&nbsp;</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
+            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >rd</td><td class=\"programmebyplayer1\" >gm</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
             String round = "";
+            int game = 0; //tauolla oleva lasketaan
+            boolean isInRound = false;
             for (Object line : lines) {
                 String thisLine = (String) line;
+
+                if (thisLine.matches("END-OF-ROUND")) {
+                    isInRound = false;
+                }
+
+                if(isInRound) {
+                    game++;
+                }
 
                 if (thisLine.matches("ROUND:[0-9]+")) {
                     round = new String(thisLine);
                     round = round.replaceFirst("ROUND:", "<b>");
                     round = round + ".</b></td><td>";
+                    game = 0;
+                    isInRound = true;
                 }
 
                 if (thisLine.matches("\\(" + thisPlayer + "\\)")) {
@@ -1064,7 +1076,7 @@ public class Tournament {
                         resultLine = resultLine + "</td><td>&nbsp;";
                     }
                     resultLine = resultLine.replaceFirst(thisPlayer, "<b>" + thisPlayer + "</b>");
-                    printwriter.print("<tr><td>" + round + "</td>" + "<td>" + resultLine + "</td></tr>" + nl);
+                    printwriter.print("<tr><td>" + round + game + "</td>" + "<td>" + resultLine + "</td></tr>" + nl);
                 }
 
 
