@@ -1,0 +1,597 @@
+TOURNAMENT-SIZE:2
+DIVISION:Lohko 1
+PLAYERS:20
+Tmej Petr
+Kokko Janne
+Sladek Jakub
+Regula Gergely
+Sahlgren Jari
+Lampi Ahti
+Galuzo Yanis
+Masloboev Igor
+Zholobovski Jevgeni
+Toivonen Timo
+Axelsen Bjarne
+Berezkin Alexander
+Myllykangas Mika
+Sainio Santtu
+Belavin Dmitriy
+Koivula Toni
+Arenlind Martin
+Rautio Juho
+Martiskainen Minerva
+Metsala Lari
+END-OF-PLAYERS
+ROUNDS:21
+ROUND:1
+(Tmej Petr)
+X:Kokko Janne
+Sladek Jakub:Metsala Lari
+Regula Gergely:Martiskainen Minerva
+Sahlgren Jari:Rautio Juho
+Lampi Ahti:Arenlind Martin
+Galuzo Yanis:Koivula Toni
+Masloboev Igor:Belavin Dmitriy
+Zholobovski Jevgeni:Sainio Santtu
+Toivonen Timo:Myllykangas Mika
+Axelsen Bjarne:Berezkin Alexander
+END-OF-ROUND
+ROUND:2
+(Kokko Janne)
+Tmej Petr:Metsala Lari
+X:Martiskainen Minerva
+Sladek Jakub:Rautio Juho
+Regula Gergely:Arenlind Martin
+Sahlgren Jari:Koivula Toni
+Lampi Ahti:Belavin Dmitriy
+Galuzo Yanis:Sainio Santtu
+Masloboev Igor:Myllykangas Mika
+Zholobovski Jevgeni:Berezkin Alexander
+Toivonen Timo:Axelsen Bjarne
+END-OF-ROUND
+ROUND:3
+(Metsala Lari)
+Kokko Janne:Martiskainen Minerva
+Tmej Petr:Rautio Juho
+X:Arenlind Martin
+Sladek Jakub:Koivula Toni
+Regula Gergely:Belavin Dmitriy
+Sahlgren Jari:Sainio Santtu
+Lampi Ahti:Myllykangas Mika
+Galuzo Yanis:Berezkin Alexander
+Masloboev Igor:Axelsen Bjarne
+Zholobovski Jevgeni:Toivonen Timo
+END-OF-ROUND
+ROUND:4
+(Martiskainen Minerva)
+Metsala Lari:Rautio Juho
+Kokko Janne:Arenlind Martin
+Tmej Petr:Koivula Toni
+X:Belavin Dmitriy
+Sladek Jakub:Sainio Santtu
+Regula Gergely:Myllykangas Mika
+Sahlgren Jari:Berezkin Alexander
+Lampi Ahti:Axelsen Bjarne
+Galuzo Yanis:Toivonen Timo
+Masloboev Igor:Zholobovski Jevgeni
+END-OF-ROUND
+ROUND:5
+(Rautio Juho)
+Martiskainen Minerva:Arenlind Martin
+Metsala Lari:Koivula Toni
+Kokko Janne:Belavin Dmitriy
+Tmej Petr:Sainio Santtu
+X:Myllykangas Mika
+Sladek Jakub:Berezkin Alexander
+Regula Gergely:Axelsen Bjarne
+Sahlgren Jari:Toivonen Timo
+Lampi Ahti:Zholobovski Jevgeni
+Galuzo Yanis:Masloboev Igor
+END-OF-ROUND
+ROUND:6
+(Arenlind Martin)
+Rautio Juho:Koivula Toni
+Martiskainen Minerva:Belavin Dmitriy
+Metsala Lari:Sainio Santtu
+Kokko Janne:Myllykangas Mika
+Tmej Petr:Berezkin Alexander
+X:Axelsen Bjarne
+Sladek Jakub:Toivonen Timo
+Regula Gergely:Zholobovski Jevgeni
+Sahlgren Jari:Masloboev Igor
+Lampi Ahti:Galuzo Yanis
+END-OF-ROUND
+ROUND:7
+(Koivula Toni)
+Arenlind Martin:Belavin Dmitriy
+Rautio Juho:Sainio Santtu
+Martiskainen Minerva:Myllykangas Mika
+Metsala Lari:Berezkin Alexander
+Kokko Janne:Axelsen Bjarne
+Tmej Petr:Toivonen Timo
+X:Zholobovski Jevgeni
+Sladek Jakub:Masloboev Igor
+Regula Gergely:Galuzo Yanis
+Sahlgren Jari:Lampi Ahti
+END-OF-ROUND
+ROUND:8
+(Belavin Dmitriy)
+Koivula Toni:Sainio Santtu
+Arenlind Martin:Myllykangas Mika
+Rautio Juho:Berezkin Alexander
+Martiskainen Minerva:Axelsen Bjarne
+Metsala Lari:Toivonen Timo
+Kokko Janne:Zholobovski Jevgeni
+Tmej Petr:Masloboev Igor
+X:Galuzo Yanis
+Sladek Jakub:Lampi Ahti
+Regula Gergely:Sahlgren Jari
+END-OF-ROUND
+ROUND:9
+(Sainio Santtu)
+Belavin Dmitriy:Myllykangas Mika
+Koivula Toni:Berezkin Alexander
+Arenlind Martin:Axelsen Bjarne
+Rautio Juho:Toivonen Timo
+Martiskainen Minerva:Zholobovski Jevgeni
+Metsala Lari:Masloboev Igor
+Kokko Janne:Galuzo Yanis
+Tmej Petr:Lampi Ahti
+X:Sahlgren Jari
+Sladek Jakub:Regula Gergely
+END-OF-ROUND
+ROUND:10
+(Myllykangas Mika)
+Sainio Santtu:Berezkin Alexander
+Belavin Dmitriy:Axelsen Bjarne
+Koivula Toni:Toivonen Timo
+Arenlind Martin:Zholobovski Jevgeni
+Rautio Juho:Masloboev Igor
+Martiskainen Minerva:Galuzo Yanis
+Metsala Lari:Lampi Ahti
+Kokko Janne:Sahlgren Jari
+Tmej Petr:Regula Gergely
+X:Sladek Jakub
+END-OF-ROUND
+ROUND:11
+(Berezkin Alexander)
+Myllykangas Mika:Axelsen Bjarne
+Sainio Santtu:Toivonen Timo
+Belavin Dmitriy:Zholobovski Jevgeni
+Koivula Toni:Masloboev Igor
+Arenlind Martin:Galuzo Yanis
+Rautio Juho:Lampi Ahti
+Martiskainen Minerva:Sahlgren Jari
+Metsala Lari:Regula Gergely
+Kokko Janne:Sladek Jakub
+Tmej Petr:X
+END-OF-ROUND
+ROUND:12
+(Axelsen Bjarne)
+Berezkin Alexander:Toivonen Timo
+Myllykangas Mika:Zholobovski Jevgeni
+Sainio Santtu:Masloboev Igor
+Belavin Dmitriy:Galuzo Yanis
+Koivula Toni:Lampi Ahti
+Arenlind Martin:Sahlgren Jari
+Rautio Juho:Regula Gergely
+Martiskainen Minerva:Sladek Jakub
+Metsala Lari:X
+Kokko Janne:Tmej Petr
+END-OF-ROUND
+ROUND:13
+(Toivonen Timo)
+Axelsen Bjarne:Zholobovski Jevgeni
+Berezkin Alexander:Masloboev Igor
+Myllykangas Mika:Galuzo Yanis
+Sainio Santtu:Lampi Ahti
+Belavin Dmitriy:Sahlgren Jari
+Koivula Toni:Regula Gergely
+Arenlind Martin:Sladek Jakub
+Rautio Juho:X
+Martiskainen Minerva:Tmej Petr
+Metsala Lari:Kokko Janne
+END-OF-ROUND
+ROUND:14
+(Zholobovski Jevgeni)
+Toivonen Timo:Masloboev Igor
+Axelsen Bjarne:Galuzo Yanis
+Berezkin Alexander:Lampi Ahti
+Myllykangas Mika:Sahlgren Jari
+Sainio Santtu:Regula Gergely
+Belavin Dmitriy:Sladek Jakub
+Koivula Toni:X
+Arenlind Martin:Tmej Petr
+Rautio Juho:Kokko Janne
+Martiskainen Minerva:Metsala Lari
+END-OF-ROUND
+ROUND:15
+(Masloboev Igor)
+Zholobovski Jevgeni:Galuzo Yanis
+Toivonen Timo:Lampi Ahti
+Axelsen Bjarne:Sahlgren Jari
+Berezkin Alexander:Regula Gergely
+Myllykangas Mika:Sladek Jakub
+Sainio Santtu:X
+Belavin Dmitriy:Tmej Petr
+Koivula Toni:Kokko Janne
+Arenlind Martin:Metsala Lari
+Rautio Juho:Martiskainen Minerva
+END-OF-ROUND
+ROUND:16
+(Galuzo Yanis)
+Masloboev Igor:Lampi Ahti
+Zholobovski Jevgeni:Sahlgren Jari
+Toivonen Timo:Regula Gergely
+Axelsen Bjarne:Sladek Jakub
+Berezkin Alexander:X
+Myllykangas Mika:Tmej Petr
+Sainio Santtu:Kokko Janne
+Belavin Dmitriy:Metsala Lari
+Koivula Toni:Martiskainen Minerva
+Arenlind Martin:Rautio Juho
+END-OF-ROUND
+ROUND:17
+(Lampi Ahti)
+Galuzo Yanis:Sahlgren Jari
+Masloboev Igor:Regula Gergely
+Zholobovski Jevgeni:Sladek Jakub
+Toivonen Timo:X
+Axelsen Bjarne:Tmej Petr
+Berezkin Alexander:Kokko Janne
+Myllykangas Mika:Metsala Lari
+Sainio Santtu:Martiskainen Minerva
+Belavin Dmitriy:Rautio Juho
+Koivula Toni:Arenlind Martin
+END-OF-ROUND
+ROUND:18
+(Sahlgren Jari)
+Lampi Ahti:Regula Gergely
+Galuzo Yanis:Sladek Jakub
+Masloboev Igor:X
+Zholobovski Jevgeni:Tmej Petr
+Toivonen Timo:Kokko Janne
+Axelsen Bjarne:Metsala Lari
+Berezkin Alexander:Martiskainen Minerva
+Myllykangas Mika:Rautio Juho
+Sainio Santtu:Arenlind Martin
+Belavin Dmitriy:Koivula Toni
+END-OF-ROUND
+ROUND:19
+(Regula Gergely)
+Sahlgren Jari:Sladek Jakub
+Lampi Ahti:X
+Galuzo Yanis:Tmej Petr
+Masloboev Igor:Kokko Janne
+Zholobovski Jevgeni:Metsala Lari
+Toivonen Timo:Martiskainen Minerva
+Axelsen Bjarne:Rautio Juho
+Berezkin Alexander:Arenlind Martin
+Myllykangas Mika:Koivula Toni
+Sainio Santtu:Belavin Dmitriy
+END-OF-ROUND
+ROUND:20
+(Sladek Jakub)
+Regula Gergely:X
+Sahlgren Jari:Tmej Petr
+Lampi Ahti:Kokko Janne
+Galuzo Yanis:Metsala Lari
+Masloboev Igor:Martiskainen Minerva
+Zholobovski Jevgeni:Rautio Juho
+Toivonen Timo:Arenlind Martin
+Axelsen Bjarne:Koivula Toni
+Berezkin Alexander:Belavin Dmitriy
+Myllykangas Mika:Sainio Santtu
+END-OF-ROUND
+ROUND:21
+(X)
+Sladek Jakub:Tmej Petr
+Regula Gergely:Kokko Janne
+Sahlgren Jari:Metsala Lari
+Lampi Ahti:Martiskainen Minerva
+Galuzo Yanis:Rautio Juho
+Masloboev Igor:Arenlind Martin
+Zholobovski Jevgeni:Koivula Toni
+Toivonen Timo:Belavin Dmitriy
+Axelsen Bjarne:Sainio Santtu
+Berezkin Alexander:Myllykangas Mika
+END-OF-ROUND
+END-OF-DIVISION
+DIVISION:Lohko 2
+PLAYERS:20
+Ahlberg Magnus
+Kantola Janne
+Voskoboynikov Andrey
+Jukka Konsta
+Eralaukko Juha
+Aulaskari Ismo
+Spivakovskyy Mykhaylo
+Dmitrichenko Oleg
+Tmej Ladislav
+Bengtsson Petter
+Chernov Alexey
+Saveljev Igor
+Ollila Janne
+Legkov Anton
+Hagg Tom
+Sevr Milos
+Margolis Mihail
+Barahov Dmitriy
+Lahtinen Ismo
+Happo Lauri
+END-OF-PLAYERS
+ROUNDS:21
+ROUND:1
+(Ahlberg Magnus)
+X:Kantola Janne
+Voskoboynikov Andrey:Happo Lauri
+Jukka Konsta:Lahtinen Ismo
+Eralaukko Juha:Barahov Dmitriy
+Aulaskari Ismo:Margolis Mihail
+Spivakovskyy Mykhaylo:Sevr Milos
+Dmitrichenko Oleg:Hagg Tom
+Tmej Ladislav:Legkov Anton
+Bengtsson Petter:Ollila Janne
+Chernov Alexey:Saveljev Igor
+END-OF-ROUND
+ROUND:2
+(Kantola Janne)
+Ahlberg Magnus:Happo Lauri
+X:Lahtinen Ismo
+Voskoboynikov Andrey:Barahov Dmitriy
+Jukka Konsta:Margolis Mihail
+Eralaukko Juha:Sevr Milos
+Aulaskari Ismo:Hagg Tom
+Spivakovskyy Mykhaylo:Legkov Anton
+Dmitrichenko Oleg:Ollila Janne
+Tmej Ladislav:Saveljev Igor
+Bengtsson Petter:Chernov Alexey
+END-OF-ROUND
+ROUND:3
+(Happo Lauri)
+Kantola Janne:Lahtinen Ismo
+Ahlberg Magnus:Barahov Dmitriy
+X:Margolis Mihail
+Voskoboynikov Andrey:Sevr Milos
+Jukka Konsta:Hagg Tom
+Eralaukko Juha:Legkov Anton
+Aulaskari Ismo:Ollila Janne
+Spivakovskyy Mykhaylo:Saveljev Igor
+Dmitrichenko Oleg:Chernov Alexey
+Tmej Ladislav:Bengtsson Petter
+END-OF-ROUND
+ROUND:4
+(Lahtinen Ismo)
+Happo Lauri:Barahov Dmitriy
+Kantola Janne:Margolis Mihail
+Ahlberg Magnus:Sevr Milos
+X:Hagg Tom
+Voskoboynikov Andrey:Legkov Anton
+Jukka Konsta:Ollila Janne
+Eralaukko Juha:Saveljev Igor
+Aulaskari Ismo:Chernov Alexey
+Spivakovskyy Mykhaylo:Bengtsson Petter
+Dmitrichenko Oleg:Tmej Ladislav
+END-OF-ROUND
+ROUND:5
+(Barahov Dmitriy)
+Lahtinen Ismo:Margolis Mihail
+Happo Lauri:Sevr Milos
+Kantola Janne:Hagg Tom
+Ahlberg Magnus:Legkov Anton
+X:Ollila Janne
+Voskoboynikov Andrey:Saveljev Igor
+Jukka Konsta:Chernov Alexey
+Eralaukko Juha:Bengtsson Petter
+Aulaskari Ismo:Tmej Ladislav
+Spivakovskyy Mykhaylo:Dmitrichenko Oleg
+END-OF-ROUND
+ROUND:6
+(Margolis Mihail)
+Barahov Dmitriy:Sevr Milos
+Lahtinen Ismo:Hagg Tom
+Happo Lauri:Legkov Anton
+Kantola Janne:Ollila Janne
+Ahlberg Magnus:Saveljev Igor
+X:Chernov Alexey
+Voskoboynikov Andrey:Bengtsson Petter
+Jukka Konsta:Tmej Ladislav
+Eralaukko Juha:Dmitrichenko Oleg
+Aulaskari Ismo:Spivakovskyy Mykhaylo
+END-OF-ROUND
+ROUND:7
+(Sevr Milos)
+Margolis Mihail:Hagg Tom
+Barahov Dmitriy:Legkov Anton
+Lahtinen Ismo:Ollila Janne
+Happo Lauri:Saveljev Igor
+Kantola Janne:Chernov Alexey
+Ahlberg Magnus:Bengtsson Petter
+X:Tmej Ladislav
+Voskoboynikov Andrey:Dmitrichenko Oleg
+Jukka Konsta:Spivakovskyy Mykhaylo
+Eralaukko Juha:Aulaskari Ismo
+END-OF-ROUND
+ROUND:8
+(Hagg Tom)
+Sevr Milos:Legkov Anton
+Margolis Mihail:Ollila Janne
+Barahov Dmitriy:Saveljev Igor
+Lahtinen Ismo:Chernov Alexey
+Happo Lauri:Bengtsson Petter
+Kantola Janne:Tmej Ladislav
+Ahlberg Magnus:Dmitrichenko Oleg
+X:Spivakovskyy Mykhaylo
+Voskoboynikov Andrey:Aulaskari Ismo
+Jukka Konsta:Eralaukko Juha
+END-OF-ROUND
+ROUND:9
+(Legkov Anton)
+Hagg Tom:Ollila Janne
+Sevr Milos:Saveljev Igor
+Margolis Mihail:Chernov Alexey
+Barahov Dmitriy:Bengtsson Petter
+Lahtinen Ismo:Tmej Ladislav
+Happo Lauri:Dmitrichenko Oleg
+Kantola Janne:Spivakovskyy Mykhaylo
+Ahlberg Magnus:Aulaskari Ismo
+X:Eralaukko Juha
+Voskoboynikov Andrey:Jukka Konsta
+END-OF-ROUND
+ROUND:10
+(Ollila Janne)
+Legkov Anton:Saveljev Igor
+Hagg Tom:Chernov Alexey
+Sevr Milos:Bengtsson Petter
+Margolis Mihail:Tmej Ladislav
+Barahov Dmitriy:Dmitrichenko Oleg
+Lahtinen Ismo:Spivakovskyy Mykhaylo
+Happo Lauri:Aulaskari Ismo
+Kantola Janne:Eralaukko Juha
+Ahlberg Magnus:Jukka Konsta
+X:Voskoboynikov Andrey
+END-OF-ROUND
+ROUND:11
+(Saveljev Igor)
+Ollila Janne:Chernov Alexey
+Legkov Anton:Bengtsson Petter
+Hagg Tom:Tmej Ladislav
+Sevr Milos:Dmitrichenko Oleg
+Margolis Mihail:Spivakovskyy Mykhaylo
+Barahov Dmitriy:Aulaskari Ismo
+Lahtinen Ismo:Eralaukko Juha
+Happo Lauri:Jukka Konsta
+Kantola Janne:Voskoboynikov Andrey
+Ahlberg Magnus:X
+END-OF-ROUND
+ROUND:12
+(Chernov Alexey)
+Saveljev Igor:Bengtsson Petter
+Ollila Janne:Tmej Ladislav
+Legkov Anton:Dmitrichenko Oleg
+Hagg Tom:Spivakovskyy Mykhaylo
+Sevr Milos:Aulaskari Ismo
+Margolis Mihail:Eralaukko Juha
+Barahov Dmitriy:Jukka Konsta
+Lahtinen Ismo:Voskoboynikov Andrey
+Happo Lauri:X
+Kantola Janne:Ahlberg Magnus
+END-OF-ROUND
+ROUND:13
+(Bengtsson Petter)
+Chernov Alexey:Tmej Ladislav
+Saveljev Igor:Dmitrichenko Oleg
+Ollila Janne:Spivakovskyy Mykhaylo
+Legkov Anton:Aulaskari Ismo
+Hagg Tom:Eralaukko Juha
+Sevr Milos:Jukka Konsta
+Margolis Mihail:Voskoboynikov Andrey
+Barahov Dmitriy:X
+Lahtinen Ismo:Ahlberg Magnus
+Happo Lauri:Kantola Janne
+END-OF-ROUND
+ROUND:14
+(Tmej Ladislav)
+Bengtsson Petter:Dmitrichenko Oleg
+Chernov Alexey:Spivakovskyy Mykhaylo
+Saveljev Igor:Aulaskari Ismo
+Ollila Janne:Eralaukko Juha
+Legkov Anton:Jukka Konsta
+Hagg Tom:Voskoboynikov Andrey
+Sevr Milos:X
+Margolis Mihail:Ahlberg Magnus
+Barahov Dmitriy:Kantola Janne
+Lahtinen Ismo:Happo Lauri
+END-OF-ROUND
+ROUND:15
+(Dmitrichenko Oleg)
+Tmej Ladislav:Spivakovskyy Mykhaylo
+Bengtsson Petter:Aulaskari Ismo
+Chernov Alexey:Eralaukko Juha
+Saveljev Igor:Jukka Konsta
+Ollila Janne:Voskoboynikov Andrey
+Legkov Anton:X
+Hagg Tom:Ahlberg Magnus
+Sevr Milos:Kantola Janne
+Margolis Mihail:Happo Lauri
+Barahov Dmitriy:Lahtinen Ismo
+END-OF-ROUND
+ROUND:16
+(Spivakovskyy Mykhaylo)
+Dmitrichenko Oleg:Aulaskari Ismo
+Tmej Ladislav:Eralaukko Juha
+Bengtsson Petter:Jukka Konsta
+Chernov Alexey:Voskoboynikov Andrey
+Saveljev Igor:X
+Ollila Janne:Ahlberg Magnus
+Legkov Anton:Kantola Janne
+Hagg Tom:Happo Lauri
+Sevr Milos:Lahtinen Ismo
+Margolis Mihail:Barahov Dmitriy
+END-OF-ROUND
+ROUND:17
+(Aulaskari Ismo)
+Spivakovskyy Mykhaylo:Eralaukko Juha
+Dmitrichenko Oleg:Jukka Konsta
+Tmej Ladislav:Voskoboynikov Andrey
+Bengtsson Petter:X
+Chernov Alexey:Ahlberg Magnus
+Saveljev Igor:Kantola Janne
+Ollila Janne:Happo Lauri
+Legkov Anton:Lahtinen Ismo
+Hagg Tom:Barahov Dmitriy
+Sevr Milos:Margolis Mihail
+END-OF-ROUND
+ROUND:18
+(Eralaukko Juha)
+Aulaskari Ismo:Jukka Konsta
+Spivakovskyy Mykhaylo:Voskoboynikov Andrey
+Dmitrichenko Oleg:X
+Tmej Ladislav:Ahlberg Magnus
+Bengtsson Petter:Kantola Janne
+Chernov Alexey:Happo Lauri
+Saveljev Igor:Lahtinen Ismo
+Ollila Janne:Barahov Dmitriy
+Legkov Anton:Margolis Mihail
+Hagg Tom:Sevr Milos
+END-OF-ROUND
+ROUND:19
+(Jukka Konsta)
+Eralaukko Juha:Voskoboynikov Andrey
+Aulaskari Ismo:X
+Spivakovskyy Mykhaylo:Ahlberg Magnus
+Dmitrichenko Oleg:Kantola Janne
+Tmej Ladislav:Happo Lauri
+Bengtsson Petter:Lahtinen Ismo
+Chernov Alexey:Barahov Dmitriy
+Saveljev Igor:Margolis Mihail
+Ollila Janne:Sevr Milos
+Legkov Anton:Hagg Tom
+END-OF-ROUND
+ROUND:20
+(Voskoboynikov Andrey)
+Jukka Konsta:X
+Eralaukko Juha:Ahlberg Magnus
+Aulaskari Ismo:Kantola Janne
+Spivakovskyy Mykhaylo:Happo Lauri
+Dmitrichenko Oleg:Lahtinen Ismo
+Tmej Ladislav:Barahov Dmitriy
+Bengtsson Petter:Margolis Mihail
+Chernov Alexey:Sevr Milos
+Saveljev Igor:Hagg Tom
+Ollila Janne:Legkov Anton
+END-OF-ROUND
+ROUND:21
+(X)
+Voskoboynikov Andrey:Ahlberg Magnus
+Jukka Konsta:Kantola Janne
+Eralaukko Juha:Happo Lauri
+Aulaskari Ismo:Lahtinen Ismo
+Spivakovskyy Mykhaylo:Barahov Dmitriy
+Dmitrichenko Oleg:Margolis Mihail
+Tmej Ladislav:Sevr Milos
+Bengtsson Petter:Hagg Tom
+Chernov Alexey:Legkov Anton
+Saveljev Igor:Ollila Janne
+END-OF-ROUND
+END-OF-DIVISION

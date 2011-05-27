@@ -1,0 +1,851 @@
+TOURNAMENT-SIZE:5
+DIVISION:Lohko 1
+PLAYERS:15
+Lampi Ahti
+Axelsen Bjarne
+Kokko Janne
+Regula Gergely
+Masloboev Igor
+Belavin Dmitriy
+Barahov Dmitriy
+Happo Lauri
+Pesala Otto
+Storchak Kirill
+Jousi Netta
+Roivas Tim
+Tikkanen Jouni
+Lampi Anton
+Junnila Jussi
+END-OF-PLAYERS
+ROUNDS:15
+ROUND:1
+(Lampi Ahti)
+Axelsen Bjarne:Junnila Jussi:3:1
+Kokko Janne:Lampi Anton:6:2
+Regula Gergely:Tikkanen Jouni:5:3
+Masloboev Igor:Roivas Tim:5:3
+Belavin Dmitriy:Jousi Netta:5:3
+Barahov Dmitriy:Storchak Kirill:3:2
+Happo Lauri:Pesala Otto:3:2
+END-OF-ROUND
+ROUND:2
+(Junnila Jussi)
+Lampi Ahti:Lampi Anton:1:1
+Axelsen Bjarne:Tikkanen Jouni:5:3
+Kokko Janne:Roivas Tim:6:2
+Regula Gergely:Jousi Netta:6:2
+Masloboev Igor:Storchak Kirill:2:0
+Belavin Dmitriy:Pesala Otto:2:1
+Barahov Dmitriy:Happo Lauri:3:1
+END-OF-ROUND
+ROUND:3
+(Lampi Anton)
+Junnila Jussi:Tikkanen Jouni:1:5
+Lampi Ahti:Roivas Tim:5:1
+Axelsen Bjarne:Jousi Netta:3:3
+Kokko Janne:Storchak Kirill:2:0
+Regula Gergely:Pesala Otto:3:3
+Masloboev Igor:Happo Lauri:1:5
+Belavin Dmitriy:Barahov Dmitriy:3:2
+END-OF-ROUND
+ROUND:4
+(Tikkanen Jouni)
+Lampi Anton:Roivas Tim:2:5
+Junnila Jussi:Jousi Netta:3:1
+Lampi Ahti:Storchak Kirill:3:1
+Axelsen Bjarne:Pesala Otto:2:2
+Kokko Janne:Happo Lauri:8:0
+Regula Gergely:Barahov Dmitriy:3:1
+Masloboev Igor:Belavin Dmitriy:3:3
+END-OF-ROUND
+ROUND:5
+(Roivas Tim)
+Tikkanen Jouni:Jousi Netta:4:4
+Lampi Anton:Storchak Kirill:6:2
+Junnila Jussi:Pesala Otto:2:3
+Lampi Ahti:Happo Lauri:6:1
+Axelsen Bjarne:Barahov Dmitriy:5:2
+Kokko Janne:Belavin Dmitriy:7:4
+Regula Gergely:Masloboev Igor:3:2
+END-OF-ROUND
+ROUND:6
+(Jousi Netta)
+Roivas Tim:Storchak Kirill:2:2
+Tikkanen Jouni:Pesala Otto:2:6
+Lampi Anton:Happo Lauri:3:7
+Junnila Jussi:Barahov Dmitriy:1:4
+Lampi Ahti:Belavin Dmitriy:2:2
+Axelsen Bjarne:Masloboev Igor:2:5
+Kokko Janne:Regula Gergely:4:0
+END-OF-ROUND
+ROUND:7
+(Storchak Kirill)
+Jousi Netta:Pesala Otto:3:6
+Roivas Tim:Happo Lauri:4:8
+Tikkanen Jouni:Barahov Dmitriy:2:2
+Lampi Anton:Belavin Dmitriy:1:3
+Junnila Jussi:Masloboev Igor:1:6
+Lampi Ahti:Regula Gergely:1:5
+Axelsen Bjarne:Kokko Janne:5:1
+END-OF-ROUND
+ROUND:8
+(Pesala Otto)
+Storchak Kirill:Happo Lauri:3:4
+Jousi Netta:Barahov Dmitriy:0:4
+Roivas Tim:Belavin Dmitriy:5:2
+Tikkanen Jouni:Masloboev Igor:1:6
+Lampi Anton:Regula Gergely:4:4
+Junnila Jussi:Kokko Janne:2:3
+Lampi Ahti:Axelsen Bjarne:2:0
+END-OF-ROUND
+ROUND:9
+(Happo Lauri)
+Pesala Otto:Barahov Dmitriy:2:3
+Storchak Kirill:Belavin Dmitriy:1:6
+Jousi Netta:Masloboev Igor:2:5
+Roivas Tim:Regula Gergely:3:5
+Tikkanen Jouni:Kokko Janne:1:3
+Lampi Anton:Axelsen Bjarne:2:1
+Junnila Jussi:Lampi Ahti:4:4
+END-OF-ROUND
+ROUND:10
+(Barahov Dmitriy)
+Happo Lauri:Belavin Dmitriy:1:5
+Pesala Otto:Masloboev Igor:0:3
+Storchak Kirill:Regula Gergely:0:4
+Jousi Netta:Kokko Janne:3:6
+Roivas Tim:Axelsen Bjarne:3:4
+Tikkanen Jouni:Lampi Ahti:4:2
+Lampi Anton:Junnila Jussi:7:5
+END-OF-ROUND
+ROUND:11
+(Belavin Dmitriy)
+Barahov Dmitriy:Masloboev Igor:2:2
+Happo Lauri:Regula Gergely:2:4
+Pesala Otto:Kokko Janne:3:4
+Storchak Kirill:Axelsen Bjarne:1:2
+Jousi Netta:Lampi Ahti:2:4
+Roivas Tim:Junnila Jussi:5:2
+Tikkanen Jouni:Lampi Anton:1:3
+END-OF-ROUND
+ROUND:12
+(Masloboev Igor)
+Belavin Dmitriy:Regula Gergely:1:3
+Barahov Dmitriy:Kokko Janne:0:4
+Happo Lauri:Axelsen Bjarne:1:5
+Pesala Otto:Lampi Ahti:3:4
+Storchak Kirill:Junnila Jussi:1:1
+Jousi Netta:Lampi Anton:5:0
+Roivas Tim:Tikkanen Jouni:6:5
+END-OF-ROUND
+ROUND:13
+(Regula Gergely)
+Masloboev Igor:Kokko Janne:4:3
+Belavin Dmitriy:Axelsen Bjarne:0:7
+Barahov Dmitriy:Lampi Ahti:0:5
+Happo Lauri:Junnila Jussi:6:4
+Pesala Otto:Lampi Anton:4:0
+Storchak Kirill:Tikkanen Jouni:2:3
+Jousi Netta:Roivas Tim:5:3
+END-OF-ROUND
+ROUND:14
+(Kokko Janne)
+Regula Gergely:Axelsen Bjarne:0:2
+Masloboev Igor:Lampi Ahti:0:3
+Belavin Dmitriy:Junnila Jussi:3:1
+Barahov Dmitriy:Lampi Anton:3:0
+Happo Lauri:Tikkanen Jouni:2:5
+Pesala Otto:Roivas Tim:3:1
+Storchak Kirill:Jousi Netta:4:2
+END-OF-ROUND
+ROUND:15
+(Axelsen Bjarne)
+Kokko Janne:Lampi Ahti:0:3
+Regula Gergely:Junnila Jussi:7:1
+Masloboev Igor:Lampi Anton:6:4
+Belavin Dmitriy:Tikkanen Jouni:3:3
+Barahov Dmitriy:Roivas Tim:2:2
+Happo Lauri:Jousi Netta:2:0
+Pesala Otto:Storchak Kirill:2:4
+END-OF-ROUND
+END-OF-DIVISION
+DIVISION:Lohko 2
+PLAYERS:15
+Galuzo Yanis
+Myllykangas Mika
+Kantola Janne
+Eralaukko Juha
+Toivonen Timo
+Margolis Mihail
+Martiskainen Minerva
+Hellstrom Sami
+Hagg Tom
+Okunev Alexander
+Saveljeva Maria
+Rantanen Janne
+Roivas Janne
+Santala Juha-Matti
+Rasanen Sampsa
+END-OF-PLAYERS
+ROUNDS:15
+ROUND:1
+(Galuzo Yanis)
+Myllykangas Mika:Rasanen Sampsa:3:3
+Kantola Janne:Santala Juha-Matti:3:1
+Eralaukko Juha:Roivas Janne:5:2
+Toivonen Timo:Rantanen Janne:5:5
+Margolis Mihail:Saveljeva Maria:7:2
+Martiskainen Minerva:Okunev Alexander:1:1
+Hellstrom Sami:Hagg Tom:1:4
+END-OF-ROUND
+ROUND:2
+(Rasanen Sampsa)
+Galuzo Yanis:Santala Juha-Matti:7:1
+Myllykangas Mika:Roivas Janne:6:0
+Kantola Janne:Rantanen Janne:3:0
+Eralaukko Juha:Saveljeva Maria:3:2
+Toivonen Timo:Okunev Alexander:2:3
+Margolis Mihail:Hagg Tom:2:4
+Martiskainen Minerva:Hellstrom Sami:3:3
+END-OF-ROUND
+ROUND:3
+(Santala Juha-Matti)
+Rasanen Sampsa:Roivas Janne:2:8
+Galuzo Yanis:Rantanen Janne:6:4
+Myllykangas Mika:Saveljeva Maria:4:0
+Kantola Janne:Okunev Alexander:3:4
+Eralaukko Juha:Hagg Tom:7:1
+Toivonen Timo:Hellstrom Sami:4:0
+Margolis Mihail:Martiskainen Minerva:2:1
+END-OF-ROUND
+ROUND:4
+(Roivas Janne)
+Santala Juha-Matti:Rantanen Janne:3:6
+Rasanen Sampsa:Saveljeva Maria:1:3
+Galuzo Yanis:Okunev Alexander:5:1
+Myllykangas Mika:Hagg Tom:3:1
+Kantola Janne:Hellstrom Sami:4:3
+Eralaukko Juha:Martiskainen Minerva:5:1
+Toivonen Timo:Margolis Mihail:3:3
+END-OF-ROUND
+ROUND:5
+(Rantanen Janne)
+Roivas Janne:Saveljeva Maria:2:2
+Santala Juha-Matti:Okunev Alexander:3:2
+Rasanen Sampsa:Hagg Tom:0:4
+Galuzo Yanis:Hellstrom Sami:6:1
+Myllykangas Mika:Martiskainen Minerva:0:3
+Kantola Janne:Margolis Mihail:2:1
+Eralaukko Juha:Toivonen Timo:1:3
+END-OF-ROUND
+ROUND:6
+(Saveljeva Maria)
+Rantanen Janne:Okunev Alexander:0:2
+Roivas Janne:Hagg Tom:4:3
+Santala Juha-Matti:Hellstrom Sami:4:6
+Rasanen Sampsa:Martiskainen Minerva:0:3
+Galuzo Yanis:Margolis Mihail:5:3
+Myllykangas Mika:Toivonen Timo:3:3
+Kantola Janne:Eralaukko Juha:3:3
+END-OF-ROUND
+ROUND:7
+(Okunev Alexander)
+Saveljeva Maria:Hagg Tom:3:4
+Rantanen Janne:Hellstrom Sami:5:0
+Roivas Janne:Martiskainen Minerva:1:4
+Santala Juha-Matti:Margolis Mihail:2:2
+Rasanen Sampsa:Toivonen Timo:3:3
+Galuzo Yanis:Eralaukko Juha:5:5
+Myllykangas Mika:Kantola Janne:1:5
+END-OF-ROUND
+ROUND:8
+(Hagg Tom)
+Okunev Alexander:Hellstrom Sami:4:2
+Saveljeva Maria:Martiskainen Minerva:2:2
+Rantanen Janne:Margolis Mihail:4:2
+Roivas Janne:Toivonen Timo:1:2
+Santala Juha-Matti:Eralaukko Juha:1:2
+Rasanen Sampsa:Kantola Janne:0:4
+Galuzo Yanis:Myllykangas Mika:1:6
+END-OF-ROUND
+ROUND:9
+(Hellstrom Sami)
+Hagg Tom:Martiskainen Minerva:6:0
+Okunev Alexander:Margolis Mihail:1:2
+Saveljeva Maria:Toivonen Timo:3:4
+Rantanen Janne:Eralaukko Juha:0:4
+Roivas Janne:Kantola Janne:3:5
+Santala Juha-Matti:Myllykangas Mika:2:2
+Rasanen Sampsa:Galuzo Yanis:1:2
+END-OF-ROUND
+ROUND:10
+(Martiskainen Minerva)
+Hellstrom Sami:Margolis Mihail:3:1
+Hagg Tom:Toivonen Timo:2:2
+Okunev Alexander:Eralaukko Juha:1:3
+Saveljeva Maria:Kantola Janne:3:4
+Rantanen Janne:Myllykangas Mika:3:3
+Roivas Janne:Galuzo Yanis:2:3
+Santala Juha-Matti:Rasanen Sampsa:6:0
+END-OF-ROUND
+ROUND:11
+(Margolis Mihail)
+Martiskainen Minerva:Toivonen Timo:6:2
+Hellstrom Sami:Eralaukko Juha:1:0
+Hagg Tom:Kantola Janne:1:3
+Okunev Alexander:Myllykangas Mika:2:3
+Saveljeva Maria:Galuzo Yanis:1:2
+Rantanen Janne:Rasanen Sampsa:10:1
+Roivas Janne:Santala Juha-Matti:1:1
+END-OF-ROUND
+ROUND:12
+(Toivonen Timo)
+Margolis Mihail:Eralaukko Juha:1:1
+Martiskainen Minerva:Kantola Janne:0:3
+Hellstrom Sami:Myllykangas Mika:2:3
+Hagg Tom:Galuzo Yanis:1:2
+Okunev Alexander:Rasanen Sampsa:6:2
+Saveljeva Maria:Santala Juha-Matti:3:3
+Rantanen Janne:Roivas Janne:9:2
+END-OF-ROUND
+ROUND:13
+(Eralaukko Juha)
+Toivonen Timo:Kantola Janne:1:5
+Margolis Mihail:Myllykangas Mika:2:1
+Martiskainen Minerva:Galuzo Yanis:3:1
+Hellstrom Sami:Rasanen Sampsa:6:0
+Hagg Tom:Santala Juha-Matti:6:3
+Okunev Alexander:Roivas Janne:6:4
+Saveljeva Maria:Rantanen Janne:3:2
+END-OF-ROUND
+ROUND:14
+(Kantola Janne)
+Eralaukko Juha:Myllykangas Mika:3:2
+Toivonen Timo:Galuzo Yanis:4:3
+Margolis Mihail:Rasanen Sampsa:4:1
+Martiskainen Minerva:Santala Juha-Matti:8:5
+Hellstrom Sami:Roivas Janne:0:3
+Hagg Tom:Rantanen Janne:7:2
+Okunev Alexander:Saveljeva Maria:2:4
+END-OF-ROUND
+ROUND:15
+(Myllykangas Mika)
+Kantola Janne:Galuzo Yanis:2:3
+Eralaukko Juha:Rasanen Sampsa:4:2
+Toivonen Timo:Santala Juha-Matti:6:1
+Margolis Mihail:Roivas Janne:2:1
+Martiskainen Minerva:Rantanen Janne:2:5
+Hellstrom Sami:Saveljeva Maria:4:4
+Hagg Tom:Okunev Alexander:2:2
+END-OF-ROUND
+END-OF-DIVISION
+DIVISION:Lohko 3
+PLAYERS:15
+Tmej Petr
+Bengtsson Petter
+Sahlgren Jari
+Legkov Anton
+Spivakovskyy Mykhaylo
+Saveljev Igor
+Koivula Toni
+Kosonen Seppo
+Areshkin Vladimir
+Lahtinen Ismo
+Madsen Peter
+Herlevi Jani
+Moisa Teuvo
+Andreev Igor
+Huotelin Vesa
+END-OF-PLAYERS
+ROUNDS:15
+ROUND:1
+(Tmej Petr)
+Bengtsson Petter:Huotelin Vesa:6:1
+Sahlgren Jari:Andreev Igor:7:1
+Legkov Anton:Moisa Teuvo:1:2
+Spivakovskyy Mykhaylo:Herlevi Jani:3:0
+Saveljev Igor:Madsen Peter:3:2
+Koivula Toni:Lahtinen Ismo:2:0
+Kosonen Seppo:Areshkin Vladimir:2:1
+END-OF-ROUND
+ROUND:2
+(Huotelin Vesa)
+Tmej Petr:Andreev Igor:6:0
+Bengtsson Petter:Moisa Teuvo:4:0
+Sahlgren Jari:Herlevi Jani:5:0
+Legkov Anton:Madsen Peter:6:1
+Spivakovskyy Mykhaylo:Lahtinen Ismo:5:1
+Saveljev Igor:Areshkin Vladimir:4:4
+Koivula Toni:Kosonen Seppo:2:5
+END-OF-ROUND
+ROUND:3
+(Andreev Igor)
+Huotelin Vesa:Moisa Teuvo:3:1
+Tmej Petr:Herlevi Jani:7:0
+Bengtsson Petter:Madsen Peter:9:0
+Sahlgren Jari:Lahtinen Ismo:2:3
+Legkov Anton:Areshkin Vladimir:5:1
+Spivakovskyy Mykhaylo:Kosonen Seppo:5:1
+Saveljev Igor:Koivula Toni:0:7
+END-OF-ROUND
+ROUND:4
+(Moisa Teuvo)
+Andreev Igor:Herlevi Jani:1:4
+Huotelin Vesa:Madsen Peter:0:3
+Tmej Petr:Lahtinen Ismo:6:1
+Bengtsson Petter:Areshkin Vladimir:3:1
+Sahlgren Jari:Kosonen Seppo:5:2
+Legkov Anton:Koivula Toni:4:3
+Spivakovskyy Mykhaylo:Saveljev Igor:3:3
+END-OF-ROUND
+ROUND:5
+(Herlevi Jani)
+Moisa Teuvo:Madsen Peter:3:4
+Andreev Igor:Lahtinen Ismo:2:6
+Huotelin Vesa:Areshkin Vladimir:2:2
+Tmej Petr:Kosonen Seppo:4:0
+Bengtsson Petter:Koivula Toni:6:3
+Sahlgren Jari:Saveljev Igor:3:4
+Legkov Anton:Spivakovskyy Mykhaylo:6:0
+END-OF-ROUND
+ROUND:6
+(Madsen Peter)
+Herlevi Jani:Lahtinen Ismo:2:7
+Moisa Teuvo:Areshkin Vladimir:6:1
+Andreev Igor:Kosonen Seppo:2:2
+Huotelin Vesa:Koivula Toni:3:3
+Tmej Petr:Saveljev Igor:5:0
+Bengtsson Petter:Spivakovskyy Mykhaylo:1:2
+Sahlgren Jari:Legkov Anton:3:3
+END-OF-ROUND
+ROUND:7
+(Lahtinen Ismo)
+Madsen Peter:Areshkin Vladimir:1:2
+Herlevi Jani:Kosonen Seppo:2:0
+Moisa Teuvo:Koivula Toni:0:1
+Andreev Igor:Saveljev Igor:1:4
+Huotelin Vesa:Spivakovskyy Mykhaylo:1:6
+Tmej Petr:Legkov Anton:3:1
+Bengtsson Petter:Sahlgren Jari:1:4
+END-OF-ROUND
+ROUND:8
+(Areshkin Vladimir)
+Lahtinen Ismo:Kosonen Seppo:4:1
+Madsen Peter:Koivula Toni:2:5
+Herlevi Jani:Saveljev Igor:0:8
+Moisa Teuvo:Spivakovskyy Mykhaylo:1:4
+Andreev Igor:Legkov Anton:2:5
+Huotelin Vesa:Sahlgren Jari:3:4
+Tmej Petr:Bengtsson Petter:4:2
+END-OF-ROUND
+ROUND:9
+(Kosonen Seppo)
+Areshkin Vladimir:Koivula Toni:1:2
+Lahtinen Ismo:Saveljev Igor:2:0
+Madsen Peter:Spivakovskyy Mykhaylo:1:6
+Herlevi Jani:Legkov Anton:3:2
+Moisa Teuvo:Sahlgren Jari:1:7
+Andreev Igor:Bengtsson Petter:0:4
+Huotelin Vesa:Tmej Petr:1:6
+END-OF-ROUND
+ROUND:10
+(Koivula Toni)
+Kosonen Seppo:Saveljev Igor:0:3
+Areshkin Vladimir:Spivakovskyy Mykhaylo:3:1
+Lahtinen Ismo:Legkov Anton:4:7
+Madsen Peter:Sahlgren Jari:2:5
+Herlevi Jani:Bengtsson Petter:0:1
+Moisa Teuvo:Tmej Petr:0:3
+Andreev Igor:Huotelin Vesa:1:3
+END-OF-ROUND
+ROUND:11
+(Saveljev Igor)
+Koivula Toni:Spivakovskyy Mykhaylo:6:7
+Kosonen Seppo:Legkov Anton:4:2
+Areshkin Vladimir:Sahlgren Jari:1:3
+Lahtinen Ismo:Bengtsson Petter:1:6
+Madsen Peter:Tmej Petr:0:7
+Herlevi Jani:Huotelin Vesa:6:3
+Moisa Teuvo:Andreev Igor:2:5
+END-OF-ROUND
+ROUND:12
+(Spivakovskyy Mykhaylo)
+Saveljev Igor:Legkov Anton:4:0
+Koivula Toni:Sahlgren Jari:4:3
+Kosonen Seppo:Bengtsson Petter:5:2
+Areshkin Vladimir:Tmej Petr:1:2
+Lahtinen Ismo:Huotelin Vesa:2:0
+Madsen Peter:Andreev Igor:1:3
+Herlevi Jani:Moisa Teuvo:2:4
+END-OF-ROUND
+ROUND:13
+(Legkov Anton)
+Spivakovskyy Mykhaylo:Sahlgren Jari:1:2
+Saveljev Igor:Bengtsson Petter:1:4
+Koivula Toni:Tmej Petr:1:5
+Kosonen Seppo:Huotelin Vesa:5:3
+Areshkin Vladimir:Andreev Igor:1:1
+Lahtinen Ismo:Moisa Teuvo:2:1
+Madsen Peter:Herlevi Jani:3:1
+END-OF-ROUND
+ROUND:14
+(Sahlgren Jari)
+Legkov Anton:Bengtsson Petter:4:3
+Spivakovskyy Mykhaylo:Tmej Petr:3:3
+Saveljev Igor:Huotelin Vesa:12:1
+Koivula Toni:Andreev Igor:4:0
+Kosonen Seppo:Moisa Teuvo:0:3
+Areshkin Vladimir:Herlevi Jani:5:2
+Lahtinen Ismo:Madsen Peter:4:4
+END-OF-ROUND
+ROUND:15
+(Bengtsson Petter)
+Sahlgren Jari:Tmej Petr:5:2
+Legkov Anton:Huotelin Vesa:5:1
+Spivakovskyy Mykhaylo:Andreev Igor:5:3
+Saveljev Igor:Moisa Teuvo:4:1
+Koivula Toni:Herlevi Jani:4:3
+Kosonen Seppo:Madsen Peter:7:4
+Areshkin Vladimir:Lahtinen Ismo:3:2
+END-OF-ROUND
+END-OF-DIVISION
+DIVISION:Lohko 4
+PLAYERS:15
+Voskoboynikov Andrey
+Ahlberg Magnus
+Arenlind Martin
+Chernov Alexey
+Zholobovski Jevgeni
+Aulaskari Ismo
+Sainio Santtu
+Eronen Lauri
+Aalto Jussi-P
+Belavina Irina
+Pllana Samir
+Drufva Markus
+Miettinen Petrus
+Metsala Lari
+Haverinen Mikael
+END-OF-PLAYERS
+ROUNDS:15
+ROUND:1
+(Voskoboynikov Andrey)
+Ahlberg Magnus:Haverinen Mikael:4:2
+Arenlind Martin:Metsala Lari:5:0
+Chernov Alexey:Miettinen Petrus:5:2
+Zholobovski Jevgeni:Drufva Markus:4:1
+Aulaskari Ismo:Pllana Samir:4:1
+Sainio Santtu:Belavina Irina:4:1
+Eronen Lauri:Aalto Jussi-P:4:2
+END-OF-ROUND
+ROUND:2
+(Haverinen Mikael)
+Voskoboynikov Andrey:Metsala Lari:5:1
+Ahlberg Magnus:Miettinen Petrus:4:2
+Arenlind Martin:Drufva Markus:1:1
+Chernov Alexey:Pllana Samir:4:3
+Zholobovski Jevgeni:Belavina Irina:5:0
+Aulaskari Ismo:Aalto Jussi-P:4:3
+Sainio Santtu:Eronen Lauri:2:1
+END-OF-ROUND
+ROUND:3
+(Metsala Lari)
+Haverinen Mikael:Miettinen Petrus:2:5
+Voskoboynikov Andrey:Drufva Markus:5:3
+Ahlberg Magnus:Pllana Samir:4:0
+Arenlind Martin:Belavina Irina:4:2
+Chernov Alexey:Aalto Jussi-P:3:3
+Zholobovski Jevgeni:Eronen Lauri:2:2
+Aulaskari Ismo:Sainio Santtu:4:4
+END-OF-ROUND
+ROUND:4
+(Miettinen Petrus)
+Metsala Lari:Drufva Markus:4:3
+Haverinen Mikael:Pllana Samir:2:3
+Voskoboynikov Andrey:Belavina Irina:3:2
+Ahlberg Magnus:Aalto Jussi-P:5:1
+Arenlind Martin:Eronen Lauri:6:2
+Chernov Alexey:Sainio Santtu:2:3
+Zholobovski Jevgeni:Aulaskari Ismo:3:2
+END-OF-ROUND
+ROUND:5
+(Drufva Markus)
+Miettinen Petrus:Pllana Samir:4:3
+Metsala Lari:Belavina Irina:2:1
+Haverinen Mikael:Aalto Jussi-P:0:5
+Voskoboynikov Andrey:Eronen Lauri:4:3
+Ahlberg Magnus:Sainio Santtu:4:1
+Arenlind Martin:Aulaskari Ismo:1:2
+Chernov Alexey:Zholobovski Jevgeni:1:2
+END-OF-ROUND
+ROUND:6
+(Pllana Samir)
+Drufva Markus:Belavina Irina:2:4
+Miettinen Petrus:Aalto Jussi-P:1:6
+Metsala Lari:Eronen Lauri:1:2
+Haverinen Mikael:Sainio Santtu:1:5
+Voskoboynikov Andrey:Aulaskari Ismo:6:2
+Ahlberg Magnus:Zholobovski Jevgeni:2:1
+Arenlind Martin:Chernov Alexey:2:2
+END-OF-ROUND
+ROUND:7
+(Belavina Irina)
+Pllana Samir:Aalto Jussi-P:2:2
+Drufva Markus:Eronen Lauri:2:2
+Miettinen Petrus:Sainio Santtu:1:2
+Metsala Lari:Aulaskari Ismo:0:4
+Haverinen Mikael:Zholobovski Jevgeni:3:9
+Voskoboynikov Andrey:Chernov Alexey:3:6
+Ahlberg Magnus:Arenlind Martin:5:2
+END-OF-ROUND
+ROUND:8
+(Aalto Jussi-P)
+Belavina Irina:Eronen Lauri:1:1
+Pllana Samir:Sainio Santtu:0:2
+Drufva Markus:Aulaskari Ismo:1:1
+Miettinen Petrus:Zholobovski Jevgeni:2:4
+Metsala Lari:Chernov Alexey:0:2
+Haverinen Mikael:Arenlind Martin:2:5
+Voskoboynikov Andrey:Ahlberg Magnus:1:5
+END-OF-ROUND
+ROUND:9
+(Eronen Lauri)
+Aalto Jussi-P:Sainio Santtu:7:3
+Belavina Irina:Aulaskari Ismo:2:4
+Pllana Samir:Zholobovski Jevgeni:0:8
+Drufva Markus:Chernov Alexey:1:5
+Miettinen Petrus:Arenlind Martin:1:5
+Metsala Lari:Ahlberg Magnus:1:3
+Haverinen Mikael:Voskoboynikov Andrey:0:7
+END-OF-ROUND
+ROUND:10
+(Sainio Santtu)
+Eronen Lauri:Aulaskari Ismo:2:6
+Aalto Jussi-P:Zholobovski Jevgeni:5:3
+Belavina Irina:Chernov Alexey:3:4
+Pllana Samir:Arenlind Martin:1:6
+Drufva Markus:Ahlberg Magnus:2:2
+Miettinen Petrus:Voskoboynikov Andrey:0:6
+Metsala Lari:Haverinen Mikael:4:1
+END-OF-ROUND
+ROUND:11
+(Aulaskari Ismo)
+Sainio Santtu:Zholobovski Jevgeni:3:4
+Eronen Lauri:Chernov Alexey:1:3
+Aalto Jussi-P:Arenlind Martin:3:6
+Belavina Irina:Ahlberg Magnus:2:4
+Pllana Samir:Voskoboynikov Andrey:2:4
+Drufva Markus:Haverinen Mikael:7:1
+Miettinen Petrus:Metsala Lari:1:2
+END-OF-ROUND
+ROUND:12
+(Zholobovski Jevgeni)
+Aulaskari Ismo:Chernov Alexey:2:2
+Sainio Santtu:Arenlind Martin:5:4
+Eronen Lauri:Ahlberg Magnus:2:3
+Aalto Jussi-P:Voskoboynikov Andrey:2:6
+Belavina Irina:Haverinen Mikael:8:0
+Pllana Samir:Metsala Lari:3:4
+Drufva Markus:Miettinen Petrus:2:3
+END-OF-ROUND
+ROUND:13
+(Chernov Alexey)
+Zholobovski Jevgeni:Arenlind Martin:6:3
+Aulaskari Ismo:Ahlberg Magnus:5:1
+Sainio Santtu:Voskoboynikov Andrey:3:7
+Eronen Lauri:Haverinen Mikael:7:1
+Aalto Jussi-P:Metsala Lari:1:2
+Belavina Irina:Miettinen Petrus:3:2
+Pllana Samir:Drufva Markus:2:2
+END-OF-ROUND
+ROUND:14
+(Arenlind Martin)
+Chernov Alexey:Ahlberg Magnus:0:2
+Zholobovski Jevgeni:Voskoboynikov Andrey:1:4
+Aulaskari Ismo:Haverinen Mikael:6:1
+Sainio Santtu:Metsala Lari:3:0
+Eronen Lauri:Miettinen Petrus:4:2
+Aalto Jussi-P:Drufva Markus:6:2
+Belavina Irina:Pllana Samir:4:1
+END-OF-ROUND
+ROUND:15
+(Ahlberg Magnus)
+Arenlind Martin:Voskoboynikov Andrey:0:6
+Chernov Alexey:Haverinen Mikael:6:1
+Zholobovski Jevgeni:Metsala Lari:1:3
+Aulaskari Ismo:Miettinen Petrus:6:2
+Sainio Santtu:Drufva Markus:3:4
+Eronen Lauri:Pllana Samir:6:0
+Aalto Jussi-P:Belavina Irina:2:2
+END-OF-ROUND
+END-OF-DIVISION
+DIVISION:Lohko 5
+PLAYERS:15
+Jukka Konsta
+Ollila Janne
+Tmej Ladislav
+Sladek Jakub
+Dmitrichenko Oleg
+Sevr Milos
+Sevon Petteri
+Rautio Juho
+Berezkin Alexander
+Hamdamov Vafa
+Tuominen Niko
+Mauranen Angi
+Heilimo Esa
+Haverinen Mikko
+Koskela Teemu
+END-OF-PLAYERS
+ROUNDS:15
+ROUND:1
+(Jukka Konsta)
+Ollila Janne:Koskela Teemu:5:1
+Tmej Ladislav:Haverinen Mikko:4:1
+Sladek Jakub:Heilimo Esa:2:0
+Dmitrichenko Oleg:Mauranen Angi:5:4
+Sevr Milos:Tuominen Niko:4:3
+Sevon Petteri:Hamdamov Vafa:3:3
+Rautio Juho:Berezkin Alexander:4:3
+END-OF-ROUND
+ROUND:2
+(Koskela Teemu)
+Jukka Konsta:Haverinen Mikko:5:1
+Ollila Janne:Heilimo Esa:5:0
+Tmej Ladislav:Mauranen Angi:6:2
+Sladek Jakub:Tuominen Niko:2:2
+Dmitrichenko Oleg:Hamdamov Vafa:3:4
+Sevr Milos:Berezkin Alexander:0:3
+Sevon Petteri:Rautio Juho:4:5
+END-OF-ROUND
+ROUND:3
+(Haverinen Mikko)
+Koskela Teemu:Heilimo Esa:1:0
+Jukka Konsta:Mauranen Angi:5:3
+Ollila Janne:Tuominen Niko:5:0
+Tmej Ladislav:Hamdamov Vafa:4:2
+Sladek Jakub:Berezkin Alexander:2:0
+Dmitrichenko Oleg:Rautio Juho:4:3
+Sevr Milos:Sevon Petteri:4:3
+END-OF-ROUND
+ROUND:4
+(Heilimo Esa)
+Haverinen Mikko:Mauranen Angi:4:5
+Koskela Teemu:Tuominen Niko:0:5
+Jukka Konsta:Hamdamov Vafa:5:2
+Ollila Janne:Berezkin Alexander:3:2
+Tmej Ladislav:Rautio Juho:3:2
+Sladek Jakub:Sevon Petteri:5:2
+Dmitrichenko Oleg:Sevr Milos:6:1
+END-OF-ROUND
+ROUND:5
+(Mauranen Angi)
+Heilimo Esa:Tuominen Niko:1:3
+Haverinen Mikko:Hamdamov Vafa:3:5
+Koskela Teemu:Berezkin Alexander:1:3
+Jukka Konsta:Rautio Juho:8:0
+Ollila Janne:Sevon Petteri:2:2
+Tmej Ladislav:Sevr Milos:5:3
+Sladek Jakub:Dmitrichenko Oleg:4:4
+END-OF-ROUND
+ROUND:6
+(Tuominen Niko)
+Mauranen Angi:Hamdamov Vafa:4:4
+Heilimo Esa:Berezkin Alexander:3:5
+Haverinen Mikko:Rautio Juho:1:6
+Koskela Teemu:Sevon Petteri:1:3
+Jukka Konsta:Sevr Milos:3:0
+Ollila Janne:Dmitrichenko Oleg:3:2
+Tmej Ladislav:Sladek Jakub:0:2
+END-OF-ROUND
+ROUND:7
+(Hamdamov Vafa)
+Tuominen Niko:Berezkin Alexander:1:3
+Mauranen Angi:Rautio Juho:3:2
+Heilimo Esa:Sevon Petteri:3:3
+Haverinen Mikko:Sevr Milos:0:5
+Koskela Teemu:Dmitrichenko Oleg:0:6
+Jukka Konsta:Sladek Jakub:1:5
+Ollila Janne:Tmej Ladislav:3:5
+END-OF-ROUND
+ROUND:8
+(Berezkin Alexander)
+Hamdamov Vafa:Rautio Juho:3:5
+Tuominen Niko:Sevon Petteri:2:10
+Mauranen Angi:Sevr Milos:4:9
+Heilimo Esa:Dmitrichenko Oleg:1:3
+Haverinen Mikko:Sladek Jakub:1:7
+Koskela Teemu:Tmej Ladislav:0:2
+Jukka Konsta:Ollila Janne:5:1
+END-OF-ROUND
+ROUND:9
+(Rautio Juho)
+Berezkin Alexander:Sevon Petteri:4:2
+Hamdamov Vafa:Sevr Milos:2:5
+Tuominen Niko:Dmitrichenko Oleg:1:6
+Mauranen Angi:Sladek Jakub:1:2
+Heilimo Esa:Tmej Ladislav:3:5
+Haverinen Mikko:Ollila Janne:1:5
+Koskela Teemu:Jukka Konsta:1:6
+END-OF-ROUND
+ROUND:10
+(Sevon Petteri)
+Rautio Juho:Sevr Milos:4:4
+Berezkin Alexander:Dmitrichenko Oleg:2:2
+Hamdamov Vafa:Sladek Jakub:3:6
+Tuominen Niko:Tmej Ladislav:2:3
+Mauranen Angi:Ollila Janne:1:6
+Heilimo Esa:Jukka Konsta:0:6
+Haverinen Mikko:Koskela Teemu:4:0
+END-OF-ROUND
+ROUND:11
+(Sevr Milos)
+Sevon Petteri:Dmitrichenko Oleg:1:7
+Rautio Juho:Sladek Jakub:5:4
+Berezkin Alexander:Tmej Ladislav:2:2
+Hamdamov Vafa:Ollila Janne:2:2
+Tuominen Niko:Jukka Konsta:4:3
+Mauranen Angi:Koskela Teemu:1:2
+Heilimo Esa:Haverinen Mikko:2:3
+END-OF-ROUND
+ROUND:12
+(Dmitrichenko Oleg)
+Sevr Milos:Sladek Jakub:4:2
+Sevon Petteri:Tmej Ladislav:2:0
+Rautio Juho:Ollila Janne:1:5
+Berezkin Alexander:Jukka Konsta:2:5
+Hamdamov Vafa:Koskela Teemu:3:0
+Tuominen Niko:Haverinen Mikko:1:2
+Mauranen Angi:Heilimo Esa:5:3
+END-OF-ROUND
+ROUND:13
+(Sladek Jakub)
+Dmitrichenko Oleg:Tmej Ladislav:3:1
+Sevr Milos:Ollila Janne:5:3
+Sevon Petteri:Jukka Konsta:5:4
+Rautio Juho:Koskela Teemu:6:2
+Berezkin Alexander:Haverinen Mikko:4:1
+Hamdamov Vafa:Heilimo Esa:3:0
+Tuominen Niko:Mauranen Angi:1:6
+END-OF-ROUND
+ROUND:14
+(Tmej Ladislav)
+Sladek Jakub:Ollila Janne:4:2
+Dmitrichenko Oleg:Jukka Konsta:1:3
+Sevr Milos:Koskela Teemu:6:0
+Sevon Petteri:Haverinen Mikko:7:0
+Rautio Juho:Heilimo Esa:3:0
+Berezkin Alexander:Mauranen Angi:3:2
+Hamdamov Vafa:Tuominen Niko:6:2
+END-OF-ROUND
+ROUND:15
+(Ollila Janne)
+Tmej Ladislav:Jukka Konsta:0:5
+Sladek Jakub:Koskela Teemu:6:2
+Dmitrichenko Oleg:Haverinen Mikko:2:2
+Sevr Milos:Heilimo Esa:1:1
+Sevon Petteri:Mauranen Angi:3:3
+Rautio Juho:Tuominen Niko:10:0
+Berezkin Alexander:Hamdamov Vafa:4:3
+END-OF-ROUND
+END-OF-DIVISION

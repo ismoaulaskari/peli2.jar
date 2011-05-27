@@ -1033,41 +1033,36 @@ public class Tournament {
         printwriter.print("<body>" + nl);
 
         for (Object player : players) {
-            String thisPlayer = new String((String)player);
+            String thisPlayer = new String((String) player);
             //HtmlTools.br(printwriter);
             printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);
             //printwriter.print("<tr><td colspan='3'>&nbsp;</td></tr>" + nl);
-            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer1\" >&nbsp;</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >RESULT</td></tr>" + nl);
-            String printout = "";
+            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >&nbsp;</td><td class=\"programmebyplayer1\" >&nbsp;</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
             String round = "";
             for (Object line : lines) {
-                String thisLine = (String)line;
-//printwriter.print(thisLine + nl);
-                if (thisLine.matches("END-OF-ROUND")) {
-                    printout = "";
-                    //braek;
-                }
+                String thisLine = (String) line;
 
                 if (thisLine.matches("ROUND:[0-9]+")) {
                     round = new String(thisLine);
-                    //printout = "<tr><td>" + round + "</td>";
-                    //break;
+                    round = round.replaceFirst("ROUND:", "<b>");
+                    round = round + ".</b></td><td>";
                 }
 
                 if (thisLine.matches("\\(" + thisPlayer + "\\)")) {
-                    if (printout.isEmpty()) {
-                        printout = "<tr><td>&nbsp</td>";
-                    }                    
-                    printwriter.print("<tr><td>" + round + "</td>" + "<td>" + thisPlayer + "-BREAK-" + "</td><td>&nbsp;</td</tr>" + nl);
-                    //break;
+                    printwriter.print("<tr><td>" + round + "</td>" + "<td><i>--BREAK--</i></td><td>&nbsp;</td</tr>" + nl);
                 }
 
                 if (thisLine.matches(".*" + thisPlayer + ".*") && thisLine.matches(".+:.+")) {
                     String resultLine = new String(thisLine);
                     resultLine = resultLine.replaceFirst(":", "-");
-                    resultLine = resultLine.replaceFirst(":", "</td><td>");
-                    resultLine = resultLine.replaceFirst(":", "-");
-                    resultLine = resultLine.replaceFirst(":", "");
+                    if (resultLine.matches(".*:.*")) {
+                        resultLine = resultLine.replaceFirst(":", "</td><td>");
+                        resultLine = resultLine.replaceFirst(":", "-");
+                        resultLine = resultLine.replaceFirst(":", "");
+                    }
+                    else {
+                        resultLine = resultLine + "</td><td>&nbsp;";
+                    }
                     resultLine = resultLine.replaceFirst(thisPlayer, "<b>" + thisPlayer + "</b>");
                     printwriter.print("<tr><td>" + round + "</td>" + "<td>" + resultLine + "</td></tr>" + nl);
                 }
