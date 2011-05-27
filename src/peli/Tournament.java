@@ -1021,7 +1021,14 @@ public class Tournament {
      * @param printwriter
      */
     public void saveMatchesByPlayer(PrintWriter printwriter) {
-        ArrayList players = getOverAllStandings();
+        ArrayList players = new ArrayList();
+        for (int i = 0; i < divisions.size(); i++) {
+            ArrayList seriesTable = getDivision(i).getStandings();
+            for (Object seriesTableEntry : seriesTable) {
+                players.add(((SeriesTableEntry)seriesTableEntry).getName());
+            }
+        }
+
         StringWriter stringwriter = new StringWriter();
         PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
         this.save(sprintwriter);
