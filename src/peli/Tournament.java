@@ -1027,17 +1027,20 @@ public class Tournament {
         this.save(sprintwriter);
         String tnmt = stringwriter.toString();
         StringBuilder byPlayer = new StringBuilder();
-        Object[] lines = tnmt.split(System.getProperty("line.separator"));
+        String nl = System.getProperty("line.separator");
+        Object[] lines = tnmt.split(nl);
         printwriter.print("<html><head><style type=\"text/css\"></style></head>");
-        printwriter.print("<body><table class=\"programmebyplayer\" border=\"1\">");
+        printwriter.print("<body>" + nl);
 
         for (Object player : players) {
             //HtmlTools.br(printwriter);
-            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer1\" ><b>" + player + "</b></td><td class=\"programmebyplayer2\" ></td><td class=\"programmebyplayer3\" >RESULT</td></tr>");
+            printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);
+            //printwriter.print("<tr><td colspan='3'>&nbsp;</td></tr>" + nl);
+            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer1\" ></td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >RESULT</td></tr>" + nl);
             String printout = "";
             for (Object line : lines) {                
                 if(((String)line).matches("^ROUND:[0-9]+")) {
-                    printout = "<tr><td>SERIES: " + line + "</td>";
+                    printout = "<tr><td>" + line + "</td>";
                 }
                 if(((String)line).matches(".*" + (String)player + ".*") && ((String)line).matches(".+:.+")) {
                     String resultLine = new String((String)line);
@@ -1045,12 +1048,14 @@ public class Tournament {
                     resultLine = resultLine.replaceFirst(":", "</td><td>");
                     resultLine = resultLine.replaceFirst(":", "-");
                     resultLine = resultLine.replaceFirst(":", "");
-                    printwriter.print(printout + "<td>" + resultLine + "</td></tr>");
+                    resultLine = resultLine.replaceFirst((String)player, "<b>" + (String)player + "</b>");
+                    printwriter.print(printout + "<td>" + resultLine + "</td></tr>" + nl);
                 }
             }
             //HtmlTools.br(printwriter);
+            printwriter.print("</table>" + nl);
         }
-        printwriter.print("</table></body></html>");
+        printwriter.print("</body></html>");
 
         sprintwriter.close();
     }
