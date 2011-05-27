@@ -1088,7 +1088,7 @@ public class Tournament {
                     else {
                         resultLine = resultLine + "</td><td>&nbsp;";
                     }
-                    resultLine = resultLine.replaceFirst(thisPlayer, "<b>" + thisPlayer + "</b>");
+                    resultLine = resultLine.replaceFirst(thisPlayer, "<b class=\"plr\">" + thisPlayer + "</b>");
                     printwriter.print("<tr><td>" + round + game + "</td>" + "<td>" + resultLine + "</td></tr>" + nl);
                 }
 
