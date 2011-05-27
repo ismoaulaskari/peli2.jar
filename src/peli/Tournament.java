@@ -1101,7 +1101,7 @@ public class Tournament {
                 }
 
             }
-            printwriter.print("<tr><td colspan=\"4\">Group " + group + ", " +  System.getProperty("TournamentFileName") + "</td></tr></table>" + nl);
+            printwriter.print("<tr class=\"info\"><td colspan=\"4\"><small>Group " + group + ", " +  System.getProperty("TournamentFileName") + "</small></td></tr></table>" + nl);
             if(firstPlayerInRow) {
                 firstPlayerInRow = false;
             }
