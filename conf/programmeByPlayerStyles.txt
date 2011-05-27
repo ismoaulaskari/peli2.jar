@@ -1,0 +1,72 @@
+table.sidebyside {
+        margin-bottom: 30px;
+        height: 400px; 
+}
+
+table {
+        border-collapse: collapse;
+        empty-cells: show;
+} 
+td {
+        border: 1px solid #999;
+        padding: 3px;
+        padding-bottom: 2px;
+        margin: 0px;
+        font-size: 7pt;
+}
+
+tr.sidebyside {
+        vertical-align: top;
+}
+
+td.sidebyside1, td.sidebyside2 {
+        border: 0px;
+        padding: 0px;
+}
+
+td.sidebyside1 {
+        padding-right: 40px;
+}
+
+td.programmebyplayer0 {
+        width: 25px;
+        background-color: #ddd;
+}
+
+td.programmebyplayer1 {
+        width: 25px;
+        background-color: #ddd;
+}
+
+table.programmebyplayer td.plr b {
+        font-weight: normal;
+        color: #555;
+}
+
+table.programmebyplayer td.plr {
+        font-weight: bold;
+}
+
+table.programmebyplayer td.scr {
+        text-align: center;
+}
+
+table.programmebyplayer td.programmebyplayer2 {
+        width: 205px;
+        background-color: #ddd;
+        font-size: 12pt;
+        font-weight: bold;
+}
+td.programmebyplayer3 {
+        width: 40px;
+        background-color: #ddd;
+}
+body {
+        font-family: Helvetica, Arial, sans-serif;
+        margin: 0px;
+}
+
+tr.info td small {
+        font-size: 5pt;
+}
+

@@ -31,11 +31,12 @@ public class Constants {
     private static StringBuilder header = new StringBuilder(500);
     private static StringBuilder template = new StringBuilder(500);
     private static StringBuilder footer = new StringBuilder(100);
+    private static StringBuilder programmeStyles = new StringBuilder(100);
     private static int MAXMATCHES;  
 
     static {
         constants = new Constants();                
-        System.setProperty("Peli.jarVersion", "v. 1.19.2");
+        System.setProperty("Peli.jarVersion", "v. 1.19.3");
         try {
             rules = ResourceBundle.getBundle("Rules");
             locale = new Locale(rules.getString("languageCode"), rules.getString("countryCode"));
@@ -67,6 +68,14 @@ public class Constants {
             line = null;
             while ((line = bufferedreader.readLine()) != null) {
                 footer.append(line).append(System.getProperty("line.separator"));
+            }
+
+            bufferedreader =
+                    new BufferedReader(
+                    new FileReader("conf" + File.separatorChar + "programmeByPlayerStyles.txt"));
+            line = null;
+            while ((line = bufferedreader.readLine()) != null) {
+                programmeStyles.append(line).append(System.getProperty("line.separator"));
             }
 
         } catch (MissingResourceException e) {
@@ -104,6 +113,10 @@ public class Constants {
 
     public static StringBuilder getFooter() {
         return footer;
+    }
+
+    public static StringBuilder getProgrammeStyles() {
+        return programmeStyles;
     }
 
     public static int getMAXMATCHES() {

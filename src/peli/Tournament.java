@@ -1036,7 +1036,7 @@ public class Tournament {
         StringBuilder byPlayer = new StringBuilder();
         String nl = System.getProperty("line.separator");
         Object[] lines = tnmt.split(nl);
-        printwriter.print("<html><head><style type=\"text/css\"></style></head>");
+        printwriter.print("<html><head><style type=\"text/css\">" + Constants.getProgrammeStyles().toString() + "</style></head>");
         printwriter.print("<body>" + nl);
         boolean firstPlayerInRow = true;
 
