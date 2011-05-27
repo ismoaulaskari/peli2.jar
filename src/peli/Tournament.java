@@ -1053,9 +1053,15 @@ public class Tournament {
             String round = "";
             int game = -1; //tauolla oleva lasketaan
             boolean isInRound = false;
+            String group = "";
+            String maybeGroup = "";
             
             for (Object line : lines) {
-                String thisLine = (String) line;
+                String thisLine = (String) line;                
+
+                if(thisLine.matches("DIVISION:Lohko [0-9]+")) {
+                    maybeGroup = thisLine.replaceFirst("DIVISION:Lohko ", "");
+                }
 
                 if (thisLine.matches("END-OF-ROUND")) {
                     isInRound = false;
@@ -1074,10 +1080,12 @@ public class Tournament {
                 }
 
                 if (thisLine.matches("\\(" + thisPlayer + "\\)")) {
+                    group = maybeGroup;
                     printwriter.print("<tr><td>" + round + "</td>" + "<td><i>--BREAK--</i></td><td>&nbsp;</td</tr>" + nl);
                 }
 
                 if (thisLine.matches(".*" + thisPlayer + ".*") && thisLine.matches(".+:.+")) {
+                    group = maybeGroup;
                     String resultLine = new String(thisLine);
                     resultLine = resultLine.replaceFirst(":", "-");
                     if (resultLine.matches(".*:.*")) {
@@ -1093,7 +1101,7 @@ public class Tournament {
                 }
 
             }
-            printwriter.print("</table>" + nl);
+            printwriter.print("<tr><td colspan=\"4\">Group " + group + ", " +  System.getProperty("TournamentFileName") + "</td></tr></table>" + nl);
             if(firstPlayerInRow) {
                 firstPlayerInRow = false;
             }
