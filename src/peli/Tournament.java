@@ -1038,16 +1038,22 @@ public class Tournament {
         Object[] lines = tnmt.split(nl);
         printwriter.print("<html><head><style type=\"text/css\"></style></head>");
         printwriter.print("<body>" + nl);
+        boolean firstPlayerInRow = true;
 
         for (Object player : players) {
-            String thisPlayer = new String((String) player);
-            //HtmlTools.br(printwriter);
-            printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);
-            //printwriter.print("<tr><td colspan='3'>&nbsp;</td></tr>" + nl);
+            if(firstPlayerInRow) {
+                printwriter.print("<table class=\"sidebyside\"><tr class=\"sidebyside\">" + nl + "<td class=\"sidebyside1\">" + nl);
+            }
+            else {
+                printwriter.print("</td>" + nl + "<td class=\"sidebyside2\">" + nl);
+            }
+            String thisPlayer = new String((String) player);            
+            printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);            
             printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >rd</td><td class=\"programmebyplayer1\" >gm</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
             String round = "";
             int game = -1; //tauolla oleva lasketaan
             boolean isInRound = false;
+            
             for (Object line : lines) {
                 String thisLine = (String) line;
 
@@ -1086,11 +1092,15 @@ public class Tournament {
                     printwriter.print("<tr><td>" + round + game + "</td>" + "<td>" + resultLine + "</td></tr>" + nl);
                 }
 
-
-
             }
-            //HtmlTools.br(printwriter);
             printwriter.print("</table>" + nl);
+            if(firstPlayerInRow) {
+                firstPlayerInRow = false;
+            }
+            else {
+                printwriter.print("</td></tr></table>" + nl);
+                firstPlayerInRow = true;
+            }
         }
         printwriter.print("</body></html>");
 
