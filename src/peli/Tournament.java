@@ -1039,7 +1039,7 @@ public class Tournament {
             //printwriter.print("<tr><td colspan='3'>&nbsp;</td></tr>" + nl);
             printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >rd</td><td class=\"programmebyplayer1\" >gm</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
             String round = "";
-            int game = 0; //tauolla oleva lasketaan
+            int game = -1; //tauolla oleva lasketaan
             boolean isInRound = false;
             for (Object line : lines) {
                 String thisLine = (String) line;
@@ -1056,7 +1056,7 @@ public class Tournament {
                     round = new String(thisLine);
                     round = round.replaceFirst("ROUND:", "<b>");
                     round = round + ".</b></td><td>";
-                    game = 0;
+                    game = -1;
                     isInRound = true;
                 }
 
