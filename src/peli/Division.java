@@ -117,9 +117,9 @@ public class Division {
     private void buildSeriesTableEntries(TreeSet treeset) {
         int rank;
         String name;
-        Iterator iterator = treeset.iterator(); 
-        while(iterator.hasNext()) { 
-            Player nextPlayer = ((Player) iterator.next());            
+        Iterator iterator = treeset.iterator();
+        while (iterator.hasNext()) {
+            Player nextPlayer = ((Player) iterator.next());
             name = nextPlayer.getName();
             rank = nextPlayer.getRank();
             seriesTableEntries.put(name, new SeriesTableEntry(rank, name));
@@ -175,7 +175,7 @@ public class Division {
     private String getScoreFormat(String resultHome, String resultAway) {
         String mutualResultClass = "tie";
 
-        if(resultHome == null || resultAway == null) {
+        if (resultHome == null || resultAway == null) {
             return mutualResultClass;
         }
 
@@ -218,43 +218,43 @@ public class Division {
      * @return
      *//*
     private String getCombinedMultiResult(String tmpResult) {
-        //handle n-times-series
-        String mutualResultClass = null;
-        String[] tmpRows = tmpResult.split("<BR>");
-        int scorediff = 0;
-        int goaldiff = 0;
-        for (int i = 0; i < tmpRows.length; i++) {
-            String[] tmpResults = tmpRows[i].split("-");
-            int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
-            if (tmpScores[0] > tmpScores[1]) {
-                scorediff++;
-            } else if (tmpScores[0] < tmpScores[1]) {
-                scorediff--;
-            }
-            goaldiff += (tmpScores[0] - tmpScores[1]);
-        }
-        if (scorediff > 0) {
-            mutualResultClass = "win";
-        } else if (scorediff < 0) {
-            mutualResultClass = "loss";
-        } else {
-            if (goaldiff > 0) {
-                mutualResultClass = "win";
-            } else if (goaldiff < 0) {
-                mutualResultClass = "loss";
-            } else {
-                mutualResultClass = "tie";
-            }
-        }
+    //handle n-times-series
+    String mutualResultClass = null;
+    String[] tmpRows = tmpResult.split("<BR>");
+    int scorediff = 0;
+    int goaldiff = 0;
+    for (int i = 0; i < tmpRows.length; i++) {
+    String[] tmpResults = tmpRows[i].split("-");
+    int[] tmpScores = {Integer.parseInt(tmpResults[0]), Integer.parseInt(tmpResults[1])};
+    if (tmpScores[0] > tmpScores[1]) {
+    scorediff++;
+    } else if (tmpScores[0] < tmpScores[1]) {
+    scorediff--;
+    }
+    goaldiff += (tmpScores[0] - tmpScores[1]);
+    }
+    if (scorediff > 0) {
+    mutualResultClass = "win";
+    } else if (scorediff < 0) {
+    mutualResultClass = "loss";
+    } else {
+    if (goaldiff > 0) {
+    mutualResultClass = "win";
+    } else if (goaldiff < 0) {
+    mutualResultClass = "loss";
+    } else {
+    mutualResultClass = "tie";
+    }
+    }
 
-        return mutualResultClass;
+    return mutualResultClass;
     }*/
 
     //mutual matches table on a template-based tournament html-page
     public String saveAll(List<Integer> playoffSeparators, String groupName) {
         String output = Constants.getTemplate().toString();
         SeriesTable seriestable = getSeriesTable();
-        if(seriestable.size() < 1) {
+        if (seriestable.size() < 1) {
             return ""; //@TODO strange extra division
         }
 
@@ -267,12 +267,13 @@ public class Division {
         }
         mutualtable.append("</tr>" + System.getProperty("line.separator"));
         String tmpResult = null;
-        String mutualResultClass = "";
+
         for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
             mutualtable.append("<tr><td class=\"mutualname\">" + s1 + "</td>" + System.getProperty("line.separator"));
             for (int k = 0; k < seriestable.size(); k++) {
+                String mutualResultClass = "";
                 if (j == k) {
                     mutualtable.append("<td class=\"mutualempty\">&nbsp;</td>" + System.getProperty("line.separator"));
                 } else {
@@ -285,7 +286,7 @@ public class Division {
                         tmpResult = formatMultiResult(tmpResult);
                     } else { //simple comparison, not needed?
                         String[] tmpResults = tmpResult.split("-");
-                        if(tmpResults != null && tmpResults.length >= 2) {
+                        if (tmpResults != null && tmpResults.length >= 2) {
                             mutualResultClass = getScoreFormat(tmpResults[0], tmpResults[1]);
                         }
                     }
@@ -306,6 +307,7 @@ public class Division {
         return output.toString();
     }
     //mutual matches table on a tournament v.1.0 html-page
+
     public void saveAll_legacy(PrintWriter printwriter) {
         //print overall results table first
         SeriesTable seriestable = getSeriesTable();
@@ -428,6 +430,7 @@ public class Division {
         HtmlTools.tableOutro(printwriter);
     }
     //used by tournament to get overall standings
+
     public ArrayList getStandings() {
         ArrayList standings = new ArrayList();
         SeriesTable series = getSeriesTable();
