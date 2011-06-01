@@ -26,6 +26,7 @@ public class Division {
     private Round rounds[];
     private boolean playoff = false;
 
+    //niko inisee, miksi pelaajien järjestys on tämä, kun suosikit ei kohtaa viimeisellä kierroksella
     private void makeInitialSeating() {
         int i = 0;
         for (Iterator iterator = players.iterator(); iterator.hasNext();) {
@@ -85,19 +86,19 @@ public class Division {
         }
     }
 
-    Division(String s, int i, TreeSet treeset) {
+    Division(String title, int times, TreeSet treeset) {
         seriesTableEntries = new Hashtable();
         hasDummyPlayer = false;
-        title = s;
-        times = i;
+        this.title = title;
+        this.times = times;
         players = treeset;
         mutual = new Mutual(treeset);
         numberOfPlayers = treeset.size();
         hasDummyPlayer = treeset.size() % 2 == 0;
         buildSeriesTableEntries(players);
-        int j = hasDummyPlayer ? treeset.size() + 1 : treeset.size();
-        rounds = new Round[j * i];
-        seats = new String[j];
+        int treesetSize = hasDummyPlayer ? treeset.size() + 1 : treeset.size();
+        rounds = new Round[treesetSize * times];
+        seats = new String[treesetSize];
         buildAllRounds();
     }
 
@@ -107,22 +108,22 @@ public class Division {
         hasDummyPlayer = false;
         try {
             title = Tools.parseStringAfter("DIVISION:", bufferedreader.readLine());
-            int i = Tools.parseIntAfter("PLAYERS:", bufferedreader.readLine());
-            numberOfPlayers = i;
+            int numOfPlayers = Tools.parseIntAfter("PLAYERS:", bufferedreader.readLine());
+            numberOfPlayers = numOfPlayers;
             players = new TreeSet(new PlayerComparator());
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < numOfPlayers; j++) {
                 players.add(new Player(j + 1, bufferedreader.readLine()));
             }
             if (!bufferedreader.readLine().equals("END-OF-PLAYERS")) {
                 throw new FileFormatException();
             }
-            hasDummyPlayer = i % 2 == 0;
+            hasDummyPlayer = numOfPlayers % 2 == 0;
             mutual = new Mutual(players);
             buildSeriesTableEntries(players);
-            int k = Tools.parseIntAfter("ROUNDS:", bufferedreader.readLine());
-            rounds = new Round[k];
-            for (int l = 0; l < k; l++) {
-                rounds[l] = new Round(this, i / 2, bufferedreader);
+            int numOfRounds = Tools.parseIntAfter("ROUNDS:", bufferedreader.readLine());
+            rounds = new Round[numOfRounds];
+            for (int l = 0; l < numOfRounds; l++) {
+                rounds[l] = new Round(this, numOfPlayers / 2, bufferedreader);
             }
             if (!bufferedreader.readLine().equals("END-OF-DIVISION")) {
                 throw new FileFormatException();
