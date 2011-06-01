@@ -9,6 +9,7 @@ import java.util.*;
 /** Creates, saves and prints a division
  * v1.1 internal html-results-tab
  * v1.9 html-templates, mutual result coloring
+ * v.1.20 breakless seating for rotating wch2011 inherited points system
  * @author aulaskar
  *
  */
@@ -42,6 +43,25 @@ public class Division {
             seats[i] = seats[i - 1];
         }
         seats[0] = s;
+    }
+
+    private void makeBreaklessInitialSeatingForEvenNumbers() {
+        int i = 0;
+        for (Iterator iterator = players.iterator(); iterator.hasNext();) {
+            seats[i++] = ((Player) iterator.next()).getName();
+        }
+        if (hasDummyPlayer) {
+            seats[i] = seats[0];
+            seats[0] = "X";
+        }
+    }
+
+    private void makeBreaklessNextSeatingForEvenNumbers() {
+        String s = seats[seats.length - 1];
+        for (int i = seats.length - 1; i > 0; i--) {
+            seats[i] = seats[i - 1];
+        }
+        seats[1] = s; //X pysyy päädyssä tauolla positiossa 0
     }
 
     private void printSeating() {
