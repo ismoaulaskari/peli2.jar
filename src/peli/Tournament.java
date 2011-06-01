@@ -499,8 +499,6 @@ public class Tournament {
     }
 
     private void loadRules(ResourceBundle rules1) {
-
-
         try {
             System.setProperty("TournamentHardcodedNumOfDivisions", rules1.getString("hardcodedNumOfDivisions"));
             System.setProperty("TournamentMin2Divisions", rules1.getString("min2Divisions"));
