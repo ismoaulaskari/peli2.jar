@@ -24,27 +24,27 @@ public class Round
     private Match matches[];
     private int numberOfMatches;
 
-    Round(Division division, int i, String as[])
+    Round(Division division, int numOfMatches, String seats[])
     {
         /*locale = new Locale(new String("fi"), new String("FI"));
         messages = ResourceBundle.getBundle("Messages", locale);*/
     	locale = Constants.getInstance().getLocale();
     	messages = Constants.getInstance().getMessages();
         mother = division;
-        number = i;
-        pausePlayer = as[0];
-        numberOfMatches = as.length / 2;
+        number = numOfMatches;
+        pausePlayer = seats[0];
+        numberOfMatches = seats.length / 2;
         matches = new Match[numberOfMatches];
         try
         {
             for(int j = 1; j <= numberOfMatches; j++)
-                matches[j - 1] = new Match(as[j] + ':' + as[as.length - j]);
+                matches[j - 1] = new Match(seats[j] + ':' + seats[seats.length - j]);
 
         }
         catch(FileFormatException fileformatexception) { }
     }
 
-    Round(Division division, int i, BufferedReader bufferedreader)
+    Round(Division division, int numOfMatches, BufferedReader bufferedreader)
         throws FileFormatException, IOException
     {
         /*locale = new Locale(new String("fi"), new String("FI"));
@@ -52,8 +52,8 @@ public class Round
     	locale = Constants.getInstance().getLocale();
     	messages = Constants.getInstance().getMessages();
         mother = division;
-        numberOfMatches = i;
-        matches = new Match[i];
+        numberOfMatches = numOfMatches;
+        matches = new Match[numOfMatches];
         try
         {
             number = Tools.parseIntAfter("ROUND:", bufferedreader.readLine());
@@ -62,7 +62,7 @@ public class Round
                 pausePlayer = s.substring(1, s.length() - 1);
             else
                 throw new FileFormatException();
-            for(int j = 0; j < i; j++)
+            for(int j = 0; j < numOfMatches; j++)
             {
                 Match match = new Match(bufferedreader.readLine());
                 matches[j] = match;
