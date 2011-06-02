@@ -21,7 +21,7 @@ public class PlayoffPair {
     private int homeWins,  awayWins;
     private int homePlacement,  awayPlacement;
     //    private Playoff mother;
-    private ArrayList matches = new ArrayList();
+    private ArrayList<Match> matches = new ArrayList<Match>();
     private final int MAXMATCHES = Constants.getMAXMATCHES();
 
     public PlayoffPair(Playoff playoff, String homeTeam, String awayTeam) {
@@ -128,7 +128,7 @@ public class PlayoffPair {
         return this.matches;
     }
 
-    public void setMatches(ArrayList matches) {
+    public void setMatches(ArrayList<Match> matches) {
         this.matches = matches;
     }
 

@@ -19,9 +19,9 @@ public class SeriesTable {
     private SeriesTableEntry table[];
     private Mutual mutual;
 
-    SeriesTable(Hashtable hashtable, Mutual mutual1) {
+    SeriesTable(Hashtable<String,SeriesTableEntry> hashtable, Mutual mutual1) {
         this.mutual = mutual1;
-        TreeSet treeset = new TreeSet(new SeriesTableEntryComparator());
+        TreeSet<SeriesTableEntry> treeset = new TreeSet<SeriesTableEntry>(new SeriesTableEntryComparator());
         SeriesTableEntry seriestableentry;
         for (Enumeration enumeration = hashtable.elements(); enumeration.hasMoreElements(); treeset.add(seriestableentry)) {
             seriestableentry = (SeriesTableEntry) enumeration.nextElement();
@@ -55,9 +55,9 @@ public class SeriesTable {
         int points = 0;
         int lastpoints = table[0].getPoints();
         /* keep the results of currently handled players with equal points */
-        Hashtable currentmutualplayers = new Hashtable();
-        ArrayList neworderedtable = new ArrayList();
-        TreeSet mutualtreeset = new TreeSet(new MutualSeriesTableEntryComparator());
+        Hashtable<String,SeriesTableEntry> currentmutualplayers = new Hashtable<String,SeriesTableEntry>();
+        ArrayList<SeriesTableEntry> neworderedtable = new ArrayList<SeriesTableEntry>();
+        TreeSet<SeriesTableEntry> mutualtreeset = new TreeSet<SeriesTableEntry>(new MutualSeriesTableEntryComparator());
 
         // go thru all the players one by one
         for (j = 0; j <= table.length; j++) {
@@ -85,7 +85,7 @@ public class SeriesTable {
                 String[] names = new String[mutualsize];
                 int l = 0;
                 //names of the players whose results are needed for mutual comparison
-                Enumeration tmpplayers = currentmutualplayers.elements();
+                Enumeration<SeriesTableEntry> tmpplayers = currentmutualplayers.elements();
 
                 while (tmpplayers.hasMoreElements()) {
                     names[l++] = ((SeriesTableEntry) tmpplayers.nextElement()).getName();
@@ -108,7 +108,7 @@ public class SeriesTable {
                             if (debug) {
                                 System.out.print(currentplayer + " vs " + s + " : ");
                             }
-                            Enumeration enumeration;
+                            Enumeration<String> enumeration;
                             try {
                                 enumeration = (Enumeration) mutual.getNativeResult(currentplayer, s);
                                 while (enumeration.hasMoreElements()) {

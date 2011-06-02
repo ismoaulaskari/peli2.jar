@@ -24,6 +24,7 @@ public class Round
     private Match matches[];
     private int numberOfMatches;
 
+    //CHECK
     Round(Division division, int numOfMatches, String seats[])
     {
         /*locale = new Locale(new String("fi"), new String("FI"));
@@ -44,6 +45,7 @@ public class Round
         catch(FileFormatException fileformatexception) { }
     }
 
+    //CHECK
     Round(Division division, int numOfMatches, BufferedReader bufferedreader)
         throws FileFormatException, IOException
     {
@@ -101,6 +103,7 @@ public class Round
 
     }
 
+    //CHECK
     public void save(PrintWriter printwriter)
     {
         printwriter.println("ROUND:" + getNumber());

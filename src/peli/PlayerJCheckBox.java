@@ -14,16 +14,16 @@ public class PlayerJCheckBox extends JCheckBox {
 
     private int rank;
 
-    PlayerJCheckBox(int i, String s) {
-        super(s);
+    PlayerJCheckBox(int rnk, String text) {
+        super(text);
         rank = 0;
-        rank = i;
+        rank = rnk;
     }
 
-    PlayerJCheckBox(int i, String s, boolean flag) {
-        super(s, flag);
+    PlayerJCheckBox(int rnk, String text, boolean flag) {
+        super(text, flag);
         rank = 0;
-        rank = i;
+        rank = rnk;
     }
 
     public int getRank() {

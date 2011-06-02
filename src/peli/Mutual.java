@@ -14,11 +14,11 @@ import java.util.*;
 public class Mutual
 {
     
-    private Hashtable players;
+    private Hashtable<String,OpponentTable> players;
     
-    Mutual(TreeSet treeset)
+    Mutual(TreeSet<Player> treeset)
     {
-        players = new Hashtable();
+        players = new Hashtable<String,OpponentTable>();
         String s;
         for(Iterator iterator = treeset.iterator(); iterator.hasNext(); players.put(s, new OpponentTable()))
             s = ((Player)iterator.next()).getName();
@@ -43,7 +43,7 @@ public class Mutual
         return opponenttable.getResult(s1);
     }
 
-    public Enumeration getNativeResult(String s, String s1)
+    public Enumeration<String> getNativeResult(String s, String s1)
     {
         OpponentTable opponenttable = (OpponentTable)players.get(s);
         return opponenttable.getNativeResult(s1);

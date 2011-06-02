@@ -15,18 +15,18 @@ import java.util.*;
 class OpponentTable
 {
     
-    private Hashtable opponentTable;
+    private Hashtable<String,Vector<Match>> opponentTable;
     
     OpponentTable()
     {
-        opponentTable = new Hashtable();
+        opponentTable = new Hashtable<String,Vector<Match>>();
     }
 
     public void put(String s, Match match)
     {
         if(!opponentTable.containsKey(s))
-            opponentTable.put(s, new Vector());
-        Vector vector = (Vector)opponentTable.get(s);
+            opponentTable.put(s, new Vector<Match>());
+        Vector<String> vector = (Vector)opponentTable.get(s);
         if(s.equals(match.home()))
         {
             vector.add(match.getResultInverted());
@@ -40,8 +40,8 @@ class OpponentTable
     {
         if(!opponentTable.containsKey(s))
             return "&nbsp;";
-        Vector vector = (Vector)opponentTable.get(s);
-        Enumeration enumeration = vector.elements();
+        Vector<String> vector = (Vector)opponentTable.get(s);
+        Enumeration<String> enumeration = vector.elements();
         String s1 = "";
         do
         {
@@ -54,12 +54,12 @@ class OpponentTable
     }
 
     //for mutual ordering
-    public Enumeration getNativeResult(String s)
+    public Enumeration<String> getNativeResult(String s)
     {
         if(!opponentTable.containsKey(s))
             return null;
-        Vector vector = (Vector)opponentTable.get(s);
-        Enumeration enumeration = vector.elements();
+        Vector<String> vector = (Vector)opponentTable.get(s);
+        Enumeration<String> enumeration = vector.elements();
 
         return enumeration;
     }

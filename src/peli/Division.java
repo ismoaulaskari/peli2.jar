@@ -16,10 +16,10 @@ import java.util.*;
 public class Division {
 
     private String title;
-    private TreeSet players;
+    private TreeSet<Player> players;
     private Mutual mutual;
     private int numberOfPlayers;
-    private Hashtable seriesTableEntries;
+    private Hashtable<String, SeriesTableEntry> seriesTableEntries;
     private boolean hasDummyPlayer;
     private String seats[];
     private int times;
@@ -46,6 +46,7 @@ public class Division {
         seats[0] = s;
     }
 
+    //CHECK
     private void makeBreaklessInitialSeatingForEvenNumbers() {
         int i = 0;
         for (Iterator iterator = players.iterator(); iterator.hasNext();) {
@@ -57,6 +58,7 @@ public class Division {
         }
     }
 
+    //CHECK
     private void makeBreaklessNextSeatingForEvenNumbers() {
         String s = seats[seats.length - 1];
         for (int i = seats.length - 1; i > 0; i--) {
@@ -71,6 +73,7 @@ public class Division {
         }
     }
 
+    //CHECK
     private void buildAllRounds() {
         makeInitialSeating();
         for (int i = 0; i < rounds.length; i++) {
@@ -86,7 +89,8 @@ public class Division {
         }
     }
 
-    Division(String title, int times, TreeSet treeset) {
+    //CHECK
+    Division(String title, int times, TreeSet<Player> treeset) {
         seriesTableEntries = new Hashtable();
         hasDummyPlayer = false;
         this.title = title;
@@ -102,6 +106,7 @@ public class Division {
         buildAllRounds();
     }
 
+    //CHECK
     Division(BufferedReader bufferedreader)
             throws FileFormatException, IOException {
         seriesTableEntries = new Hashtable();
@@ -135,7 +140,7 @@ public class Division {
         }
     }
 
-    private void buildSeriesTableEntries(TreeSet treeset) {
+    private void buildSeriesTableEntries(TreeSet<Player> treeset) {
         int rank;
         String name;
         Iterator iterator = treeset.iterator();
@@ -167,14 +172,15 @@ public class Division {
         return rounds[i];
     }
 
-    public SeriesTableEntry getSeriesTableEntry(String s) {
-        return (SeriesTableEntry) seriesTableEntries.get(s);
+    public SeriesTableEntry getSeriesTableEntry(String name) {
+        return (SeriesTableEntry) seriesTableEntries.get(name);
     }
 
     public SeriesTable getSeriesTable() {
         return new SeriesTable(seriesTableEntries, mutual);
     }
 
+    //CHECK
     //tnmt-file division writing
     public void save(PrintWriter printwriter) {
         printwriter.println("DIVISION:" + getTitle());
@@ -452,8 +458,8 @@ public class Division {
     }
     //used by tournament to get overall standings
 
-    public ArrayList getStandings() {
-        ArrayList standings = new ArrayList();
+    public ArrayList<SeriesTableEntry> getStandings() {
+        ArrayList<SeriesTableEntry> standings = new ArrayList<SeriesTableEntry>();
         SeriesTable series = getSeriesTable();
 
         for (int i = 0; i < series.size(); i++) {

@@ -13,12 +13,12 @@ public class Player
     private int rank;
     private String name;
 
-    Player(int i, String s)
+    Player(int rnk, String text)
     {
         rank = 0;
         name = "";
-        rank = i;
-        name = s;
+        rank = rnk;
+        name = text;
     }
 
     public int getRank()

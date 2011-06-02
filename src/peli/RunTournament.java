@@ -69,6 +69,39 @@ public class RunTournament {
                             }
                             System.exit(0);
                         }
+                        //make a group inheriting previous results and without breaks
+                        if (args[1].equalsIgnoreCase("PGGENERATE")) {
+                            PreviousGroupCopier pgCopier = new PreviousGroupCopier();
+                            try {
+                                List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
+                                List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
+//            try {
+//                Tournament tournament = new Tournament(file);
+//                PrintWriter output = new PrintWriter(System.out, true);
+//                tournament.save(output, 3); //print html, autoflush
+//                output.flush();
+//                output.close();
+//            } catch (IOException ex) {
+//                System.err.print("Error " + ex);
+//            } catch (FileFormatException ex) {
+//                System.err.print("Error " + ex);
+//            }
+
+                                String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
+                                PrintWriter output =  new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                output.print(mixedTnmt);
+                                output.flush();
+                                output.close();
+                            } catch (FileNotFoundException fe) {
+                                System.err.println("Error " + fe);
+                                System.exit(1);
+                            } catch (IOException ie) {
+                                System.err.println("Error " + ie);
+                                System.exit(1);
+                            }
+                            System.exit(0);
+                        }
+
                     }
                 }
             }

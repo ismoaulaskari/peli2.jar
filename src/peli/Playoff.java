@@ -22,12 +22,12 @@ public class Playoff {
 
     private boolean emptyPlayoffs = false;
     private int size;
-    private List players;
+    private List<String> players;
     //rounds
     //private Tournament mother;
     private PlayoffPair[] playoffPairs;
 
-    public Playoff(List players, int size) {
+    public Playoff(List<String> players, int size) {
         //if (players == null || size == 0) {
         if (size == 0) {
             throw new IllegalArgumentException("Empty playoffs attempted!");
@@ -75,7 +75,7 @@ public class Playoff {
      * how expensive is this..not a problem with 100 players
      * @param groupStandings
      */
-    void markRankings(ArrayList groupStandings) {
+    void markRankings(ArrayList<String> groupStandings) {
         for (int i = 0; i < this.playoffPairs.length; i++) {
             this.playoffPairs[i].setHomePlacement(groupStandings.indexOf(this.playoffPairs[i].getHomeTeam()) + 1);
             this.playoffPairs[i].setAwayPlacement(groupStandings.indexOf(this.playoffPairs[i].getAwayTeam()) + 1);
@@ -83,7 +83,7 @@ public class Playoff {
     }
 
     //won't support empty players
-    private PlayoffPair[] createPairs(List players, int size) {
+    private PlayoffPair[] createPairs(List<String> players, int size) {
 
         PlayoffPair[] pairs = new PlayoffPair[size / 2];
         for (int i = 0; i < size / 2; i++) {
@@ -145,8 +145,8 @@ public class Playoff {
         this.players = players;
     }
 
-    public ArrayList getSurvivors() {
-        ArrayList survivors = new ArrayList();
+    public ArrayList<String> getSurvivors() {
+        ArrayList<String> survivors = new ArrayList<String>();
         for (int i = 0; i < playoffPairs.length; i++) {
             survivors.add(playoffPairs[i].getWinner());
         }
@@ -154,15 +154,15 @@ public class Playoff {
         return survivors;
     }
 
-    public ArrayList getLosers() {
-        ArrayList pairs = new ArrayList();
-        ArrayList losers = new ArrayList();
+    public ArrayList<String> getLosers() {
+        ArrayList<PlayoffPair> pairs = new ArrayList<PlayoffPair>();
+        ArrayList<String> losers = new ArrayList<String>();
         for (int i = 0; i < playoffPairs.length; i++) {
             pairs.add(playoffPairs[i]);
         }
         //must be ordered like basic group
         Collections.sort(pairs, new PlayoffPlacementSort());
-        for (Object object : pairs) {
+        for (PlayoffPair object : pairs) {
             losers.add(((PlayoffPair) object).getLoser());
         }
 

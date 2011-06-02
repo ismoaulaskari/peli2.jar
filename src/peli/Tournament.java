@@ -33,24 +33,24 @@ public class Tournament {
     private Locale locale;
     private ResourceBundle messages;
     private ResourceBundle rules; //hack
-    private Vector divisions;
+    private Vector<Division> divisions;
     private int numberOfDivisions;
     private static final String legacydate = "x.x.2000";
     private static final SimpleDateFormat PELIJARDATE = new SimpleDateFormat("dd.MM.yyyy");
     private static String date = PELIJARDATE.format(new Date().getTime());
-    private HashMap playoffs = new HashMap<Integer, Playoff>();
+    private HashMap<Integer,Playoff> playoffs = new HashMap<Integer, Playoff>();
     private Playoff placementMatches = null;
     private Playoff bronzeMatch = null;
     private volatile int largestPlayoff = 0;
     private String seedingModel = "CREATEDYNAMIC";
     // private ArrayList playoffSurvivors = new ArrayList();
 
-    public HashMap getPlayoffs() {
+    public HashMap<Integer,Playoff> getPlayoffs() {
         return this.playoffs;
     }
 
-    public List getPlayoffsSortedKeySet() {
-        List rounds = new LinkedList(playoffs.keySet());
+    public List<Integer> getPlayoffsSortedKeySet() {
+        List<Integer> rounds = new LinkedList<Integer>(playoffs.keySet());
         Collections.sort(rounds);
 
         return rounds;
@@ -71,7 +71,7 @@ public class Tournament {
      * @return
      */
     public Playoff getPlacementMatches(int size) {
-        ArrayList groupStandings = this.getStandingsNames(getStandings());
+        ArrayList<String> groupStandings = this.getStandingsNames(getStandings());
         if (this.placementMatches == null) { //new
             ArrayList placementPlayers = this.getStandingsNames(getStandings());
             //placementPlayers = new ArrayList(placementPlayers.subList(playoffSize - 1, placementPlayers.size() - playoffSize));
@@ -93,7 +93,7 @@ public class Tournament {
      * @return
      */
     public Playoff getBronzeMatch() {
-        ArrayList groupStandings = addPlayoffsToStandings(this.getStandingsNames(getStandings()));
+        ArrayList<String> groupStandings = addPlayoffsToStandings(this.getStandingsNames(getStandings()));
         if (this.bronzeMatch == null && this.playoffs.containsKey(4) && this.playoffs.containsKey(2)) {
             ArrayList losers = ((Playoff) this.playoffs.get(4)).getLosers();
             if (losers.size() == 2) {
@@ -125,7 +125,7 @@ public class Tournament {
      */
     public Playoff getPlayoffWithReseed(int size) {
         Playoff playoff = null;
-        ArrayList groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
+        ArrayList<String> groupStandings = this.getStandingsNames(getStandingsForPlayoffs());
         int rememberSize = size;
 
         if (!this.playoffs.containsKey(size)) {
@@ -265,8 +265,8 @@ public class Tournament {
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
      */
-    public ArrayList seedPlayoff(ArrayList playerStandings, int size) {
-        ArrayList newPairs = new ArrayList(size);
+    public ArrayList<String> seedPlayoff(ArrayList<String> playerStandings, int size) {
+        ArrayList<String> newPairs = new ArrayList<String>(size);
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playerStandings.get(0 + i));
             newPairs.add(playerStandings.get(size - (i + 1)));
@@ -282,8 +282,8 @@ public class Tournament {
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
      */
-    public ArrayList seedRandomPlayoff(ArrayList playerStandings, int size) {
-        ArrayList newPairs = new ArrayList(size);
+    public ArrayList<String> seedRandomPlayoff(ArrayList<String> playerStandings, int size) {
+        ArrayList<String> newPairs = new ArrayList<String>(size);
 
         for (int i = 0; i < size / 2; i++) {
             newPairs.add(playerStandings.get(0 + i));
@@ -306,7 +306,7 @@ public class Tournament {
 
     //** not in use */
     public ArrayList seedRandomPlayoffByPairs(PlayoffPair[] playoffMatches, int size) {
-        ArrayList newPairs = new ArrayList(size);
+        ArrayList<String> newPairs = new ArrayList<String>(size);
         //order first players
         for (int i = 0; i < size / 2; i++) {
             newPairs.add(playoffMatches[0 + i].getWinner());
@@ -333,8 +333,8 @@ public class Tournament {
      * @TODO indexoutofbounds luodessa liian iso playoff
      * @return
      */
-    public ArrayList seedStaticPlayoff(PlayoffPair[] playoffMatches, int size) {
-        ArrayList newPairs = new ArrayList(size);
+    public ArrayList<String> seedStaticPlayoff(PlayoffPair[] playoffMatches, int size) {
+        ArrayList<String> newPairs = new ArrayList<String>(size);
         //order first players
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playoffMatches[0 + i].getWinner());
@@ -352,15 +352,15 @@ public class Tournament {
      * @return
      * @TODO NOT WORKING
      */
-    public ArrayList seedStaticPlayoff2(ArrayList playerStandings, int size) {
-        ArrayList newPairs = new ArrayList(size);
+    public ArrayList<String> seedStaticPlayoff2(ArrayList<String> playerStandings, int size) {
+        ArrayList<String> newPairs = new ArrayList<String>(size);
         //order first players
         for (int i = 0; i < size - 1; i++) {
             newPairs.add(playerStandings.get(0 + i));
             newPairs.add(playerStandings.get(size - (i + 1)));
         }
 
-        ArrayList newPairs2 = new ArrayList(size);
+        ArrayList<String> newPairs2 = new ArrayList<String>(size);
         //then order matches
         for (int i = 0; i < newPairs.size(); i += 2) {
             newPairs2.add(i, newPairs.get(i));
@@ -391,7 +391,7 @@ public class Tournament {
         }
 
         boolean finished = true;
-        for (Object playoff : this.playoffs.values()) {
+        for (Playoff playoff : this.playoffs.values()) {
             if (!((Playoff) playoff).isFinished()) {
                 finished = false;
             }
@@ -401,9 +401,9 @@ public class Tournament {
     }
 
     //private static final String displayName = System.getProperty("TournamentFileName") + " / ";
-    private void distributePlayers(TreeSet atreeset[], TreeSet treeset) {
+    private void distributePlayers(TreeSet<Player> atreeset[], TreeSet<Player> treeset) {
         for (int i = 0; i < atreeset.length; i++) {
-            atreeset[i] = new TreeSet(new PlayerComparator());
+            atreeset[i] = new TreeSet<Player>(new PlayerComparator());
         }
         int j = 0;
         boolean flag = false;
@@ -423,7 +423,7 @@ public class Tournament {
     }
 
     //modified
-    private int calculateNumberOfDivisions(int i) {
+    private int calculateNumberOfDivisions(int numOfPlayers) {
         try {
             //added
             if (System.getProperty("TournamentHardcodedNumOfDivisions") != null) {
@@ -435,52 +435,52 @@ public class Tournament {
             }
 
             //hacked
-            if (i < Integer.parseInt(System.getProperty("TournamentMin2Divisions"))) {
+            if (numOfPlayers < Integer.parseInt(System.getProperty("TournamentMin2Divisions"))) {
                 return 1;
             }
-            if (i < Integer.parseInt(System.getProperty("TournamentMin3Divisions"))) {
+            if (numOfPlayers < Integer.parseInt(System.getProperty("TournamentMin3Divisions"))) {
                 return 2;
             }
-            if (i < Integer.parseInt(System.getProperty("TournamentMin4Divisions"))) {
+            if (numOfPlayers < Integer.parseInt(System.getProperty("TournamentMin4Divisions"))) {
                 return 3;
             }
-            if (i < Integer.parseInt(System.getProperty("TournamentMin5Divisions"))) {
+            if (numOfPlayers < Integer.parseInt(System.getProperty("TournamentMin5Divisions"))) {
                 return 4;
             }
-            if (i < Integer.parseInt(System.getProperty("TournamentMin6Divisions"))) {
+            if (numOfPlayers < Integer.parseInt(System.getProperty("TournamentMin6Divisions"))) {
                 return 5;
             }
-            if (i < Integer.parseInt(System.getProperty("TournamentMin7Divisions"))) {
+            if (numOfPlayers < Integer.parseInt(System.getProperty("TournamentMin7Divisions"))) {
                 return 6;
             }
-            return i >= Integer.parseInt(System.getProperty("TournamentMin8Divisions")) ? 8 : 7;
+            return numOfPlayers >= Integer.parseInt(System.getProperty("TournamentMin8Divisions")) ? 8 : 7;
         } catch (Exception e) {
             System.err.println("Reading rules failed, trying with defaults");
             e.printStackTrace();
-            if (i < 26) {
+            if (numOfPlayers < 26) {
                 return 1;
             }
-            if (i < 45) {
+            if (numOfPlayers < 45) {
                 return 2;
             }
-            if (i < 60) {
+            if (numOfPlayers < 60) {
                 return 3;
             }
-            if (i < 75) {
+            if (numOfPlayers < 75) {
                 return 4;
             }
-            if (i < 90) {
+            if (numOfPlayers < 90) {
                 return 5;
             }
-            if (i < 105) {
+            if (numOfPlayers < 105) {
                 return 6;
             }
-            return i >= 120 ? 8 : 7;
+            return numOfPlayers >= 120 ? 8 : 7;
 
         }
     }
 
-    private int handleSpecialPlayoffsize(int size, ArrayList playoffStandings) {
+    private int handleSpecialPlayoffsize(int size, ArrayList<String> playoffStandings) {
         //special cases
         if (size == 6) {
             playoffStandings.add(6, "X");
@@ -536,20 +536,20 @@ public class Tournament {
         }
     }
 
-    Tournament(int i, TreeSet treeset) {
+    Tournament(int times, TreeSet<Player> treeset) {
         /*locale = new Locale(new String("fi"), new String("FI"));
         messages = ResourceBundle.getBundle("Messages", locale);*/
         locale = Constants.getInstance().getLocale();
         messages = Constants.getInstance().getMessages();
         rules = Constants.getInstance().getRules();
         this.loadRules(rules);
-        divisions = new Vector();
+        divisions = new Vector<Division>();
         numberOfDivisions = 1;
         numberOfDivisions = calculateNumberOfDivisions(treeset.size());
         TreeSet atreeset[] = new TreeSet[numberOfDivisions];
         distributePlayers(atreeset, treeset);
         for (int j = 0; j < numberOfDivisions; j++) {
-            divisions.add(new Division(messages.getString("group") + " " + (j + 1), i, atreeset[j]));
+            divisions.add(new Division(messages.getString("group") + " " + (j + 1), times, atreeset[j]));
         }
 
     }
@@ -573,7 +573,7 @@ public class Tournament {
 
         //rules = ResourceBundle.getBundle("Rules");added for changeable division sizes
         this.loadRules(rules);
-        divisions = new Vector();
+        divisions = new Vector<Division>();
         numberOfDivisions = 1;
         BufferedReader bufferedreader = null;
         try {
@@ -638,8 +638,8 @@ public class Tournament {
         return this.playoffs.size();
     }
 
-    public Division getDivision(int i) {
-        return (Division) divisions.elementAt(i);
+    public Division getDivision(int number) {
+        return (Division) divisions.elementAt(number);
     }
 
     public String[] getDivisionTitles() {
@@ -712,8 +712,8 @@ public class Tournament {
                 });
     }
 
-    public void save(PrintWriter printwriter, int i) {
-        switch (i) {
+    public void save(PrintWriter printwriter, int fileType) {
+        switch (fileType) {
             case 1: // '\001'
                 saveMatches(printwriter);
                 break;
@@ -775,9 +775,9 @@ public class Tournament {
     //added by aulaskar to help organising final groups
     /** get combined standings of all divisions 
      * Different division sizes are compensated */
-    public ArrayList getStandings() {
+    public ArrayList<String> getStandings() {
         ArrayList divisions = new ArrayList();
-        ArrayList overallstandings = new ArrayList();
+        ArrayList<String> overallstandings = new ArrayList<String>();
         int divisionMaxNoOfMatches = 0;
         int divTimes = 1; //how many round robins?
 
@@ -818,7 +818,7 @@ public class Tournament {
     }
 
     /** get combined standings of all divisions, but preserve mutual ordering for 2-group playoffs */
-    public ArrayList getStandingsForPlayoffs() {
+    public ArrayList<String> getStandingsForPlayoffs() {
         ArrayList divisions = new ArrayList();
         ArrayList overallstandings = new ArrayList();
 
@@ -844,9 +844,9 @@ public class Tournament {
     }
 
     //by aulaskar
-    public ArrayList addPlayoffsToStandings(ArrayList overallstandings) {
+    public ArrayList<String> addPlayoffsToStandings(ArrayList<String> overallstandings) {
         //Set rounds = playoffs.keySet();
-        List rounds = getPlayoffsSortedKeySet();
+        List<Integer> rounds = getPlayoffsSortedKeySet();
         Boolean isFirst = true;
         int x = 0;
         for (Iterator i = rounds.iterator(); i.hasNext();) { //each level of playoffs, mark placements from basic group first
@@ -862,7 +862,7 @@ public class Tournament {
                     if (winner == null) {
                         winner = "?";
                     }
-                    overallstandings.set(x++, winner);
+                    overallstandings.set(x++, (String)winner);
                 } else { //playoff not finished
                     return overallstandings;
                 }
@@ -873,7 +873,7 @@ public class Tournament {
                     overallstandings.set(x++, "?");
                 } else {
                     if (!((String) loser).equals("X")) {
-                        overallstandings.set(x++, loser);
+                        overallstandings.set(x++, (String)loser);
                     }
                 }
             }
@@ -883,13 +883,13 @@ public class Tournament {
     }
 
     //by aulaskar
-    public ArrayList addPlacementMatchesToStandings(ArrayList overallstandings) {
+    public ArrayList<String> addPlacementMatchesToStandings(ArrayList<String> overallstandings) {
         //modify based on placementmatches
         if (this.placementMatches != null) {
             for (Object o : this.placementMatches.getPlayoffPairs()) {
-                Object winner = ((PlayoffPair) o).getWinner();
+                String winner = ((PlayoffPair) o).getWinner();
                 if (winner != null) {
-                    Object loser = ((PlayoffPair) o).getLoser();
+                    String loser = ((PlayoffPair) o).getLoser();
                     int winnerplace = overallstandings.indexOf(winner);
                     int loserplace = overallstandings.indexOf(loser);
                     if (winnerplace >= 0 && loserplace >= 0) { //swap?
@@ -910,13 +910,13 @@ public class Tournament {
     }
 
     //by aulaskar
-    public ArrayList addBronzeMatchToStandings(ArrayList overallstandings) {
+    public ArrayList<String> addBronzeMatchToStandings(ArrayList<String> overallstandings) {
         //modify based on placementmatches
         if (this.bronzeMatch != null) {
             for (Object o : this.bronzeMatch.getPlayoffPairs()) {
-                Object winner = ((PlayoffPair) o).getWinner();
+                String winner = ((PlayoffPair) o).getWinner();
                 if (winner != null) {
-                    Object loser = ((PlayoffPair) o).getLoser();
+                    String loser = ((PlayoffPair) o).getLoser();
                     int winnerplace = overallstandings.indexOf(winner);
                     int loserplace = overallstandings.indexOf(loser);
                     if (winnerplace >= 0 && loserplace >= 0) { //swap?
@@ -939,7 +939,7 @@ public class Tournament {
     public String getFormattedStandings() {
         StringBuilder sb = new StringBuilder();
         int placement = 1;
-        ArrayList overallstandings = getStandings();
+        ArrayList<String> overallstandings = getStandings();
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
             sb.append(placement++).append(".").append(((SeriesTableEntry) iterator.next()).getName()).append(System.getProperty("line.separator"));
         }
@@ -947,8 +947,8 @@ public class Tournament {
         return sb.toString();
     }
 
-    public ArrayList getStandingsNames(ArrayList overallstandings) {
-        ArrayList justnames = new ArrayList();
+    public ArrayList<String> getStandingsNames(ArrayList<String> overallstandings) {
+        ArrayList<String> justnames = new ArrayList<String>();
         //ArrayList overallstandings = getStandings();
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
             justnames.add(((SeriesTableEntry) iterator.next()).getName());
@@ -957,8 +957,8 @@ public class Tournament {
         return justnames;
     }
 
-    public ArrayList getOverAllStandings() {
-        ArrayList overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames(getStandings())));
+    public ArrayList<String> getOverAllStandings() {
+        ArrayList<String> overallstandings = addPlacementMatchesToStandings(addPlayoffsToStandings(getStandingsNames(getStandings())));
         overallstandings = addBronzeMatchToStandings(overallstandings);
 
         return overallstandings;

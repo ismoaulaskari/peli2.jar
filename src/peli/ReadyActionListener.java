@@ -16,8 +16,8 @@ public class ReadyActionListener
 {
     private MainWindow mainWindow;
     private Container contents;
-    private TreeSet players;
-    private TreeSet playerCheckBoxes;
+    private TreeSet<Player> players;
+    private TreeSet<PlayerJCheckBox> playerCheckBoxes;
     private File saveFile;
     private RadioListener radioListener;
 
@@ -39,9 +39,9 @@ public class ReadyActionListener
         contents.repaint();
     }
 
-    ReadyActionListener(MainWindow mainwindow, TreeSet treeset, File file, RadioListener radiolistener)
+    ReadyActionListener(MainWindow mainwindow, TreeSet<PlayerJCheckBox> treeset, File file, RadioListener radiolistener)
     {
-        players = new TreeSet(new PlayerComparator());
+        players = new TreeSet<Player>(new PlayerComparator());
         mainWindow = mainwindow;
         contents = mainwindow.getContentPane();
         playerCheckBoxes = treeset;
