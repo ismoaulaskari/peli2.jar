@@ -71,6 +71,10 @@ public class SaveActionListener
                 s = messages.getString("byplayer.html");
                 break;
 
+//            case 6:
+//                s = messages.getString("divisionstandings.txt");
+//                break;
+
             default:
                 s = "";
                 break;

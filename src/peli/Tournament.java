@@ -38,14 +38,14 @@ public class Tournament {
     private static final String legacydate = "x.x.2000";
     private static final SimpleDateFormat PELIJARDATE = new SimpleDateFormat("dd.MM.yyyy");
     private static String date = PELIJARDATE.format(new Date().getTime());
-    private HashMap<Integer,Playoff> playoffs = new HashMap<Integer, Playoff>();
+    private HashMap<Integer, Playoff> playoffs = new HashMap<Integer, Playoff>();
     private Playoff placementMatches = null;
     private Playoff bronzeMatch = null;
     private volatile int largestPlayoff = 0;
     private String seedingModel = "CREATEDYNAMIC";
     // private ArrayList playoffSurvivors = new ArrayList();
 
-    public HashMap<Integer,Playoff> getPlayoffs() {
+    public HashMap<Integer, Playoff> getPlayoffs() {
         return this.playoffs;
     }
 
@@ -738,6 +738,10 @@ public class Tournament {
                 saveMatchesByPlayer(printwriter);
                 break;
 
+//            case 6:
+//                saveStandingsForPreviousToFinalGroupGeneration(printwriter, 0); //no work
+//                break;
+
             default:
                 save(printwriter);
                 break;
@@ -862,7 +866,7 @@ public class Tournament {
                     if (winner == null) {
                         winner = "?";
                     }
-                    overallstandings.set(x++, (String)winner);
+                    overallstandings.set(x++, (String) winner);
                 } else { //playoff not finished
                     return overallstandings;
                 }
@@ -873,7 +877,7 @@ public class Tournament {
                     overallstandings.set(x++, "?");
                 } else {
                     if (!((String) loser).equals("X")) {
-                        overallstandings.set(x++, (String)loser);
+                        overallstandings.set(x++, (String) loser);
                     }
                 }
             }
@@ -967,7 +971,7 @@ public class Tournament {
     //added by aulaskar
     /** print combined standings of all divisions */
     public void saveStandingsWithPlayoffs(PrintWriter printwriter) {
-        ArrayList overallstandings = getOverAllStandings();
+        ArrayList<String> overallstandings = getOverAllStandings();
 
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
@@ -979,7 +983,52 @@ public class Tournament {
     //added by aulaskar to help organising final groups
     /** print combined standings of all divisions */
     public void saveStandings(PrintWriter printwriter) {
-        ArrayList overallstandings = getStandings();
+        ArrayList<String> overallstandings = getStandings();
+
+        //print to file
+        for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
+            printwriter.println(((SeriesTableEntry) iterator.next()).getName());
+        }
+
+    }
+
+    //added by aulaskar to help organising final groups
+    /** print standings of all divisions as A1 B1 A2 B2 A3 B3..*/
+    public void saveStandingsForPreviousToFinalGroupGeneration(PrintWriter printwriter, int finalgroupsize) {
+
+        ArrayList divisions = new ArrayList();
+        ArrayList overallstandings = new ArrayList();
+
+        for (int i = 0; i < getNumberOfDivisions(); i++) {
+            divisions.add(getDivision(i).getStandings());        //trust that the first division allways exists
+        }
+        //int maxdivisionsize = ((ArrayList) divisions.get(0)).size() + 2;
+        int maxdivisionsize = finalgroupsize;
+
+        //order combined standings of all divisions
+        for (int i = 0, j = 0; i < (maxdivisionsize / 2) && j < getNumberOfDivisions(); i++, j = i % getNumberOfDivisions()) {
+            try {
+                overallstandings.add(((ArrayList) divisions.get(j)).get(i));
+                System.err.println(i + "-" + j);
+            } catch (IndexOutOfBoundsException ie) {
+                //nothing, divisions may have different sizes
+            }
+            if(j == getNumberOfDivisions() - 1) {
+                j = 0;
+            }
+        }
+
+        for (int i = maxdivisionsize - 1, j = 0; i >= (maxdivisionsize / 2) && j < getNumberOfDivisions(); i--, j = i% getNumberOfDivisions()) {
+            try {
+                overallstandings.add(((ArrayList) divisions.get(j)).get(i));
+                System.err.println(i + "-" + j);
+            } catch (IndexOutOfBoundsException ie) {
+                //nothing, divisions may have different sizes
+            }
+            if(j == 0) {
+                j = getNumberOfDivisions() - 1;
+            }
+        }
 
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
@@ -1019,11 +1068,11 @@ public class Tournament {
      * @param printwriter
      */
     public void saveMatchesByPlayer(PrintWriter printwriter) {
-        ArrayList players = new ArrayList();
+        ArrayList<String> players = new ArrayList<String>();
         for (int i = 0; i < divisions.size(); i++) {
-            ArrayList seriesTable = getDivision(i).getStandings();
-            for (Object seriesTableEntry : seriesTable) {
-                players.add(((SeriesTableEntry)seriesTableEntry).getName());
+            ArrayList<SeriesTableEntry> seriesTable = getDivision(i).getStandings();
+            for (SeriesTableEntry seriesTableEntry : seriesTable) {
+                players.add(((SeriesTableEntry) seriesTableEntry).getName());
             }
         }
 
@@ -1039,25 +1088,24 @@ public class Tournament {
         boolean firstPlayerInRow = true;
 
         for (Object player : players) {
-            if(firstPlayerInRow) {
+            if (firstPlayerInRow) {
                 printwriter.print("<table class=\"sidebyside\"><tr class=\"sidebyside\">" + nl + "<td class=\"sidebyside1\">" + nl);
-            }
-            else {
+            } else {
                 printwriter.print("</td>" + nl + "<td class=\"sidebyside2\">" + nl);
             }
-            String thisPlayer = new String((String) player);            
-            printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);            
+            String thisPlayer = new String((String) player);
+            printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);
             printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >rd</td><td class=\"programmebyplayer1\" >gm</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
             String round = "";
             int game = -1; //tauolla oleva lasketaan
             boolean isInRound = false;
             String group = "";
             String maybeGroup = "";
-            
-            for (Object line : lines) {
-                String thisLine = (String) line;                
 
-                if(thisLine.matches("DIVISION:Lohko [0-9]+")) {
+            for (Object line : lines) {
+                String thisLine = (String) line;
+
+                if (thisLine.matches("DIVISION:Lohko [0-9]+")) {
                     maybeGroup = thisLine.replaceFirst("DIVISION:Lohko ", "");
                 }
 
@@ -1065,7 +1113,7 @@ public class Tournament {
                     isInRound = false;
                 }
 
-                if(isInRound) {
+                if (isInRound) {
                     game++;
                 }
 
@@ -1090,8 +1138,7 @@ public class Tournament {
                         resultLine = resultLine.replaceFirst(":", "</td><td class=\"scr\">");
                         resultLine = resultLine.replaceFirst(":", "-");
                         resultLine = resultLine.replaceFirst(":", "");
-                    }
-                    else {
+                    } else {
                         resultLine = resultLine + "</td><td class=\"scr\" align=\"center\"> - ";
                     }
                     resultLine = resultLine.replaceFirst(thisPlayer, "<b>" + thisPlayer + "</b>");
@@ -1099,11 +1146,10 @@ public class Tournament {
                 }
 
             }
-            printwriter.print("<tr class=\"info\"><td colspan=\"4\"><small>Group " + group + ", " +  System.getProperty("TournamentFileName") + "</small></td></tr></table>" + nl);
-            if(firstPlayerInRow) {
+            printwriter.print("<tr class=\"info\"><td colspan=\"4\"><small>Group " + group + ", " + System.getProperty("TournamentFileName") + "</small></td></tr></table>" + nl);
+            if (firstPlayerInRow) {
                 firstPlayerInRow = false;
-            }
-            else {
+            } else {
                 printwriter.print("</td></tr></table>" + nl);
                 firstPlayerInRow = true;
             }

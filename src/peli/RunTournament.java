@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ import java.util.List;
  * and a quick restart option "java -jar tournamentX.tnmt restart"
  * v1.15 headless mode to generate html from command line
  * v1.18 copy results from basic group to final group from command line
+ * v1.20.1 more advanced previous group functionality
  * HACK HACK HACK away.. 
  * @author aulaskar
  *
@@ -37,7 +39,7 @@ public class RunTournament {
         try {
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("-h") || args[0].equalsIgnoreCase("--help") || args[0].equalsIgnoreCase("/h")) {
-                    System.err.println("Usage: java -jar peli2.jar [tournamentfile.tnmt] [headless|pgcopy from.tnmt]");
+                    System.err.println("Usage: java -jar peli2.jar [tournamentfile.tnmt] [headless|pgcopy from.tnmt|pfgenerate from.tnmt finalgroupsize]");
                     System.exit(1);
                 }
 
@@ -56,7 +58,7 @@ public class RunTournament {
                                 List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
                                 List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
-                                PrintWriter output =  new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
                                 output.print(mixedTnmt);
                                 output.flush();
                                 output.close();
@@ -69,29 +71,68 @@ public class RunTournament {
                             }
                             System.exit(0);
                         }
-                        //make a group inheriting previous results and without breaks
-                        if (args[1].equalsIgnoreCase("PGGENERATE")) {
+                    }
+
+                    if (args.length == 4) {
+                        //Make a group inheriting previous results and without pauses
+                        //First the user creates normal final group, then we pgcopy results to it,
+                        //remember those previous group results, generate the final group
+                        //again in a special way without pauses and add the previous group results to it
+                        if (args[1].equalsIgnoreCase("PFGENERATE")) {
+                            int finalGroupSize = Integer.parseInt(args[3]);
+                            if(finalGroupSize < 1) {
+                                System.exit(1);
+                            }
+
                             PreviousGroupCopier pgCopier = new PreviousGroupCopier();
+
+                            File file = new File(args[2]);
+                            System.setProperty("TournamentFileName", file.getName());
+                            file = FileTools.canonize(file, ".tnmt");
+                            if (!file.exists()) {
+                                System.err.println("File " + file.getName() + " does not exist!");
+                                System.exit(1);
+                            }
+
+                            //we need to get basic group standings but only the top
+                            StringWriter stringwriter = new StringWriter();
+                            PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
+                            try {
+                                Tournament tournament = new Tournament(file);
+                                //PrintWriter output = new PrintWriter(System.out, true);
+                                tournament.saveStandingsForPreviousToFinalGroupGeneration(sprintwriter, finalGroupSize); //print, autoflush
+                                //output.flush();
+                                //output.close();
+                                System.err.println(stringwriter.toString());
+                            } catch (IOException ex) {
+                                System.err.print("Error " + ex);
+                            } catch (FileFormatException ex) {
+                                System.err.print("Error " + ex);
+                            }
+                            System.exit(0);
+                            file = new File(System.getProperty("TournamentFileArgs"));
+                            System.setProperty("TournamentFileName", file.getName());
+                            file = FileTools.canonize(file, ".tnmt");
+                            if (file.exists()) {
+                                System.err.println("File " + file.getName() + " already exists and we will not overwrite it!");
+                                System.exit(1);
+                            }
+
+                            //we create an empty, normal final group
+
+
+                            //then we can create the pauseless final group
                             try {
                                 List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
                                 List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
-//            try {
-//                Tournament tournament = new Tournament(file);
-//                PrintWriter output = new PrintWriter(System.out, true);
-//                tournament.save(output, 3); //print html, autoflush
-//                output.flush();
-//                output.close();
-//            } catch (IOException ex) {
-//                System.err.print("Error " + ex);
-//            } catch (FileFormatException ex) {
-//                System.err.print("Error " + ex);
-//            }
 
+                                //but first get pg results to normal final group
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
-                                PrintWriter output =  new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
                                 output.print(mixedTnmt);
                                 output.flush();
                                 output.close();
+                                //then add those to the pauseless group
                             } catch (FileNotFoundException fe) {
                                 System.err.println("Error " + fe);
                                 System.exit(1);
