@@ -72,6 +72,11 @@ public class RunTournament {
                             }
                             System.exit(0);
                         }
+
+                        if (args[1].equalsIgnoreCase("PFGENERATE")) {
+                            System.err.println("Give final group size");
+                            System.exit(1);
+                        }
                     }
 
                     if (args.length == 4) {
@@ -82,6 +87,7 @@ public class RunTournament {
                         if (args[1].equalsIgnoreCase("PFGENERATE")) {
                             int finalGroupSize = Integer.parseInt(args[3]);
                             if (finalGroupSize < 1) {
+                                System.err.println("Bad final group size " + finalGroupSize);
                                 System.exit(1);
                             }
 
@@ -105,14 +111,12 @@ public class RunTournament {
                             }
 
                             //we create an empty, normal final group
-                            TreeSet<Player> treeset = new TreeSet<Player>();
+                            TreeSet<Player> treeset = new TreeSet<Player>(new PlayerComparator());
                             int rank = 0;
                             for (String name : standings) {
                                 treeset.add(new Player(rank++, name));
                             }
                             Tournament normalFinalGroup = new Tournament(1, treeset);
-                            PreviousGroupCopier pgCopier = new PreviousGroupCopier();
-
                             file = new File(System.getProperty("TournamentFileArgs"));
                             System.setProperty("TournamentFileName", file.getName());
                             file = FileTools.canonize(file, ".tnmt");
@@ -120,18 +124,23 @@ public class RunTournament {
                                 System.err.println("File " + file.getName() + " already exists and we will not overwrite it!");
                                 System.exit(1);
                             }
-
-                            //get previous group results to normal final group
                             try {
+                                PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+                                normalFinalGroup.save(output, 2); //print tnmt, autoflush
+                                output.flush();
+                                output.close();
+
+                                //get previous group results to normal final group
+                                PreviousGroupCopier pgCopier = new PreviousGroupCopier();
                                 List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
                                 List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
 
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
-                                PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(args[0] + "pg")));
+                                output = new PrintWriter(new BufferedWriter(new FileWriter("pg" + args[0])));
                                 output.print(mixedTnmt);
                                 output.flush();
                                 output.close();
-                                
+
                                 //then we can create the pauseless final group
                                 Tournament pauselessFinalGroup = new Tournament(1, treeset);
                                 output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
