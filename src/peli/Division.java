@@ -46,7 +46,6 @@ public class Division {
         seats[0] = s;
     }
 
-    //CHECK
     private void makeBreaklessInitialSeatingForEvenNumbers() {
         int i = 0;
         for (Iterator iterator = players.iterator(); iterator.hasNext();) {
@@ -57,8 +56,7 @@ public class Division {
             seats[0] = "X";
         }
     }
-
-    //CHECK
+   
     private void makeBreaklessNextSeatingForEvenNumbers() {
         String s = seats[seats.length - 1];
         for (int i = seats.length - 1; i > 0; i--) {
@@ -73,14 +71,25 @@ public class Division {
         }
     }
 
-    //CHECK
+    /**
+     * Extra option to support a pauseless final group with results
+     * from a previous group
+     */
     private void buildAllRounds() {
-        makeInitialSeating();
-        for (int i = 0; i < rounds.length; i++) {
-            rounds[i] = new Round(this, i + 1, seats);
-            makeNextSeating();
+        String pfGen = System.getProperty("PFGenerate");
+        if (pfGen != null && pfGen.equalsIgnoreCase("true")) {
+            makeBreaklessInitialSeatingForEvenNumbers();
+            for (int i = 0; i < rounds.length; i++) {
+                rounds[i] = new Round(this, i + 1, seats);
+                makeBreaklessNextSeatingForEvenNumbers();
+            }
+        } else {            
+            makeInitialSeating();
+            for (int i = 0; i < rounds.length; i++) {
+                rounds[i] = new Round(this, i + 1, seats);
+                makeNextSeating();
+            }
         }
-
     }
 
     private void printAllRounds() {

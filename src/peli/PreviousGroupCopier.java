@@ -28,7 +28,7 @@ public class PreviousGroupCopier {
 
                 for (String line2 : previousTnmt) {
                     String[] foundResult = line2.split(":");
-                    if (foundResult.length == 4) { //players with results but no postfix
+                    if (foundResult.length == 4 || (foundResult.length == 5 && foundResult[4].equalsIgnoreCase("pg"))) { //players with results            
                         if (foundResult[0].equalsIgnoreCase(player1)) {
                             if (foundResult[1].equalsIgnoreCase(player2)) {
                                 lineToReturn = player1 + ":" + player2 + ":" + foundResult[2] + ":" + foundResult[3] + ":" + "pg";
@@ -43,7 +43,7 @@ public class PreviousGroupCopier {
                     }
                 }
             }
-            if(linesNotRead > 0) { //last line in tnmt must not be empty
+            if (linesNotRead > 0) { //last line in tnmt must not be empty
                 lineToReturn = lineToReturn + System.getProperty("line.separator");
             }
             mixedTnmt.append(lineToReturn);
@@ -51,4 +51,5 @@ public class PreviousGroupCopier {
 
         return mixedTnmt.toString();
     }
+
 }

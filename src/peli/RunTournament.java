@@ -134,7 +134,7 @@ public class RunTournament {
                                 PreviousGroupCopier pgCopier = new PreviousGroupCopier();
                                 List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
                                 List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
-
+                                //get pg results in memory
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
                                 output = new PrintWriter(new BufferedWriter(new FileWriter("pg" + args[0])));
                                 output.print(mixedTnmt);
@@ -142,13 +142,23 @@ public class RunTournament {
                                 output.close();
 
                                 //then we can create the pauseless final group
+                                System.setProperty("PFGenerate", "true");
                                 Tournament pauselessFinalGroup = new Tournament(1, treeset);
                                 output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
                                 pauselessFinalGroup.save(output, 2); //print tnmt, autoflush
                                 output.flush();
                                 output.close();
+                                System.setProperty("PFGenerate", "false");
+                                //then add those pg results to the pauseless group
 
-                                //then add those to the pauseless group
+                                List<String> finalGroupWithPgTnmt = FileTools.readFileAsList("pg" + args[0]);
+                                List<String> pauselessFinalGroupTnmt = FileTools.readFileAsList(args[0]);
+                                //get pg results in memory
+                                String pauselessFinalGroupWithPgTnmt = pgCopier.copyResultsFromPreviousGroup(finalGroupWithPgTnmt, pauselessFinalGroupTnmt);
+                                output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                output.print(pauselessFinalGroupWithPgTnmt);
+                                output.flush();
+                                output.close();
 
                             } catch (FileNotFoundException fe) {
                                 System.err.println("Error " + fe);
