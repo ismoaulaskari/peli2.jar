@@ -41,6 +41,7 @@ public class PreviousGroupCopier {
                     try {
                         round = Integer.parseInt(player2);
                     } catch (NumberFormatException ne) {
+                        //player named round
                         round = 0;
                     } finally {
                         if (round > 0 && round > maxRounds) {
@@ -48,6 +49,20 @@ public class PreviousGroupCopier {
                         }
                     }
                 }
+                if (player1.equalsIgnoreCase("ROUNDS")) {
+                    int rounds = 0;
+                    try {
+                        rounds = Integer.parseInt(player2);
+                    } catch (NumberFormatException ne) {
+                        //player named rounds
+                        rounds = 0;
+                    } finally {
+                        if(rounds > 0) {
+                            lineToReturn = "ROUNDS:" + (maxRounds + 1);
+                        }
+                    }
+                }
+
 
                 for (String line2 : previousTnmt) {
                     String[] foundResult = line2.split(":");
@@ -78,6 +93,7 @@ public class PreviousGroupCopier {
                 lineToReturn = lineToReturn + System.getProperty("line.separator");
             } else {
                 mixedTnmt.append("ROUND:" + (maxRounds + 1) + System.getProperty("line.separator"));
+                mixedTnmt.append("(X)" + System.getProperty("line.separator"));
                 mixedTnmt.append(pgLines);
                 mixedTnmt.append("END-OF-ROUND" + System.getProperty("line.separator"));
                 mixedTnmt.append("END-OF-DIVISION" + System.getProperty("line.separator"));
