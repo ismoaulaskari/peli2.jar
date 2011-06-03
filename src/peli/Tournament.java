@@ -994,8 +994,8 @@ public class Tournament {
 
     //added by aulaskar to help organising final groups
     /** print standings of all divisions as A1 B1 A2 B2 A3 B3..*/
-    public void saveStandingsForPreviousToFinalGroupGeneration(PrintWriter printwriter, int finalgroupsize) {
-
+    public ArrayList<String> getStandingsForPreviousToFinalGroupGeneration(int finalgroupsize) {
+        ArrayList<String> standingsNames = new ArrayList<String>();
         ArrayList divisions = new ArrayList();
         ArrayList overallstandings = new ArrayList();
 
@@ -1032,9 +1032,11 @@ public class Tournament {
 
         //print to file
         for (Iterator iterator = overallstandings.iterator(); iterator.hasNext();) {
-            printwriter.println(((SeriesTableEntry) iterator.next()).getName());
+            //printwriter.println(((SeriesTableEntry) iterator.next()).getName());
+            standingsNames.add(((SeriesTableEntry) iterator.next()).getName());
         }
 
+        return standingsNames;
     }
 
     public void saveTables(PrintWriter printwriter) {

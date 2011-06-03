@@ -11,8 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Main class for invocation of tournament result program Peli.jar
@@ -80,11 +81,9 @@ public class RunTournament {
                         //again in a special way without pauses and add the previous group results to it
                         if (args[1].equalsIgnoreCase("PFGENERATE")) {
                             int finalGroupSize = Integer.parseInt(args[3]);
-                            if(finalGroupSize < 1) {
+                            if (finalGroupSize < 1) {
                                 System.exit(1);
                             }
-
-                            PreviousGroupCopier pgCopier = new PreviousGroupCopier();
 
                             File file = new File(args[2]);
                             System.setProperty("TournamentFileName", file.getName());
@@ -95,21 +94,25 @@ public class RunTournament {
                             }
 
                             //we need to get basic group standings but only the top
-                            StringWriter stringwriter = new StringWriter();
-                            PrintWriter sprintwriter = new PrintWriter(stringwriter, true);
+                            ArrayList<String> standings = null;
                             try {
                                 Tournament tournament = new Tournament(file);
-                                //PrintWriter output = new PrintWriter(System.out, true);
-                                tournament.saveStandingsForPreviousToFinalGroupGeneration(sprintwriter, finalGroupSize); //print, autoflush
-                                //output.flush();
-                                //output.close();
-                                System.err.println(stringwriter.toString());
+                                standings = tournament.getStandingsForPreviousToFinalGroupGeneration(finalGroupSize); //print, autoflush
                             } catch (IOException ex) {
                                 System.err.print("Error " + ex);
                             } catch (FileFormatException ex) {
                                 System.err.print("Error " + ex);
                             }
-                            System.exit(0);
+
+                            //we create an empty, normal final group
+                            TreeSet<Player> treeset = new TreeSet<Player>();
+                            int rank = 0;
+                            for (String name : standings) {
+                                treeset.add(new Player(rank++, name));
+                            }
+                            Tournament normalFinalGroup = new Tournament(1, treeset);
+                            PreviousGroupCopier pgCopier = new PreviousGroupCopier();
+
                             file = new File(System.getProperty("TournamentFileArgs"));
                             System.setProperty("TournamentFileName", file.getName());
                             file = FileTools.canonize(file, ".tnmt");
@@ -118,21 +121,26 @@ public class RunTournament {
                                 System.exit(1);
                             }
 
-                            //we create an empty, normal final group
-
-
-                            //then we can create the pauseless final group
+                            //get previous group results to normal final group
                             try {
                                 List<String> oldGroupTnmt = FileTools.readFileAsList(args[2]);
                                 List<String> newGroupTnmt = FileTools.readFileAsList(args[0]);
 
-                                //but first get pg results to normal final group
                                 String mixedTnmt = pgCopier.copyResultsFromPreviousGroup(oldGroupTnmt, newGroupTnmt);
-                                PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(args[0] + "pg")));
                                 output.print(mixedTnmt);
                                 output.flush();
                                 output.close();
+                                
+                                //then we can create the pauseless final group
+                                Tournament pauselessFinalGroup = new Tournament(1, treeset);
+                                output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
+                                pauselessFinalGroup.save(output, 2); //print tnmt, autoflush
+                                output.flush();
+                                output.close();
+
                                 //then add those to the pauseless group
+
                             } catch (FileNotFoundException fe) {
                                 System.err.println("Error " + fe);
                                 System.exit(1);
