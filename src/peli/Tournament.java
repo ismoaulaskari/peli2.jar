@@ -1018,7 +1018,7 @@ public class Tournament {
             }
         }
 
-        for (int i = (maxdivisionsize / 2) - 1, j = 0; i >= 0 && j < getNumberOfDivisions(); i--, j = i% getNumberOfDivisions()) {
+        for (int i = (maxdivisionsize / 2) - 1, j = 0; i >= 0 && j < getNumberOfDivisions(); i--) {
             try {
                 overallstandings.add(((ArrayList) divisions.get(j)).get(i));
                 System.err.println(i + "-" + j);
@@ -1027,6 +1027,9 @@ public class Tournament {
             }
             if(j == 0) {
                 j = getNumberOfDivisions() - 1;
+            }
+            else {
+                j = 0;
             }
         }
 
