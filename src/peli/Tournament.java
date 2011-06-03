@@ -1008,8 +1008,7 @@ public class Tournament {
         //order combined standings of all divisions
         for (int i = 0, j = 0; i < (maxdivisionsize / 2) && j < getNumberOfDivisions(); i++, j = i % getNumberOfDivisions()) {
             try {
-                overallstandings.add(((ArrayList) divisions.get(j)).get(i));
-                System.err.println(i + "-" + j);
+                overallstandings.add(((ArrayList) divisions.get(j)).get(i));                
             } catch (IndexOutOfBoundsException ie) {
                 //nothing, divisions may have different sizes
             }
@@ -1020,8 +1019,7 @@ public class Tournament {
 
         for (int i = (maxdivisionsize / 2) - 1, j = 0; i >= 0 && j < getNumberOfDivisions(); i--) {
             try {
-                overallstandings.add(((ArrayList) divisions.get(j)).get(i));
-                System.err.println(i + "-" + j);
+                overallstandings.add(((ArrayList) divisions.get(j)).get(i));                
             } catch (IndexOutOfBoundsException ie) {
                 //nothing, divisions may have different sizes
             }

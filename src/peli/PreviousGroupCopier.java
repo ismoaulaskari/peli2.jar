@@ -4,6 +4,7 @@
  */
 package peli;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class PreviousGroupCopier {
         StringBuilder mixedTnmt = new StringBuilder();
         String lineToReturn = null;
         int linesNotRead = newTnmt.size();
-        StringBuilder pgLines = new StringBuilder();
+        ArrayList<String> pgLines = new ArrayList<String>();
         int maxRounds = playersInFinalGroup / 2;
 
         boolean firstRun = true;
@@ -57,8 +58,8 @@ public class PreviousGroupCopier {
                         //player named rounds
                         rounds = 0;
                     } finally {
-                        if(rounds > 0) {
-                            lineToReturn = "ROUNDS:" + (maxRounds + 1);
+                        if (rounds > 0) {
+                            lineToReturn = "ROUNDS:" + (playersInFinalGroup - 1);
                         }
                     }
                 }
@@ -83,7 +84,7 @@ public class PreviousGroupCopier {
 
                     if (foundResult.length == 5) { //players with results with postfix
                         if (foundResult[4].equalsIgnoreCase("pg") && firstRun) {
-                            pgLines.append(line2).append(System.getProperty("line.separator"));
+                            pgLines.add(line2);
                         }
                     }
                 }
@@ -92,10 +93,19 @@ public class PreviousGroupCopier {
             if (linesNotRead > 0) { //last line in tnmt must not be empty
                 lineToReturn = lineToReturn + System.getProperty("line.separator");
             } else {
-                mixedTnmt.append("ROUND:" + (maxRounds + 1) + System.getProperty("line.separator"));
-                mixedTnmt.append("(X)" + System.getProperty("line.separator"));
-                mixedTnmt.append(pgLines);
-                mixedTnmt.append("END-OF-ROUND" + System.getProperty("line.separator"));
+                int count = 0;
+                for (String pgLine : pgLines) {
+                    if (count == 0) {
+                        mixedTnmt.append("ROUND:" + (maxRounds++ + 1) + System.getProperty("line.separator"));
+                        mixedTnmt.append("(X)" + System.getProperty("line.separator"));
+                    }
+                        mixedTnmt.append(pgLine).append(System.getProperty("line.separator"));
+                    if(count == (playersInFinalGroup / 2) - 1) {
+                        mixedTnmt.append("END-OF-ROUND" + System.getProperty("line.separator"));
+                        count = -1;
+                    }
+                    count++;
+                }
                 mixedTnmt.append("END-OF-DIVISION" + System.getProperty("line.separator"));
             }
             if (!stopPrinting) {
