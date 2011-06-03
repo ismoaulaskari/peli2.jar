@@ -144,17 +144,19 @@ public class RunTournament {
                                 //then we can create the pauseless final group
                                 System.setProperty("PFGenerate", "true");
                                 Tournament pauselessFinalGroup = new Tournament(1, treeset);
+                                int players = pauselessFinalGroup.getOverAllStandings().size();
                                 output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
                                 pauselessFinalGroup.save(output, 2); //print tnmt, autoflush
                                 output.flush();
                                 output.close();
                                 System.setProperty("PFGenerate", "false");
-                                //then add those pg results to the pauseless group
+                                //how do we get only the n/2 first rounds? let's do it in the copier
 
+                                //then add those pg results to the pauseless group
                                 List<String> finalGroupWithPgTnmt = FileTools.readFileAsList("pg" + args[0]);
                                 List<String> pauselessFinalGroupTnmt = FileTools.readFileAsList(args[0]);
                                 //get pg results in memory
-                                String pauselessFinalGroupWithPgTnmt = pgCopier.copyResultsFromPreviousGroup(finalGroupWithPgTnmt, pauselessFinalGroupTnmt);
+                                String pauselessFinalGroupWithPgTnmt = pgCopier.copyResultsFromPreviousGroup(finalGroupWithPgTnmt, pauselessFinalGroupTnmt, players);
                                 output = new PrintWriter(new BufferedWriter(new FileWriter(args[0])));
                                 output.print(pauselessFinalGroupWithPgTnmt);
                                 output.flush();
