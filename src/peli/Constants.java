@@ -36,7 +36,7 @@ public class Constants {
 
     static {
         constants = new Constants();                
-        System.setProperty("Peli.jarVersion", "v. 1.21.0");
+        System.setProperty("Peli.jarVersion", "v. 1.21.1");
         try {
             rules = ResourceBundle.getBundle("Rules");
             locale = new Locale(rules.getString("languageCode"), rules.getString("countryCode"));

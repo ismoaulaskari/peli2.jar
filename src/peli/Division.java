@@ -55,6 +55,10 @@ public class Division {
             seats[i] = seats[0];
             seats[0] = "X";
         }
+
+        for(int j = 0; j < (Integer.parseInt(Constants.getRules().getString("AdvanceStartingPositionBy"))); j++) {
+            makeBreaklessNextSeatingForEvenNumbers();
+        }
     }
    
     private void makeBreaklessNextSeatingForEvenNumbers() {
