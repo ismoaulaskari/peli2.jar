@@ -5,6 +5,10 @@ package peli;
 // Source File Name:   HtmlTools.java
 
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * most of the html printing, this is where I'll put some CSS classes
@@ -116,5 +120,21 @@ public class HtmlTools
     static final void td(PrintWriter printwriter, String s, int i)
     {
         printwriter.println("<TD COLSPAN=" + i + ">" + s + "</TD>");
+    }
+
+    static final String safeUrlEncode(String input) {
+        String output = null;
+        try {
+            output = URLEncoder.encode(input, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            output = input.replaceAll("[^\\w\\d]", "");
+            try {
+                output = URLEncoder.encode(output, "UTF-8");
+            } catch (UnsupportedEncodingException ex1) {
+                //ok even if empty string
+            }
+        }
+
+        return output;
     }
 }

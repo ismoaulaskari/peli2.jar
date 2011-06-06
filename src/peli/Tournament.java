@@ -4,6 +4,7 @@ package peli;
 // Decompiler options: packimports(3) 
 // Source File Name:   Tournament.java
 import java.io.*;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.ArrayList;
@@ -1097,8 +1098,12 @@ public class Tournament {
                 printwriter.print("</td>" + nl + "<td class=\"sidebyside2\">" + nl);
             }
             String thisPlayer = new String((String) player);
+            printwriter.print("<a name=\"" + HtmlTools.safeUrlEncode(thisPlayer) + "\"/>" + nl);
             printwriter.print("<table class=\"programmebyplayer\" border=\"1\">" + nl);
-            printwriter.print("<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >rd</td><td class=\"programmebyplayer1\" >gm</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td><td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
+            printwriter.print(
+                    "<tr class=\"programmebyplayer\" ><td class=\"programmebyplayer0\" >rd</td>"
+                    + "<td class=\"programmebyplayer1\" >gm</td><td class=\"programmebyplayer2\" ><b>" + player + "</b></td>"
+                    + "<td class=\"programmebyplayer3\" >SCORE</td></tr>" + nl);
             String round = "";
             int game = -1; //tauolla oleva lasketaan
             boolean isInRound = false;

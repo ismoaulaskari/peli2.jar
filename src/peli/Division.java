@@ -312,11 +312,14 @@ public class Division {
         for (int j = 0; j < seriestable.size(); j++) {
             SeriesTableEntry seriestableentry = seriestable.elementAt(j);
             String s1 = seriestableentry.getName();
-            mutualtable.append("<tr><td class=\"mutualname\">" + s1 + "</td>" + System.getProperty("line.separator"));
+            mutualtable.append("<tr><td class=\"mutualname\"><a href=\"").
+                    append(System.getProperty("TournamentFileName")).append(".byplayer.html#").
+                    append(HtmlTools.safeUrlEncode(s1)).append("\">").append(s1).
+                    append("</a></td>").append(System.getProperty("line.separator"));
             for (int k = 0; k < seriestable.size(); k++) {
                 String mutualResultClass = "";
                 if (j == k) {
-                    mutualtable.append("<td class=\"mutualempty\">&nbsp;</td>" + System.getProperty("line.separator"));
+                    mutualtable.append("<td class=\"mutualempty\">&nbsp;</td>").append(System.getProperty("line.separator"));
                 } else {
                     SeriesTableEntry seriestableentry1 = seriestable.elementAt(k);
                     String s2 = seriestableentry1.getName();
