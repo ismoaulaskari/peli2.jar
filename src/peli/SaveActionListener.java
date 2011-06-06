@@ -105,6 +105,13 @@ public class SaveActionListener
                     liveResults = new LiveResults(file.getName() + ".html", stringwriter.toString());
                     timer.schedule(liveResults, 0);
                     sprintwriter.close();
+                    //byplayer results next:
+                    StringWriter stringwriter2 = new StringWriter();
+                    PrintWriter sprintwriter2 = new PrintWriter(stringwriter2, true);
+                    tmpTournament.save(sprintwriter2, 5); //print html, autoflush
+                    liveResults = new LiveResults(file.getName() + ".byplayer.html", stringwriter2.toString());
+                    timer.schedule(liveResults, 5);
+                    sprintwriter2.close();
                     Thread.yield();
                     savedMessage += System.getProperty("line.separator") + messages.getString("liveResultsSentTo") + " " + rules.getString("websiteUrl");
                 }
