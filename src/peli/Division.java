@@ -301,6 +301,7 @@ public class Division {
         output = output.replaceAll("<!-- SERIESTABLE -->", seriestable.toCssHtmlTableWithAnchors(playoffSeparators, groupName));
 
         StringBuilder mutualtable = new StringBuilder();
+        mutualtable.append("<a name=\"").append(groupName).append("m").append("\"/>");
         for (int i = 0; i < seriestable.size(); i++) {
             String s = seriestable.elementAt(i).getName();
             mutualtable.append("\t<td align=\"center\" class=\"mutualinitials\">" + Tools.makeInitials(s) + "</td>" + System.getProperty("line.separator"));
