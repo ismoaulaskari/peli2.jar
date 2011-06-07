@@ -4,7 +4,6 @@ package peli;
 // Decompiler options: packimports(3) 
 // Source File Name:   Tournament.java
 import java.io.*;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.ArrayList;
@@ -643,6 +642,50 @@ public class Tournament {
         return (Division) divisions.elementAt(number);
     }
 
+    public String getDivisionChar(int divNum) {
+        switch (divNum) {
+            case 1:
+                return "A";
+
+            case 2:
+                return "B";
+
+            case 3:
+                return "C";
+
+            case 4:
+                return "D";
+
+            case 5:
+                return "E";
+
+            case 6:
+                return "F";
+
+            case 7:
+                return "G";
+
+            case 8:
+                return "H";
+
+            case 9:
+                return "I";
+
+            case 10:
+                return "J";
+
+            case 11:
+                return "K";
+
+            case 12:
+                return "L";
+
+            default:
+                return "";
+        }
+
+    }
+
     public String[] getDivisionTitles() {
         String displayName = System.getProperty("TournamentFileName") + " / ";
         switch (numberOfDivisions) { //@TODO this as dynamic one-liner
@@ -1009,25 +1052,24 @@ public class Tournament {
         //order combined standings of all divisions
         for (int i = 0, j = 0; i < (maxdivisionsize / 2) && j < getNumberOfDivisions(); i++, j = i % getNumberOfDivisions()) {
             try {
-                overallstandings.add(((ArrayList) divisions.get(j)).get(i));                
+                overallstandings.add(((ArrayList) divisions.get(j)).get(i));
             } catch (IndexOutOfBoundsException ie) {
                 //nothing, divisions may have different sizes
             }
-            if(j == getNumberOfDivisions() - 1) {
+            if (j == getNumberOfDivisions() - 1) {
                 j = 0;
             }
         }
 
         for (int i = (maxdivisionsize / 2) - 1, j = 0; i >= 0 && j < getNumberOfDivisions(); i--) {
             try {
-                overallstandings.add(((ArrayList) divisions.get(j)).get(i));                
+                overallstandings.add(((ArrayList) divisions.get(j)).get(i));
             } catch (IndexOutOfBoundsException ie) {
                 //nothing, divisions may have different sizes
             }
-            if(j == 0) {
+            if (j == 0) {
                 j = getNumberOfDivisions() - 1;
-            }
-            else {
+            } else {
                 j = 0;
             }
         }
@@ -1230,6 +1272,35 @@ public class Tournament {
                             playoffoutput.append("<!--HIDE_BRONZEMATCH");
                             playoffoutput.append("<BRONZEMATCH/>");
                             playoffoutput.append("HIDE_BRONZEMATCH-->");
+                        }
+
+                        if (Constants.getRules().getString("doStupidSlowThings") != null) {
+                            //hack for wch2011                            
+                            Playoff aPlayoffRound = (Playoff) playoffs.get(round);
+                            PlayoffPair[] br = null;
+                            if(bronzeMatch != null) {
+                                br = bronzeMatch.getPlayoffPairs();
+                            }
+                            for (PlayoffPair pair : aPlayoffRound.getPlayoffPairs()) {
+                                String home = pair.getHomeTeam();
+                                String away = pair.getAwayTeam();
+                                for (int div = 0; div < numberOfDivisions; div++) {
+                                    ArrayList<SeriesTableEntry> standings = getDivision(div).getStandings();
+                                    for (int pos = 0; pos < standings.size(); pos++) {
+                                        SeriesTableEntry entry1 = standings.get(pos);
+                                        if (entry1.getName().equalsIgnoreCase(home)) {
+                                            pair.setHomeGroupPlacement(getDivisionChar(div + 1) + (pos + 1));
+                                        } else if (entry1.getName().equalsIgnoreCase(away)) {
+                                            pair.setAwayGroupPlacement(getDivisionChar(div + 1) + (pos + 1));
+                                        } else if (br != null && entry1.getName().equalsIgnoreCase(br[0].getHomeTeam())) {
+                                            br[0].setHomeGroupPlacement(getDivisionChar(div + 1) + (pos + 1));
+                                        } else if (br != null && entry1.getName().equalsIgnoreCase(br[0].getAwayTeam())) {
+                                            br[0].setAwayGroupPlacement(getDivisionChar(div + 1) + (pos + 1));
+                                        }
+                                    }
+                                }
+                            }
+                            //end hack
                         }
                         playoffoutput.append(((Playoff) playoffs.get(round)).saveAll());
                     }

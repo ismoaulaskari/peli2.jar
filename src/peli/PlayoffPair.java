@@ -17,9 +17,10 @@ import java.util.ArrayList;
 public class PlayoffPair {
     //rounds
 
-    private String homeTeam,  awayTeam;
-    private int homeWins,  awayWins;
-    private int homePlacement,  awayPlacement;
+    private String homeTeam, awayTeam;
+    private int homeWins, awayWins;
+    private int homePlacement, awayPlacement;
+    private String homeGroupPlacement, awayGroupPlacement;
     //    private Playoff mother;
     private ArrayList<Match> matches = new ArrayList<Match>();
     private final int MAXMATCHES = Constants.getMAXMATCHES();
@@ -153,16 +154,20 @@ public class PlayoffPair {
         StringBuilder output = new StringBuilder();
         if (this.getHomeTeam().equals(this.getWinner())) {
             emptyrow = false;
+            output.append(this.getHomeGroupPlacementHtml());
             output.append("<u class=\"playoff\">");
             output.append(this.getHomeTeam());
             output.append("</u>");
             output.append("-");
+            output.append(this.getAwayGroupPlacementHtml());
             output.append(this.getAwayTeam());
         } else {
             if (this.getAwayTeam().equals(this.getWinner())) {
                 emptyrow = false;
+                output.append(this.getHomeGroupPlacementHtml());
                 output.append(this.getHomeTeam());
                 output.append("-");
+                output.append(this.getAwayGroupPlacementHtml());
                 output.append("<u class=\"playoff\">");
                 output.append(this.getAwayTeam());
                 output.append("</u>");
@@ -170,8 +175,10 @@ public class PlayoffPair {
 //                emptyrow = true; 
                 if (this.getPlayedMatches() > 0) {
                     emptyrow = false;
+                    output.append(this.getHomeGroupPlacementHtml());
                     output.append(this.getHomeTeam());
                     output.append("-");
+                    output.append(this.getAwayGroupPlacementHtml());
                     output.append(this.getAwayTeam());
                 }
 
@@ -242,5 +249,53 @@ public class PlayoffPair {
         }
 
         return played;
+    }
+
+    /**
+     * @param awayGroupPlacement the awayGroupPlacement to set
+     */
+    public void setAwayGroupPlacement(String awayGroupPlacement) {
+        this.awayGroupPlacement = awayGroupPlacement;
+    }
+
+    /**
+     * @return the awayGroupPlacement
+     */
+    public String getHomeGroupPlacement() {
+        return awayGroupPlacement;
+    }
+
+    /**
+     * @return the awayGroupPlacement
+     */
+    public String getAwayGroupPlacement() {
+        return awayGroupPlacement;
+    }
+
+    /**
+     * @return the awayGroupPlacement
+     */
+    public String getHomeGroupPlacementHtml() {
+        if (homeGroupPlacement != null) {
+            return homeGroupPlacement + ". ";
+        }
+        return "";
+    }
+
+    /**
+     * @return the awayGroupPlacement
+     */
+    public String getAwayGroupPlacementHtml() {
+        if (awayGroupPlacement != null) {
+            return awayGroupPlacement + ". ";
+        }
+        return "";
+    }
+
+    /**
+     * 
+     */
+    public void setHomeGroupPlacement(String homeGroupPlacement) {
+        this.homeGroupPlacement = homeGroupPlacement;
     }
 }
