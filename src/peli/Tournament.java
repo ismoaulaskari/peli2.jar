@@ -1253,12 +1253,12 @@ public class Tournament {
             output = output.replaceAll("<VERSION/>", System.getProperty("Peli.jarVersion"));
 
             if (placementMatches != null) {
-                output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "");
+                output = output.replaceAll("<!--HIDE_PLACEMENTMATCHES", "<a name=\"placementmatches\"/>");
                 output = output.replaceAll("HIDE_PLACEMENTMATCHES-->", "");
                 output = output.replaceAll("<PLACEMENTMATCHES/>", placementMatches.saveAll());
             }
             if (playoffs.size() > 0) {
-                output = output.replaceAll("<!--HIDE_PLAYOFF", "");
+                output = output.replaceAll("<!--HIDE_PLAYOFF", "<a name=\"playoff\"/>");
                 output = output.replaceAll("HIDE_PLAYOFF-->", "");
                 //if playoff, save playoff
                 StringBuilder playoffoutput = new StringBuilder();
@@ -1302,6 +1302,7 @@ public class Tournament {
                             }
                             //end hack
                         }
+                        playoffoutput.append("<a name=\"pl").append(round).append("\"/>");
                         playoffoutput.append(((Playoff) playoffs.get(round)).saveAll());
                     }
                 }
